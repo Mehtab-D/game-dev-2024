@@ -33,3 +33,28 @@ a<href="public/t1a01-basic.html"
   </tr>
 </table>
 </center>
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Spinning Image</title>
+    <style>
+        .spin {
+            width: 200;
+            height: 200;
+            background-image: url('https://www.thesafaricollection.com/wp-content/uploads/2022/07/The-Safari-Collection-Hey-You-Giraffe-Manor-1.jpg'); /* Replace with your image URL */
+            background-size: cover;
+            animation: spin 3s linear infinite;
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="spin"></div>
+</body>
+</html>
