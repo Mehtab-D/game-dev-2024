@@ -4,42 +4,27 @@
   this is <b style="color:red; background-color;"> cool</b>b> Yes! <br>
 <br>
   this is <i style="border style:groove;"> italic with border </i>
-  body {
-  background-color: lightblue;
-}
-<!DOCTYPE html>
-<html lang="en">
+
+  <!DOCTYPE html>
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Background Image</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Spinning Image</title>
+    <style>
+        .spin {
+            width: 200;
+            height: 200;
+            background-image: url('https://www.thesafaricollection.com/wp-content/uploads/2022/07/The-Safari-Collection-Hey-You-Giraffe-Manor-1.jpg'); /* Replace with your image URL */
+            background-size: cover;
+            animation: spin 3s linear infinite;
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+    </style>
 </head>
 <body>
-    <div class="background"></div>
+    <div class="spin"></div>
 </body>
 </html>
-html, body {
-    height: 100%;
-    margin: 0;
-}
-
-body {
-    background-color:lightblue;
-}
-
-.background {
-    background-image: url('https://static.vecteezy.com/system/resources/previews/006/941/002/non_2x/small-hexagon-shape-with-light-white-and-grey-color-seamless-pattern-background-free-vector.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1;
-}
-
-
-
