@@ -5,45 +5,41 @@
 <br>
   this is <i style="border style:groove;"> italic with border </i>
 
-  <!DOCTYPE html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>Spinning Image</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glass Effect</title>
     <style>
-        .spin {
-            width: 200;
-            height: 200;
-            background-image: url('https://www.thesafaricollection.com/wp-content/uploads/2022/07/The-Safari-Collection-Hey-You-Giraffe-Manor-1.jpg'); /* Replace with your image URL */
+        body {
+            background: url('https://img.freepik.com/premium-photo/amazing-panoramic-sunset-view-mountains-view-from-top-mountain-generative-ai_143092-8558.jpg') no-repeat center center fixed;
             background-size: cover;
-            animation: spin 3s linear infinite;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
         }
-
-        @keyframes spin {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
+        .glass {
+            width: 300px;
+            height: 200px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 24px;
         }
     </style>
 </head>
 <body>
-    <div class="spin"></div>
+    <div class="glass">
+        Glass Effect
+    </div>
 </body>
 </html>
-
-<!DOCTYPE html> 
-<html> 
-
-<head> 
-	<title>Shadow Effect</title> 
-	<style> 
-		h1 { 
-			font-size: 5rem; 
-			text-shadow: 5px 5px 0px lavender; 
-		} 
-	</style> 
-</head> 
-
-<body> 
-	<h1>Mehtab's Webpage</h1> 
-</body> 
-
-</html> 
