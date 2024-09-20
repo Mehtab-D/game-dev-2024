@@ -104,3 +104,26 @@
     </div>
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frosted Image Hover Effect</title>
+    <style>
+        .frosted-image {
+            width: 300px;
+            height: 200px;
+            transition: filter 0.5s ease;
+            filter: blur(8px); /* Initial frosted (blurred) effect */
+        }
+
+        .frosted-image:hover {
+            filter: blur(0); /* Clear image on hover */
+        }
+    </style>
+</head>
+<body>
+    <img src="https://i.natgeofe.com/n/c9107b46-78b1-4394-988d-53927646c72b/1095.jpg" alt="Frosted Image" class="frosted-image">
+</body>
+</html>
