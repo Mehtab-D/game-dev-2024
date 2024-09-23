@@ -34,8 +34,11 @@ if(myIn1=='Mehtab'){
     </style>
 </head>
 <body>
-    <button id="boredButton">Things to Do When You're Bored</button>
+    <label for="boredInput">Input: </label>
+    <input type="text" id="boredInput" placeholder="things to do when you're bored">
+    <button id="enterButton">Enter</button>
     <div id="options">
+        <p>Output:</p>
         <ul>
             <li>Read a book</li>
             <li>Go for a walk</li>
@@ -48,19 +51,18 @@ if(myIn1=='Mehtab'){
     </div>
 
     <script>
-        document.getElementById('boredButton').addEventListener('click', function() {
-            var options = document.getElementById('options');
-            if (options.style.display === 'none') {
-                options.style.display = 'block';
+        document.getElementById('enterButton').addEventListener('click', function() {
+            var input = document.getElementById('boredInput').value.toLowerCase();
+            if (input === "things to do when you're bored") {
+                document.getElementById('options').style.display = 'block';
             } else {
-                options.style.display = 'none';
+                alert('Please enter the correct phrase: "things to do when you\'re bored"');
             }
         });
     </script>
 </body>
 </html>
 
-  
 
 
 
