@@ -62,8 +62,24 @@ if(myIn1=='Mehtab'){
     </script>
 </body>
 </html>
-
-
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Button Example</title>
+    <script>
+        function displayInput() {
+            var input = document.getElementById("userInput").value;
+            document.getElementById("output").innerText = "You entered: " + input;
+        }
+    </script>
+</head>
+<body>
+    <h2>Simple Button with Input and Output</h2>
+    <input type="text" id="userInput" placeholder="Enter something">
+    <button onclick="displayInput()">Submit</button>
+    <p id="output"></p>
+</body>
+</html>
 
 
 
