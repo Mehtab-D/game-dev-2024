@@ -65,7 +65,7 @@ if(myIn1=='Mehtab'){
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Simple Button Example</title>
+    <title>Things to Do When Bored</title>
     <script>
         function displayInput() {
             var input = document.getElementById("userInput").value;
@@ -78,6 +78,41 @@ if(myIn1=='Mehtab'){
     <input type="text" id="userInput" placeholder="Enter something">
     <button onclick="displayInput()">Submit</button>
     <p id="output"></p>
+</body>
+</html>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Things to Do When Bored</title>
+    <script>
+        function displayInput() {
+            var input = document.getElementById("userInput").value;
+            var output = document.getElementById("output");
+            var activities = [
+                "Read a book",
+                "Go for a walk",
+                "Try a new recipe",
+                "Learn a new hobby",
+                "Watch a movie",
+                "Do a puzzle",
+                "Write in a journal",
+                "Do some gardening",
+                "Try a DIY project",
+                "Listen to a podcast"
+            ];
+            output.innerHTML = "You entered: " + input + "<br>Here are some things to do when you're bored:<ul>";
+            for (var i = 0; i < activities.length; i++) {
+                output.innerHTML += "<li>" + activities[i] + "</li>";
+            }
+            output.innerHTML += "</ul>";
+        }
+    </script>
+</head>
+<body>
+    <h2>Things to Do When Bored</h2>
+    <input type="text" id="userInput" placeholder="Enter something">
+    <button onclick="displayInput()">Submit</button>
+    <div id="output"></div>
 </body>
 </html>
 
