@@ -20,6 +20,28 @@ if(myIn1=='Mehtab'){
 }
 }"><br>
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Magic Decision Button</title>
+</head>
+<body>
+    <button id="magicButton">Show Idea</button>
+    <p id="ideaDisplay"></p>
+
+    <script>
+        const ideas = ["Play a game", "Draw a picture", "Read a story"];
+        const button = document.getElementById('magicButton');
+        const display = document.getElementById('ideaDisplay');
+
+        button.addEventListener('click', () => {
+            const randomIdea = ideas[Math.floor(Math.random() * ideas.length)];
+            display.textContent = randomIdea;
+        });
+    </script>
+</body>
+</html>
 
 
 
