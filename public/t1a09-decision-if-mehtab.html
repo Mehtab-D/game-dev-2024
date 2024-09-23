@@ -23,27 +23,45 @@ if(myIn1=='Mehtab'){
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <center>
     <meta charset="UTF-8">
-    <title>Magic Decision Button</title>
-  </center>
+    <title>Decision Button</title>
 </head>
 <body>
-    <button id="magicButton">Show Idea</button>
-    <p id="ideaDisplay"></p>
+    <label for="myText1">Input:</label>
+    <input type="text" id="myText1" value="Mehtab"><br>
+    <label for="myNum1">Input:</label>
+    <input type="number" id="myNum1" value="14"><br>
+    <div id="myDiv01">...</div><br>
 
-    <script>
-        const ideas = ["Play a game", "Draw a picture", "Read a story"];
-        const button = document.getElementById('magicButton');
-        const display = document.getElementById('ideaDisplay');
+    <input type="button" value="Is Mehtab" onclick="{
+        let myIn1 = document.getElementById('myText1').value;
+        document.getElementById('myDiv01').innerHTML = '<br>';
+    }"><br>
 
-        button.addEventListener('click', () => {
-            const randomIdea = ideas[Math.floor(Math.random() * ideas.length)];
-            display.textContent = randomIdea;
-        });
-    </script>
+    <input type="button" value="Is Mehtab else" onclick="{
+        let myIn1 = document.getElementById('myText1').value;
+        document.getElementById('myDiv01').innerHTML = '<br>';
+        if (myIn1 === 'Mehtab') {
+            document.getElementById('myDiv01').innerHTML = 'Hi Mehtab';
+        } else {
+            document.getElementById('myDiv01').innerHTML = 'Was expecting Mehtab :>';
+        }
+    }"><br>
+
+    <input type="button" value="Show Decision" onclick="{
+        let myIn1 = document.getElementById('myText1').value;
+        let myNum1 = document.getElementById('myNum1').value;
+        let decision = 'Decision: ';
+        if (myIn1 === 'Mehtab' && myNum1 == 14) {
+            decision += 'Perfect match!';
+        } else {
+            decision += 'Not a match.';
+        }
+        document.getElementById('myDiv01').innerHTML = decision;
+    }"><br>
 </body>
 </html>
+
 
 
 
