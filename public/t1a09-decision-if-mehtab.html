@@ -98,10 +98,7 @@ if(myIn1=='Mehtab'){
                 "Learn a new hobby",
                 "Watch a movie",
                 "Do a puzzle",
-                "Write in a journal",
-                "Do some gardening",
-                "Try a DIY project",
-                "Listen to a podcast"
+            
             ];
             output.innerHTML = "You entered: " + input + "<br>Here are some things to do when you're bored:<ul>";
             for (var i = 0; i < activities.length; i++) {
@@ -116,6 +113,22 @@ if(myIn1=='Mehtab'){
     <input type="text" id="userInput" placeholder="Enter something">
     <button onclick="displayInput()">Submit</button>
     <div id="output"></div>
+</body>
+</html>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Clear Text Output</title>
+</head>
+<body>
+    <div id="output">This is the text that will be cleared.</div>
+    <button onclick="clearText()">OK</button>
+
+    <script>
+        function clearText() {
+            document.getElementById('output').innerText = '';
+        }
+    </script>
 </body>
 </html>
 
