@@ -1,0 +1,22 @@
+<h1 align=center>Arrays By Mehtab</h1>
+<script>
+  //Set a few Global Variables
+  let myMax=6
+  let myArray= new Array(myMax)
+  </script>
+
+  Input:<input type= text id="myFirstName" value="fred"><br>
+
+  <input type=button value="Set Array" onClick="{
+    myArray[0]='Fred'
+    myArray[1]='Mary'
+    myArray[2]='Peter'
+
+    document.getElementById('myDiv01').innerHTML='You set the array'
+    }">
+
+    <input type=button value="Show Array" onClick="{
+      document.getElementById('myDiv01').innerHTML=''
+      for (myLoop=0; myLoop<3; myLoop++){
+      document.getElementById('myDiv01').innerHTML+='myArray['+myLoop+']='+
+      myArray
