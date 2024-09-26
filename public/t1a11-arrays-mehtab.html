@@ -29,3 +29,49 @@
       }
       }"><br>
 <div id='myDiv01">...</div>
+
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arrays By Mehtab</title>
+    <style>
+        body {
+            background-color: #ebccd7;
+        }
+        h1 {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Arrays By Mehtab</h1>
+
+    <script>
+        // Set a few Global Variables
+        let myMax = 6;
+        let myArray = new Array(myMax);
+    </script>
+
+    Input: <input type="text" id="myFirstName" value="Fred"><br>
+
+    <input type="button" value="Set Array" onClick="{
+        myArray[0] = 'Fred';
+        myArray[1] = 'Mary';
+        myArray[2] = 'Peter';
+
+        document.getElementById('myDiv01').innerHTML = 'You set the array';
+    }">
+
+    <input type="button" value="Show Array" onClick="{
+        document.getElementById('myDiv01').innerHTML = '';
+        for (let myLoop = 0; myLoop < 3; myLoop++) {
+            document.getElementById('myDiv01').innerHTML += 'myArray[' + myLoop + '] = ' + myArray[myLoop] + '<br>';
+        }
+    }"><br>
+
+    <div id="myDiv01">...</div>
+</body>
+</html>
+
