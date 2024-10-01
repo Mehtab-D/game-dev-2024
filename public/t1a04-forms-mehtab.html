@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sample Form</title>
+    <title>School Championship Registration Form</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -32,6 +32,8 @@
         }
         .form-group input[type="text"],
         .form-group input[type="email"],
+        .form-group input[type="date"],
+        .form-group select,
         .form-group textarea {
             width: 100%;
             padding: 8px;
@@ -87,15 +89,28 @@
 </head>
 <body>
     <div class="form-container">
-        <h2 class="form-title">Sample Google-like Form</h2>
+        <h2 class="form-title">Fill Out the Form!</h2>
         <form>
             <div class="form-group">
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="name">
+                <label for="student-name">Student Name:</label>
+                <input type="text" id="student-name" name="student-name">
             </div>
             <div class="form-group">
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email">
+                <label for="student-email">Student Email:</label>
+                <input type="email" id="student-email" name="student-email">
+            </div>
+            <div class="form-group">
+                <label for="dob">Date of Birth:</label>
+                <input type="date" id="dob" name="dob">
+            </div>
+            <div class="form-group">
+                <label for="grade">Grade:</label>
+                <select id="grade" name="grade">
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                </select>
             </div>
             <div class="form-group">
                 <label>Gender:</label>
@@ -111,20 +126,20 @@
                 </div>
             </div>
             <div class="form-group">
-                <label>Hobbies:</label>
+                <label>Sports Interested In:</label>
                 <div class="option-container">
-                    <input type="checkbox" id="reading" name="hobbies" value="reading">
-                    <label for="reading">Reading</label>
+                    <input type="checkbox" id="basketball" name="sports" value="basketball">
+                    <label for="basketball">Basketball</label>
                     <button type="button">Select</button>
                 </div>
                 <div class="option-container">
-                    <input type="checkbox" id="traveling" name="hobbies" value="traveling">
-                    <label for="traveling">Traveling</label>
+                    <input type="checkbox" id="soccer" name="sports" value="soccer">
+                    <label for="soccer">Soccer</label>
                     <button type="button">Select</button>
                 </div>
                 <div class="option-container">
-                    <input type="checkbox" id="sports" name="hobbies" value="sports">
-                    <label for="sports">Sports</label>
+                    <input type="checkbox" id="swimming" name="sports" value="swimming">
+                    <label for="swimming">Swimming</label>
                     <button type="button">Select</button>
                 </div>
             </div>
@@ -139,3 +154,4 @@
     </div>
 </body>
 </html>
+
