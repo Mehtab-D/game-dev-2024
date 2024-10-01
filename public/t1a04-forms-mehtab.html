@@ -17,16 +17,20 @@
         <!-- Text Box -->
         <label for="name">Name:</label>
         <input type="text" id="name" name="name"><br><br>
-
+<style>
         <!-- Radio Buttons -->
         <p>Favorite Color:</p>
-        <input type="radio" id="red" name="color" value="red"onclick="changeTextColor(red)">
+        <input type="radio" id="red" name="color" value="red">   .red-text {
+            color: red;
+        }
         <label for="red">Red</label><br>
-        <input type="radio" id="blue" name="color" value="blue"onclick="changeTextColor(blue)">
+        <input type="radio" id="blue" name="color" value="blue"onclick="changeTextColor(blue)">   .blue-text {
+            color: blue;
+        }
         <label for="blue">Blue</label><br>
         <input type="radio" id="green" name="color" value="green">
         <label for="green">Green</label><br><br>
-
+</style>
         <!-- Checkboxes -->
         <p>Favorite Fruits:</p>
         <input type="checkbox" id="apple" name="fruits" value="apple">
