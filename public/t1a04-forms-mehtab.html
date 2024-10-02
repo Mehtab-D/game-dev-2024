@@ -192,6 +192,22 @@
             <div class="form-group">
                 <button type="submit">Submit</button>
             </div>
+            <div class="message-container hidden" id="congratulations-message">
+        <h1>Congratulations, you're done!</h1>
+    </div>
+    <script>
+        function updateColorDisplay() {
+            var colorPicker = document.getElementById('favorite-color');
+            var colorDisplay = document.getElementById('color-display');
+            colorDisplay.style.backgroundColor = colorPicker.value;
+        }
+        // Initialize the color display with the default color
+        updateColorDisplay();
+
+        document.getElementById('main-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the default form submission
+            document.getElementById('form-container').classList.add('hidden');
+            document.get
         </form>
     </div>
 </body>
