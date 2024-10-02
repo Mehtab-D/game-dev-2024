@@ -86,12 +86,29 @@
         .form-group button[type="submit"]:hover {
             background-color: #357ae8;
         }
+        .color-display {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 1px solid #ccc;
+            margin-top: 10px;
+        }
+        .hidden {
+            display: none;
+        }
+        .message-container {
+            text-align: center;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
     </style>
 </head>
 <body>
-    <div class="form-container">
+    <div class="form-container" id="form-container">
         <h2 class="form-title">Fill Out the Form!</h2>
-        <form>
+        <form id="main-form">
             <div class="form-group">
                 <label for="student-name">Name:</label>
                 <input type="text" id="student-name" name="student-name" value="Sarah">
@@ -174,15 +191,10 @@
                     <label for="hockey">Hockey</label>
                     <button type="button">Select</button>
                 </div>
-                    <div class="option-container">
-        <input type="checkbox" id="other" name="sports" value="other">
-        <label for="other">Other</label>
-        <button type="button">Select</button>
-    </div>
             </div>
             <div class="form-group">
-                <label for="favorite-color">Pick Your Favorite Color</label>
-                <input type="color" id="favorite-color" name="favorite-color" value="#ff0000" onchange updateColorDisplay()">
+                <label for="favorite-color">What is your favorite color?</label>
+                <input type="color" id="favorite-color" name="favorite-color" value="#ff0000" onchange="updateColorDisplay()">
                 <div class="color-display" id="color-display"></div>
             </div>
             <div class="form-group">
@@ -192,7 +204,9 @@
             <div class="form-group">
                 <button type="submit">Submit</button>
             </div>
-            <div class="message-container hidden" id="congratulations-message">
+        </form>
+    </div>
+    <div class="message-container hidden" id="congratulations-message">
         <h1>Congratulations, you're done!</h1>
     </div>
     <script>
@@ -207,8 +221,8 @@
         document.getElementById('main-form').addEventListener('submit', function(event) {
             event.preventDefault(); // Prevent the default form submission
             document.getElementById('form-container').classList.add('hidden');
-            document.get
-        </form>
-    </div>
+            document.getElementById('congratulations-message').classList.remove('hidden');
+        });
+    </script>
 </body>
 </html>
