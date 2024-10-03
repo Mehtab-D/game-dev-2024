@@ -221,11 +221,8 @@
         // Initialize the color display and button with the default color
         updateColorDisplay();
 
+     
         document.getElementById('main-form').addEventListener('submit', function(event) {
-            event.preventDefault(); // Prevent the default form submission
-            document.getElementById('form-container').classList.add('hidden');
-            document.getElementById('congratulations-message').classList.remove('hidden');
-             document.getElementById('main-form').addEventListener('submit', function(event) {
             event.preventDefault(); // Prevent the default form submission
             window.location.href = 'congratulations.html'; // Redirect to the congratulations page
         });
