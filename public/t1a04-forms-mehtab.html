@@ -225,5 +225,23 @@
             event.preventDefault(); // Prevent the default form submission
             document.getElementById('form-container').classList.add('hidden');
             document.getElementById('congratulations-message').classList.remove('hidden');
+             document.getElementById('main-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the default form submission
+            window.location.href = 'congratulations.html'; // Redirect to the congratulations page
         });
     </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Congratulations</title>
+</head>
+<body>
+    <h1>Congratulations!</h1>
+    <p>You have successfully submitted the form.</p>
+</body>
+</html>
+
