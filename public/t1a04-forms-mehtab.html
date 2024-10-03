@@ -222,11 +222,37 @@
         updateColorDisplay();
 
      
-        document.getElementById('main-form').addEventListener('submit', function(event) {
-            event.preventDefault(); // Prevent the default form submission
-            window.location.href = 'congratulations.html'; // Redirect to the congratulations page
+  
         });
     </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Form Submission</title>
+    <style>
+        #congratsMessage {
+            display: none;
+            font-size: 24px;
+            color: green;
+        }
+    </style>
+    <script type="text/javascript">
+        function showCongratsMessage(event) {
+            event.preventDefault(); // Prevent the default form submission
+            document.getElementById('form').style.display = 'none'; // Hide the form
+            document.getElementById('congratsMessage').style.display = 'block'; // Show the congratulations message
+        }
+    </script>
+</head>
+<body>
+    <form id="form" onsubmit="showCongratsMessage(event);">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+        <input type="submit" value="Submit">
+    </form>
+    <div id="congratsMessage">Congratulations! Your form has been submitted.</div>
 </body>
 </html>
 
