@@ -198,56 +198,6 @@
     <div class="color-display" id="color-display"></div>
 </div>
 
-<div class="form-group">
-    <label for="comments">Comments:</label>
-    <textarea id="comments" name="comments" rows="4"></textarea>
-</div>
-<div class="form-group">
-    <button type="submit" id="submit-button">Submit</button>
-</div>
-</form>
-<div class="message-container hidden" id="congratulations-message">
-    <h1>Congratulations, You're Done!</h1>
-</div>
- <script>
-        function updateColorDisplay() {
-            var colorPicker = document.getElementById('favorite-color');
-            var colorDisplay = document.getElementById('color-display');
-            var submitButton = document.getElementById('submit-button');
-            
-            colorDisplay.style.backgroundColor = colorPicker.value;
-            submitButton.style.backgroundColor = colorPicker.value;
-        }
-        // Initialize the color display and button with the default color
-        updateColorDisplay();
-
-     
-  
-        });
-    </script>
-</body>
-</html>
-  <script type="text/javascript">
-        function updateColorDisplay() {
-            var colorPicker = document.getElementById('favorite-color');
-            var colorDisplay = document.getElementById('color-display');
-            var submitButton = document.getElementById('submit-button');
-            
-            colorDisplay.style.backgroundColor = colorPicker.value;
-            submitButton.style.backgroundColor = colorPicker.value;
-        }
-
-        function showCongratsMessage(event) {
-            event.preventDefault(); // Prevent the default form submission
-            document.getElementById('form').style.display = 'none'; // Hide the form
-            document.getElementById('congratulations-message').classList.remove('hidden'); // Show the congratulations message
-        }
-
-        // Initialize the color display and button with the default color
-        document.addEventListener('DOMContentLoaded', updateColorDisplay);
-    </script>
-</head>
-
 <html>
 <body>
     <form id="form" onsubmit="showCongratsMessage(event);">
