@@ -76,6 +76,7 @@
     <h2>Show Object with Array</h2>
     <button id="showObjectButton">Show Object</button>
     <div id="output"></div>
+    <button id="okButton" style="display: none;">OK</button>
 
     <script>
         // Define an object with an array in it
@@ -88,7 +89,9 @@
         // Function to display the object
         function showObject() {
             const outputDiv = document.getElementById('output');
+            const okButton = document.getElementById('okButton');
             outputDiv.style.display = 'block'; // Show the div
+            okButton.style.display = 'block'; // Show the OK button
             outputDiv.innerHTML = ''; // Clear previous content
 
             // Display the object's properties
@@ -101,8 +104,17 @@
             outputDiv.innerHTML += `</ul>`;
         }
 
-        // Add event listener to the button
+        // Function to hide the object
+        function hideObject() {
+            const outputDiv = document.getElementById('output');
+            const okButton = document.getElementById('okButton');
+            outputDiv.style.display = 'none'; // Hide the div
+            okButton.style.display = 'none'; // Hide the OK button
+        }
+
+        // Add event listeners to the buttons
         document.getElementById('showObjectButton').addEventListener('click', showObject);
+        document.getElementById('okButton').addEventListener('click', hideObject);
     </script>
 </body>
 </html>
