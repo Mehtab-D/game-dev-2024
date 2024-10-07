@@ -1,1 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object+Arrays By Mehtab</title>
+</head>
+<body>
+    <h1>Fruit Information</h1>
+    <div id="fruit-info"></div>
 
+    <script>
+        // Define an object
+        const fruit = {
+            name: 'Apple',
+            color: 'Red',
+            taste: 'Sweet'
+        };
+
+        // Display the object's properties in the webpage
+        const fruitInfoDiv = document.getElementById('fruit-info');
+        fruitInfoDiv.innerHTML = `
+            <p>Name: ${fruit.name}</p>
+            <p>Color: ${fruit.color}</p>
+            <p>Taste: ${fruit.taste}</p>
+        `;
+    </script>
+</body>
+</html>
