@@ -71,3 +71,38 @@
     </script>
 </body>
 </html>
+
+<body>
+    <h2>Show Object with Array</h2>
+    <button id="showObjectButton">Show Object</button>
+    <div id="output"></div>
+
+    <script>
+        // Define an object with an array in it
+        const objectWithArray = {
+            name: 'Will',
+            age: 16,
+            hobbies: ['Reading', 'Soccer', 'Board Games']
+        };
+
+        // Function to display the object
+        function showObject() {
+            const outputDiv = document.getElementById('output');
+            outputDiv.style.display = 'block'; // Show the div
+            outputDiv.innerHTML = ''; // Clear previous content
+
+            // Display the object's properties
+            outputDiv.innerHTML += `<p>Name: ${objectWithArray.name}</p>`;
+            outputDiv.innerHTML += `<p>Age: ${objectWithArray.age}</p>`;
+            outputDiv.innerHTML += `<p>Hobbies:</p><ul>`;
+            objectWithArray.hobbies.forEach(hobby => {
+                outputDiv.innerHTML += `<li>${hobby}</li>`;
+            });
+            outputDiv.innerHTML += `</ul>`;
+        }
+
+        // Add event listener to the button
+        document.getElementById('showObjectButton').addEventListener('click', showObject);
+    </script>
+</body>
+</html>
