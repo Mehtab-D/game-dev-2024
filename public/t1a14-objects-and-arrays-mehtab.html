@@ -29,15 +29,16 @@
 </html>
 
 <body>
-    <h3.5>Show Array with Objects</h3.5>
+    <h1>Show and Hide Array with Objects</h1>
     <button id="showArrayButton">Show Array</button>
+    <button id="hideArrayButton" style="display: none;">OK</button>
     <div id="output"></div>
 
     <script>
         // Define an array with objects in it
         const arrayWithObjects = [
             { name: 'John', age: 30, occupation: 'Engineer' },
-            { name: 'Jane', age: 25, occupation: 'Baker' },
+            { name: 'Jane', age: 25, occupation: 'Designer' },
             { name: 'Mike', age: 35, occupation: 'Manager' }
         ];
 
@@ -50,10 +51,23 @@
             arrayWithObjects.forEach((obj, index) => {
                 outputDiv.innerHTML += `<p>Object ${index + 1}: ${JSON.stringify(obj)}</p>`;
             });
+
+            document.getElementById('showArrayButton').style.display = 'none'; // Hide the show button
+            document.getElementById('hideArrayButton').style.display = 'inline'; // Show the OK button
         }
 
-        // Add event listener to the button
+        // Function to hide the array
+        function hideArray() {
+            const outputDiv = document.getElementById('output');
+            outputDiv.style.display = 'none'; // Hide the div
+
+            document.getElementById('showArrayButton').style.display = 'inline'; // Show the show button
+            document.getElementById('hideArrayButton').style.display = 'none'; // Hide the OK button
+        }
+
+        // Add event listeners to the buttons
         document.getElementById('showArrayButton').addEventListener('click', showArray);
+        document.getElementById('hideArrayButton').addEventListener('click', hideArray);
     </script>
 </body>
 </html>
