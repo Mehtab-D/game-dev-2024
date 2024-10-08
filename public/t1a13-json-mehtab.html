@@ -141,6 +141,7 @@
 </head>
 <body>
     <button onclick="fetchData()">Get Random Dog Image</button>
+    <button onclick="clearInput()">OK</button>
     <div id="myDiv01"></div>
 
     <script>
@@ -162,6 +163,10 @@
             } else {
                 document.getElementById('myDiv01').innerHTML = 'Failed to load image.';
             }
+        }
+
+        function clearInput() {
+            document.getElementById('myDiv01').innerHTML = ''; // Clear the content
         }
     </script>
 </body>
