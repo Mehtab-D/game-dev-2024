@@ -21,9 +21,21 @@
 <body>
     <h1>t1a13-json-mehtab.html</h1>
 
+   <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display JSON and Image</title>
+</head>
+<body>
+    <button onclick="fetchData()">Get Random Dog Image</button>
+    <button onclick="clearOutput()">Clear Output</button>
+    <div id="myDiv01"></div>
+
     <script>
         function myShowJSON(myIn) {
-            document.getElementById('myDiv01').innerHTML = 'Sent:${myIn}'
+            document.getElementById('myDiv01').innerHTML = `Sent: ${myIn}`;
         }
 
         async function fetchData() {
@@ -34,7 +46,14 @@
             const myJson = JSON.stringify(data, null, 2);
             document.getElementById('myDiv01').innerHTML = myJson;
         }
+
+        function clearOutput() {
+            document.getElementById('myDiv01').innerHTML = ''; // Clear the content
+        }
     </script>
+</body>
+</html>
+
 <body>
     <h2>Research About Objects+Arrays</h2>
     <div id="text-container">
