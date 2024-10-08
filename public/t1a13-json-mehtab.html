@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -66,3 +67,30 @@
     "response_code": 5,
     "result": []
 }
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON Button Example</title>
+</head>
+<body>
+    <button id="jsonButton">Get Photo URLs</button>
+    <pre id="output"></pre>
+
+    <script>
+        document.getElementById('jsonButton').addEventListener('click', function() {
+            const photoUrls = [
+                "https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Viceroy_Butterfly.jpg/992px-Viceroy_Butterfly.jpg",
+                "https://onlinejpgtools.com/images/examples-onlinejpgtools/sunflower.jpg",
+                "https://photographylife.com/wp-content/uploads/2018/11/Moeraki-Boulders-New-Zealand.jpg"
+            ];
+
+            const jsonOutput = JSON.stringify(photoUrls, null, 2);
+            document.getElementById('output').textContent = jsonOutput;
+        });
+    </script>
+</body>
+</html>
