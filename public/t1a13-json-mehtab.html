@@ -101,19 +101,7 @@
         }
     </script>
 </head>
-<body>
-    Enter a JSON returning URL: <input type="text" id="myText1" value="https://randomfox.ca/floof/">
-    <input type="button" value="Show JSON" onClick="fetchData()"><br><br>
 
-    <select size="1" onchange="myShowJSON(this.value)">
-        <option value="https://randomfox.ca/floof/">randomfox</option>
-        <option value="https://dog.ceo/api/breeds/image/random">dog.ceo</option>
-    </select><br><br>
-
-    <input type="button" value="Clear Output" onClick="clearOutput()"><br><br>
-
-    <div id="myDiv01"></div>
-</body>
 </html>
 
 <!DOCTYPE html>
@@ -210,42 +198,5 @@
         }
     </script>
 </body>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Display Image from JSON</title>
-</head>
-<body>
-    <button onclick="fetchData()">Get Random Dog Image</button>
-    <button onclick="clearInput()">OK</button>
-    <div id="myDiv01"></div>
 
-    <script>
-        async function fetchData() {
-            const response = await fetch('https://dog.ceo/api/breeds/image/random');
-            const data = await response.json();
-            console.log(data);
-
-            if (data.status === "success") {
-                const img = document.createElement('img');
-                img.src = data.message;
-                img.alt = "Random Dog Image";
-                img.style.maxWidth = "100px";
-                img.style.height = "100px";
-
-                const outputDiv = document.getElementById('myDiv01');
-                outputDiv.innerHTML = ''; // Clear previous content
-                outputDiv.appendChild(img);
-            } else {
-                document.getElementById('myDiv01').innerHTML = 'Failed to load image.';
-            }
-        }
-
-        function clearInput() {
-            document.getElementById('myDiv01').innerHTML = ''; // Clear the content
-        }
-    </script>
-</body>
 </html>
