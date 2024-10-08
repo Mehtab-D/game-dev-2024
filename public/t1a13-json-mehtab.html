@@ -74,29 +74,88 @@
 </html>
 
 
+
+
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interactive JSON Button Example</title>
-    <style>
-        #jsonButton, #clearButton {
-            padding: 10px 20px;
-            font-size: 16px;
-            margin: 10px;
+    <title>JSON Fetcher</title>
+    <script>
+        function fetchData() {
+            const url = document.getElementById('myText1').value;
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('myDiv01').innerHTML = JSON.stringify(data, null, 2);
+                })
+                .catch(error => console.error('Error fetching data:', error));
         }
-        #output {
-            white-space: pre-wrap;
-            background-color: #f4f4f4;
-            padding: 10px;
-            border: 1px solid #ccc;
-            margin-top: 10px;
-            max-width: 600px; /* Limit the width */
-            overflow: auto; /* Add scroll if content overflows */
+
+        function myShowJSON(url) {
+            document.getElementById('myText1').value = url;
+            fetchData();
         }
-    </style>
+
+        function clearOutput() {
+            document.getElementById('myDiv01').innerHTML = '';
+        }
+    </script>
 </head>
+<body>
+    Enter a JSON returning URL: <input type="text" id="myText1" value="https://randomfox.ca/floof/">
+    <input type="button" value="Show JSON" onClick="fetchData()"><br><br>
+
+    <select size="1" onchange="myShowJSON(this.value)">
+        <option value="https://randomfox.ca/floof/">randomfox</option>
+        <option value="https://dog.ceo/api/breeds/image/random">dog.ceo</option>
+    </select><br><br>
+
+    <input type="button" value="Clear Output" onClick="clearOutput()"><br><br>
+
+    <div id="myDiv01"></div>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JSON Fetcher</title>
+    <script>
+        function fetchData() {
+            const url = document.getElementById('myText1').value;
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('myDiv01').innerHTML = JSON.stringify(data, null, 2);
+                })
+                .catch(error => console.error('Error fetching data:', error));
+        }
+
+        function myShowJSON(url) {
+            document.getElementById('myText1').value = url;
+            fetchData();
+        }
+
+        function clearOutput() {
+            document.getElementById('myDiv01').innerHTML = '';
+        }
+    </script>
+</head>
+<body>
+    Enter a JSON returning URL: <input type="text" id="myText1" value="https://randomfox.ca/floof/">
+    <input type="button" value="Show JSON" onClick="fetchData()"><br><br>
+
+    <select size="1" onchange="myShowJSON(this.value)">
+        <option value="https://randomfox.ca/floof/">randomfox</option>
+        <option value="https://dog.ceo/api/breeds/image/random">dog.ceo</option>
+    </select><br><br>
+
+    <input type="button" value="Clear Output" onClick="clearOutput()"><br><br>
+
+    <div id="myDiv01"></div>
+</body>
+</html>
+
 <body>
     <input type="number" id="numberInput" placeholder="Type a number">
     <button id="jsonButton">Get JSON Data</button>
