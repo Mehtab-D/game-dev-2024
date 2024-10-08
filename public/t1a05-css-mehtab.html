@@ -204,3 +204,36 @@
 </style>
 <p class="upside-down">Upside Down</p>
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Brightness Adjustment</title>
+    <style>
+        .right-side {
+            float: right;
+            width: 45%;
+        }
+
+        .bright-image {
+            width: 100%;
+            height: auto;
+            filter: brightness(1);
+            transition: filter 0.3s ease;
+        }
+
+        .slider-container {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="right-side">
+        <img id="image" src="https://i.pinimg.com/564x/5e/31/a1/5e31a10954770fd2654173b24971fad0.jpg" alt="Adjustable Brightness Image" class="bright-image">
+
+        <div class="slider-container">
+            <label for="brightnessRange">Adjust Brightness:</label>
+
+
