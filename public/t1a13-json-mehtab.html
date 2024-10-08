@@ -85,6 +85,8 @@
 
     <script>
         document.getElementById('jsonButton').addEventListener('click', function() {
+            console.log("Button clicked!"); // Debugging statement
+
             const photoUrls = [
                 "https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Viceroy_Butterfly.jpg/992px-Viceroy_Butterfly.jpg",
                 "https://onlinejpgtools.com/images/examples-onlinejpgtools/sunflower.jpg",
@@ -94,6 +96,68 @@
             const jsonOutput = JSON.stringify(photoUrls, null, 2);
             document.getElementById('output').textContent = jsonOutput;
         });
+    </script>
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced JSON Button Example</title>
+    <style>
+        #jsonButton {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin: 10px;
+        }
+        #output {
+            white-space: pre-wrap;
+            background-color: #f4f4f4;
+            padding: 10px;
+            border: 1px solid #ccc;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <button id="jsonButton">Get JSON Data</button>
+    <pre id="output"></pre>
+
+    <script>
+        document.getElementById('jsonButton').addEventListener('click', function() {
+            // Example JSON data
+            const jsonData1 = {
+                "success": { "total": 1 },
+                "contents": {
+                    "translated": "Force be with you world",
+                    "text": "Hello world",
+                    "translation": "yoda"
+                }
+            };
+
+            const jsonData2 = {
+                "response_code": 5,
+                "result": []
+            };
+
+            // Combine JSON data
+            const jsonOutput = JSON.stringify({ jsonData1, jsonData2 }, null, 2);
+            document.getElementById('output').textContent = jsonOutput;
+        });
+
+        // Example of fetching JSON data from an API
+        async function fetchJsonData() {
+            try {
+                const response = await fetch('https://api.example.com/data');
+                const data = await response.json();
+                document.getElementById('output').textContent = JSON.stringify(data, null, 2);
+            } catch (error) {
+                document.getElementById('output').textContent = 'Error fetching data: ' + error.message;
+            }
+        }
     </script>
 </body>
 </html>
