@@ -55,7 +55,7 @@
 </html>
 
 
-//*
+//
 {
     "success": {
         "total": 1
@@ -70,4 +70,56 @@
     "response_code": 5,
     "result": []
 }
-*//
+//
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive JSON Button Example</title>
+    <style>
+        #jsonButton {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin: 10px;
+        }
+        #output {
+            white-space: pre-wrap;
+            background-color: #f4f4f4;
+            padding: 10px;
+            border: 1px solid #ccc;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <input type="number" id="numberInput" placeholder="Type a number">
+    <button id="jsonButton">Get JSON Data</button>
+    <pre id="output"></pre>
+
+    <script>
+        document.getElementById('jsonButton').addEventListener('click', function() {
+            const number = document.getElementById('numberInput').value;
+
+            if (number == 5) {
+                const jsonData = {
+                    "success": { "total": 1 },
+                    "contents": {
+                        "translated": "Force be with you world",
+                        "text": "Hello world",
+                        "translation": "yoda"
+                    },
+                    "response_code": 5,
+                    "result": []
+                };
+
+                const jsonOutput = JSON.stringify(jsonData, null, 2);
+                document.getElementById('output').textContent = jsonOutput;
+            } else {
+                document.getElementById('output').textContent = "Please enter the number 5.";
+            }
+        });
+    </script>
+</body>
+</html>
