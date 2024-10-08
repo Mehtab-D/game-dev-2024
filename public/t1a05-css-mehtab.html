@@ -218,55 +218,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dynamic Brightness Adjustment</title>
+    <title>Spinning Image</title>
     <style>
+        .spin-image {
+            width: 200px;
+            height: 200px;
+            animation: spin 5s linear infinite;
+            position: absolute;
+            top: 20px; /* Adjust top position as needed */
+            right: 20px; /* Adjust right position as needed */
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
         body {
+            margin: 0;
+            padding: 0;
+            position: relative;
+            height: 100vh;
             display: flex;
             justify-content: center;
-            align-items: flex-start;
-            height: 100vh;
-            margin: 0;
-            padding: 20px;
-            box-sizing: border-box;
-        }
-
-        .right-side {
-            margin-left: auto;
-            width: 45%;
-            text-align: center;
-        }
-
-        .bright-image {
-            width: 100%;
-            height: auto;
-            filter: brightness(1);
-            transition: filter 0.3s ease;
-        }
-
-        .slider-container {
-            margin-top: 20px;
+            align-items: center;
         }
     </style>
 </head>
 <body>
-
-    <div class="right-side">
-        <img id="image" src="https://i.pinimg.com/564x/5e/31/a1/5e31a10954770fd2654173b24971fad0.jpg" alt="Adjustable Brightness Image" class="bright-image">
-
-        <div class="slider-container">
-            <label for="brightnessRange">Adjust Brightness:</label>
-            <input type="range" id="brightnessRange" min="0.5" max="2" step="0.1" value="1" oninput="adjustBrightness(this.value)">
-        </div>
+    <div class="image-container">
+        <img src="https://i.pinimg.com/736x/d6/49/2f/d6492f367fcd09a470c9b34a5cb14f68.jpg" alt="Spinning Image" class="spin-image">
     </div>
-
-    <script>
-        function adjustBrightness(value) {
-            document.getElementById('image').style.filter = `brightness(${value})`;
-        }
-    </script>
-
 </body>
 </html>
-
-
-
