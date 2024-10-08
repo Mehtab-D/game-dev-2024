@@ -55,23 +55,6 @@
 </html>
 
 
-//
-{
-    "success": {
-        "total": 1
-    },
-    "contents": {
-        "translated": "Force be with you world",
-        "text": "Hello world",
-        "translation": "yoda"
-    }
-}
-{
-    "response_code": 5,
-    "result": []
-}
-//
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -79,7 +62,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Interactive JSON Button Example</title>
     <style>
-        #jsonButton {
+        #jsonButton, #clearButton {
             padding: 10px 20px;
             font-size: 16px;
             margin: 10px;
@@ -90,12 +73,15 @@
             padding: 10px;
             border: 1px solid #ccc;
             margin-top: 10px;
+            max-width: 600px; /* Limit the width */
+            overflow: auto; /* Add scroll if content overflows */
         }
     </style>
 </head>
 <body>
     <input type="number" id="numberInput" placeholder="Type a number">
     <button id="jsonButton">Get JSON Data</button>
+    <button id="clearButton">Clear Output</button>
     <pre id="output"></pre>
 
     <script>
@@ -120,9 +106,14 @@
                 document.getElementById('output').textContent = "Please enter the number 5.";
             }
         });
+
+        document.getElementById('clearButton').addEventListener('click', function() {
+            document.getElementById('output').textContent = '';
+        });
     </script>
 </body>
 </html>
+
 
 <body>
     
