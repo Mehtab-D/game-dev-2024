@@ -211,9 +211,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dynamic Brightness Adjustment</title>
     <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
         .right-side {
-            float: right;
+            margin-left: auto;
             width: 45%;
+            text-align: center;
         }
 
         .bright-image {
@@ -235,5 +246,18 @@
 
         <div class="slider-container">
             <label for="brightnessRange">Adjust Brightness:</label>
+            <input type="range" id="brightnessRange" min="0.5" max="2" step="0.1" value="1" oninput="adjustBrightness(this.value)">
+        </div>
+    </div>
+
+    <script>
+        function adjustBrightness(value) {
+            document.getElementById('image').style.filter = `brightness(${value})`;
+        }
+    </script>
+
+</body>
+</html>
+
 
 
