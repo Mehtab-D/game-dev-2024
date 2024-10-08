@@ -1,6 +1,6 @@
 <h1 aligned= center>
 <style>
-<p style="font-weight: bold;">This text will be bold.</p>
+
 </style>
   this is <b style="color:black; background-color;"> <br>
 <br>
@@ -118,6 +118,12 @@
             height: 200px;
             transition: filter 0.5s ease;
             filter: blur(8px); /* Initial frosted (blurred) effect */
+          .element {
+    position: absolute;
+    top: 50px; /* Moves the element 50px from the top of its nearest positioned ancestor */
+    right: 20px; /* Moves the element 20px from the right edge of its nearest positioned ancestor */
+}
+
         }
 
         .frosted-image:hover {
