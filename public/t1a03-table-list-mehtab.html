@@ -72,31 +72,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>3x4 Table on the Right</title>
+    <title>3x4 Table on the Top Right</title>
     <style>
-        . top-right-table {
-         position: absolute;
-            top: 20px;
-            right: 20px;
-            float: top right;
-            margin: 40px;
-            font-size: 20px; /* Increased font size */
-            width: 80%; /* Increased table width */
-            height: auto; /* Adjust height as needed */
-           * { color: white; 
-          top: -150px; /* Lift the table up by 50px */
+        body {
+            margin: 0;
+            padding: 0;
+            position: relative;
         }
-        
-        .right-table th, .right-table td {
-            padding: 15px; /* Added padding for bigger cells */
-         position: absolute;
+
+        .top-right-table {
+            position: absolute;
             top: 20px;
             right: 20px;
+            font-size: 20px; /* Increased font size */
+            width: 60%; /* Adjust table width */
+            height: auto; /* Adjust height as needed */
+        }
+
+        .top-right-table th, .top-right-table td {
+            padding: 15px; /* Added padding for bigger cells */
         }
     </style>
 </head>
 <body>
-    <table border="1" class="right-table">
+    <table border="1" class="top-right-table">
         <tr>
             <th>Header 1</th>
             <th>Header 2</th>
@@ -120,3 +119,4 @@
     </table>
 </body>
 </html>
+
