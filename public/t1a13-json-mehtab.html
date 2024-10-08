@@ -74,61 +74,6 @@
 </html>
 
 
-
-
-<!DOCTYPE html>
-<html>
-<head>
-    <title>JSON Fetcher</title>
-    <script>
-        function fetchData() {
-            const url = document.getElementById('myText1').value;
-            fetch(url)
-                .then(response => response.json())
-                .then(data => {
-                    document.getElementById('myDiv01').innerHTML = JSON.stringify(data, null, 2);
-                })
-                .catch(error => console.error('Error fetching data:', error));
-        }
-
-        function myShowJSON(url) {
-            document.getElementById('myText1').value = url;
-            fetchData();
-        }
-
-        function clearOutput() {
-            document.getElementById('myDiv01').innerHTML = '';
-        }
-    </script>
-</head>
-
-</html>
-
-<!DOCTYPE html>
-<html>
-<head>
-    <title>JSON Fetcher</title>
-    <script>
-        function fetchData() {
-            const url = document.getElementById('myText1').value;
-            fetch(url)
-                .then(response => response.json())
-                .then(data => {
-                    document.getElementById('myDiv01').innerHTML = JSON.stringify(data, null, 2);
-                })
-                .catch(error => console.error('Error fetching data:', error));
-        }
-
-        function myShowJSON(url) {
-            document.getElementById('myText1').value = url;
-            fetchData();
-        }
-
-        function clearOutput() {
-            document.getElementById('myDiv01').innerHTML = '';
-        }
-    </script>
-</head>
 <body>
     Enter a JSON returning URL: <input type="text" id="myText1" value="https://randomfox.ca/floof/">
     <input type="button" value="Show JSON" onClick="fetchData()"><br><br>
