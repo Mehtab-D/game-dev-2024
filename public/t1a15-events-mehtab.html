@@ -52,3 +52,55 @@
 </body>
 </html>
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+            background-color: #fbe6ff;
+            margin: 0;
+        }
+        h1 {
+            text-align: center;
+            margin-top: 20px; /* Adjust as needed */
+        }
+        .image-container {
+            display: flex;
+            justify-content: flex-start; /* Aligns items to the left */
+            width: 100%;
+            padding-left: 20px; /* Optional: Adds some padding from the left edge */
+            margin-top: 20px; /* Adds some space below the heading */
+        }
+        .focusable-image {
+            outline: none;
+            border: 2px solid transparent;
+            border-radius: 5px;
+        }
+        .focusable-image:focus {
+            border-color: #b4b0ff;
+        }
+    </style>
+</head>
+
+    <body>
+    
+    <div class="image-container">
+        <div tabindex="0" class="focusable-image" id="imageContainer">
+            <img src="https://www.moananursery.com/wp-content/uploads/2023/08/Untitled-design-3.jpg" alt="Descriptive Alt Text" height="100px"width="100px">
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('imageContainer').addEventListener('focus', function() {
+            alert('Image container is focused!');
+        });
+    </script>
+</body>
+</html>
