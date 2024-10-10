@@ -25,14 +25,14 @@
 
         h1 {
             text-align: center;
-            font-size: 48px; /* Make the title bigger */
+            font-size: 56px; /* Make the title bigger */
             font-style: italic; /* This tells it to be in italics */
             text-decoration: underline; /* Underlines the heading */
             width: 100%;
         }
 
         p, .text-box {
-            font-size: 24px; /* Make other text bigger, but not bigger than the title */
+            font-size: 26px; /* Make other text bigger, but not bigger than the title */
         }
 
         .text-box {
@@ -74,7 +74,7 @@
         }
 
         .flicker-text {
-            font-size: 32px; /* Adjusted size */
+            font-size: 34px; /* Adjusted size */
             animation: flicker 1.5s infinite;
             color: black;
             text-shadow: 0 0 4px #fff, 0 0 11px #fff, 0 0 19px #fff, 0 0 40px #800080, 0 0 80px #800080, 0 0 90px #800080, 0 0 100px #800080, 0 0 150px #800080;
@@ -95,7 +95,7 @@
         .upside-down {
             transform: rotate(180deg);
             display: inline-block;
-            font-size: 24px; /* Adjusted size */
+            font-size: 26px; /* Adjusted size */
             position: absolute;
             top: 400px;
             left: 50px;
@@ -113,6 +113,16 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            position: absolute;
+            top: 300px; /* Moved down to make other stuff visible */
+            left: 20px;
+        }
+
+        .circle-image {
+            width: 150px; /* Circular image size */
+            height: 150px;
+            border-radius: 50%; /* Makes the image circular */
+            object-fit: cover; /* Ensures the image fits the circle */
         }
     </style>
 </head>
@@ -135,6 +145,9 @@
             <input type="range" id="brightnessRange" min="0.5" max="2" step="0.1" value="1" oninput="adjustBrightness(this.value)">
         </div>
     </div>
+    <div>
+        <img src="https://images.newscientist.com/wp-content/uploads/2024/02/06103007/SEI_189745988.jpg" alt="Circle Image" class="circle-image">
+    </div>
     <script>
         function adjustBrightness(value) {
             document.getElementById('image').style.filter = `brightness(${value})`;
@@ -142,5 +155,3 @@
     </script>
 </body>
 </html>
-
-   
