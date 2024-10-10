@@ -16,10 +16,9 @@
             border: 10px dotted black;
             display: flex;
             justify-content: space-between;
-            align-items: flex-start;
             flex-wrap: wrap;
             position: relative;
-            height: 100vh;
+            min-height: 100vh;
             box-sizing: border-box;
         }
 
@@ -48,9 +47,6 @@
             width: 200px; /* Adjusted image size */
             height: 200px;
             animation: spin 5s linear infinite;
-            position: absolute;
-            top: 20px;
-            right: 20px;
         }
 
         @keyframes spin {
@@ -78,9 +74,6 @@
             animation: flicker 1.5s infinite;
             color: black;
             text-shadow: 0 0 4px #fff, 0 0 11px #fff, 0 0 19px #fff, 0 0 40px #800080, 0 0 80px #800080, 0 0 90px #800080, 0 0 100px #800080, 0 0 150px #800080;
-            position: absolute;
-            top: 300px;
-            right: 50px;
         }
 
         @keyframes flicker {
@@ -96,9 +89,6 @@
             transform: rotate(180deg);
             display: inline-block;
             font-size: 26px; /* Adjusted size */
-            position: absolute;
-            top: 400px;
-            left: 50px;
         }
 
         .bright-image {
@@ -113,9 +103,6 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            position: absolute;
-            top: 300px; /* Moved down to make other stuff visible */
-            left: 20px;
         }
 
         .circle-image {
@@ -124,34 +111,36 @@
             border-radius: 50%; /* Makes the image circular */
             object-fit: cover; /* Ensures the image fits the circle */
         }
+
+        .left-side, .right-side {
+            width: 45%; /* Split content equally */
+        }
     </style>
 </head>
 <body>
     <h1>Mehtab's CSS Page</h1>
-    <p>This is a <span class="text-box">highlighted</span> word.</p>
-    <p style="font-weight: bold;">This text will be bold.</p>
-    <div class="image-container">
-        <img src="https://i.pinimg.com/736x/d6/49/2f/d6492f367fcd09a470c9b34a5cb14f68.jpg" alt="Spinning Image" class="spin-image">
+    <div class="left-side">
+        <p>This is a <span class="text-box">highlighted</span> word.</p>
+        <p style="font-weight: bold;">This text will be bold.</p>
+        <div class="image-container">
+            <img src="https://i.pinimg.com/736x/d6/49/2f/d6492f367fcd09a470c9b34a5cb14f68.jpg" alt="Spinning Image" class="spin-image">
+        </div>
+        <p class="upside-down">Upside Down</p>
+        <div>
+            <img src="https://example.com/your-circle-image.jpg" alt="Circle Image" class="circle-image">
+        </div>
     </div>
-    <div>
-        <img src="https://i.natgeofe.com/n/c9107b46-78b1-4394-988d-53927646c72b/1095.jpg" alt="Frosted Image" class="frosted-image">
-    </div>
-    <div class="flicker-text">Flickering Neon Text</div>
-    <p class="upside-down">Upside Down</p>
     <div class="right-side">
-        <img id="image" src="https://i.pinimg.com/564x/5e/31/a1/5e31a10954770fd2654173b24971fad0.jpg" alt="Adjustable Brightness Image" class="bright-image">
         <div class="slider-container">
             <label for="brightnessRange">Adjust Brightness:</label>
             <input type="range" id="brightnessRange" min="0.5" max="2" step="0.1" value="1" oninput="adjustBrightness(this.value)">
+            <img id="image" src="https://img.cutenesscdn.com/-/photos.demandstudios.com/getty/article/181/244/482305437.jpg" alt="Dog" class="bright-image">
         </div>
-    </div>
-    <div>
-        <img src="https://images.newscientist.com/wp-content/uploads/2024/02/06103007/SEI_189745988.jpg" alt="Circle Image" class="circle-image">
+        <div>
+            <img src="https://i.natgeofe.com/n/c9107b46-78b1-4394-988d-53927646c72b/1095.jpg" alt="Frosted Image" class="frosted-image">
+        </div>
+        <div class="flicker-text">Flickering Neon Text</div>
     </div>
     <script>
         function adjustBrightness(value) {
             document.getElementById('image').style.filter = `brightness(${value})`;
-        }
-    </script>
-</body>
-</html>
