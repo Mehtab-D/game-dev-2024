@@ -80,37 +80,11 @@
             text-align: center;
             margin-top: 20px; /* Adjust as needed */
         }
-        .image-container {
-            display: flex;
-            justify-content: flex-start; /* Aligns items to the left */
-            width: 100%;
-            padding-left: 20px; /* Optional: Adds some padding from the left edge */
-            margin-top: 20px; /* Adds some space below the heading */
-        }
-        .focusable-image {
-            outline: none;
-            border: 2px solid transparent;
-            border-radius: 5px;
-            filter: blur(5px); /* Initially blur the image */
-            transition: filter 0.3s ease; /* Smooth transition */
-        }
-        .focusable-image:focus {
-            border-color: #b4b0ff;
-            filter: none; /* Remove blur on focus */
-        }
         .button-container {
             display: flex;
             justify-content: flex-end; /* Aligns items to the right */
             width: 100%;
             padding-right: 20px; /* Optional: Adds some padding from the right edge */
-            margin-top: auto; /* Pushes the button to the bottom */
-        }
-        .focus-button-container {
-            display: flex;
-            justify-content: flex-start; /* Aligns items to the left */
-            width: 100%;
-            padding-left: 20px; /* Optional: Adds some padding from the left edge */
-            margin-top: 20px; /* Adds some space below the heading */
         }
         .input-container {
             display: flex;
@@ -147,14 +121,6 @@
 </head>
 <body>
     <h1>Events By Mehtab</h1>
-    <div class="image-container">
-        <div tabindex="0" class="focusable-image" id="imageContainer">
-            <img src="https://source.unsplash.com/random/200x200" alt="Random Unsplash Image" width="200">
-        </div>
-    </div>
-    <div class="focus-button-container">
-        <button id="focusButton">Focus Image</button>
-    </div>
     <div class="button-container">
         <button id="myButton">Click Me</button>
     </div>
@@ -163,14 +129,6 @@
     </div>
 
     <script>
-        document.getElementById('focusButton').addEventListener('click', function() {
-            document.getElementById('imageContainer').focus();
-        });
-
-        document.getElementById('imageContainer').addEventListener('focus', function() {
-            alert('Image container is focused!');
-        });
-
         document.getElementById('myButton').addEventListener('click', function() {
             alert('Button was clicked!');
         });
