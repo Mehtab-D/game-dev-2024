@@ -17,6 +17,7 @@
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
+            flex-wrap: wrap;
             position: relative;
             height: 100vh;
             box-sizing: border-box;
@@ -27,6 +28,7 @@
             font-size: 48px; /* Make the title bigger */
             font-style: italic; /* This tells it to be in italics */
             text-decoration: underline; /* Underlines the heading */
+            width: 100%;
         }
 
         p, .text-box {
@@ -43,8 +45,8 @@
         }
 
         .spin-image {
-            width: 150px; /* Reduced image size */
-            height: 150px;
+            width: 200px; /* Adjusted image size */
+            height: 200px;
             animation: spin 5s linear infinite;
             position: absolute;
             top: 20px;
@@ -61,8 +63,8 @@
         }
 
         .frosted-image {
-            width: 200px; /* Adjusted size */
-            height: 150px;
+            width: 250px; /* Adjusted size */
+            height: 200px;
             transition: filter 0.5s ease;
             filter: blur(8px); /* Initial frosted (blurred) effect */
         }
@@ -76,9 +78,9 @@
             animation: flicker 1.5s infinite;
             color: black;
             text-shadow: 0 0 4px #fff, 0 0 11px #fff, 0 0 19px #fff, 0 0 40px #800080, 0 0 80px #800080, 0 0 90px #800080, 0 0 100px #800080, 0 0 150px #800080;
-            top: 50px;
-            right: 50px;
             position: absolute;
+            top: 300px;
+            right: 50px;
         }
 
         @keyframes flicker {
@@ -94,13 +96,13 @@
             transform: rotate(180deg);
             display: inline-block;
             font-size: 24px; /* Adjusted size */
-            top: 70px;
-            right: 50px;
             position: absolute;
+            top: 400px;
+            left: 50px;
         }
 
         .bright-image {
-            width: 150px; /* Adjusted size */
+            width: 200px; /* Adjusted size */
             height: auto;
             filter: brightness(1);
             transition: filter 0.3s ease;
@@ -108,9 +110,9 @@
 
         .slider-container {
             margin-top: 10px; /* Reduced margin for closer placement */
-            position: absolute;
-            top: 220px; /* Adjust top position as needed */
-            left: 20px; /* Adjust left position as needed */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
     </style>
 </head>
@@ -140,3 +142,5 @@
     </script>
 </body>
 </html>
+
+   
