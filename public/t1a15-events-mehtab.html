@@ -60,21 +60,27 @@
     document.getElementById('
 //
     
-<div class="input-container">
-    <input type="text" id="myInput" placeholder="Select the number 5">
+<div class="input-container" style="display: flex; justify-content: flex-start; width: 100%; padding-left: 20px; margin-top: 20px;">
+    <label for="numberSelect">Choose a number:</label>
+    <select id="numberSelect">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+    </select>
 </div>
 <div class="image-container" id="imageContainer" style="display: none; margin-top: 20px;">
-
     <img src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_640.jpg" alt="Descriptive Alt Text" height="200" width="300">
-
     <button id="okButton">OK</button>
 </div>
 
 <script>
-    document.getElementById('myInput').addEventListener('select', function() {
-        const selectedText = window.getSelection().toString();
-        if (selectedText === '5') {
+    document.getElementById('numberSelect').addEventListener('change', function() {
+        if (this.value === '5') {
             document.getElementById('imageContainer').style.display = 'block';
+        } else {
+            document.getElementById('imageContainer').style.display = 'none';
         }
     });
 
