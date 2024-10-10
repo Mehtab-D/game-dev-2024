@@ -74,7 +74,7 @@
             animation: flicker 1.5s infinite;
             color: black;
             text-shadow: 0 0 4px #fff, 0 0 11px #fff, 0 0 19px #fff, 0 0 40px #800080, 0 0 80px #800080, 0 0 90px #800080, 0 0 100px #800080, 0 0 150px #800080;
-            margin-bottom: 50px; /* Added more space */
+            margin-top: 20px; /* Adds space between flickering text and mountain image */
         }
 
         @keyframes flicker {
@@ -89,7 +89,7 @@
         .upside-down {
             transform: rotate(180deg);
             display: inline-block;
-            font-size: 40px; /* Adjusted size */
+            font-size: 26px; /* Adjusted size */
         }
 
         .bright-image {
@@ -133,8 +133,26 @@
     </div>
     <div class="right-side">
         <div>
-            <img src="https://images.pexels.com/photos/1108099/pexels-photo-1108099.jpeg" alt="Adjustable Brightness Image" class="bright-image">
+            <div>
+    <img src="https://images.newscientist.com/wp-content/uploads/2024/02/06103007/SEI_189745988.jpg" alt="Circle Image" class="circle-image">
+</div>
+
+            <img id="dogImage" src="https://img.cutenesscdn.com/-/photos.demandstudios.com/getty/article/181/244/482305437.jpg" alt="Dog" class="bright-image">
             <div class="slider-container">
                 <label for="brightnessRange">Adjust Brightness:</label>
+                <input type="range" id="brightnessRange" min="0.5" max="2" step="0.1" value="1" oninput="adjustBrightness(this.value)">
+            </div>
+        </div>
+        <div class="flicker-text">Flickering Neon Text</div>
+        <p class="upside-down">Upside Down</p>
+    </div>
+    <script>
+        function adjustBrightness(value) {
+            document.getElementById('dogImage').style.filter = `brightness(${value})`;
+        }
+    </script>
+</body>
+</html>
 
- 
+
+      
