@@ -17,44 +17,10 @@
             text-align: center;
             margin-top: 20px; /* Adjust as needed */
         }
-        button {
-            padding: 10px 20px;
-            font-size: 16px;
-            color: white;
-            background-color: #0d3f75;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-            margin-top: auto; /* Pushes the button to the bottom */
-        }
-        button:hover {
-            background-color: #b4b0ff;
-        }
-    </style>
-</head>
-<body>
-    <h1>Event By Mehtab</h1>
-    <button id="myButton">Click Me</button>
-
-    <script>
-        document.getElementById('myButton').addEventListener('click', function() {
-            alert('Button was clicked!');
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Events</title>
-    <style>
-        body {
+        .button-container {
             display: flex;
             justify-content: flex-end; /* Aligns items to the right */
-            align-items: center;
-            height: 100vh;
-            background-color: #fbe6ff;
-            margin: 0;
+            width: 100%;
             padding-right: 20px; /* Optional: Adds some padding from the right edge */
         }
         button {
@@ -73,7 +39,10 @@
     </style>
 </head>
 <body>
-    <button id="myButton">Click Me</button>
+    <h1>Event By Mehtab</h1>
+    <div class="button-container">
+        <button id="myButton">Click Me</button>
+    </div>
 
     <script>
         document.getElementById('myButton').addEventListener('click', function() {
@@ -82,3 +51,4 @@
     </script>
 </body>
 </html>
+
