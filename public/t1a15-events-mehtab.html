@@ -1,4 +1,46 @@
-<h1 align= center>Event By Mehtab</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+            background-color: #fbe6ff;
+            margin: 0;
+        }
+        h1 {
+            text-align: center;
+            margin-top: 20px; /* Adjust as needed */
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: white;
+            background-color: #0d3f75;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: auto; /* Pushes the button to the bottom */
+        }
+        button:hover {
+            background-color: #b4b0ff;
+        }
+    </style>
+</head>
+<body>
+    <h1>Event By Mehtab</h1>
+    <button id="myButton">Click Me</button>
+
+    <script>
+        document.getElementById('myButton').addEventListener('click', function() {
+            alert('Button was clicked!');
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
