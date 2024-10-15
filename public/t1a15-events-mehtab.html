@@ -89,47 +89,68 @@
     });
 </script>
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arrow Key Button</title>
+    <title>Arrow Key Button with Spin</title>
     <style>
-        #myButton {
+        #myButton, #okButton {
             padding: 10px 20px;
             font-size: 16px;
             cursor: pointer;
+            margin: 10px;
+        }
+
+        #arrow {
+            display: none;
+            font-size: 50px;
+            animation: spin 2s linear infinite;
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
         }
     </style>
 </head>
 <body>
     <button id="myButton">Press the Down Arrow!</button>
+    <div id="arrow">⬇️</div>
+    <button id="okButton" style="display: none;">OK</button>
 
     <script>
-        // Get the button element
         const button = document.getElementById('myButton');
+        const arrow = document.getElementById('arrow');
+        const okButton = document.getElementById('okButton');
+
+        // Function to handle the button click
+        function showArrow() {
+            arrow.style.display = 'block';
+            okButton.style.display = 'inline-block'; // Show the OK button
+        }
 
         // Add an event listener for keydown
         document.addEventListener('keydown', function(event) {
-            // Check if the pressed key is the down arrow
             if (event.key === 'ArrowDown') {
-                // Trigger the button's click event
                 button.click();
             }
         });
 
-        // Add a click event listener to the button
+        // Add a click event listener to the main button
         button.addEventListener('click', function() {
-            alert('Button clicked!');
+            showArrow();
+        });
+
+        // Add a click event listener to the OK button
+        okButton.addEventListener('click', function() {
+            arrow.style.display = 'none';
+            okButton.style.display = 'none'; // Hide the OK button
         });
     </script>
 </body>
 </html>
-
-
-
 
 
 
