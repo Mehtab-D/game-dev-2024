@@ -125,35 +125,32 @@
         const arrow = document.getElementById('arrow');
         const okButton = document.getElementById('okButton');
 
-        // Function to handle the button click
+        // Function to show the arrow and OK button
         function showArrow() {
-            arrow.style.display = 'block';
+            arrow.style.display = 'block';          // Show the spinning arrow
             okButton.style.display = 'inline-block'; // Show the OK button
         }
 
-        // Add an event listener for keydown
+        // Event listener for keydown
         document.addEventListener('keydown', function(event) {
             if (event.key === 'ArrowDown') {
-                button.click();
+                button.click();  // Trigger button click
             }
         });
 
-        // Add a click event listener to the main button
+        // Click event listener for the main button
         button.addEventListener('click', function() {
-            showArrow();
+            showArrow(); // Show arrow and OK button
         });
 
-        // Add a click event listener to the OK button
+        // Click event listener for the OK button
         okButton.addEventListener('click', function() {
-            arrow.style.display = 'none';
-            okButton.style.display = 'none'; // Hide the OK button
+            arrow.style.display = 'none';       // Hide the spinning arrow
+            okButton.style.display = 'none';    // Hide the OK button
         });
     </script>
 </body>
 </html>
-
-
-
 
 
 
