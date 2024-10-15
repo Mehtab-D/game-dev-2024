@@ -270,8 +270,11 @@
 <body>
     <div id="scrollBox"></div>
     <div class="content">
-        <h2>Scroll Down to Change the Box Color!</h2>
-        
+        <h1>Scroll Down to Change the Box Color!</h1>
+        <p>Keep scrolling down the page to see the color change.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sit amet.</p>
+        <p>Scroll more to see the effect.</p>
+        <p>(Content continues...)</p>
         <!-- Add more content here to allow scrolling -->
         <div style="height: 1500px;"></div> <!-- Just to add more scrollable content -->
     </div>
@@ -287,7 +290,7 @@
             let scrollPercent = scrollPosition / maxScroll;
 
             // Change the color of the scroll box from black to gray to white
-            let grayValue = Math.floor(255 * scrollPercent); // Gray increases from 0 to 255
+            let grayValue = Math.floor(255 * scrollPercent); // Value from 0 (black) to 255 (white)
             let newColor = `rgb(${grayValue}, ${grayValue}, ${grayValue})`; // RGB for gray
 
             document.getElementById('scrollBox').style.backgroundColor = newColor;
@@ -295,5 +298,6 @@
     </script>
 </body>
 </html>
+
 
 
