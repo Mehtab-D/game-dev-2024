@@ -154,4 +154,29 @@
 </html>
 
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Focus Out Example</title>
+</head>
+<body>
+    <input type="text" id="myInput" placeholder="Type something..." />
+    <div id="message" style="color: red; display: none;">Input cannot be empty!</div>
+
+    <script>
+        const input = document.getElementById('myInput');
+        const message = document.getElementById('message');
+
+        input.onfocusout = function() {
+            if (input.value.trim() === '') {
+                message.style.display = 'block'; // Show message if input is empty
+            } else {
+                message.style.display = 'none'; // Hide message if input has value
+            }
+        };
+    </script>
+</body>
+</html>
 
