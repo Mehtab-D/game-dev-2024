@@ -211,8 +211,8 @@
 
         hoverText.onmouseover = function() {
             images.forEach((img, index) => {
+                img.style.display = 'inline'; // Show the image
                 setTimeout(() => {
-                    img.style.display = 'inline'; // Show the image
                     img.style.opacity = 1; // Fade in the image
                 }, index * 500); // Staggered effect
             });
@@ -221,13 +221,16 @@
 
         okButton.onclick = function() {
             images.forEach(img => {
-                img.style.display = 'none'; // Hide the images
-                img.style.opacity = 0; // Reset opacity
+                img.style.opacity = 0; // Reset opacity for fade out
+                setTimeout(() => {
+                    img.style.display = 'none'; // Hide the images after fade out
+                }, 1000); // Wait for fade out to finish
             });
             okButton.style.display = 'none'; // Hide the OK button
         };
     </script>
 </body>
 </html>
+
 
 
