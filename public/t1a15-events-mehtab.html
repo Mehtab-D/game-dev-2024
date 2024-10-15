@@ -158,79 +158,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hover to Reveal Images</title>
+    <title>Scrollbar with Color Change</title>
     <style>
         body {
-            display: flex;
-            flex-direction: column;
-            align-items: left;
-            height: 100vh;
+            height: 2000px; /* Make the page tall enough to scroll */
             margin: 0;
+            display: flex;
         }
-        h1 {
-            text-align: center;
+        #scrollBox {
+            width: 20px;
+            height: 100%; /* Full height */
+            background-color: black; /* Initial color */
+            transition: background-color 0.5s; /* Smooth transition */
+            position: fixed; /* Keep it fixed while scrolling */
+            left: 10px; /* Position from the left */
+            top: 0; /* Start at the top */
         }
-        .hover-text {
-            cursor: pointer;
-            color: #007BFF;
-            text-decoration: underline;
-            margin: 20px;
+        .content {
+            margin-left: 50px; /* Leave space for the scroll box */
+            padding: 20px;
+            font-size: 24px;
+            color: #333;
         }
-        .image {
-            display: none; /* Initially hidden */
-            width: 100px; /* Set image size */
-            margin: 10px;
-            opacity: 0; /* Start with opacity 0 for fade effect */
-            transition: opacity 1s ease; /* Transition effect */
+        /* Custom scrollbar styling */
+        ::-webkit-scrollbar {
+            width: 10px;
         }
-        #okButton {
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
-            display: none; /* Initially hidden */
-            margin-top: 20px;
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
         }
     </style>
 </head>
 <body>
-  
-    <div class="hover-text" id="hoverText">Hover over me!</div>
-
-    <div class="image-container" id="imageContainer">
-        <img src="https://i.pinimg.com/736x/1f/54/84/1f5484df0ca4c8a2d7b10b1fc38483de.jpg" class="image" alt="Image 1">
-        <img src="https://cdn.pixabay.com/photo/2021/08/25/20/42/field-6574455_1280.jpg" class="image" alt="Image 2">
-        <img src="https://images.pexels.com/photos/1266810/pexels-photo-1266810.jpeg?cs=srgb&dl=pexels-8moments-1266810.jpg&fm=jpg" class="image" alt="Image 3">
+    <div id="scrollBox"></div>
+    <div class="content">
+        <h1>Scroll Down to Change the Box Color!</h1>
+        <p>Keep scrolling down the page to see the color change.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sit amet.</p>
+        <p>Scroll more to see the effect.</p>
+        <p>(Content continues...)</p>
+        <!-- Add more content here to allow scrolling -->
+        <div style="height: 1500px;"></div> <!-- Just to add more scrollable content -->
     </div>
-    
-    <button id="okButton">OK</button>
 
     <script>
-        const hoverText = document.getElementById('hoverText');
-        const images = document.querySelectorAll('.image');
-        const okButton = document.getElementById('okButton');
+        window.onscroll = function() {
+            let scrollPosition = window.scrollY;
+            let windowHeight = window.innerHeight;
+            let documentHeight = document.body.scrollHeight;
+            let maxScroll = documentHeight - windowHeight;
+            
+            // Calculate the scroll percentage
+            let scrollPercent = scrollPosition / maxScroll;
 
-        hoverText.onmouseover = function() {
-            images.forEach((img, index) => {
-                img.style.display = 'inline'; // Show the image
-                setTimeout(() => {
-                    img.style.opacity = 1; // Fade in the image
-                }, index * 500); // Staggered effect
-            });
-            okButton.style.display = 'inline-block'; // Show the OK button
-        };
-
-        okButton.onclick = function() {
-            images.forEach(img => {
-                img.style.opacity = 0; // Reset opacity for fade out
-                setTimeout(() => {
-                    img.style.display = 'none'; // Hide the images after fade out
-                }, 1000); // Wait for fade out to finish
-            });
-            okButton.style.display = 'none'; // Hide the OK button
+            // Change the color of the scroll box
+            let newColor = `rgb(${Math.floor(255 * scrollPercent)}, ${Math.floor(255 * (1 - scrollPercent))}, 0)`;
+            document.getElementById('scrollBox').style.backgroundColor = newColor;
         };
     </script>
 </body>
 </html>
+
 
 
 
