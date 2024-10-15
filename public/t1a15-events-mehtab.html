@@ -224,5 +224,76 @@
 </html>
 
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scrollbar with Color Change</title>
+    <style>
+        body {
+            height: 2000px; /* Make the page tall enough to scroll */
+            margin: 0;
+            display: flex;
+        }
+        #scrollBox {
+            width: 20px;
+            height: 100%; /* Full height */
+            background-color: black; /* Initial color */
+            transition: background-color 0.5s; /* Smooth transition */
+            position: fixed; /* Keep it fixed while scrolling */
+            left: 10px; /* Position from the left */
+            top: 0; /* Start at the top */
+        }
+        .content {
+            margin-left: 50px; /* Leave space for the scroll box */
+            padding: 20px;
+            font-size: 24px;
+            color: #333;
+        }
+        /* Custom scrollbar styling */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+    </style>
+</head>
+<body>
+    <div id="scrollBox"></div>
+    <div class="content">
+        <h2>Scroll Down to Change the Box Color!</h2>
+        
+        <!-- Add more content here to allow scrolling -->
+        <div style="height: 1500px;"></div> <!-- Just to add more scrollable content -->
+    </div>
+
+    <script>
+        window.onscroll = function() {
+            let scrollPosition = window.scrollY;
+            let windowHeight = window.innerHeight;
+            let documentHeight = document.body.scrollHeight;
+            let maxScroll = documentHeight - windowHeight;
+            
+            // Calculate the scroll percentage
+            let scrollPercent = scrollPosition / maxScroll;
+
+            // Change the color of the scroll box from black to gray to white
+            let grayValue = Math.floor(255 * scrollPercent); // Gray increases from 0 to 255
+            let newColor = `rgb(${grayValue}, ${grayValue}, ${grayValue})`; // RGB for gray
+
+            document.getElementById('scrollBox').style.backgroundColor = newColor;
+        };
+    </script>
+</body>
+</html>
 
 
