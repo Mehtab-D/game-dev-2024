@@ -89,69 +89,6 @@
     });
 </script>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arrow Key Button with Spin</title>
-    <style>
-        #myButton, #okButton {
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
-            margin: 10px;
-        }
-
-        #arrow {
-            display: none;
-            font-size: 50px;
-            animation: spin 2s linear infinite;
-        }
-
-        @keyframes spin {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-    </style>
-</head>
-<body>
-    <button id="myButton">Press the Down Arrow!</button>
-    <div id="arrow">⬇️</div>
-    <button id="okButton" style="display: none;">OK</button>
-
-    <script>
-        const button = document.getElementById('myButton');
-        const arrow = document.getElementById('arrow');
-        const okButton = document.getElementById('okButton');
-
-        // Function to show the arrow and OK button
-        function showArrow() {
-            arrow.style.display = 'block';          // Show the spinning arrow
-            okButton.style.display = 'inline-block'; // Show the OK button
-        }
-
-        // Event listener for keydown
-        document.addEventListener('keydown', function(event) {
-            if (event.key === 'ArrowDown') {
-                button.click();  // Trigger button click
-            }
-        });
-
-        // Click event listener for the main button
-        button.addEventListener('click', function() {
-            showArrow(); // Show arrow and OK button
-        });
-
-        // Click event listener for the OK button
-        okButton.addEventListener('click', function() {
-            arrow.style.display = 'none';       // Hide the spinning arrow
-            okButton.style.display = 'none';    // Hide the OK button
-        });
-    </script>
-</body>
-</html>
-
 
 <!DOCTYPE html>
 <html lang="en">
