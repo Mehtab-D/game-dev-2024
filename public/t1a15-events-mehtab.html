@@ -90,6 +90,43 @@
 </script>
 
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arrow Key Button</title>
+    <style>
+        #myButton {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <button id="myButton">Press the Down Arrow!</button>
+
+    <script>
+        // Get the button element
+        const button = document.getElementById('myButton');
+
+        // Add an event listener for keydown
+        document.addEventListener('keydown', function(event) {
+            // Check if the pressed key is the down arrow
+            if (event.key === 'ArrowDown') {
+                // Trigger the button's click event
+                button.click();
+            }
+        });
+
+        // Add a click event listener to the button
+        button.addEventListener('click', function() {
+            alert('Button clicked!');
+        });
+    </script>
+</body>
+</html>
 
 
 
