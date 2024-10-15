@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Events</title>
+    <title>Integrated Events Example</title>
     <style>
         body {
             display: flex;
@@ -15,13 +15,13 @@
         }
         h1 {
             text-align: center;
-            margin-top: 20px; /* Adjust as needed */
+            margin-top: 20px;
         }
         .button-container {
             display: flex;
-            justify-content: flex-end; /* Aligns items to the right */
+            justify-content: flex-end;
             width: 100%;
-            padding-right: 20px; /* Optional: Adds some padding from the right edge */
+            padding-right: 20px;
         }
         button {
             padding: 10px 20px;
@@ -36,80 +36,36 @@
         button:hover {
             background-color: #b4b0ff;
         }
-    </style>
-</head>
-<body>
-    <h1>Events By Mehtab</h1>
-    <div class="button-container">
-        <button id="myButton">Click Me</button>
-    </div>
-
-    <script>
-        document.getElementById('myButton').addEventListener('click', function() {
-            alert('Button was clicked!');
-        });
-    </script>
-    
-</body>
-</html>
-
-
-<body onMouseMove="{
-    document.getElementById('myDiv01').innerHTML='x:${event.clientX],y:${event.clientY}'
-    }"onKeyDown="{
-    document.getElementById('
-
-    
-<div class="input-container" style="display: flex; justify-content: flex-start; width: 100%; padding-left: 20px; margin-top: 20px;">
-    <label for="numberSelect">Choose a number:</label>
-    <select id="numberSelect">
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-    </select>
-</div>
-<div class="image-container" id="imageContainer" style="display: none; margin-top: 20px;">
-    <img src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_640.jpg" alt="Descriptive Alt Text" height="200" width="300">
-    <button id="okButton">OK</button>
-</div>
-
-<script>
-    document.getElementById('numberSelect').addEventListener('change', function() {
-        if (this.value === '5') {
-            document.getElementById('imageContainer').style.display = 'block';
-        } else {
-            document.getElementById('imageContainer').style.display = 'none';
+        #line {
+            width: 100%;
+            height: 2px;
+            background-color: black;
+            margin: 50px 0;
+            cursor: pointer;
         }
-    });
-
-    document.getElementById('okButton').addEventListener('click', function() {
-        document.getElementById('imageContainer').style.display = 'none';
-    });
-</script>
-
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arrow Key Button with Spin</title>
-    <style>
-        #myButton, #okButton {
+        .image {
+            display: none; /* Initially hidden */
+            width: 100px; /* Set image size */
+            margin: 10px;
+            opacity: 0; /* Start with opacity 0 for fade effect */
+            transition: opacity 1s ease; /* Transition effect */
+        }
+        #imageContainer {
+            display: none; /* Initially hidden */
+            margin-top: 20px;
+        }
+        #okButton {
             padding: 10px 20px;
             font-size: 16px;
             cursor: pointer;
-            margin: 10px;
+            display: none; /* Initially hidden */
+            margin-top: 20px;
         }
-
         #arrow {
             display: none; /* Initially hidden */
             font-size: 50px;
             animation: spin 2s linear infinite; /* Spinning animation */
         }
-
         @keyframes spin {
             from { transform: rotate(0deg); }
             to { transform: rotate(360deg); }
@@ -117,66 +73,86 @@
     </style>
 </head>
 <body>
-    <button id="myButton">Press the Down Arrow!</button>
+    <h1>Integrated Events Example</h1>
+
+    <div class="button-container">
+        <button id="myButton">Click Me</button>
+    </div>
+
+    <div id="line"></div>
+    <div id="coordinates" style="margin: 20px;"></div>
+
+    <div class="input-container" style="display: flex; justify-content: flex-start; width: 100%; padding-left: 20px; margin-top: 20px;">
+        <label for="numberSelect">Choose a number:</label>
+        <select id="numberSelect">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select>
+    </div>
+
+    <div class="image-container" id="imageContainer">
+        <img src="https://via.placeholder.com/100" class="image" alt="Image 1">
+        <img src="https://via.placeholder.com/100" class="image" alt="Image 2">
+        <img src="https://via.placeholder.com/100" class="image" alt="Image 3">
+    </div>
+    <button id="okButton">OK</button>
+    
     <div id="arrow">⬇️</div>
-    <button id="okButton" style="display: none;">OK</button> <!-- Initially hidden -->
 
     <script>
-        const button = document.getElementById('myButton');
-        const arrow = document.getElementById('arrow');
-        const okButton = document.getElementById('okButton');
+        // Button click event
+        document.getElementById('myButton').addEventListener('click', function() {
+            alert('Button was clicked!');
+        });
 
-        // Function to show the arrow and OK button
-        function showArrow() {
-            arrow.style.display = 'block';          // Show the spinning arrow
-            okButton.style.display = 'inline-block'; // Show the OK button
-        }
+        // Dropdown change event
+        document.getElementById('numberSelect').addEventListener('change', function() {
+            if (this.value === '5') {
+                document.getElementById('imageContainer').style.display = 'block';
+            } else {
+                document.getElementById('imageContainer').style.display = 'none';
+            }
+        });
 
-        // Event listener for keydown
+        // Mouse over event
+        const line = document.getElementById('line');
+        const images = document.querySelectorAll('.image');
+
+        line.onmouseover = function() {
+            images.forEach((img, index) => {
+                setTimeout(() => {
+                    img.style.display = 'inline'; // Show the image
+                    img.style.opacity = 1; // Fade in the image
+                }, index * 500); // Staggered effect
+            });
+            document.getElementById('okButton').style.display = 'inline-block'; // Show the OK button
+        };
+
+        // OK button click event
+        document.getElementById('okButton').addEventListener('click', function() {
+            images.forEach(img => {
+                img.style.display = 'none'; // Hide the images
+                img.style.opacity = 0; // Reset opacity
+            });
+            this.style.display = 'none'; // Hide the OK button
+        });
+
+        // Arrow key event
         document.addEventListener('keydown', function(event) {
             if (event.key === 'ArrowDown') {
-                button.click();  // Trigger button click
+                document.getElementById('arrow').style.display = 'block'; // Show the arrow
+                setTimeout(() => {
+                    document.getElementById('arrow').style.display = 'none'; // Hide it again after a delay
+                }, 2000);
             }
-        });
-
-        // Click event listener for the main button
-        button.addEventListener('click', function() {
-            showArrow(); // Show arrow and OK button
-        });
-
-        // Click event listener for the OK button
-        okButton.addEventListener('click', function() {
-            arrow.style.display = 'none';       // Hide the spinning arrow
-            okButton.style.display = 'none';    // Hide the OK button
         });
     </script>
 </body>
 </html>
 
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Focus Out Example</title>
-</head>
-<body>
-    <input type="text" id="myInput" placeholder="Type something..." />
-    <div id="message" style="color: red; display: none;">Input cannot be empty!</div>
 
-    <script>
-        const input = document.getElementById('myInput');
-        const message = document.getElementById('message');
-
-        input.onfocusout = function() {
-            if (input.value.trim() === '') {
-                message.style.display = 'block'; // Show message if input is empty
-            } else {
-                message.style.display = 'none'; // Hide message if input has value
-            }
-        };
-    </script>
-</body>
-</html>
 
