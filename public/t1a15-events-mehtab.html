@@ -232,13 +232,15 @@
     <title>Name Input Example</title>
     <style>
         body {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
             margin: 0;
-     
+            background-color: #f0f0f0;
+            position: relative; /* Enable positioning for children */
+        }
+
+        .form-container {
+            position: absolute; /* Positioning relative to the body */
+            top: 20px; /* Distance from the top */
+            left: 20px; /* Distance from the left */
         }
 
         input {
@@ -262,10 +264,12 @@
     </style>
 </head>
 <body>
-    <input type="text" id="nameInput" placeholder="Enter your name" oninput="updateName()">
-    <button id="submitButton" onclick="submitName()">Submit</button>
-    <div id="message"></div>
-    <button id="okButton" style="display: none;" onclick="hideMessage()">OK</button>
+    <div class="form-container">
+        <input type="text" id="nameInput" placeholder="Enter your name" oninput="updateName()">
+        <button id="submitButton" onclick="submitName()">Submit</button>
+        <div id="message"></div>
+        <button id="okButton" style="display: none;" onclick="hideMessage()">OK</button>
+    </div>
 
     <script>
         let userName = '';
@@ -286,14 +290,15 @@
         }
 
         function hideMessage() {
-            document.getElementById('message').style.display = 'none';
-            document.getElementById('okButton').style.display = 'none';
+            document.getElementById('message').style.display = 'none'; // Hide message
+            document.getElementById('okButton').style.display = 'none'; // Hide OK button
             document.getElementById('nameInput').value = ''; // Clear input
             userName = ''; // Reset userName
         }
     </script>
 </body>
 </html>
+
 
 
 
