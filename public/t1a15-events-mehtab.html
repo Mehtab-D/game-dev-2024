@@ -315,9 +315,9 @@
 
         #resizableContainer {
             display: inline-block; /* Keep container around the image */
-            position: absolute; /* Change to absolute to position it */
-            top: 50px; /* Set distance from the top */
-            left: 80px; /* Set distance from the left */
+            position: absolute; /* Position for resizing handle */
+            top: 70px; /* Change this to adjust vertical position */
+            left: 30px; /* Change this to adjust horizontal position */
         }
 
         img {
@@ -329,7 +329,7 @@
         .resize-handle {
             width: 10px;
             height: 10px;
-          
+        
             position: absolute;
             bottom: 0;
             right: 0;
@@ -367,7 +367,7 @@
                 // Set the new size only if they're positive
                 if (newWidth > 0 && newHeight > 0) {
                     image.style.width = `${newWidth}px`; // Use backticks for template literals
-                    image.style.height = `${newHeight}px`;
+                    image.style.height = `${newHeight}px`; // Use backticks for template literals
                 }
             }
         }
@@ -380,6 +380,7 @@
     </script>
 </body>
 </html>
+
 
 
 
