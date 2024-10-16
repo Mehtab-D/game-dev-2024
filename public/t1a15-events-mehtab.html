@@ -223,34 +223,43 @@
 </body>
 </html>
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Play Music on Click</title>
-    <script>
-        function playMusic() {
-            var audio = document.getElementById('myAudio');
-            audio.play();
+    <title>Frosted Image Effect</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
         }
 
-        function stopMusic() {
-            var audio = document.getElementById('myAudio');
-            audio.pause();
-            audio.currentTime = 0; // Reset the audio to the beginning
+        .frosted-container {
+            position: relative;
+            overflow: hidden;
         }
-    </script>
+
+        .frosted-image {
+            display: block;
+            max-width: 100%;
+            transition: filter 0.5s ease;
+            filter: blur(10px); /* Initial blur for the frosted effect */
+        }
+
+        .frosted-container:hover .frosted-image {
+            filter: blur(0); /* Clear the image on hover */
+        }
+    </style>
 </head>
 <body>
-      <style>
-          body{
-           align-items: center;
-          }
-    <button onclick="playMusic()">Play Music</button>
-    <button onclick="stopMusic()">OK</button>
-    <audio id="myAudio" src="file:///C:/Users/1312003/Downloads/Elevator%20Music%20(Kevin%20MacLeod)%20-%20Background%20Music%20(HD)%20[%20ezmp3.cc%20]%20(1).mp3"></audio>
+    <div class="frosted-container">
+        <img src="https://www.shutterstock.com/image-photo/scenic-image-iceland-incredible-nature-600nw-1453557041.jpg" alt="Frosted Image" class="frosted-image">
+    </div>
 </body>
 </html>
 
