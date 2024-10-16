@@ -311,31 +311,25 @@
             margin: 0;
             padding: 20px;
             text-align: center;
-            top:50px;
-            left:80^px;
-         
         }
 
         #resizableContainer {
             display: inline-block; /* Keep container around the image */
-            position: relative; /* Position for resizing handle */
+            position: absolute; /* Change to absolute to position it */
+            top: 50px; /* Set distance from the top */
+            left: 80px; /* Set distance from the left */
         }
 
         img {
             max-width: 100%; /* Make the image responsive */
             height: auto; /* Maintain aspect ratio */
             transition: width 0.3s; /* Smooth transition for width change */
-                    .form-container {
-            position: absolute; /* Positioning relative to the body */
-            top: 80px; /* Distance from the top */
-            left: 70px; /* Distance from the left */
-        }
         }
 
         .resize-handle {
             width: 10px;
             height: 10px;
-            background-color: red;
+          
             position: absolute;
             bottom: 0;
             right: 0;
@@ -372,8 +366,8 @@
 
                 // Set the new size only if they're positive
                 if (newWidth > 0 && newHeight > 0) {
-                    image.style.width = ${newWidth}px;
-                    image.style.height = ${newHeight}px;
+                    image.style.width = `${newWidth}px`; // Use backticks for template literals
+                    image.style.height = `${newHeight}px`;
                 }
             }
         }
@@ -385,7 +379,7 @@
         }
     </script>
 </body>
-</html> 
+</html>
 
 
 
