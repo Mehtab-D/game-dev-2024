@@ -322,6 +322,11 @@
             max-width: 100%; /* Make the image responsive */
             height: auto; /* Maintain aspect ratio */
             transition: width 0.3s; /* Smooth transition for width change */
+                    .form-container {
+            position: absolute; /* Positioning relative to the body */
+            top: 80px; /* Distance from the top */
+            left: 70px; /* Distance from the left */
+        }
         }
 
         .resize-handle {
@@ -359,11 +364,14 @@
             if (isResizing) {
                 // Calculate new width and height
                 const newWidth = e.clientX - image.getBoundingClientRect().left;
-                const newHeight = e.clientY - image.getBoundingClientRect().top;
+                const aspectRatio = image.naturalWidth / image.naturalHeight; // Maintain aspect ratio
+                const newHeight = newWidth / aspectRatio; // Calculate height based on width
 
-                // Set the new size
-                image.style.width = `${newWidth}px`;
-                image.style.height = `${newHeight}px`;
+                // Set the new size only if they're positive
+                if (newWidth > 0 && newHeight > 0) {
+                    image.style.width = `${newWidth}px`;
+                    image.style.height = `${newHeight}px`;
+                }
             }
         }
 
@@ -375,6 +383,7 @@
     </script>
 </body>
 </html>
+
 
 
 
