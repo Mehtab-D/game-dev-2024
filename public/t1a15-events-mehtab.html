@@ -224,4 +224,29 @@
 </html>
 
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Play Music on Click</title>
+    <script>
+        function playMusic() {
+            var audio = document.getElementById('myAudio');
+            audio.play();
+        }
+
+        function stopMusic() {
+            var audio = document.getElementById('myAudio');
+            audio.pause();
+            audio.currentTime = 0; // Reset the audio to the beginning
+        }
+    </script>
+</head>
+<body>
+    <button onclick="playMusic()">Play Music</button>
+    <button onclick="stopMusic()">OK</button>
+    <audio id="myAudio" src="file:///C:/Users/1312003/Downloads/Elevator%20Music%20(Kevin%20MacLeod)%20-%20Background%20Music%20(HD)%20[%20ezmp3.cc%20]%20(1).mp3"></audio>
+</body>
+</html>
 
