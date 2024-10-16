@@ -240,7 +240,7 @@
         .form-container {
             position: absolute; /* Positioning relative to the body */
             top: 20px; /* Distance from the top */
-            left: 50px; /* Distance from the left */
+            left: 70px; /* Distance from the left */
         }
 
         input {
@@ -299,6 +299,82 @@
 </body>
 </html>
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manual Image Resize Example</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+            background-color: #f0f0f0;
+        }
+
+        #resizableContainer {
+            display: inline-block; /* Keep container around the image */
+            position: relative; /* Position for resizing handle */
+        }
+
+        img {
+            max-width: 100%; /* Make the image responsive */
+            height: auto; /* Maintain aspect ratio */
+            transition: width 0.3s; /* Smooth transition for width change */
+        }
+
+        .resize-handle {
+            width: 10px;
+            height: 10px;
+            background-color: red;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            cursor: nwse-resize; /* Resize cursor */
+        }
+    </style>
+</head>
+<body>
+    <h1>Resize the Image Manually!</h1>
+    <div id="resizableContainer">
+        <img id="resizableImage" src="https://i.etsystatic.com/8073388/r/il/8e53f8/806908565/il_570xN.806908565_lyd0.jpg" alt="Resizing Image">
+        <div class="resize-handle" id="resizeHandle"></div>
+    </div>
+
+    <script>
+        const image = document.getElementById('resizableImage');
+        const resizeHandle = document.getElementById('resizeHandle');
+
+        let isResizing = false;
+
+        // Mouse down event to start resizing
+        resizeHandle.addEventListener('mousedown', (e) => {
+            isResizing = true;
+            document.addEventListener('mousemove', resizeImage);
+            document.addEventListener('mouseup', stopResizing);
+        });
+
+        function resizeImage(e) {
+            if (isResizing) {
+                // Calculate new width and height
+                const newWidth = e.clientX - image.getBoundingClientRect().left;
+                const newHeight = e.clientY - image.getBoundingClientRect().top;
+
+                // Set the new size
+                image.style.width = `${newWidth}px`;
+                image.style.height = `${newHeight}px`;
+            }
+        }
+
+        function stopResizing() {
+            isResizing = false;
+            document.removeEventListener('mousemove', resizeImage);
+            document.removeEventListener('mouseup', stopResizing);
+        }
+    </script>
+</body>
+</html>
 
 
 
