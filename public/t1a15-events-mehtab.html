@@ -229,41 +229,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Frosted Image Effect</title>
+    <title>Name Input Example</title>
     <style>
         body {
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh;
             margin: 0;
-            background-color: #f0f0f0; /* Background color */
+     
         }
 
-        .frosted-container {
-            position: relative;
-            overflow: hidden;
-            width: 80%; /* Adjust width as needed */
-            max-width: 600px; /* Set a max width */
+        input {
+            padding: 10px;
+            font-size: 16px;
+            margin-bottom: 10px;
         }
 
-        .frosted-image {
-            display: block;
-            width: 100%; /* Make image responsive */
-            transition: filter 0.5s ease;
-            filter: blur(10px); /* Initial blur for the frosted effect */
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 10px;
         }
 
-        .frosted-container:hover .frosted-image {
-            filter: blur(0); /* Clear the image on hover */
+        #message {
+            margin-top: 20px;
+            font-size: 18px;
+            display: none; /* Hidden initially */
         }
     </style>
 </head>
 <body>
-    <div class="frosted-container">
-        <img src="https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMTc5M3wwfDF8c2VhcmNofDJ8fGNhbmFsaXxlbnwwfHx8fDE2Nzc5NDA0NjI&ixlib=rb-1.2.1&q=80&w=1080" alt="Frosted Image" class="frosted-image">
-    </div>
+    <input type="text" id="nameInput" placeholder="Enter your name" oninput="updateName()">
+    <button id="submitButton" onclick="submitName()">Submit</button>
+    <div id="message"></div>
+    <button id="okButton" style="display: none;" onclick="hideMessage()">OK</button>
+
+    <script>
+        let userName = '';
+
+        function updateName() {
+            userName = document.getElementById('nameInput').value;
+        }
+
+        function submitName() {
+            const messageDiv = document.getElementById('message');
+            if (userName) {
+                messageDiv.textContent = `Yay, ${userName}!`;
+                messageDiv.style.display = 'block'; // Show the message
+                document.getElementById('okButton').style.display = 'block'; // Show the OK button
+            } else {
+                alert('Please enter your name!');
+            }
+        }
+
+        function hideMessage() {
+            document.getElementById('message').style.display = 'none';
+            document.getElementById('okButton').style.display = 'none';
+            document.getElementById('nameInput').value = ''; // Clear input
+            userName = ''; // Reset userName
+        }
+    </script>
 </body>
 </html>
+
 
 
