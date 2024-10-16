@@ -385,5 +385,88 @@
 </html>
 
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manual Image Resize Example</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0; /* Removed padding for alignment */
+            display: flex;
+            justify-content: flex-start; /* Align to the left */
+            align-items: flex-start; /* Align to the top */
+            height: 100vh; /* Full height of the viewport */
+            background-color: #f0f0f0; /* Optional background color */
+        }
+
+        #resizableContainer {
+            display: inline-block; /* Keep container around the image */
+            position: relative; /* Position for resizing handle */
+            margin: 20px; /* Optional margin */
+        }
+
+        img {
+            max-width: 100%; /* Make the image responsive */
+            height: auto; /* Maintain aspect ratio */
+            transition: width 0.3s; /* Smooth transition for width change */
+        }
+
+        .resize-handle {
+            width: 10px;
+            height: 10px;
+            background-color: red;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            cursor: nwse-resize; /* Resize cursor */
+        }
+    </style>
+</head>
+<body>
+    <h2>Resize the Image</h2>
+    <div id="resizableContainer">
+        <img id="resizableImage" src="https://i.etsystatic.com/8073388/r/il/8e53f8/806908565/il_570xN.806908565_lyd0.jpg" alt="Resizing Image">
+        <div class="resize-handle" id="resizeHandle"></div>
+    </div>
+
+    <script>
+        const image = document.getElementById('resizableImage');
+        const resizeHandle = document.getElementById('resizeHandle');
+
+        let isResizing = false;
+
+        // Mouse down event to start resizing
+        resizeHandle.addEventListener('mousedown', (e) => {
+            isResizing = true;
+            document.addEventListener('mousemove', resizeImage);
+            document.addEventListener('mouseup', stopResizing);
+        });
+
+        function resizeImage(e) {
+            if (isResizing) {
+                // Calculate new width and height
+                const newWidth = e.clientX - image.getBoundingClientRect().left;
+                const aspectRatio = image.naturalWidth / image.naturalHeight; // Maintain aspect ratio
+                const newHeight = newWidth / aspectRatio; // Calculate height based on width
+
+                // Set the new size only if they're positive
+                if (newWidth > 0 && newHeight > 0) {
+                    image.style.width = `${newWidth}px`; // Corrected syntax
+                    image.style.height = `${newHeight}px`; // Corrected syntax
+                }
+            }
+        }
+
+        function stopResizing() {
+            isResizing = false;
+            document.removeEventListener('mousemove', resizeImage);
+            document.removeEventListener('mouseup', stopResizing);
+        }
+    </script>
+</body>
+</html>
 
 
