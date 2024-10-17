@@ -3,88 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Move Image Example</title>
-    <style>
-        body {
-            background-color: #ffffc9;
-        }
-    </style>
-</head>
-<body>
-    <h1 align="center">t1a17-move-mehtab</h1>
-
-    <input type="button" id="myButton02" value="Image Right" onClick="moveImage()"><br><br>
-    
-    <input type="button" value="Auto Move Right" onClick="startAutoMove()"><br><br>
-
-    <img id="myImage01" style="position:relative; width:100px; height:80px; top:0px; left:0px;" src="https://www.brigittegranton.com/uploads/9/3/9/1/93916298/24107-summer-glow-54x54-22-oil-brights_orig.jpg" alt="Image">
-
-    <script>
-        // Global variables
-        let myClock02;
-
-        function moveImage() {
-            const image = document.getElementById('myImage01');
-            image.style.left = (parseInt(image.style.left) || 0) + 10 + 'px';
-        }
-
-        function startAutoMove() {
-            const image = document.getElementById('myImage01');
-            image.style.left = '0px'; // Reset position
-            clearInterval(myClock02); // Clear any existing intervals
-            myClock02 = setInterval(moveImage, 30); // Move every 30 ms
-        }
-    </script>
-</body>
-</html>
-
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Move Image Left Example</title>
+    <title>Move Images Example</title>
     <style>
         body {
             background-color: #ffffc9;
             text-align: center;
         }
-        #myImage01 {
+        #leftImage {
             position: relative;
             width: 100px;
             height: 80px;
             top: 0;
-            left: calc(100% - 100px); /* Position the image on the right side */
+            left: 0; /* Start on the left */
+        }
+        #rightImage {
+            position: relative;
+            width: 100px;
+            height: 80px;
+            top: 0;
+            left: calc(100% - 100px); /* Position on the right */
         }
     </style>
 </head>
 <body>
     <h1>t1a17-move-mehtab</h1>
 
-    <input type="button" id="myButton02" value="Image Left" onClick="moveImage()"><br><br>
-    
-    <input type="button" value="Auto Move Left" onClick="startAutoMove()"><br><br>
+    <!-- Left Image Controls -->
+    <div>
+        <h2>Left Image</h2>
+        <input type="button" value="Move Left" onClick="moveLeftImage()"><br><br>
+        <input type="button" value="Auto Move Left" onClick="startAutoMoveLeft()"><br><br>
+        <img id="leftImage" src="https://www.brigittegranton.com/uploads/9/3/9/1/93916298/24107-summer-glow-54x54-22-oil-brights_orig.jpg" alt="Left Image">
+    </div>
 
-    <img id="myImage01" src="https://i.etsystatic.com/30972341/r/il/50bbb0/3733725846/il_570xN.3733725846_9t2s.jpg" alt="Image">
+    <!-- Right Image Controls -->
+    <div>
+        <h2>Right Image</h2>
+        <input type="button" value="Move Right" onClick="moveRightImage()"><br><br>
+        <input type="button" value="Auto Move Right" onClick="startAutoMoveRight()"><br><br>
+        <img id="rightImage" src="https://i.etsystatic.com/30972341/r/il/50bbb0/3733725846/il_570xN.3733725846_9t2s.jpg" alt="Right Image">
+    </div>
 
     <script>
-        // Global variables
-        let myClock02;
+        // Global variables for the left image
+        let leftClock;
 
-        function moveImage() {
-            const image = document.getElementById('myImage01');
-            image.style.left = (parseInt(image.style.left) || (window.innerWidth - 100)) - 10 + 'px'; // Move left
+        function moveLeftImage() {
+            const image = document.getElementById('leftImage');
+            image.style.left = (parseInt(image.style.left) || 0) - 10 + 'px'; // Move left
         }
 
-        function startAutoMove() {
-            const image = document.getElementById('myImage01');
-            image.style.left = (window.innerWidth - 100) + 'px'; // Reset position to the right
-            clearInterval(myClock02); // Clear any existing intervals
-            myClock02 = setInterval(moveImage, 30); // Move every 30 ms
+        function startAutoMoveLeft() {
+            const image = document.getElementById('leftImage');
+            clearInterval(leftClock);
+            leftClock = setInterval(moveLeftImage, 30); // Move every 30 ms
+        }
+
+        // Global variables for the right image
+        let rightClock;
+
+        function moveRightImage() {
+            const image = document.getElementById('rightImage');
+            image.style.left = (parseInt(image.style.left) || (window.innerWidth - 100)) + 10 + 'px'; // Move right
+        }
+
+        function startAutoMoveRight() {
+            const image = document.getElementById('rightImage');
+            clearInterval(rightClock);
+            rightClock = setInterval(moveRightImage, 30); // Move every 30 ms
         }
     </script>
 </body>
 </html>
+
 
 
