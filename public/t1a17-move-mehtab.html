@@ -21,7 +21,7 @@
             left: 0; /* Start on the left */
         }
         #rightImageContainer {
-            right: 0; /* Start on the right */
+            left: calc(100% - 120px); /* Position on the right, accounting for image width */
         }
         #leftImage, #rightImage {
             width: 100px;
@@ -68,7 +68,7 @@
 
         function moveLeftImage() {
             const image = document.getElementById('rightImage');
-            image.style.left = (parseInt(image.style.left) || (window.innerWidth - 100)) - 10 + 'px'; // Move left
+            image.style.left = (parseInt(image.style.left) || (window.innerWidth - 120)) - 10 + 'px'; // Move left
         }
 
         function startAutoMoveLeft() {
@@ -77,9 +77,10 @@
         }
 
         // Initialize positions
-        document.getElementById('rightImage').style.left = (window.innerWidth - 100) + 'px'; // Start on the right
+        document.getElementById('rightImage').style.left = (window.innerWidth - 120) + 'px'; // Start on the right
     </script>
 </body>
 </html>
+
 
         
