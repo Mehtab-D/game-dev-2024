@@ -54,7 +54,8 @@
 
         function moveRightImage() {
             const image = document.getElementById('leftImage');
-            image.style.left = (parseInt(image.style.left) || 0) + 10 + 'px'; // Move right
+            // Move right by increasing the left position
+            image.style.left = (parseInt(image.style.left) || 0) + 10 + 'px'; 
         }
 
         function startAutoMoveRight() {
@@ -67,7 +68,8 @@
 
         function moveLeftImage() {
             const image = document.getElementById('rightImage');
-            image.style.right = (parseInt(image.style.right) || 0) + 10 + 'px'; // Move left
+            // Move left by decreasing the right position
+            image.style.right = (parseInt(image.style.right) || 0) + 10 + 'px'; 
         }
 
         function startAutoMoveLeft() {
