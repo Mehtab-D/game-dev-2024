@@ -8,32 +8,31 @@
         body {
             background-color: #ffffc9;
             text-align: center;
-            position: relative; /* Enable positioning for absolute elements */
-            height: 100vh; /* Full height */
-            overflow: hidden; /* Hide overflow for moving images */
+            position: relative;
+            height: 100vh;
+            overflow: hidden;
         }
         .image-container {
             position: absolute;
-            top: 50%; /* Center vertically */
-            transform: translateY(-50%); /* Adjust to center vertically */
+            top: 50%; 
+            transform: translateY(-50%);
         }
         #leftImageContainer {
-            left: 0; /* Start on the left */
+            left: 0; 
         }
         #rightImageContainer {
-            left: calc(100% - 120px); /* Position on the right, accounting for image width */
+            left: calc(100% - 120px); /* Adjust for the image width */
         }
         #leftImage, #rightImage {
             width: 100px;
             height: 80px;
-            position: relative; /* Position relative to their containers */
+            position: relative;
         }
     </style>
 </head>
 <body>
     <h1>t1a17-move-mehtab</h1>
 
-    <!-- Left Image Controls -->
     <div id="leftImageContainer" class="image-container">
         <img id="leftImage" src="https://www.brigittegranton.com/uploads/9/3/9/1/93916298/24107-summer-glow-54x54-22-oil-brights_orig.jpg" alt="Left Image">
         <h2>Left Image (Moves Right)</h2>
@@ -41,7 +40,6 @@
         <input type="button" value="Auto Move Right" onClick="startAutoMoveRight()"><br><br>
     </div>
 
-    <!-- Right Image Controls -->
     <div id="rightImageContainer" class="image-container">
         <img id="rightImage" src="https://i.etsystatic.com/30972341/r/il/50bbb0/3733725846/il_570xN.3733725846_9t2s.jpg" alt="Right Image">
         <h2>Right Image (Moves Left)</h2>
@@ -78,9 +76,11 @@
 
         // Initialize positions
         document.getElementById('rightImage').style.left = (window.innerWidth - 120) + 'px'; // Start on the right
+        document.getElementById('leftImage').style.left = '0px'; // Start on the left
     </script>
 </body>
 </html>
+
 
 
         
