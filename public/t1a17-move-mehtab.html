@@ -17,7 +17,7 @@
     
     <input type="button" value="Auto Move Right" onClick="startAutoMove()"><br><br>
 
-    <img id="myImage01" style="position:relative; width:200px; height:80px; top:0px; left:0px;" src="https://www.brigittegranton.com/uploads/9/3/9/1/93916298/24107-summer-glow-54x54-22-oil-brights_orig.jpg" alt="Image">
+    <img id="myImage01" style="position:relative; width:100px; height:80px; top:0px; left:0px;" src="https://www.brigittegranton.com/uploads/9/3/9/1/93916298/24107-summer-glow-54x54-22-oil-brights_orig.jpg" alt="Image">
 
     <script>
         // Global variables
@@ -41,16 +41,32 @@
 
 <!DOCTYPE html>
 <html lang="en">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Move Image Left Example</title>
-
+    <style>
+        body {
+            background-color: #ffffc9;
+            text-align: center;
+        }
+        #myImage01 {
+            position: relative;
+            width: 100px;
+            height: 80px;
+            top: 0;
+            left: calc(100% - 100px); /* Position the image on the right side */
+        }
+    </style>
+</head>
+<body>
+    <h1>t1a17-move-mehtab</h1>
 
     <input type="button" id="myButton02" value="Image Left" onClick="moveImage()"><br><br>
     
     <input type="button" value="Auto Move Left" onClick="startAutoMove()"><br><br>
 
-    <img id="myImage01" style="position:relative; width:100px; height:80px; top:0px; left:0px;" src="https://i.etsystatic.com/30972341/r/il/50bbb0/3733725846/il_570xN.3733725846_9t2s.jpg" alt="Image">
+    <img id="myImage01" src="https://i.etsystatic.com/30972341/r/il/50bbb0/3733725846/il_570xN.3733725846_9t2s.jpg" alt="Image">
 
     <script>
         // Global variables
@@ -58,16 +74,17 @@
 
         function moveImage() {
             const image = document.getElementById('myImage01');
-            image.style.left = (parseInt(image.style.left) || 0) - 10 + 'px'; // Move left by subtracting
+            image.style.left = (parseInt(image.style.left) || (window.innerWidth - 100)) - 10 + 'px'; // Move left
         }
 
         function startAutoMove() {
             const image = document.getElementById('myImage01');
-            image.style.left = '0px'; // Reset position
+            image.style.left = (window.innerWidth - 100) + 'px'; // Reset position to the right
             clearInterval(myClock02); // Clear any existing intervals
             myClock02 = setInterval(moveImage, 30); // Move every 30 ms
         }
     </script>
 </body>
 </html>
+
 
