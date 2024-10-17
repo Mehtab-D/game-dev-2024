@@ -56,27 +56,27 @@
         // Global variables for the left image
         let leftClock;
 
-        function moveLeftImage() {
-            const image = document.getElementById('rightImage');
-            image.style.left = (parseInt(image.style.left) || 0) - 10 + 'px'; // Move left
-        }
-
-        function startAutoMoveLeft() {
-            clearInterval(leftClock);
-            leftClock = setInterval(moveLeftImage, 30); // Move every 30 ms
-        }
-
-        // Global variables for the right image
-        let rightClock;
-
         function moveRightImage() {
             const image = document.getElementById('leftImage');
             image.style.left = (parseInt(image.style.left) || 0) + 10 + 'px'; // Move right
         }
 
         function startAutoMoveRight() {
+            clearInterval(leftClock);
+            leftClock = setInterval(moveRightImage, 30); // Move every 30 ms
+        }
+
+        // Global variables for the right image
+        let rightClock;
+
+        function moveLeftImage() {
+            const image = document.getElementById('rightImage');
+            image.style.right = (parseInt(image.style.right) || 0) + 10 + 'px'; // Move left
+        }
+
+        function startAutoMoveLeft() {
             clearInterval(rightClock);
-            rightClock = setInterval(moveRightImage, 30); // Move every 30 ms
+            rightClock = setInterval(moveLeftImage, 30); // Move every 30 ms
         }
     </script>
 </body>
