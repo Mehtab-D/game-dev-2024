@@ -26,6 +26,7 @@
         #leftImage, #rightImage {
             width: 100px;
             height: 80px;
+            position: relative; /* Position relative to their containers */
         }
     </style>
 </head>
@@ -54,8 +55,7 @@
 
         function moveRightImage() {
             const image = document.getElementById('leftImage');
-            // Move right by increasing the left position
-            image.style.left = (parseInt(image.style.left) || 0) + 10 + 'px'; 
+            image.style.left = (parseInt(image.style.left) || 0) + 10 + 'px'; // Move right
         }
 
         function startAutoMoveRight() {
@@ -68,8 +68,7 @@
 
         function moveLeftImage() {
             const image = document.getElementById('rightImage');
-            // Move left by decreasing the right position
-            image.style.right = (parseInt(image.style.right) || 0) + 10 + 'px'; 
+            image.style.left = (parseInt(image.style.left) || (window.innerWidth - 100)) - 10 + 'px'; // Move left
         }
 
         function startAutoMoveLeft() {
@@ -79,3 +78,4 @@
     </script>
 </body>
 </html>
+
