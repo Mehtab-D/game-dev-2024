@@ -1,21 +1,20 @@
-<h1 align=center>t1a17-move-mehtab</h1>
+<h1 align="center">t1a17-move-mehtab</h1>
 <script>
-//global variables
-  let myClock02
+// Global variables
+let myClock02;
 </script>
 
-<input type=button id="myButton02" value="Image Right" onClick="{
-  document.getELementById('myImage01').style.left=
-  parseInt(document.getElement('myImage01').style.left)+10++'px'
-  }"<br><br>
+<input type="button" id="myButton02" value="Image Right" onClick="{
+  document.getElementById('myImage01').style.left =
+  (parseInt(document.getElementById('myImage01').style.left) || 0) + 10) + 'px';
+}"><br><br>
 
-  <input type=button value="Auto Move Right" onClick="{
-    document.getElementById('myImage01').style.left=0
-    clearInterval(myClock02)
-    myClock02=setInterval(function(){
-    document.getElementById('myButton02').click()
-    },30)//activate click every 30 ms (milliseconds)
-    }"><br><br>
+<input type="button" value="Auto Move Right" onClick="{
+  document.getElementById('myImage01').style.left = '0px';
+  clearInterval(myClock02);
+  myClock02 = setInterval(function() {
+    document.getElementById('myButton02').click();
+  }, 30); // Activate click every 30 ms (milliseconds)
+}"><br><br>
 
-    <img id="myImage01" style="position:relative;width:100px; height:80px; top:0px;
-    left:0px;" scr="myImage01.jpg">
+<img id="myImage01" style="position:relative;width:100px; height:80px; top:0px; left:0px;" src="https://www.brigittegranton.com/uploads/9/3/9/1/93916298/24107-summer-glow-54x54-22-oil-brights_orig.jpg" alt="Your Image">
