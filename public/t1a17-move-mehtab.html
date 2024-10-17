@@ -75,7 +75,11 @@
             clearInterval(rightClock);
             rightClock = setInterval(moveLeftImage, 30); // Move every 30 ms
         }
+
+        // Initialize positions
+        document.getElementById('rightImage').style.left = (window.innerWidth - 100) + 'px'; // Start on the right
     </script>
 </body>
 </html>
 
+        
