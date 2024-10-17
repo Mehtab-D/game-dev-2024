@@ -12,24 +12,20 @@
             height: 100vh; /* Full height */
             overflow: hidden; /* Hide overflow for moving images */
         }
-        #leftImage {
-            position: absolute; /* For proper positioning */
-            width: 100px;
-            height: 80px;
+        .image-container {
+            position: absolute;
             top: 50%; /* Center vertically */
+            transform: translateY(-50%); /* Adjust to center vertically */
+        }
+        #leftImageContainer {
             left: 0; /* Start on the left */
-            transform: translateY(-50%); /* Adjust to center vertically */
         }
-        #rightImage {
-            position: absolute; /* For proper positioning */
+        #rightImageContainer {
+            right: 0; /* Start on the right */
+        }
+        #leftImage, #rightImage {
             width: 100px;
             height: 80px;
-            top: 50%; /* Center vertically */
-            right: 0; /* Start on the right */
-            transform: translateY(-50%); /* Adjust to center vertically */
-        }
-        .controls {
-            margin: 10px;
         }
     </style>
 </head>
@@ -37,19 +33,19 @@
     <h1>t1a17-move-mehtab</h1>
 
     <!-- Left Image Controls -->
-    <div class="controls">
+    <div id="leftImageContainer" class="image-container">
+        <img id="leftImage" src="https://www.brigittegranton.com/uploads/9/3/9/1/93916298/24107-summer-glow-54x54-22-oil-brights_orig.jpg" alt="Left Image">
         <h2>Left Image (Moves Right)</h2>
         <input type="button" value="Move Right" onClick="moveRightImage()"><br><br>
         <input type="button" value="Auto Move Right" onClick="startAutoMoveRight()"><br><br>
-        <img id="leftImage" src="https://www.brigittegranton.com/uploads/9/3/9/1/93916298/24107-summer-glow-54x54-22-oil-brights_orig.jpg" alt="Left Image">
     </div>
 
     <!-- Right Image Controls -->
-    <div class="controls">
+    <div id="rightImageContainer" class="image-container">
+        <img id="rightImage" src="https://i.etsystatic.com/30972341/r/il/50bbb0/3733725846/il_570xN.3733725846_9t2s.jpg" alt="Right Image">
         <h2>Right Image (Moves Left)</h2>
         <input type="button" value="Move Left" onClick="moveLeftImage()"><br><br>
         <input type="button" value="Auto Move Left" onClick="startAutoMoveLeft()"><br><br>
-        <img id="rightImage" src="https://i.etsystatic.com/30972341/r/il/50bbb0/3733725846/il_570xN.3733725846_9t2s.jpg" alt="Right Image">
     </div>
 
     <script>
@@ -81,6 +77,5 @@
     </script>
 </body>
 </html>
-
 
 
