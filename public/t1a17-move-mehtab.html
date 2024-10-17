@@ -1,25 +1,40 @@
-<h1 align="center">t1a17-move-mehtab</h1>
-<style>
-  body{
-    background-color: #ffffc9;
-  }
-</style>
-<script>
-// Global variables
-let myClock02;
-</script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Move Image Example</title>
+    <style>
+        body {
+            background-color: #ffffc9;
+        }
+    </style>
+</head>
+<body>
+    <h1 align="center">t1a17-move-mehtab</h1>
 
-<input type="button" id="myButton02" value="Image Right" onClick="{
-  document.getElementById('myImage01').style.left =
-  (parseInt(document.getElementById('myImage01').style.left) || 0) + 10) + 'px';
-}"><br><br>
+    <input type="button" id="myButton02" value="Image Right" onClick="moveImage()"><br><br>
+    
+    <input type="button" value="Auto Move Right" onClick="startAutoMove()"><br><br>
 
-<input type="button" value="Auto Move Right" onClick="{
-  document.getElementById('myImage01').style.left = '0px';
-  clearInterval(myClock02);
-  myClock02 = setInterval(function() {
-    document.getElementById('myButton02').click();
-  }, 30); // Activate click every 30 ms (milliseconds)
-}"><br><br>
+    <img id="myImage01" style="position:relative; width:100px; height:80px; top:0px; left:0px;" src="https://www.brigittegranton.com/uploads/9/3/9/1/93916298/24107-summer-glow-54x54-22-oil-brights_orig.jpg" alt="Image">
 
-<img id="myImage01" style="position:relative;width:100px; height:80px; top:0px; left:0px;" src="https://www.brigittegranton.com/uploads/9/3/9/1/93916298/24107-summer-glow-54x54-22-oil-brights_orig.jpg" alt="Your Image">
+    <script>
+        // Global variables
+        let myClock02;
+
+        function moveImage() {
+            const image = document.getElementById('myImage01');
+            image.style.left = (parseInt(image.style.left) || 0) + 10 + 'px';
+        }
+
+        function startAutoMove() {
+            const image = document.getElementById('myImage01');
+            image.style.left = '0px'; // Reset position
+            clearInterval(myClock02); // Clear any existing intervals
+            myClock02 = setInterval(moveImage, 30); // Move every 30 ms
+        }
+    </script>
+</body>
+</html>
+
