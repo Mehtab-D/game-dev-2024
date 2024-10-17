@@ -38,3 +38,36 @@
 </body>
 </html>
 
+
+<!DOCTYPE html>
+<html lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Move Image Left Example</title>
+
+
+    <input type="button" id="myButton02" value="Image Left" onClick="moveImage()"><br><br>
+    
+    <input type="button" value="Auto Move Left" onClick="startAutoMove()"><br><br>
+
+    <img id="myImage01" style="position:relative; width:100px; height:80px; top:0px; left:0px;" src="https://i.etsystatic.com/30972341/r/il/50bbb0/3733725846/il_570xN.3733725846_9t2s.jpg" alt="Image">
+
+    <script>
+        // Global variables
+        let myClock02;
+
+        function moveImage() {
+            const image = document.getElementById('myImage01');
+            image.style.left = (parseInt(image.style.left) || 0) - 10 + 'px'; // Move left by subtracting
+        }
+
+        function startAutoMove() {
+            const image = document.getElementById('myImage01');
+            image.style.left = '0px'; // Reset position
+            clearInterval(myClock02); // Clear any existing intervals
+            myClock02 = setInterval(moveImage, 30); // Move every 30 ms
+        }
+    </script>
+</body>
+</html>
+
