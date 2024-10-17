@@ -8,20 +8,28 @@
         body {
             background-color: #ffffc9;
             text-align: center;
+            position: relative; /* Enable positioning for absolute elements */
+            height: 100vh; /* Full height */
+            overflow: hidden; /* Hide overflow for moving images */
         }
         #leftImage {
-            position: absolute; /* Changed to absolute for proper positioning */
+            position: absolute; /* For proper positioning */
             width: 100px;
             height: 80px;
-            top: 0;
+            top: 50%; /* Center vertically */
             left: 0; /* Start on the left */
+            transform: translateY(-50%); /* Adjust to center vertically */
         }
         #rightImage {
-            position: absolute; /* Changed to absolute for proper positioning */
+            position: absolute; /* For proper positioning */
             width: 100px;
             height: 80px;
-            top: 0;
-            right: 0; /* Position on the right */
+            top: 50%; /* Center vertically */
+            right: 0; /* Start on the right */
+            transform: translateY(-50%); /* Adjust to center vertically */
+        }
+        .controls {
+            margin: 10px;
         }
     </style>
 </head>
@@ -29,18 +37,18 @@
     <h1>t1a17-move-mehtab</h1>
 
     <!-- Left Image Controls -->
-    <div>
-        <h2>Left Image</h2>
-        <input type="button" value="Move Left" onClick="moveLeftImage()"><br><br>
-        <input type="button" value="Auto Move Left" onClick="startAutoMoveLeft()"><br><br>
+    <div class="controls">
+        <h2>Left Image (Moves Right)</h2>
+        <input type="button" value="Move Right" onClick="moveRightImage()"><br><br>
+        <input type="button" value="Auto Move Right" onClick="startAutoMoveRight()"><br><br>
         <img id="leftImage" src="https://www.brigittegranton.com/uploads/9/3/9/1/93916298/24107-summer-glow-54x54-22-oil-brights_orig.jpg" alt="Left Image">
     </div>
 
     <!-- Right Image Controls -->
-    <div>
-        <h2>Right Image</h2>
-        <input type="button" value="Move Right" onClick="moveRightImage()"><br><br>
-        <input type="button" value="Auto Move Right" onClick="startAutoMoveRight()"><br><br>
+    <div class="controls">
+        <h2>Right Image (Moves Left)</h2>
+        <input type="button" value="Move Left" onClick="moveLeftImage()"><br><br>
+        <input type="button" value="Auto Move Left" onClick="startAutoMoveLeft()"><br><br>
         <img id="rightImage" src="https://i.etsystatic.com/30972341/r/il/50bbb0/3733725846/il_570xN.3733725846_9t2s.jpg" alt="Right Image">
     </div>
 
@@ -49,7 +57,7 @@
         let leftClock;
 
         function moveLeftImage() {
-            const image = document.getElementById('leftImage');
+            const image = document.getElementById('rightImage');
             image.style.left = (parseInt(image.style.left) || 0) - 10 + 'px'; // Move left
         }
 
@@ -62,8 +70,8 @@
         let rightClock;
 
         function moveRightImage() {
-            const image = document.getElementById('rightImage');
-            image.style.left = (parseInt(image.style.left) || (window.innerWidth - 100)) + 10 + 'px'; // Move right
+            const image = document.getElementById('leftImage');
+            image.style.left = (parseInt(image.style.left) || 0) + 10 + 'px'; // Move right
         }
 
         function startAutoMoveRight() {
@@ -73,7 +81,6 @@
     </script>
 </body>
 </html>
-
 
 
 
