@@ -10,18 +10,18 @@
             text-align: center;
         }
         #leftImage {
-            position: relative;
+            position: absolute; /* Changed to absolute for proper positioning */
             width: 100px;
             height: 80px;
             top: 0;
             left: 0; /* Start on the left */
         }
         #rightImage {
-            position: relative;
+            position: absolute; /* Changed to absolute for proper positioning */
             width: 100px;
             height: 80px;
             top: 0;
-            left: calc(100% - 100px); /* Position on the right */
+            right: 0; /* Position on the right */
         }
     </style>
 </head>
@@ -54,7 +54,6 @@
         }
 
         function startAutoMoveLeft() {
-            const image = document.getElementById('leftImage');
             clearInterval(leftClock);
             leftClock = setInterval(moveLeftImage, 30); // Move every 30 ms
         }
@@ -68,13 +67,13 @@
         }
 
         function startAutoMoveRight() {
-            const image = document.getElementById('rightImage');
             clearInterval(rightClock);
             rightClock = setInterval(moveRightImage, 30); // Move every 30 ms
         }
     </script>
 </body>
 </html>
+
 
 
 
