@@ -26,28 +26,36 @@
         #leftImage, #rightImage {
             width: 100px;
             height: 80px;
-            position: absolute; /* Position them absolutely */
         }
         h2 {
             margin: 10px 0 0 0; /* Add margin to the top only */
         }
+        .text-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center align text and buttons */
+        }
     </style>
 </head>
 <body>
-    <h1>t1a17-move-mehtab</h1>
+    <h1>Image Movement Example</h1>
 
     <div id="leftImageContainer" class="image-container">
-        <img id="leftImage" src="https://www.brigittegranton.com/uploads/9/3/9/1/93916298/24107-summer-glow-54x54-22-oil-brights_orig.jpg" alt="Left Image">
-        <h2>Left Image (Moves Right)</h2>
-        <input type="button" value="Move Right" onClick="moveRightImage()"><br>
-        <input type="button" value="Auto Move Right" onClick="startAutoMoveRight()"><br>
+        <div class="text-container">
+            <img id="leftImage" src="https://www.brigittegranton.com/uploads/9/3/9/1/93916298/24107-summer-glow-54x54-22-oil-brights_orig.jpg" alt="Left Image">
+            <h2>Left Image (Moves Right)</h2>
+            <input type="button" value="Move Right" onClick="moveRightImage()">
+            <input type="button" value="Auto Move Right" onClick="startAutoMoveRight()">
+        </div>
     </div>
 
     <div id="rightImageContainer" class="image-container">
-        <img id="rightImage" src="https://i.etsystatic.com/30972341/r/il/50bbb0/3733725846/il_570xN.3733725846_9t2s.jpg" alt="Right Image">
-        <h2>Right Image (Moves Left)</h2>
-        <input type="button" value="Move Left" onClick="moveLeftImage()"><br>
-        <input type="button" value="Auto Move Left" onClick="startAutoMoveLeft()"><br>
+        <div class="text-container">
+            <img id="rightImage" src="https://i.etsystatic.com/30972341/r/il/50bbb0/3733725846/il_570xN.3733725846_9t2s.jpg" alt="Right Image">
+            <h2>Right Image (Moves Left)</h2>
+            <input type="button" value="Move Left" onClick="moveLeftImage()">
+            <input type="button" value="Auto Move Left" onClick="startAutoMoveLeft()">
+        </div>
     </div>
 
     <script>
@@ -83,6 +91,7 @@
     </script>
 </body>
 </html>
+
 
 
         
