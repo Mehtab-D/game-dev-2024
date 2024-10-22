@@ -28,6 +28,9 @@
             height: 80px;
             position: absolute; /* Position them absolutely */
         }
+        h2 {
+            margin: 0; /* Remove margin for better alignment */
+        }
     </style>
 </head>
 <body>
@@ -36,15 +39,15 @@
     <div id="leftImageContainer" class="image-container">
         <img id="leftImage" src="https://www.brigittegranton.com/uploads/9/3/9/1/93916298/24107-summer-glow-54x54-22-oil-brights_orig.jpg" alt="Left Image">
         <h2>Left Image (Moves Right)</h2>
-        <input type="button" value="Move Right" onClick="moveRightImage()"><br><br>
-        <input type="button" value="Auto Move Right" onClick="startAutoMoveRight()"><br><br>
+        <input type="button" value="Move Right" onClick="moveRightImage()"><br>
+        <input type="button" value="Auto Move Right" onClick="startAutoMoveRight()"><br>
     </div>
 
     <div id="rightImageContainer" class="image-container">
         <img id="rightImage" src="https://i.etsystatic.com/30972341/r/il/50bbb0/3733725846/il_570xN.3733725846_9t2s.jpg" alt="Right Image">
         <h2>Right Image (Moves Left)</h2>
-        <input type="button" value="Move Left" onClick="moveLeftImage()"><br><br>
-        <input type="button" value="Auto Move Left" onClick="startAutoMoveLeft()"><br><br>
+        <input type="button" value="Move Left" onClick="moveLeftImage()"><br>
+        <input type="button" value="Auto Move Left" onClick="startAutoMoveLeft()"><br>
     </div>
 
     <script>
@@ -80,8 +83,6 @@
     </script>
 </body>
 </html>
-
-
 
 
 
