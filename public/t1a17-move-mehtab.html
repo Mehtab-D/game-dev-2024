@@ -23,7 +23,15 @@
         #rightImageContainer {
             right: 0; /* Start on the right */
         }
-        #leftImage, #rightImage {
+        #diagonalImageContainer {
+            left: 0; /* Start in the top left */
+            top: 0; /* Start in the top */
+        }
+        #diagonalImageContainer2 {
+            right: 0; /* Start in the bottom right */
+            bottom: 0; /* Start at the bottom */
+        }
+        #leftImage, #rightImage, #diagonalImage, #diagonalImage2 {
             width: 100px;
             height: 80px;
             position: relative; /* Keep images relative to their containers */
@@ -39,7 +47,7 @@
     </style>
 </head>
 <body>
-    <h1>t1a17-move-mehtab</h1>
+    <h1>Image Movement Example</h1>
 
     <div id="leftImageContainer" class="image-container">
         <div class="text-container">
@@ -59,13 +67,30 @@
         </div>
     </div>
 
+    <div id="diagonalImageContainer" class="image-container">
+        <div class="text-container">
+            <img id="diagonalImage" src="https://www.daslia.com/images/p/popular-types-of-painting.jpg" alt="Diagonal Image">
+            <h2>Diagonal Image (Moves Down Right)</h2>
+            <input type="button" value="Move Down Right" onClick="moveDiagonalImage()">
+            <input type="button" value="Auto Move Down Right" onClick="startAutoMoveDiagonal()">
+        </div>
+    </div>
+
+    <div id="diagonalImageContainer2" class="image-container">
+        <div class="text-container">
+            <img id="diagonalImage2" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg/800px-Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg" alt="Diagonal Image 2">
+            <h2>Diagonal Image 2 (Moves Up Left)</h2>
+            <input type="button" value="Move Up Left" onClick="moveDiagonalImage2()">
+            <input type="button" value="Auto Move Up Left" onClick="startAutoMoveDiagonal2()">
+        </div>
+    </div>
+
     <script>
         // Global variables for the left image
         let leftClock;
 
         function moveRightImage() {
             const image = document.getElementById('leftImage');
-            const leftImageContainer = document.getElementById('leftImageContainer');
             let leftPosition = parseInt(image.style.left) || 0;
             leftPosition += 10; // Move right
             image.style.left = leftPosition + 'px'; // Update position
@@ -91,9 +116,49 @@
             rightClock = setInterval(moveLeftImage, 30); // Move every 30 ms
         }
 
+        // Global variables for the diagonal image
+        let diagonalClock;
+
+        function moveDiagonalImage() {
+            const image = document.getElementById('diagonalImage');
+            let leftPosition = parseInt(image.style.left) || 0;
+            let topPosition = parseInt(image.style.top) || 0;
+            leftPosition += 10; // Move right
+            topPosition += 10; // Move down
+            image.style.left = leftPosition + 'px'; // Update left position
+            image.style.top = topPosition + 'px'; // Update top position
+        }
+
+        function startAutoMoveDiagonal() {
+            clearInterval(diagonalClock);
+            diagonalClock = setInterval(moveDiagonalImage, 30); // Move every 30 ms
+        }
+
+        // Global variables for the second diagonal image
+        let diagonalClock2;
+
+        function moveDiagonalImage2() {
+            const image = document.getElementById('diagonalImage2');
+            let rightPosition = parseInt(image.style.right) || 0;
+            let topPosition = parseInt(image.style.top) || 0;
+            rightPosition += 10; // Move left
+            topPosition -= 10; // Move up
+            image.style.right = rightPosition + 'px'; // Update right position
+            image.style.top = topPosition + 'px'; // Update top position
+        }
+
+        function startAutoMoveDiagonal2() {
+            clearInterval(diagonalClock2);
+            diagonalClock2 = setInterval(moveDiagonalImage2, 30); // Move every 30 ms
+        }
+
         // Initialize positions
         document.getElementById('leftImage').style.left = '0px'; // Start on the left
         document.getElementById('rightImage').style.right = '0px'; // Start on the right
+        document.getElementById('diagonalImage').style.left = '0px'; // Start at the top left
+        document.getElementById('diagonalImage').style.top = '0px'; // Start at the top left
+        document.getElementById('diagonalImage2').style.right = '0px'; // Start at the bottom right
+        document.getElementById('diagonalImage2').style.top = '100%'; // Start at the bottom
     </script>
 </body>
 </html>
