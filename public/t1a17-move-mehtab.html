@@ -25,7 +25,7 @@
         }
         #diagonalImageContainer {
             left: 0; /* Start in the top left */
-            top: 0; /* Start in the top */
+            top: 20px; /* Move down 20px */
         }
         #leftImage, #rightImage, #diagonalImage {
             width: 100px;
@@ -39,10 +39,6 @@
             display: flex;
             flex-direction: column;
             align-items: center; /* Center align text */
-        }
-        /* Adjust margin for diagonal image */
-        #diagonalImage {
-            margin-top: 10px; /* Space between text and diagonal image */
         }
     </style>
 </head>
@@ -69,8 +65,8 @@
 
     <div id="diagonalImageContainer" class="image-container">
         <div class="text-container">
-            <h2>Diagonal Image (Moves Down Right)</h2>
             <img id="diagonalImage" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg/350px-Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg" alt="Diagonal Image">
+            <h2>Diagonal Image (Moves Down Right)</h2>
             <input type="button" value="Move Down Right" onClick="moveDiagonalImage()">
             <input type="button" value="Auto Move Down Right" onClick="startAutoMoveDiagonal()">
         </div>
@@ -129,7 +125,7 @@
         document.getElementById('leftImage').style.left = '0px'; // Start on the left
         document.getElementById('rightImage').style.right = '0px'; // Start on the right
         document.getElementById('diagonalImage').style.left = '0px'; // Start at the top left
-        document.getElementById('diagonalImage').style.top = '0px'; // Start at the top left
+        document.getElementById('diagonalImage').style.top = '20px'; // Start at 20px from the top
     </script>
 </body>
 </html>
