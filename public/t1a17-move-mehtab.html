@@ -14,7 +14,8 @@
         }
         .image-container {
             position: absolute;
-            top: 20px; /* Adjusted top position */
+            top: 50%; 
+            transform: translateY(-50%);
         }
         #leftImageContainer {
             left: 0; /* Start on the left */
@@ -39,9 +40,9 @@
             flex-direction: column;
             align-items: center; /* Center align text */
         }
-        /* Add style to position the diagonal image correctly */
+        /* Adjust margin for diagonal image */
         #diagonalImage {
-            margin-bottom: 10px; /* Space between the diagonal image and buttons */
+            margin-top: 10px; /* Space between text and diagonal image */
         }
     </style>
 </head>
@@ -132,4 +133,3 @@
     </script>
 </body>
 </html>
-
