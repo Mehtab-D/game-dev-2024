@@ -63,8 +63,11 @@
         let leftClock;
 
         function moveRightImage() {
+            const imageContainer = document.getElementById('leftImageContainer');
             const image = document.getElementById('leftImage');
-            image.style.left = (parseInt(image.style.left) || 0) + 10 + 'px'; // Move right
+            let leftPosition = parseInt(imageContainer.style.left) || 0;
+            leftPosition += 10; // Move right
+            imageContainer.style.left = leftPosition + 'px'; // Update position
         }
 
         function startAutoMoveRight() {
@@ -76,8 +79,10 @@
         let rightClock;
 
         function moveLeftImage() {
-            const image = document.getElementById('rightImage');
-            image.style.right = (parseInt(image.style.right) || 0) + 10 + 'px'; // Move left
+            const imageContainer = document.getElementById('rightImageContainer');
+            let rightPosition = parseInt(imageContainer.style.right) || 0;
+            rightPosition += 10; // Move left
+            imageContainer.style.right = rightPosition + 'px'; // Update position
         }
 
         function startAutoMoveLeft() {
@@ -86,8 +91,8 @@
         }
 
         // Initialize positions
-        document.getElementById('leftImage').style.left = '0px'; // Start on the left
-        document.getElementById('rightImage').style.right = '0px'; // Start on the right
+        document.getElementById('leftImageContainer').style.left = '0px'; // Start on the left
+        document.getElementById('rightImageContainer').style.right = '0px'; // Start on the right
     </script>
 </body>
 </html>
