@@ -40,6 +40,10 @@
             flex-direction: column;
             align-items: center; /* Center align text and buttons */
         }
+        /* Add style to position the diagonal image correctly */
+        #diagonalImage {
+            margin-top: 10px; /* Space between text and diagonal image */
+        }
     </style>
 </head>
 <body>
@@ -65,10 +69,10 @@
 
     <div id="diagonalImageContainer" class="image-container">
         <div class="text-container">
-            <img id="diagonalImage" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg/350px-Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg" alt="Diagonal Image">
             <h2>Diagonal Image (Moves Down Right)</h2>
             <input type="button" value="Move Down Right" onClick="moveDiagonalImage()">
             <input type="button" value="Auto Move Down Right" onClick="startAutoMoveDiagonal()">
+            <img id="diagonalImage" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg/350px-Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg" alt="Diagonal Image">
         </div>
     </div>
 
@@ -129,3 +133,4 @@
     </script>
 </body>
 </html>
+
