@@ -24,7 +24,7 @@
             right: 0; /* Start on the right */
         }
         #diagonalImageContainer {
-            left: 0; /* Position in the top left corner */
+            left: 50px; /* Move it to the right from the left edge */
             top: 100px; /* Position for the container */
         }
         #leftImage, #rightImage, #diagonalImage {
@@ -39,9 +39,6 @@
             display: flex;
             flex-direction: column;
             align-items: center; /* Center align text */
-        }
-        #diagonalImage {
-            margin-top: -30px; /* Move the image up by adjusting the margin */
         }
         /* Increased margin for diagonal text and buttons */
         #diagonalImageContainer h2 {
@@ -75,10 +72,10 @@
 
     <div id="diagonalImageContainer" class="image-container">
         <div class="text-container">
-            <img id="diagonalImage" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg/350px-Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg" alt="Diagonal Image">
             <h2>Diagonal Image (Moves Down Right)</h2>
             <input type="button" value="Move Down Right" onClick="moveDiagonalImage()">
             <input type="button" value="Auto Move Down Right" onClick="startAutoMoveDiagonal()">
+            <img id="diagonalImage" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg/350px-Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg" alt="Diagonal Image">
         </div>
     </div>
 
@@ -135,8 +132,9 @@
         document.getElementById('leftImage').style.left = '0px'; // Start on the left
         document.getElementById('rightImage').style.right = '0px'; // Start on the right
         document.getElementById('diagonalImage').style.left = '0px'; // Start in the top left corner
-        document.getElementById('diagonalImage').style.top = '100px'; // Position at the adjusted top left
+        document.getElementById('diagonalImage').style.top = '100px'; // Keep at 100px from the top
     </script>
 </body>
 </html>
+
 
