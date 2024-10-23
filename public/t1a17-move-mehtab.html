@@ -24,8 +24,8 @@
             right: 0; /* Start on the right */
         }
         #diagonalImageContainer {
-            left: 0; /* Start in the top left */
-            top: 60px; /* Move down to 60px */
+            left: 20px; /* Move closer to the left corner */
+            top: 20px; /* Move closer to the top corner */
         }
         #leftImage, #rightImage, #diagonalImage {
             width: 100px;
@@ -134,9 +134,10 @@
         // Initialize positions
         document.getElementById('leftImage').style.left = '0px'; // Start on the left
         document.getElementById('rightImage').style.right = '0px'; // Start on the right
-        document.getElementById('diagonalImage').style.left = '0px'; // Start at the top left
-        document.getElementById('diagonalImage').style.top = '60px'; // Start at 60px from the top
+        document.getElementById('diagonalImage').style.left = '20px'; // Start closer to the left corner
+        document.getElementById('diagonalImage').style.top = '20px'; // Start closer to the top corner
     </script>
 </body>
 </html>
+
 
