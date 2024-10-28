@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mehtab's CSS Page<title>
+    <title>Mehtab's CSS Page</title>
     <style>
         body {
             background-color: lavender;
@@ -125,37 +125,23 @@
     <h1>Mehtab's CSS Page</h1>
     <div class="left-side">
         <p>This is a <span class="text-box">highlighted</span> word.</p>
-       <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bold and Colored Text Example</title>
-    <style>
-        .bold-text {
-            font-weight: bold; /* Makes the text bold */
-            color: #4632a8; /* Change this to your desired color */
-        }
-    </style>
-</head>
-<body>
-    <p class="bold-text">This is bold and colored text.</p>
-</body>
-</html>
+<p class="bold-text">This is bold text.</p>
 
-     
+<style>
+    .bold-text {
+        font-weight: bold;
+    }
+</style>
 
-        <img src="https://i.pinimg.com/736x/d6/49/2f/d6492f367fcd09a470c9b34a5cb14f68.jpg" alt="Spinning Image" class="spin-image">
-        
-        <!-- Flickering text moved to the left side -->
-        <div class="flicker-text">Flickering Neon Text</div>
+            <img src="https://i.pinimg.com/736x/d6/49/2f/d6492f367fcd09a470c9b34a5cb14f68.jpg" alt="Spinning Image" class="spin-image">
+        </div>
+        <img src="https://i.natgeofe.com/n/c9107b46-78b1-4394-988d-53927646c72b/1095.jpg" alt="Frosted Image" class="frosted-image">
     </div>
-
     <div class="right-side">
         <div>
             <div>
-                <img src="https://images.newscientist.com/wp-content/uploads/2024/02/06103007/SEI_189745988.jpg" alt="Circle Image" class="circle-image">
-            </div>
+    <img src="https://images.newscientist.com/wp-content/uploads/2024/02/06103007/SEI_189745988.jpg" alt="Circle Image" class="circle-image">
+</div>
 
             <img id="dogImage" src="https://img.cutenesscdn.com/-/photos.demandstudios.com/getty/article/181/244/482305437.jpg" alt="Dog" class="bright-image">
             <div class="slider-container">
@@ -163,18 +149,13 @@
                 <input type="range" id="brightnessRange" min="0.5" max="2" step="0.1" value="1" oninput="adjustBrightness(this.value)">
             </div>
         </div>
-
-        <!-- Upside-down text moved to the right side -->
+        <div class="flicker-text">Flickering Neon Text</div>
         <p class="upside-down">Upside Down</p>
     </div>
-    
     <script>
         function adjustBrightness(value) {
-            document.getElementById('dogImage').style.filter = `brightness(${value})`;
+            document.getElementById('dogImage').style.filter = brightness(${value});
         }
     </script>
 </body>
 </html>
-
-
-      
