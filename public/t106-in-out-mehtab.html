@@ -5,16 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>t1a06-in-out-mehtab.html</title>
     <style>
-        
         body {
             background-color: #f1d3f5;
+        }
         h1 {
             text-align: center; /* This replaces align=center */
         }
         #season-image {
             display: none; /* Hide the image initially */
-            max-width: 100%; /* Make sure the image fits the screen */
+            max-width: 300px; /* Make sure the image is smaller */
             height: auto;
+            border: 2px solid #ccc;
+            border-radius: 10px;
+            margin: 10px 0;
+        }
+        #ok-button {
+            display: none; /* Hide the OK button initially */
+            padding: 5px 10px;
+            background-color: #4285f4;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        #ok-button:hover {
+            background-color: #357ae8;
         }
     </style>
 </head>
@@ -33,13 +48,15 @@ Input: <input type="text" id="myFirstName" value="Name">
 
 <!-- New Input for Season -->
 <br><br>
-Enter a season (spring, summer, fall, winter): 
+Enter Your Favorite Season(spring, summer, fall, winter): 
 <input type="text" id="seasonInput">
 <input type="button" value="Favorite Season" onclick="showSeasonImage()">
 
 <!-- Image that will be shown based on the season -->
 <div id="season-div">
     <img id="season-image" src="" alt="Season Image">
+    <br>
+    <button id="ok-button" onclick="hideSeasonImage()">OK</button>
 </div>
 
 <script>
@@ -47,28 +64,42 @@ Enter a season (spring, summer, fall, winter):
     function showSeasonImage() {
         var season = document.getElementById('seasonInput').value.toLowerCase(); // Get the season input and convert to lowercase
         var seasonImage = document.getElementById('season-image');
+        var okButton = document.getElementById('ok-button');
 
         // Check the entered season and display the corresponding image
         if (season === 'spring') {
-            seasonImage.src = 'https://cdn.britannica.com/05/155405-050-F8969EE6/Spring-flowers-fruit-trees-bloom.jpg'; // Replace with your actual image URL
+            seasonImage.src = 'https://cdn.britannica.com/05/155405-050-F8969EE6/Spring-flowers-fruit-trees-bloom.jpg';
             seasonImage.alt = 'Spring Image';
             seasonImage.style.display = 'block';
+            okButton.style.display = 'inline-block';
         } else if (season === 'summer') {
-            seasonImage.src = 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/20190212_SKJ0426-HDR-2.jpg/1200px-20190212_SKJ0426-HDR-2.jpg'; // Replace with your actual image URL
+            seasonImage.src = 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/20190212_SKJ0426-HDR-2.jpg/1200px-20190212_SKJ0426-HDR-2.jpg';
             seasonImage.alt = 'Summer Image';
             seasonImage.style.display = 'block';
+            okButton.style.display = 'inline-block';
         } else if (season === 'fall') {
-            seasonImage.src = 'https://thecontentpanel.com/wp-content/uploads/2021/11/Our-Ultimate-List-101-Fall-Blog-Post-Ideas-feat.jpg'; // Replace with your actual image URL
+            seasonImage.src = 'https://thecontentpanel.com/wp-content/uploads/2021/11/Our-Ultimate-List-101-Fall-Blog-Post-Ideas-feat.jpg';
             seasonImage.alt = 'Fall Image';
             seasonImage.style.display = 'block';
+            okButton.style.display = 'inline-block';
         } else if (season === 'winter') {
-            seasonImage.src = 'https://upload.wikimedia.org/wikipedia/commons/b/b0/Winter_forest_silver.jpg'; // Replace with your actual image URL
+            seasonImage.src = 'https://upload.wikimedia.org/wikipedia/commons/b/b0/Winter_forest_silver.jpg';
             seasonImage.alt = 'Winter Image';
             seasonImage.style.display = 'block';
+            okButton.style.display = 'inline-block';
         } else {
             alert('Please enter a valid season: spring, summer, fall, or winter.');
             seasonImage.style.display = 'none'; // Hide the image if input is invalid
+            okButton.style.display = 'none'; // Hide the OK button if input is invalid
         }
+    }
+
+    // Function to hide the image when OK button is clicked
+    function hideSeasonImage() {
+        var seasonImage = document.getElementById('season-image');
+        var okButton = document.getElementById('ok-button');
+        seasonImage.style.display = 'none'; // Hide the image
+        okButton.style.display = 'none'; // Hide the OK button
     }
 </script>
 
