@@ -1,9 +1,29 @@
-<h1 align=center> t1a06-in-out-mehtab.html
-Input:<input type=text id ="myFirstName" value="mehtab">
-<input type= button value="Show on page" onclick="{
-  //This is a comment
-  document.getElementById('myDiv01').innerHTMl= 'Your name is ' +
-  document.getElementById('myFirstName').value
-  }">
-  <div id="myDiv 01">...</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>t1a06-in-out-mehtab.html</title>
+    <style>
+        h1 {
+            text-align: center; /* This replaces align=center */
+        }
+    </style>
+</head>
+<body>
+
+<h1>t1a06-in-out-mehtab.html</h1>
+
+Input: <input type="text" id="myFirstName" value="mehtab">
+<input type="button" value="Show on page" onclick="
+    // This is a comment
+    document.getElementById('myDiv01').innerHTML = 'Your name is ' + 
+    document.getElementById('myFirstName').value;
+">
+
+<div id="myDiv01">...</div>
+
+</body>
+</html>
+
   
