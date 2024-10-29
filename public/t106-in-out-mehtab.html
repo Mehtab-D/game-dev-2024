@@ -21,6 +21,7 @@
             width: 100%;
             height: 300px; /* Height for fireworks display */
             display: none; /* Initially hidden */
+            margin-top: 10px; /* Space between button and fireworks */
         }
         #fireworks {
             position: absolute;
@@ -39,10 +40,7 @@
 <h1>t1a06-in-out-mehtab.html</h1>
 
 Input: <input type="text" id="myFirstName" value="Name">
-<input type="button" value="Show on page" onclick="
-    document.getElementById('myDiv01').innerHTML = 'Your name is ' + 
-    document.getElementById('myFirstName').value;
-">
+<input type="button" value="Show on page" onclick="document.getElementById('myDiv01').innerHTML = 'Your name is ' + document.getElementById('myFirstName').value;">
 
 <div id="myDiv01">...</div>
 
@@ -61,10 +59,10 @@ Select a number from 1-10 for fireworks:
 <input type="number" id="numberInput" min="1" max="10">
 <input type="button" value="Show Fireworks" onclick="showFireworks()">
 
-<!-- Firework container moved here to display below the button -->
+<!-- Firework container moved here to display directly under the button -->
 <div id="firework-container">
     <div id="fireworks"></div>
-    <input type="button" value="OK" onclick="hideFireworks()" style="display: none;" id="fireworks-ok-button">
+    <input type="button" value="OK" onclick="hideFireworks()" id="fireworks-ok-button">
 </div>
 
 <script>
@@ -116,7 +114,7 @@ Select a number from 1-10 for fireworks:
         if (number >= 1 && number <= 10) {
             fireworkContainer.style.display = 'block';
             fireworksDiv.style.display = 'block';
-            fireworksOkButton.style.display = 'inline'; // Ensure the OK button is shown
+            fireworksOkButton.style.display = 'inline'; // Show OK button
         } else {
             alert('Please select a number between 1 and 10.');
             fireworksDiv.style.display = 'none';
@@ -129,13 +127,11 @@ Select a number from 1-10 for fireworks:
         var fireworksDiv = document.getElementById('fireworks');
         var fireworksOkButton = document.getElementById('fireworks-ok-button');
 
-        fireworkContainer.style.display = 'none';
-        fireworksDiv.style.display = 'none';
-        fireworksOkButton.style.display = 'none';
+        fireworkContainer.style.display = 'none'; // Hide the entire container
+        fireworksDiv.style.display = 'none'; // Hide fireworks
+        fireworksOkButton.style.display = 'none'; // Hide OK button
     }
 </script>
 
 </body>
 </html>
-
-
