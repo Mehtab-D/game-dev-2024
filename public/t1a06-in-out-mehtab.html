@@ -175,21 +175,28 @@ Enter a date:
         document.getElementById('selected-date').innerText = "You selected: " + selectedDate;
     }
 
-    function getRandomColor() {
-        var colors = [
-            "Red", "Green", "Blue", "Yellow", "Orange", "Purple", "Pink", 
-            "Brown", "Teal", "Navy", "Olive", "Maroon", "Aqua", "Fuchsia"
-        ];
-        
-        var randomIndex = Math.floor(Math.random() * colors.length);
-        var randomColor = colors[randomIndex];
-
-        // Change the background color
-        document.body.style.backgroundColor = randomColor;
-
-        // Display the random color name
-        document.getElementById('color-display').innerText = "Random Color: " + randomColor;
-    }
-
     function showRandomColor() {
-        var userInput = document.getElementById
+        var userInput = document.getElementById('randomColorInput').value.toLowerCase();
+        if (userInput === "random color") {
+            var colors = [
+                "Red", "Green", "Blue", "Yellow", "Orange", "Purple", "Pink", 
+                "Brown", "Teal", "Navy", "Olive", "Maroon", "Aqua", "Fuchsia"
+            ];
+            
+            var randomIndex = Math.floor(Math.random() * colors.length);
+            var randomColor = colors[randomIndex];
+
+            // Change the background color
+            document.body.style.backgroundColor = randomColor;
+
+            // Display the random color name
+            document.getElementById('color-display').innerText = "Random Color: " + randomColor;
+        } else {
+            document.getElementById('color-display').innerText = "Please type 'random color' to get a color!";
+        }
+    }
+</script>
+
+</body>
+</html>
+
