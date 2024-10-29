@@ -13,23 +13,22 @@
         }
         #season-image {
             display: none; /* Hide the image initially */
-            max-width: 300px; /* Make sure the image is smaller */
+            max-width: 100%; /* Make sure the image fits the screen */
             height: auto;
-            border: 2px solid #ccc;
-            border-radius: 10px;
-            margin: 10px 0;
         }
-        #ok-button {
-            display: none; /* Hide the OK button initially */
-            padding: 5px 10px;
-            background-color: #4285f4;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
+        #firework-container {
+            position: relative;
+            width: 100%;
+            height: 300px;
+            display: none; /* Initially hide fireworks */
         }
-        #ok-button:hover {
-            background-color: #357ae8;
+        #fireworks {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://media.giphy.com/media/3o7buu6F8g7D7cwB3W/giphy.gif'); /* Example firework GIF */
+            background-size: cover;
+            display: none; /* Initially hide fireworks */
         }
     </style>
 </head>
@@ -48,15 +47,26 @@ Input: <input type="text" id="myFirstName" value="Name">
 
 <!-- New Input for Season -->
 <br><br>
-Enter Your Favorite Season(spring, summer, fall, winter): 
+Enter a season (spring, summer, fall, winter): 
 <input type="text" id="seasonInput">
 <input type="button" value="Favorite Season" onclick="showSeasonImage()">
 
 <!-- Image that will be shown based on the season -->
 <div id="season-div">
     <img id="season-image" src="" alt="Season Image">
-    <br>
-    <button id="ok-button" onclick="hideSeasonImage()">OK</button>
+    <input type="button" id="ok-button" value="OK" onclick="hideImage()" style="display: none;"> <!-- OK button -->
+</div>
+
+<!-- Input for Fireworks -->
+<br><br>
+Select a number from 1-10 for fireworks:
+<input type="number" id="numberInput" min="1" max="10">
+<input type="button" value="Show Fireworks" onclick="showFireworks()">
+
+<!-- Firework container -->
+<div id="firework-container">
+    <div id="fireworks"></div>
+    <input type="button" value="OK" onclick="hideFireworks()" style="display: none;" id="fireworks-ok-button"> <!-- OK button for fireworks -->
 </div>
 
 <script>
@@ -71,37 +81,67 @@ Enter Your Favorite Season(spring, summer, fall, winter):
             seasonImage.src = 'https://cdn.britannica.com/05/155405-050-F8969EE6/Spring-flowers-fruit-trees-bloom.jpg';
             seasonImage.alt = 'Spring Image';
             seasonImage.style.display = 'block';
-            okButton.style.display = 'inline-block';
+            okButton.style.display = 'inline'; // Show OK button
         } else if (season === 'summer') {
             seasonImage.src = 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/20190212_SKJ0426-HDR-2.jpg/1200px-20190212_SKJ0426-HDR-2.jpg';
             seasonImage.alt = 'Summer Image';
             seasonImage.style.display = 'block';
-            okButton.style.display = 'inline-block';
+            okButton.style.display = 'inline'; // Show OK button
         } else if (season === 'fall') {
             seasonImage.src = 'https://thecontentpanel.com/wp-content/uploads/2021/11/Our-Ultimate-List-101-Fall-Blog-Post-Ideas-feat.jpg';
             seasonImage.alt = 'Fall Image';
             seasonImage.style.display = 'block';
-            okButton.style.display = 'inline-block';
+            okButton.style.display = 'inline'; // Show OK button
         } else if (season === 'winter') {
             seasonImage.src = 'https://upload.wikimedia.org/wikipedia/commons/b/b0/Winter_forest_silver.jpg';
             seasonImage.alt = 'Winter Image';
             seasonImage.style.display = 'block';
-            okButton.style.display = 'inline-block';
+            okButton.style.display = 'inline'; // Show OK button
         } else {
             alert('Please enter a valid season: spring, summer, fall, or winter.');
             seasonImage.style.display = 'none'; // Hide the image if input is invalid
-            okButton.style.display = 'none'; // Hide the OK button if input is invalid
+            okButton.style.display = 'none'; // Hide OK button
         }
     }
 
-    // Function to hide the image when OK button is clicked
-    function hideSeasonImage() {
+    // Function to hide the season image
+    function hideImage() {
         var seasonImage = document.getElementById('season-image');
         var okButton = document.getElementById('ok-button');
         seasonImage.style.display = 'none'; // Hide the image
-        okButton.style.display = 'none'; // Hide the OK button
+        okButton.style.display = 'none'; // Hide OK button
+    }
+
+    // Function to show fireworks based on the selected number
+    function showFireworks() {
+        var number = document.getElementById('numberInput').value; // Get the number input
+        var fireworkContainer = document.getElementById('firework-container');
+        var fireworksDiv = document.getElementById('fireworks');
+        var fireworksOkButton = document.getElementById('fireworks-ok-button');
+
+        if (number >= 1 && number <= 10) {
+            fireworkContainer.style.display = 'block'; // Show firework container
+            fireworksDiv.style.display = 'block'; // Show fireworks
+            fireworksOkButton.style.display = 'inline'; // Show OK button for fireworks
+        } else {
+            alert('Please select a number between 1 and 10.');
+            fireworksDiv.style.display = 'none'; // Hide fireworks if input is invalid
+            fireworksOkButton.style.display = 'none'; // Hide OK button for fireworks
+        }
+    }
+
+    // Function to hide the fireworks
+    function hideFireworks() {
+        var fireworkContainer = document.getElementById('firework-container');
+        var fireworksDiv = document.getElementById('fireworks');
+        var fireworksOkButton = document.getElementById('fireworks-ok-button');
+
+        fireworkContainer.style.display = 'none'; // Hide firework container
+        fireworksDiv.style.display = 'none'; // Hide fireworks
+        fireworksOkButton.style.display = 'none'; // Hide OK button for fireworks
     }
 </script>
 
 </body>
 </html>
+
