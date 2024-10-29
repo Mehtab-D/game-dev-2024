@@ -69,6 +69,11 @@ Select a number from 1-10 for fireworks:
 <input type="button" value="I want to hear a fun fact!" onclick="showFunFact()">
 <div id="fun-fact" style="margin-top: 10px;"></div>
 
+<br><br>
+<!-- Random Color Generator -->
+<input type="button" value="Get a Random Color!" onclick="getRandomColor()">
+<div id="color-display" style="margin-top: 10px; font-size: 20px;"></div>
+
 <script>
     var funFacts = [
         "Did you know that honey never spoils? Archaeologists have found pots of honey in ancient Egyptian tombs that are over 3000 years old!",
@@ -148,8 +153,23 @@ Select a number from 1-10 for fireworks:
         fireworksDiv.style.display = 'none';
         fireworksOkButton.style.display = 'none';
     }
+
+    function getRandomColor() {
+        var colors = [
+            "Red", "Green", "Blue", "Yellow", "Orange", "Purple", "Pink", 
+            "Brown", "Teal", "Lime", "Navy", "Olive", "Maroon", "Aqua", "Fuchsia"
+        ];
+        
+        var randomIndex = Math.floor(Math.random() * colors.length);
+        var randomColor = colors[randomIndex];
+
+        // Change the background color
+        document.body.style.backgroundColor = randomColor;
+
+        // Display the random color name
+        document.getElementById('color-display').innerText = "Random Color: " + randomColor;
+    }
 </script>
 
 </body>
 </html>
-
