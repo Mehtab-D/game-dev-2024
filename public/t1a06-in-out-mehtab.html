@@ -71,8 +71,9 @@ Select a number from 1-10 for fireworks:
 <div id="fun-fact" style="margin-top: 10px;"></div>
 
 <br><br>
-<!-- Random Color Generator -->
-<input type="button" value="Get a Random Color!" onclick="getRandomColor()">
+<!-- Random Color Input and Button -->
+<input type="text" id="colorInput" placeholder="Type 'random color' here">
+<input type="button" value="Get Random Color" onclick="getRandomColor()">
 <div id="color-display" style="margin-top: 10px; font-size: 20px;"></div>
 
 <script>
@@ -83,7 +84,7 @@ Select a number from 1-10 for fireworks:
         "Octopuses have three hearts and blue blood.",
         "The Eiffel Tower can be 15 cm taller during the summer due to the expansion of iron in the heat.",
         "The Mona Lisa has no eyebrows.",
-        "I Am is the shortest complete sentence in the English language." // Fixed this line
+        "I Am is the shortest complete sentence in the English language."
     ];
 
     function showFunFact() {
@@ -163,19 +164,24 @@ Select a number from 1-10 for fireworks:
     }
 
     function getRandomColor() {
-        var colors = [
-            "Red", "Green", "Blue", "Yellow", "Orange", "Purple", "Pink", 
-            "Brown", "Teal", "Lime", "Navy", "Olive", "Maroon", "Aqua", "Fuchsia"
-        ];
+        var userInput = document.getElementById('colorInput').value.toLowerCase();
+        if (userInput === "random color") {
+            var colors = [
+                "Red", "Green", "Blue", "Yellow", "Orange", "Purple", "Pink", 
+                "Brown", "Teal", "Lime", "Navy", "Olive", "Maroon", "Aqua", "Fuchsia"
+            ];
         
-        var randomIndex = Math.floor(Math.random() * colors.length);
-        var randomColor = colors[randomIndex];
+            var randomIndex = Math.floor(Math.random() * colors.length);
+            var randomColor = colors[randomIndex];
 
-        // Change the background color
-        document.body.style.backgroundColor = randomColor;
+            // Change the background color
+            document.body.style.backgroundColor = randomColor;
 
-        // Display the random color name
-        document.getElementById('color-display').innerText = "Random Color: " + randomColor;
+            // Display the random color name
+            document.getElementById('color-display').innerText = "Random Color: " + randomColor;
+        } else {
+            document.getElementById('color-display').innerText = "Please type 'random color' to see a color!";
+        }
     }
 </script>
 
