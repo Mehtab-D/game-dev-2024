@@ -83,6 +83,13 @@ Enter a date:
 <input type="button" value="Show Selected Date" onclick="showSelectedDate()">
 <div id="selected-date" style="margin-top: 10px;"></div>
 
+<br><br>
+<!-- Number Guessing Game -->
+Enter your guess (10, 20, 30, ..., 100): 
+<input type="number" id="guessInput" min="10" max="100" step="10">
+<input type="button" value="Check Guess" onclick="checkGuess()">
+<div id="guess-output" style="margin-top: 10px;"></div>
+
 <script>
     var funFacts = [
         "Did you know that honey never spoils? Archaeologists have found pots of honey in ancient Egyptian tombs that are over 3000 years old!",
@@ -196,14 +203,7 @@ Enter a date:
         }
     }
 
-    <br><br>
-<!-- Number Guessing Game -->
-Enter your guess (10, 20, 30, ..., 100): 
-<input type="number" id="guessInput" min="10" max="100" step="10">
-<input type="button" value="Check Guess" onclick="checkGuess()">
-<div id="guess-output" style="margin-top: 10px;"></div>
-
-<script>
+    // Number Guessing Game
     var targetNumber = 70;
 
     function checkGuess() {
@@ -222,8 +222,6 @@ Enter your guess (10, 20, 30, ..., 100):
             document.getElementById('guess-output').innerText = "Correct! The number is 70.";
         }
     }
-</script>
-
 </script>
 
 </body>
