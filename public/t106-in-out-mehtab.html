@@ -13,24 +13,24 @@
         }
         #season-image {
             display: none;
-            max-width: 100%;
-            height: auto;
+            max-width: 300px; /* Adjust to your preferred size */
+            height: auto; /* Keep the aspect ratio */
         }
         #firework-container {
             position: relative;
             width: 100%;
-            height: 300px;
-            display: none;
+            height: 300px; /* Height for fireworks display */
+            display: none; /* Initially hidden */
         }
         #fireworks {
             position: absolute;
             width: 100%;
             height: 100%;
-            background-image: url('https://i.pinimg.com/originals/b9/21/4e/b9214e1c74e411d5807ce8ade0c69517.gif');
-            background-size: 50%;
+            background-image: url('https://i.pinimg.com/originals/ba/ce/57/bace57c5e51b79fa303026d754fef8b5.gif');
+            background-size: contain; /* Ensure the entire image is shown */
             background-repeat: no-repeat;
             background-position: center;
-            display: none;
+            display: none; /* Initially hidden */
         }
     </style>
 </head>
@@ -61,6 +61,7 @@ Select a number from 1-10 for fireworks:
 <input type="number" id="numberInput" min="1" max="10">
 <input type="button" value="Show Fireworks" onclick="showFireworks()">
 
+<!-- Firework container moved here to display below the button -->
 <div id="firework-container">
     <div id="fireworks"></div>
     <input type="button" value="OK" onclick="hideFireworks()" style="display: none;" id="fireworks-ok-button">
@@ -136,3 +137,4 @@ Select a number from 1-10 for fireworks:
 
 </body>
 </html>
+
