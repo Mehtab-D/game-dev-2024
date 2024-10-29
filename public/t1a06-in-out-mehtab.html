@@ -65,8 +65,9 @@ Select a number from 1-10 for fireworks:
 </div>
 
 <br><br>
-<!-- Fun Fact Button and Display -->
-<input type="button" value="I want to hear a fun fact!" onclick="showFunFact()">
+<!-- Fun Fact Input and Button -->
+<input type="text" id="funFactInput" placeholder="Type 'fun fact' here">
+<input type="button" value="Get Fun Fact" onclick="showFunFact()">
 <div id="fun-fact" style="margin-top: 10px;"></div>
 
 <br><br>
@@ -84,8 +85,13 @@ Select a number from 1-10 for fireworks:
     ];
 
     function showFunFact() {
-        var randomIndex = Math.floor(Math.random() * funFacts.length);
-        document.getElementById('fun-fact').innerText = funFacts[randomIndex];
+        var userInput = document.getElementById('funFactInput').value.toLowerCase();
+        if (userInput === "fun fact") {
+            var randomIndex = Math.floor(Math.random() * funFacts.length);
+            document.getElementById('fun-fact').innerText = funFacts[randomIndex];
+        } else {
+            document.getElementById('fun-fact').innerText = "Please type 'fun fact' to see a fun fact!";
+        }
     }
 
     function showSeasonImage() {
