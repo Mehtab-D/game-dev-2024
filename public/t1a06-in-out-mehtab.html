@@ -195,6 +195,35 @@ Enter a date:
             document.getElementById('color-display').innerText = "Please type 'random color' to get a color!";
         }
     }
+
+    <br><br>
+<!-- Number Guessing Game -->
+Enter your guess (10, 20, 30, ..., 100): 
+<input type="number" id="guessInput" min="10" max="100" step="10">
+<input type="button" value="Check Guess" onclick="checkGuess()">
+<div id="guess-output" style="margin-top: 10px;"></div>
+
+<script>
+    var targetNumber = 70;
+
+    function checkGuess() {
+        var guess = parseInt(document.getElementById('guessInput').value);
+        
+        if (guess % 10 !== 0) {
+            document.getElementById('guess-output').innerText = "Please enter a number in increments of 10!";
+            return;
+        }
+
+        if (guess < targetNumber) {
+            document.getElementById('guess-output').innerText = "Too low! Try again.";
+        } else if (guess > targetNumber) {
+            document.getElementById('guess-output').innerText = "Too high! Try again.";
+        } else {
+            document.getElementById('guess-output').innerText = "Correct! The number is 70.";
+        }
+    }
+</script>
+
 </script>
 
 </body>
