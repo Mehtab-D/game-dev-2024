@@ -13,25 +13,25 @@
         }
         #season-image {
             display: none;
-            max-width: 300px; /* Adjust to your preferred size */
-            height: auto; /* Keep the aspect ratio */
+            max-width: 300px;
+            height: auto;
         }
         #firework-container {
             position: relative;
             width: 100%;
-            height: 300px; /* Height for fireworks display */
-            display: none; /* Initially hidden */
-            margin-top: 10px; /* Add some space above */
+            height: 300px;
+            display: none;
+            margin-top: 10px;
         }
         #fireworks {
             position: absolute;
             width: 100%;
             height: 100%;
             background-image: url('https://i.gifer.com/VZvx.gif');
-            background-size: contain; /* Ensure the entire image is shown */
+            background-size: contain;
             background-repeat: no-repeat;
             background-position: center;
-            display: none; /* Initially hidden */
+            display: none;
         }
     </style>
 </head>
@@ -71,10 +71,17 @@ Select a number from 1-10 for fireworks:
 <div id="fun-fact" style="margin-top: 10px;"></div>
 
 <br><br>
-<!-- Random Color Input and Button -->
-<input type="text" id="colorInput" placeholder="Type 'random color' here">
-<input type="button" value="Get Random Color" onclick="getRandomColor()">
+<!-- Random Color Input -->
+<input type="text" id="randomColorInput" placeholder="Type 'random color' here">
+<input type="button" value="Get Random Color" onclick="showRandomColor()">
 <div id="color-display" style="margin-top: 10px; font-size: 20px;"></div>
+
+<br><br>
+<!-- Date Input -->
+Enter a date: 
+<input type="date" id="dateInput">
+<input type="button" value="Show Selected Date" onclick="showSelectedDate()">
+<div id="selected-date" style="margin-top: 10px;"></div>
 
 <script>
     var funFacts = [
@@ -84,7 +91,7 @@ Select a number from 1-10 for fireworks:
         "Octopuses have three hearts and blue blood.",
         "The Eiffel Tower can be 15 cm taller during the summer due to the expansion of iron in the heat.",
         "The Mona Lisa has no eyebrows.",
-        "I Am is the shortest complete sentence in the English language."
+        "\"I Am\" is the shortest complete sentence in the English language."
     ];
 
     function showFunFact() {
@@ -163,27 +170,26 @@ Select a number from 1-10 for fireworks:
         fireworksOkButton.style.display = 'none';
     }
 
-    function getRandomColor() {
-        var userInput = document.getElementById('colorInput').value.toLowerCase();
-        if (userInput === "random color") {
-            var colors = [
-                "Red", "Green", "Blue", "Yellow", "Orange", "Purple", "Pink", 
-                "Brown", "Teal", "Lime", "Navy", "Olive", "Maroon", "Aqua", "Fuchsia"
-            ];
-        
-            var randomIndex = Math.floor(Math.random() * colors.length);
-            var randomColor = colors[randomIndex];
-
-            // Change the background color
-            document.body.style.backgroundColor = randomColor;
-
-            // Display the random color name
-            document.getElementById('color-display').innerText = "Random Color: " + randomColor;
-        } else {
-            document.getElementById('color-display').innerText = "Please type 'Change Color' to see a color!";
-        }
+    function showSelectedDate() {
+        var selectedDate = document.getElementById('dateInput').value;
+        document.getElementById('selected-date').innerText = "You selected: " + selectedDate;
     }
-</script>
 
-</body>
-</html>
+    function getRandomColor() {
+        var colors = [
+            "Red", "Green", "Blue", "Yellow", "Orange", "Purple", "Pink", 
+            "Brown", "Teal", "Navy", "Olive", "Maroon", "Aqua", "Fuchsia"
+        ];
+        
+        var randomIndex = Math.floor(Math.random() * colors.length);
+        var randomColor = colors[randomIndex];
+
+        // Change the background color
+        document.body.style.backgroundColor = randomColor;
+
+        // Display the random color name
+        document.getElementById('color-display').innerText = "Random Color: " + randomColor;
+    }
+
+    function showRandomColor() {
+        var userInput = document.getElementById
