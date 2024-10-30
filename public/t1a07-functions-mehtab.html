@@ -24,9 +24,13 @@
         .carousel {
             position: absolute; /* Position the carousel */
             right: 20px; /* Distance from the right side */
-            top: 20px; /* Distance from the top */
+            top: 80px; /* Adjust this value to lower the carousel */
             max-width: 300px; /* Make the carousel smaller */
             overflow: hidden;
+            padding: 10px; /* Add padding for spacing */
+            background-color: #fff; /* Optional: background for better visibility */
+            border-radius: 5px; /* Optional: rounded corners */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Optional: shadow for depth */
         }
         .carousel-images {
             display: flex;
@@ -125,9 +129,8 @@ Input: <input type="text" id="myFirstName" value="mehtab">
 <div class="carousel">
     <div class="carousel-images">
         <img src="https://oceanexplorer.noaa.gov/facts/media/explored-hires.jpg" alt="Image 1">
-        <img src="https://www.tdk.com/en/tech-mag/sites/default/files/2023-05/shutterstock_1033306540s.jpg"" alt="Image 2">
+        <img src="https://www.tdk.com/en/tech-mag/sites/default/files/2023-05/shutterstock_1033306540s.jpg" alt="Image 2">
         <img src="https://www.pacificflying.com/wp-content/uploads/Magda-Ehlers-clouds.jpg" alt="Image 3">
-        <img scr="https://assets.bucketlistly.blog/sites/5adf778b6eabcc00190b75b1/content_entry5b155bed5711a8176e9f9783/63bbc08ba21694000472bd5d/files/milan-italy-travel-photo-20230108112136096-photo-thumb.jpg" alt="Image 4">
     </div>
     <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
     <button class="next" onclick="changeSlide(1)">&#10095;</button>
@@ -135,3 +138,4 @@ Input: <input type="text" id="myFirstName" value="mehtab">
 
 </body>
 </html>
+
