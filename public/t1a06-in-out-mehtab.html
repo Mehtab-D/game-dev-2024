@@ -90,6 +90,12 @@ Enter your guess (10, 20, 30, ..., 100):
 <input type="button" value="Check Guess" onclick="checkGuess()">
 <div id="guess-output" style="margin-top: 10px;"></div>
 
+<br><br>
+<!-- Math Question Input -->
+<input type="text" id="mathQuestionInput" placeholder="Type any math question">
+<input type="button" value="Get Random Math Question" onclick="getRandomMathQuestion()">
+<div id="mathQuestionOutput" style="margin-top: 10px;"></div>
+
 <script>
     var funFacts = [
         "Did you know that honey never spoils? Archaeologists have found pots of honey in ancient Egyptian tombs that are over 3000 years old!",
@@ -187,46 +193,48 @@ Enter your guess (10, 20, 30, ..., 100):
         if (userInput === "random color") {
             var colors = [
                 "Red", "Green", "Blue", "Yellow", "Orange", "Purple", "Pink", 
-                "Brown", "Teal", "Navy", "Olive", "Maroon", "Aqua", "Fuchsia"
+                "Brown", "Teal", "Navy", "Olive", "Maroon", "Aqua", "Fuchsia", "Lime"
             ];
-            
             var randomIndex = Math.floor(Math.random() * colors.length);
-            var randomColor = colors[randomIndex];
-
-            // Change the background color
-            document.body.style.backgroundColor = randomColor;
-
-            // Display the random color name
-            document.getElementById('color-display').innerText = "Random Color: " + randomColor;
+            document.getElementById('color-display').innerText = "Random Color: " + colors[randomIndex];
         } else {
-            document.getElementById('color-display').innerText = "Please type 'random color' to get a color!";
+            document.getElementById('color-display').innerText = "Please type 'random color' to see a random color!";
         }
     }
-
-    // Number Guessing Game
-    var targetNumber = 70;
 
     function checkGuess() {
-        var guess = parseInt(document.getElementById('guessInput').value);
-        
-        if (guess % 10 !== 0) {
-            document.getElementById('guess-output').innerText = "Please enter a number in increments of 10!";
-            return;
-        }
+        var userGuess = parseInt(document.getElementById('guessInput').value);
+        var correctAnswer = 70;
 
-        if (guess < targetNumber) {
-            document.getElementById('guess-output').innerText = "Too low! Try again.";
-        } else if (guess > targetNumber) {
-            document.getElementById('guess-output').innerText = "Too high! Try again.";
-        } else {
-            document.getElementById('guess-output').innerText = "Correct! The number is 70.";
+        if (userGuess === correctAnswer) {
+            document.getElementById('guess-output').innerText = "Congratulations! You guessed correctly.";
+        } else if (userGuess > correctAnswer) {
+            document.getElementById('guess-output').innerText = "Your guess is too high. Try again!";
+        } else if (userGuess < correctAnswer) {
+            document.getElementById('guess-output').innerText = "Your guess is too low. Try again!";
         }
     }
 
+    function getRandomMathQuestion() {
+        var userInput = document.getElementById('mathQuestionInput').value.toLowerCase();
+        var randomQuestions = [
+            "2+2",
+            "5-25+15",
+            "3+56=78",
+            "23+34-43",
+            "1+1"
+        ];
 
-    
+        if (userInput) {
+            document.getElementById('mathQuestionOutput').innerText = userInput;
+        } else {
+            var randomIndex = Math.floor(Math.random() * randomQuestions.length);
+            document.getElementById('mathQuestionOutput').innerText = randomQuestions[randomIndex];
+        }
+    }
 </script>
 
 </body>
 </html>
+
 
