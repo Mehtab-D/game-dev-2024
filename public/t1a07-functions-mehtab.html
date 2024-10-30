@@ -22,8 +22,8 @@
             color: #333;
         }
         .carousel {
-            position: relative; /* Changed to relative for better flow */
-            margin: 20px auto; /* Center the carousel */
+            position: relative;
+            margin: 20px auto;
             max-width: 300px;
             overflow: hidden;
             padding: 10px;
@@ -56,7 +56,7 @@
         .next {
             right: 10px;
         }
-        .input-section, .quote-section, .color-section {
+        .input-section, .quote-section, .color-section, .emoji-section {
             text-align: center;
             margin-bottom: 20px;
         }
@@ -93,6 +93,12 @@
     <div id="quote-display">...</div>
 </div>
 
+<!-- Emoji Generator Section -->
+<div class="emoji-section">
+    <input type="button" value="Generate Random Emojis" onclick="generateRandomEmojis()">
+    <div id="emoji-display">🖤</div> <!-- Display area for emojis -->
+</div>
+
 <!-- Carousel Section -->
 <div class="carousel">
     <div class="carousel-images">
@@ -111,8 +117,8 @@ function myVar(myIn) {
 
 // Function to change the background color
 function changeBackgroundColor() {
-    var selectedColor = myVar('colorSelect').value; // Get selected color
-    document.body.style.backgroundColor = selectedColor; // Change background color
+    var selectedColor = myVar('colorSelect').value;
+    document.body.style.backgroundColor = selectedColor;
 }
 
 // Array of motivational quotes
@@ -128,7 +134,20 @@ const quotes = [
 function showRandomQuote() {
     const randomIndex = Math.floor(Math.random() * quotes.length);
     const quote = quotes[randomIndex];
-    document.getElementById('quote-display').innerText = quote; // Display the quote
+    document.getElementById('quote-display').innerText = quote;
+}
+
+// Emoji array
+const emojis = ["😀", "😂", "🥰", "🤔", "😎", "🥳", "🤖", "🌟", "🍀", "🎉", "🚀", "💖", "🌈", "🦄", "🍕", "🎈"];
+
+// Function to generate random emojis
+function generateRandomEmojis() {
+    let randomEmojis = [];
+    for (let i = 0; i < 7; i++) {
+        const randomIndex = Math.floor(Math.random() * emojis.length);
+        randomEmojis.push(emojis[randomIndex]);
+    }
+    document.getElementById('emoji-display').innerText = randomEmojis.join(' ');
 }
 
 let currentIndex = 0;
@@ -143,4 +162,3 @@ function changeSlide(direction) {
 
 </body>
 </html>
-
