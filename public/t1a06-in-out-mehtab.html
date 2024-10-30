@@ -39,44 +39,49 @@
 
 <h1>t1a06-in-out-mehtab</h1>
 
+<!-- Simple input for displaying name -->
 Input: <input type="text" id="myFirstName" value="Name">
 <input type="button" value="Show on page" onclick="document.getElementById('myDiv01').innerHTML = 'Your name is ' + document.getElementById('myFirstName').value;">
-
 <div id="myDiv01">...</div>
 
 <br><br>
+
+<!-- Season input -->
 Enter a season (spring, summer, fall, winter): 
 <input type="text" id="seasonInput">
 <input type="button" value="Favorite Season" onclick="showSeasonImage()">
-
 <div id="season-div">
     <img id="season-image" src="" alt="Season Image">
     <input type="button" id="ok-button" value="OK" onclick="hideImage()" style="display: none;">
 </div>
 
 <br><br>
+
+<!-- Fireworks input -->
 Select a number from 1-10 for fireworks:
 <input type="number" id="numberInput" min="1" max="10">
 <input type="button" value="Show Fireworks" onclick="showFireworks()">
-
 <div id="firework-container">
     <div id="fireworks"></div>
     <input type="button" value="OK" onclick="hideFireworks()" id="fireworks-ok-button" style="display: none;">
 </div>
 
 <br><br>
+
 <!-- Fun Fact Input and Button -->
 <input type="text" id="funFactInput" placeholder="Type 'fun fact' here">
 <input type="button" value="Get Fun Fact" onclick="showFunFact()">
 <div id="fun-fact" style="margin-top: 10px;"></div>
 
 <br><br>
+
 <!-- Random Color Input -->
 <input type="text" id="randomColorInput" placeholder="Type 'random color' here">
 <input type="button" value="Get Random Color" onclick="showRandomColor()">
 <div id="color-display" style="margin-top: 10px; font-size: 20px;"></div>
 
 <br><br>
+
 <!-- Date Input -->
 Enter a date: 
 <input type="date" id="dateInput">
@@ -84,6 +89,7 @@ Enter a date:
 <div id="selected-date" style="margin-top: 10px;"></div>
 
 <br><br>
+
 <!-- Number Guessing Game -->
 Enter your guess (10, 20, 30, ..., 100): 
 <input type="number" id="guessInput" min="10" max="100" step="10">
@@ -91,6 +97,7 @@ Enter your guess (10, 20, 30, ..., 100):
 <div id="guess-output" style="margin-top: 10px;"></div>
 
 <br><br>
+
 <!-- Math Question Input -->
 <input type="text" id="mathQuestionInput" placeholder="Type any math question">
 <input type="button" value="Get Random Math Question" onclick="getRandomMathQuestion()">
@@ -124,63 +131,42 @@ Enter your guess (10, 20, 30, ..., 100):
 
         if (season === 'spring') {
             seasonImage.src = 'https://cdn.britannica.com/05/155405-050-F8969EE6/Spring-flowers-fruit-trees-bloom.jpg';
-            seasonImage.alt = 'Spring Image';
-            seasonImage.style.display = 'block';
-            okButton.style.display = 'inline';
         } else if (season === 'summer') {
             seasonImage.src = 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/20190212_SKJ0426-HDR-2.jpg/1200px-20190212_SKJ0426-HDR-2.jpg';
-            seasonImage.alt = 'Summer Image';
-            seasonImage.style.display = 'block';
-            okButton.style.display = 'inline';
         } else if (season === 'fall') {
             seasonImage.src = 'https://thecontentpanel.com/wp-content/uploads/2021/11/Our-Ultimate-List-101-Fall-Blog-Post-Ideas-feat.jpg';
-            seasonImage.alt = 'Fall Image';
-            seasonImage.style.display = 'block';
-            okButton.style.display = 'inline';
         } else if (season === 'winter') {
             seasonImage.src = 'https://upload.wikimedia.org/wikipedia/commons/b/b0/Winter_forest_silver.jpg';
-            seasonImage.alt = 'Winter Image';
-            seasonImage.style.display = 'block';
-            okButton.style.display = 'inline';
         } else {
             alert('Please enter a valid season: spring, summer, fall, or winter.');
             seasonImage.style.display = 'none';
             okButton.style.display = 'none';
+            return;
         }
+        seasonImage.style.display = 'block';
+        okButton.style.display = 'inline';
     }
 
     function hideImage() {
-        var seasonImage = document.getElementById('season-image');
-        var okButton = document.getElementById('ok-button');
-        seasonImage.style.display = 'none';
-        okButton.style.display = 'none';
+        document.getElementById('season-image').style.display = 'none';
+        document.getElementById('ok-button').style.display = 'none';
     }
 
     function showFireworks() {
         var number = document.getElementById('numberInput').value;
-        var fireworkContainer = document.getElementById('firework-container');
-        var fireworksDiv = document.getElementById('fireworks');
-        var fireworksOkButton = document.getElementById('fireworks-ok-button');
-
         if (number >= 1 && number <= 10) {
-            fireworkContainer.style.display = 'block';
-            fireworksDiv.style.display = 'block';
-            fireworksOkButton.style.display = 'inline';
+            document.getElementById('firework-container').style.display = 'block';
+            document.getElementById('fireworks').style.display = 'block';
+            document.getElementById('fireworks-ok-button').style.display = 'inline';
         } else {
             alert('Please select a number between 1 and 10.');
-            fireworksDiv.style.display = 'none';
-            fireworksOkButton.style.display = 'none';
         }
     }
 
     function hideFireworks() {
-        var fireworkContainer = document.getElementById('firework-container');
-        var fireworksDiv = document.getElementById('fireworks');
-        var fireworksOkButton = document.getElementById('fireworks-ok-button');
-
-        fireworkContainer.style.display = 'none';
-        fireworksDiv.style.display = 'none';
-        fireworksOkButton.style.display = 'none';
+        document.getElementById('firework-container').style.display = 'none';
+        document.getElementById('fireworks').style.display = 'none';
+        document.getElementById('fireworks-ok-button').style.display = 'none';
     }
 
     function showSelectedDate() {
@@ -191,50 +177,50 @@ Enter your guess (10, 20, 30, ..., 100):
     function showRandomColor() {
         var userInput = document.getElementById('randomColorInput').value.toLowerCase();
         if (userInput === "random color") {
-            var colors = [
-                "Red", "Green", "Blue", "Yellow", "Orange", "Purple", "Pink", 
-                "Brown", "Teal", "Navy", "Olive", "Maroon", "Aqua", "Fuchsia", "Lime"
-            ];
+            var colors = ["Red", "Green", "Blue", "Yellow", "Orange", "Purple", "Pink", "Brown", "Teal", "Navy", "Olive", "Maroon", "Aqua", "Fuchsia", "Lime"];
             var randomIndex = Math.floor(Math.random() * colors.length);
             document.getElementById('color-display').innerText = "Random Color: " + colors[randomIndex];
         } else {
-            document.getElementById('color-display').innerText = "Please type 'random color' to see a random color!";
+            document.getElementById('color-display').innerText = "Please type 'random color' to get a color.";
         }
     }
 
     function checkGuess() {
-        var userGuess = parseInt(document.getElementById('guessInput').value);
-        var correctAnswer = 70;
-
-        if (userGuess === correctAnswer) {
-            document.getElementById('guess-output').innerText = "Congratulations! You guessed correctly.";
-        } else if (userGuess > correctAnswer) {
-            document.getElementById('guess-output').innerText = "Your guess is too high. Try again!";
-        } else if (userGuess < correctAnswer) {
-            document.getElementById('guess-output').innerText = "Your guess is too low. Try again!";
+        var guess = parseInt(document.getElementById('guessInput').value);
+        if (guess === 50) {
+            document.getElementById('guess-output').innerText = "You guessed it right!";
+        } else {
+            document.getElementById('guess-output').innerText = "Try again!";
         }
     }
 
-    function getRandomMathQuestion() {
-        var userInput = document.getElementById('mathQuestionInput').value.toLowerCase();
-        var randomQuestions = [
-            "2+2",
-            "5-25+15",
-            "3+56",
-            "23+34-43",
-            "1+1"
-        ];
+  <!-- Math Question Input -->
+<input type="text" id="mathQuestionInput" placeholder="Type any math question">
+<input type="button" value="Get Random Math Question" onclick="getRandomMathQuestion()">
+<div id="mathQuestionOutput" style="margin-top: 10px;"></div>
 
-        if (userInput) {
-            document.getElementById('mathQuestionOutput').innerText = userInput;
+<script>
+    function getRandomMathQuestion() {
+        var userInput = document.getElementById('mathQuestionInput').value.trim();
+
+        if (userInput.length > 0) {
+            var mathQuestions = [
+                "What is 12 + 15?",
+                "What is 8 x 7?",
+                "What is the square root of 144?",
+                "What is 9 - 5?",
+                "What is 50 / 2?"
+            ];
+            var randomIndex = Math.floor(Math.random() * mathQuestions.length);
+            document.getElementById('mathQuestionOutput').innerText = mathQuestions[randomIndex];
         } else {
-            var randomIndex = Math.floor(Math.random() * randomQuestions.length);
-            document.getElementById('mathQuestionOutput').innerText = randomQuestions[randomIndex];
+            document.getElementById('mathQuestionOutput').innerText = "Please enter a math question!";
         }
     }
 </script>
 
+</script>
+
 </body>
 </html>
-
 
