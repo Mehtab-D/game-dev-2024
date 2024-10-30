@@ -6,11 +6,11 @@
     <title>t1a07-functions-mehtab</title>
     <style>
         body {
-            border: 7px dotted #000000; /* Change color and width as needed */
-            margin: 20px; /* Optional: space between border and content */
-            padding: 20px; /* Optional: space inside the border */
+            border: 7px dotted #000000;
+            margin: 20px;
+            padding: 20px;
             background-color: #d5f2dd;
-            transition: background-color 0.5s; /* Smooth transition for color change */
+            transition: background-color 0.5s;
         }
         h1 {
             text-align: center;
@@ -22,24 +22,23 @@
             color: #333;
         }
         .carousel {
-            position: absolute; /* Position the carousel */
-            right: 20px; /* Distance from the right side */
-            top: 80px; /* Adjust this value to lower the carousel */
-            max-width: 300px; /* Make the carousel smaller */
+            position: relative; /* Changed to relative for better flow */
+            margin: 20px auto; /* Center the carousel */
+            max-width: 300px;
             overflow: hidden;
-            padding: 10px; /* Add padding for spacing */
-            background-color: #fff; /* Optional: background for better visibility */
-            border-radius: 5px; /* Optional: rounded corners */
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Optional: shadow for depth */
+            padding: 10px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
         .carousel-images {
             display: flex;
             transition: transform 0.5s ease;
         }
         .carousel-images img {
-            max-width: 100%; /* Responsive */
-            height: auto; /* Maintain aspect ratio */
-            width: 100%; /* Set width to 100% of the carousel */
+            max-width: 100%;
+            height: auto;
+            width: 100%;
         }
         button {
             position: absolute;
@@ -57,11 +56,53 @@
         .next {
             right: 10px;
         }
+        .input-section, .quote-section, .color-section {
+            text-align: center;
+            margin-bottom: 20px;
+        }
     </style>
 </head>
 <body>
 
-<h1 align="center">t1a07-functions-mehtab</h1>
+<h1>t1a07-functions-mehtab</h1>
+
+<!-- Input Section -->
+<div class="input-section">
+    <input type="text" id="myFirstName" value="mehtab" placeholder="Enter your name">
+    <input type="button" value="Show on page" onclick="myVar('myDiv01').innerHTML= 'Your name is ' + myVar('myFirstName').value">
+    <div id="myDiv01">...</div>
+</div>
+
+<!-- Color Selection -->
+<div class="color-section">
+    <select id="colorSelect" onchange="changeBackgroundColor()">
+        <option value="">Select a color</option>
+        <option value="red">Red</option>
+        <option value="green">Green</option>
+        <option value="blue">Blue</option>
+        <option value="yellow">Yellow</option>
+        <option value="purple">Purple</option>
+        <option value="orange">Orange</option>
+        <option value="pink">Pink</option>
+    </select>
+</div>
+
+<!-- Button for Random Quote -->
+<div class="quote-section">
+    <input type="button" value="Get Motivational Quote" onclick="showRandomQuote()">
+    <div id="quote-display">...</div>
+</div>
+
+<!-- Carousel Section -->
+<div class="carousel">
+    <div class="carousel-images">
+        <img src="https://oceanexplorer.noaa.gov/facts/media/explored-hires.jpg" alt="Image 1">
+        <img src="https://www.tdk.com/en/tech-mag/sites/default/files/2023-05/shutterstock_1033306540s.jpg" alt="Image 2">
+        <img src="https://www.pacificflying.com/wp-content/uploads/Magda-Ehlers-clouds.jpg" alt="Image 3">
+    </div>
+    <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
+    <button class="next" onclick="changeSlide(1)">&#10095;</button>
+</div>
 
 <script>
 function myVar(myIn) {
@@ -100,41 +141,6 @@ function changeSlide(direction) {
 }
 </script>
 
-Input: <input type="text" id="myFirstName" value="mehtab">
-<input type="button" value="Show on page" onclick="myVar('myDiv01').innerHTML= 'Your name is ' + myVar('myFirstName').value">
-<div id="myDiv01">...</div>
-
-<br><br>
-
-<!-- Color Selection -->
-<select id="colorSelect" onchange="changeBackgroundColor()">
-    <option value="">Select a color</option>
-    <option value="red">Red</option>
-    <option value="green">Green</option>
-    <option value="blue">Blue</option>
-    <option value="yellow">Yellow</option>
-    <option value="purple">Purple</option>
-    <option value="orange">Orange</option>
-    <option value="pink">Pink</option>
-</select>
-
-<br><br>
-
-<!-- Button for Random Quote -->
-<input type="button" value="Get Motivational Quote" onclick="showRandomQuote()">
-
-<div id="quote-display">...</div> <!-- Display area for the quote -->
-
-<!-- Carousel Section -->
-<div class="carousel">
-    <div class="carousel-images">
-        <img src="https://oceanexplorer.noaa.gov/facts/media/explored-hires.jpg" alt="Image 1">
-        <img src="https://www.tdk.com/en/tech-mag/sites/default/files/2023-05/shutterstock_1033306540s.jpg" alt="Image 2">
-        <img src="https://www.pacificflying.com/wp-content/uploads/Magda-Ehlers-clouds.jpg" alt="Image 3">
-    </div>
-    <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
-    <button class="next" onclick="changeSlide(1)">&#10095;</button>
-</div>
-
 </body>
 </html>
+
