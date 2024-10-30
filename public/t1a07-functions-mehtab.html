@@ -22,9 +22,10 @@
             color: #333;
         }
         .carousel {
-            position: relative;
-            max-width: 600px;
-            margin: 20px auto; /* Center the carousel */
+            position: absolute; /* Position the carousel */
+            right: 20px; /* Distance from the right side */
+            top: 20px; /* Distance from the top */
+            max-width: 300px; /* Make the carousel smaller */
             overflow: hidden;
         }
         .carousel-images {
@@ -32,9 +33,9 @@
             transition: transform 0.5s ease;
         }
         .carousel-images img {
-            max-width: 100%;
-            display: block;
-            width: 100%;
+            max-width: 100%; /* Responsive */
+            height: auto; /* Maintain aspect ratio */
+            width: 100%; /* Set width to 100% of the carousel */
         }
         button {
             position: absolute;
@@ -123,9 +124,10 @@ Input: <input type="text" id="myFirstName" value="mehtab">
 <!-- Carousel Section -->
 <div class="carousel">
     <div class="carousel-images">
-        <img src="https://st3.depositphotos.com/2110927/14031/i/450/depositphotos_140315540-stock-photo-alexandre-iii-bridge-in-paris.jpg" alt="Image 1">
-        <img src="https://www.tdk.com/en/tech-mag/sites/default/files/2023-05/shutterstock_1033306540s.jpg" alt="Image 2">
+        <img src="https://oceanexplorer.noaa.gov/facts/media/explored-hires.jpg" alt="Image 1">
+        <img src="https://www.tdk.com/en/tech-mag/sites/default/files/2023-05/shutterstock_1033306540s.jpg"" alt="Image 2">
         <img src="https://www.pacificflying.com/wp-content/uploads/Magda-Ehlers-clouds.jpg" alt="Image 3">
+        <img scr="https://assets.bucketlistly.blog/sites/5adf778b6eabcc00190b75b1/content_entry5b155bed5711a8176e9f9783/63bbc08ba21694000472bd5d/files/milan-italy-travel-photo-20230108112136096-photo-thumb.jpg" alt="Image 4">
     </div>
     <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
     <button class="next" onclick="changeSlide(1)">&#10095;</button>
