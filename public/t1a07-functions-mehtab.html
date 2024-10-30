@@ -1,11 +1,56 @@
-<h1 align=center>t1a07-functions-mehtab.html</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>t1a07-functions-mehtab</title>
+    <style>
+        body {
+            border: 2px dotted #000000; /* Change color and width as needed */
+            margin: 20px; /* Optional: space between border and content */
+            padding: 20px; /* Optional: space inside the border */
+            background-color; #d5f2dd
+            transition: background-color 0.5s; /* Smooth transition for color change */
+        }
+        h1 {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<h1 align="center">t1a07-functions-mehtab</h1>
+
 <script>
-function myVar (myIn){
-  return document.getElementById(myIn)
+function myVar(myIn) {
+    return document.getElementById(myIn);
 }
-  </script>
-Input:<input type= text id="myFirstName" value="mehtab"
-<input type= button value="Show on page" onclick="{
-myVar('myDiv01').innerHTML= 'Your name is' + myVar('myFirstName').value
-}">
+
+// Function to change the background color
+function changeBackgroundColor() {
+    var selectedColor = myVar('colorSelect').value; // Get selected color
+    document.body.style.backgroundColor = selectedColor; // Change background color
+}
+</script>
+
+Input: <input type="text" id="myFirstName" value="mehtab">
+<input type="button" value="Show on page" onclick="myVar('myDiv01').innerHTML= 'Your name is ' + myVar('myFirstName').value">
 <div id="myDiv01">...</div>
+
+<br><br>
+
+<!-- Color Selection -->
+
+<select id="colorSelect" onchange="changeBackgroundColor()">
+    <option value="">Select a color</option>
+    <option value="red">Red</option>
+    <option value="green">Green</option>
+    <option value="blue">Blue</option>
+    <option value="yellow">Yellow</option>
+    <option value="purple">Purple</option>
+    <option value="orange">Orange</option>
+    <option value="pink">Pink</option>
+</select>
+
+</body>
+</html>
