@@ -222,6 +222,33 @@ Enter your guess (10, 20, 30, ..., 100):
             document.getElementById('guess-output').innerText = "Correct! The number is 70.";
         }
     }
+    <!-- Math Question Input and Button -->
+<input type="text" id="mathQuestionInput" placeholder="Type 'math question' here">
+<input type="button" value="Get Math Question" onclick="showMathQuestion()">
+<div id="math-question" style="margin-top: 10px;"></div>
+
+<script>
+    function getRandomNumber(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    function showMathQuestion() {
+        var userInput = document.getElementById('mathQuestionInput').value.toLowerCase();
+        if (userInput === "math question") {
+            var num1 = getRandomNumber(1, 100);
+            var num2 = getRandomNumber(1, 100);
+            var operations = ["+", "-"];
+            var operation = operations[Math.floor(Math.random() * operations.length)];
+
+            var question = num1 + " " + operation + " " + num2 + " = ?";
+            document.getElementById('math-question').innerText = question;
+        } else {
+            document.getElementById('math-question').innerText = "Please type 'math question' to get a math problem!";
+        }
+    }
+</script>
+
+    
 </script>
 
 </body>
