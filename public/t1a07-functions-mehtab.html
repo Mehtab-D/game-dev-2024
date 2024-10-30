@@ -15,6 +15,12 @@
         h1 {
             text-align: center;
         }
+        #quote-display {
+            margin-top: 20px;
+            font-size: 20px;
+            text-align: center;
+            color: #333;
+        }
     </style>
 </head>
 <body>
@@ -31,6 +37,22 @@ function changeBackgroundColor() {
     var selectedColor = myVar('colorSelect').value; // Get selected color
     document.body.style.backgroundColor = selectedColor; // Change background color
 }
+
+// Array of motivational quotes
+const quotes = [
+    "Believe you can and you're halfway there.",
+    "The only way to do great work is to love what you do.",
+    "You are never too old to set another goal or to dream a new dream.",
+    "Success is not how high you have climbed, but how you make a positive difference to the world.",
+    "What lies behind us and what lies before us are tiny matters compared to what lies within us."
+];
+
+// Function to display a random quote
+function showRandomQuote() {
+    const randomIndex = Math.floor(Math.random() * quotes.length);
+    const quote = quotes[randomIndex];
+    document.getElementById('quote-display').innerText = quote; // Display the quote
+}
 </script>
 
 Input: <input type="text" id="myFirstName" value="mehtab">
@@ -40,7 +62,6 @@ Input: <input type="text" id="myFirstName" value="mehtab">
 <br><br>
 
 <!-- Color Selection -->
-
 <select id="colorSelect" onchange="changeBackgroundColor()">
     <option value="">Select a color</option>
     <option value="red">Red</option>
@@ -51,6 +72,13 @@ Input: <input type="text" id="myFirstName" value="mehtab">
     <option value="orange">Orange</option>
     <option value="pink">Pink</option>
 </select>
+
+<br><br>
+
+<!-- Button for Random Quote -->
+<input type="button" value="Get Motivational Quote" onclick="showRandomQuote()">
+
+<div id="quote-display">...</div> <!-- Display area for the quote -->
 
 </body>
 </html>
