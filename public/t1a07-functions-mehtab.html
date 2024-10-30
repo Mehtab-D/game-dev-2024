@@ -21,6 +21,37 @@
             text-align: center;
             color: #333;
         }
+        .carousel {
+            position: relative;
+            max-width: 600px;
+            margin: 20px auto; /* Center the carousel */
+            overflow: hidden;
+        }
+        .carousel-images {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+        .carousel-images img {
+            max-width: 100%;
+            display: block;
+            width: 100%;
+        }
+        button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(255, 255, 255, 0.7);
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            font-size: 18px;
+        }
+        .prev {
+            left: 10px;
+        }
+        .next {
+            right: 10px;
+        }
     </style>
 </head>
 <body>
@@ -53,6 +84,15 @@ function showRandomQuote() {
     const quote = quotes[randomIndex];
     document.getElementById('quote-display').innerText = quote; // Display the quote
 }
+
+let currentIndex = 0;
+
+function changeSlide(direction) {
+    const images = document.querySelectorAll('.carousel-images img');
+    currentIndex = (currentIndex + direction + images.length) % images.length;
+    const offset = -currentIndex * 100;
+    document.querySelector('.carousel-images').style.transform = `translateX(${offset}%)`;
+}
 </script>
 
 Input: <input type="text" id="myFirstName" value="mehtab">
@@ -79,6 +119,17 @@ Input: <input type="text" id="myFirstName" value="mehtab">
 <input type="button" value="Get Motivational Quote" onclick="showRandomQuote()">
 
 <div id="quote-display">...</div> <!-- Display area for the quote -->
+
+<!-- Carousel Section -->
+<div class="carousel">
+    <div class="carousel-images">
+        <img src="https://st3.depositphotos.com/2110927/14031/i/450/depositphotos_140315540-stock-photo-alexandre-iii-bridge-in-paris.jpg" alt="Image 1">
+        <img src="https://www.tdk.com/en/tech-mag/sites/default/files/2023-05/shutterstock_1033306540s.jpg" alt="Image 2">
+        <img src="https://www.pacificflying.com/wp-content/uploads/Magda-Ehlers-clouds.jpg" alt="Image 3">
+    </div>
+    <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
+    <button class="next" onclick="changeSlide(1)">&#10095;</button>
+</div>
 
 </body>
 </html>
