@@ -103,6 +103,13 @@ Enter your guess (10, 20, 30, ..., 100):
 <input type="button" value="Get Random Math Question" onclick="getRandomMathQuestion()">
 <div id="mathQuestionOutput" style="margin-top: 10px;"></div>
 
+<br><br>
+
+<!-- Change Background Color -->
+Enter a color to change the background: 
+<input type="text" id="bgColorInput" placeholder="Type a color (e.g., red)">
+<input type="button" value="Change Background Color" onclick="changeBackgroundColor()">
+
 <script>
     var funFacts = [
         "Did you know that honey never spoils? Archaeologists have found pots of honey in ancient Egyptian tombs that are over 3000 years old!",
@@ -185,18 +192,36 @@ Enter your guess (10, 20, 30, ..., 100):
         }
     }
 
+    // Guessing game with feedback
+    var correctNumber = Math.floor(Math.random() * 10) * 10 + 10; // Random number between 10 and 100
+
     function checkGuess() {
         var guess = parseInt(document.getElementById('guessInput').value);
-        if (guess === 50) {
-            document.getElementById('guess-output').innerText = "You guessed it right!";
+        var output = document.getElementById('guess-output');
+
+        if (isNaN(guess)) {
+            output.innerText = "Please enter a valid number.";
+            return;
+        }
+
+        if (guess === correctNumber) {
+            output.innerText = "Congratulations! You guessed the right number!";
+        } else if (guess < correctNumber) {
+            output.innerText = "Too low! Try again.";
         } else {
-            document.getElementById('guess-output').innerText = "Try again!";
+            output.innerText = "Too high! Try again.";
         }
     }
 
+    // Change background color function
+    function changeBackgroundColor() {
+        var color = document.getElementById('bgColorInput').value;
+        document.body.style.backgroundColor = color;
+    }
+
+    // Random math question function
     function getRandomMathQuestion() {
         var userInput = document.getElementById('mathQuestionInput').value.trim();
-
         if (userInput.length > 0) {
             var mathQuestions = [
                 "What is 12 + 15?",
