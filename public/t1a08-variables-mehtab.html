@@ -1,7 +1,21 @@
-<h1 align=center>t1a08-variables-mehtab<h1>
+<h1 align="center">t1a08-variables-mehtab</h1>
 <body style="background-color: #0c0e36;">
-
-</body>
- <style>
-        * { color: #f5e4f4; } 
+    <style>
+        * { color: #f5e4f4; }
     </style>
+
+    <div class="temp-converter">
+        <h2>Temperature Converter</h2>
+        <input type="number" id="celsius" placeholder="Celsius">
+        <input type="button" value="Convert to Fahrenheit" onclick="convertToFahrenheit()">
+        <div id="fahrenheitDisplay"></div>
+    </div>
+
+    <script>
+    function convertToFahrenheit() {
+        const celsius = document.getElementById('celsius').value;
+        const fahrenheit = (celsius * 9/5) + 32;
+        document.getElementById('fahrenheitDisplay').innerText = `${celsius}°C is ${fahrenheit.toFixed(2)}°F`;
+    }
+    </script>
+</body>
