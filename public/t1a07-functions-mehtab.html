@@ -11,10 +11,6 @@
             padding: 20px;
             background-color: #d5f2dd;
             transition: background-color 0.5s;
-              button:hover {
-        background-color: #e0d5eb; /* changes button color*/
-        transform: scale(1.05);  /*this changes the button size*/
-    }
         }
         h1 {
             text-align: center;
@@ -53,6 +49,11 @@
             cursor: pointer;
             padding: 10px;
             font-size: 18px;
+            transition: background-color 0.3s, transform 0.3s; /* Added transition for hover */
+        }
+        button:hover {
+            background-color: #e0d5eb; /* changes button color */
+            transform: scale(1.05); /* this changes the button size */
         }
         .prev {
             left: 10px;
@@ -255,3 +256,4 @@ function reverseText() {
 
 </body>
 </html>
+
