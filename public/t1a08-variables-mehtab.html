@@ -2,7 +2,6 @@
 <body style="background-color: #f5e4f4;">
     <style>
         * { color: #0c0e36; }
-       
     </style>
 
     <div class="temp-converter">
@@ -10,13 +9,20 @@
         <input type="number" id="celsius" placeholder="Celsius">
         <input type="button" value="Convert to Fahrenheit" onclick="convertToFahrenheit()">
         <div id="fahrenheitDisplay"></div>
+        <div id="clickCountDisplay">Button clicked: 0 times</div> <!-- Display for click count -->
     </div>
 
     <script>
-    function convertToFahrenheit() {
-        const celsius = document.getElementById('celsius').value;
-        const fahrenheit = (celsius * 9/5) + 32;
-        document.getElementById('fahrenheitDisplay').innerText = `${celsius}°C is ${fahrenheit.toFixed(2)}°F`;
-    }
+        let clickCount = 0; // Variable to count clicks
+
+        function convertToFahrenheit() {
+            const celsius = document.getElementById('celsius').value;
+            const fahrenheit = (celsius * 9 / 5) + 32;
+            document.getElementById('fahrenheitDisplay').innerText = `${celsius}°C is ${fahrenheit.toFixed(2)}°F`;
+
+            clickCount++; // Increment click count
+            document.getElementById('clickCountDisplay').innerText = `Button clicked: ${clickCount} times`; // Update display
+        }
     </script>
 </body>
+
