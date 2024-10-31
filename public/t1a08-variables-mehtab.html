@@ -10,8 +10,8 @@
         <input type="button" value="Convert to Fahrenheit" onclick="convertToFahrenheit()">
         <div id="fahrenheitDisplay"></div>
 
-        <input type="button" value="Click Me" onclick="countButtonClick()">
-        <div id="ButtonClickCountDisplay">Clicked: 0 times</div> <!-- Display for button click count -->
+        <input type="button" value="Click Me" onclick="countNewButtonClick()">
+        <div id="newButtonClickCountDisplay">Clicked: 0 times</div> <!-- Display for button click count -->
     </div>
 
     <script>
@@ -25,7 +25,8 @@
 
         function countNewButtonClick() {
             newButtonClickCount++; // Increment click count for new button
-            document.getElementById('newButtonClickCountDisplay').innerText = `New Button clicked: ${newButtonClickCount} times`; // Update display
+            document.getElementById('newButtonClickCountDisplay').innerText = `Clicked: ${newButtonClickCount} times`; // Update display
         }
     </script>
 </body>
+
