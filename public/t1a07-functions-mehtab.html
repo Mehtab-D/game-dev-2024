@@ -1,4 +1,4 @@
-<!DOCTYPE html>   (How about adding a "Photo Gallery" feature? This would allow users to view a collection of images, and they can click on any image to enlarge it. Here’s how you can implement this:)
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -60,6 +60,34 @@
             text-align: center;
             margin-bottom: 20px;
         }
+        .gallery {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .gallery img {
+            width: 150px; /* Thumbnail size */
+            cursor: pointer;
+            border: 2px solid #ccc;
+            border-radius: 4px;
+        }
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+        }
+        .lightbox img {
+            max-width: 90%;
+            max-height: 90%;
+            border: 5px solid white;
+        }
     </style>
 </head>
 <body>
@@ -110,6 +138,17 @@
     <button class="next" onclick="changeSlide(1)">&#10095;</button>
 </div>
 
+<!-- Photo Gallery Section -->
+<div class="gallery">
+    <img src="https://www.shutterstock.com/image-photo/bright-spring-view-cameo-island-600nw-1048185397.jpg" alt="Image 1" onclick="openLightbox('https://www.shutterstock.com/image-photo/bright-spring-view-cameo-island-600nw-1048185397.jpg')">
+    <img src="https://cdn.pixabay.com/photo/2021/08/25/20/42/field-6574455_640.jpg" alt="Image 2" onclick="openLightbox('https://cdn.pixabay.com/photo/2021/08/25/20/42/field-6574455_640.jpg')">
+</div>
+
+<!-- Lightbox for Enlarged Images -->
+<div id="lightbox" class="lightbox" onclick="closeLightbox()">
+    <img id="lightbox-img" src="" alt="Enlarged Image">
+</div>
+
 <script>
 function myVar(myIn) {
     return document.getElementById(myIn);
@@ -158,7 +197,21 @@ function changeSlide(direction) {
     const offset = -currentIndex * 100;
     document.querySelector('.carousel-images').style.transform = `translateX(${offset}%)`;
 }
+
+// Functions for Lightbox
+function openLightbox(imageSrc) {
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    lightboxImg.src = imageSrc;
+    lightbox.style.display = 'flex'; // Show the lightbox
+}
+
+function closeLightbox() {
+    const lightbox = document.getElementById('lightbox');
+    lightbox.style.display = 'none'; // Hide the lightbox
+}
 </script>
 
 </body>
 </html>
+
