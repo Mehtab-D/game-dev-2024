@@ -6,7 +6,7 @@
   <title>Moving Background</title>
   <style>
     body {
-     
+      /* Any body styling */
     }
 
     input[type="button"] {
@@ -31,7 +31,6 @@
   <script>
     let myGlobalX = 0;
     let myClock01; // Timer for background movement
-    let myClock02; // Timer for image movement
     let mySpeed01 = 400; // Initial speed for background
     let speedDisplay = document.createElement('div');
 
@@ -72,10 +71,9 @@
       image.style.left = (parseInt(image.style.left) + 10) + 'px';
     }
 
-    // Start automatic image movement
-    function startImageMovement() {
-      clearInterval(myClock02); // Clear any existing interval
-      myClock02 = setInterval(moveImageRight, 30); // Move right every 30 milliseconds
+    // Button function to move image right on click
+    function moveImage() {
+      moveImageRight();
     }
   </script>
 
@@ -85,11 +83,10 @@
   <input type="button" value="Auto Background Left Faster" onclick="fasterBackground()">
   <input type="button" value="Auto Background Left Slower" onclick="slowerBackground()">
   
-  <input type="button" id="myButton02" value="Start Auto Move Right" onclick="startImageMovement()"><br><br>
+  <input type="button" id="myButton02" value="Move Image Right" onclick="moveImage()"><br><br>
 
   <img id="Image01" style="position:relative; width:100px; height:80px; top:0px; left:0px;" src="https://i.etsystatic.com/17358183/r/il/18a584/3757074450/il_570xN.3757074450_o5mt.jpg" alt="Example Image">
 </body>
-
-
+</html>
 
   
