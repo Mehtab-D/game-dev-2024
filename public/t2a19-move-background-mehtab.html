@@ -1,26 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Moving Background</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif; /* Set a default font for the page */
+    }
+
+    input[type="button"] {
+      background-color: #5d9fcf; /* Button background color */
+      color: white; /* Button text color */
+      border: none; /* No border */
+      padding: 10px 20px; /* Top/bottom and left/right padding */
+      border-radius: 5px; /* Rounded corners */
+      cursor: pointer; /* Pointer cursor on hover */
+      font-size: 16px; /* Font size */
+      margin: 5px; /* Margin between buttons */
+      transition: background-color 0.3s, transform 0.2s; /* Smooth transition */
+    }
+
+    input[type="button"]:hover {
+      background-color: #2a5f99; /* Darker color on hover */
+      transform: scale(1.05); /* Slightly enlarge on hover */
+    }
+  </style>
+</head>
 <body id="myBody" style="background-image: url('https://media.istockphoto.com/id/1398999936/vector/illustration-of-light-blue-dots-and-striped-circles-pattern-background.jpg?s=612x612&w=0&k=20&c=4277V1AOFLZoU4qsrM99_JrimDq5Cbg6Bxc7Fk7yUJY='); background-repeat: no-repeat; background-size: cover; background-position: center;">
   <script>
     let myGlobalX = 0;
-    let myClock01;
-    let mySpeed01 = 400; // Initial speed
+    let myClock01; // Timer for background movement
+    let myClock02; // Timer for image movement
+    let mySpeed01 = 400; // Initial speed for background
     let speedDisplay = document.createElement('div');
+
+    // Speed display setup
     speedDisplay.style.position = 'absolute';
     speedDisplay.style.top = '10px';
     speedDisplay.style.right = '10px';
     speedDisplay.style.color = 'black';
     document.body.appendChild(speedDisplay);
 
+    // Move background
     function moveBackground() {
       myGlobalX -= 5; // Move left
       document.getElementById('myBody').style.backgroundPosition = myGlobalX + 'px 0px';
       speedDisplay.innerText = 'Speed: ' + mySpeed01; // Display current speed
     }
 
+    // Start background movement
     function startBackgroundMovement() {
       clearInterval(myClock01); // Clear any existing interval
       myClock01 = setInterval(moveBackground, mySpeed01);
     }
 
+    // Adjust speed for background
     function fasterBackground() {
       mySpeed01 = Math.max(10, mySpeed01 - 50); // Decrease speed significantly
       startBackgroundMovement(); // Restart movement with new speed
@@ -31,6 +66,17 @@
       startBackgroundMovement(); // Restart movement with new speed
     }
 
+    // Move image to the right
+    function moveImageRight() {
+      const image = document.getElementById('Image01');
+      image.style.left = (parseInt(image.style.left) + 10) + 'px';
+    }
+
+    // Start automatic image movement
+    function startImageMovement() {
+      clearInterval(myClock02); // Clear any existing interval
+      myClock02 = setInterval(moveImageRight, 30); // Move right every 30 milliseconds
+    }
   </script>
 
   <h1 style="color: #396dbf;" align="center">t2a19-move-background</h1>
@@ -39,18 +85,11 @@
   <input type="button" value="Auto Background Left Faster" onclick="fasterBackground()">
   <input type="button" value="Auto Background Left Slower" onclick="slowerBackground()">
   
-  <input type="button" id="myButton02" value="Image Right" onclick="{
-    const image = document.getElementById('Image01');
-    image.style.left = (parseInt(image.style.left) + 10) + 'px';
-  }"><br><br>
+  <input type="button" id="myButton02" value="Start Auto Move Right" onclick="startImageMovement()"><br><br>
 
-  <input type="button" value="Auto Move Left" onclick="{
-    clearInterval(myClock02);
-    myClock02 = setInterval(() => document.getElementById('myButton02').click(), 30);
-  }">
-  
   <img id="Image01" style="position:relative; width:100px; height:80px; top:0px; left:0px;" src="https://i.etsystatic.com/17358183/r/il/18a584/3757074450/il_570xN.3757074450_o5mt.jpg" alt="Example Image">
 </body>
+
 
 
   
