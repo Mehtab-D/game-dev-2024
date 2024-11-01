@@ -1,12 +1,19 @@
 <body id="myBody" style="background-image: url('https://media.istockphoto.com/id/1398999936/vector/illustration-of-light-blue-dots-and-striped-circles-pattern-background.jpg?s=612x612&w=0&k=20&c=4277V1AOFLZoU4qsrM99_JrimDq5Cbg6Bxc7Fk7yUJY='); background-repeat: no-repeat; background-size: cover; background-position: center;">
   <script>
     let myGlobalX = 0;
-    let myClock01; // Timer for background movement
+    let myClock01;
     let mySpeed01 = 400; // Initial speed
+    let speedDisplay = document.createElement('div');
+    speedDisplay.style.position = 'absolute';
+    speedDisplay.style.top = '10px';
+    speedDisplay.style.right = '10px';
+    speedDisplay.style.color = 'black';
+    document.body.appendChild(speedDisplay);
 
     function moveBackground() {
       myGlobalX -= 5; // Move left
       document.getElementById('myBody').style.backgroundPosition = myGlobalX + 'px 0px';
+      speedDisplay.innerText = 'Speed: ' + mySpeed01; // Display current speed
     }
 
     function startBackgroundMovement() {
@@ -15,14 +22,17 @@
     }
 
     function fasterBackground() {
-      mySpeed01 = Math.max(10, mySpeed01 - 30); // Decrease speed, minimum 10
+      mySpeed01 = Math.max(10, mySpeed01 - 50); // Decrease speed significantly
       startBackgroundMovement(); // Restart movement with new speed
     }
 
     function slowerBackground() {
-      mySpeed01 = Math.min(1000, mySpeed01 + 30); // Increase speed, maximum 1000
+      mySpeed01 = Math.min(1000, mySpeed01 + 50); // Increase speed significantly
       startBackgroundMovement(); // Restart movement with new speed
     }
+
+    // Start movement on load
+    startBackgroundMovement();
   </script>
 
   <h1 style="color: #396dbf;" align="center">t2a19-move-background</h1>
