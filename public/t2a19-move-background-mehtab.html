@@ -1,31 +1,35 @@
 <body id="myBody" style="background-image: url('https://media.istockphoto.com/id/1398999936/vector/illustration-of-light-blue-dots-and-striped-circles-pattern-background.jpg?s=612x612&w=0&k=20&c=4277V1AOFLZoU4qsrM99_JrimDq5Cbg6Bxc7Fk7yUJY='); background-repeat: no-repeat; background-size: cover; background-position: center;">
   <script>
     let myGlobalX = 0;
-    let myClock01;
-    let myClock02;
-    let mySpeed01 = 400;
+    let myClock01; // Timer for background movement
+    let mySpeed01 = 400; // Initial speed
 
     function moveBackground() {
       myGlobalX -= 5; // Move left
       document.getElementById('myBody').style.backgroundPosition = myGlobalX + 'px 0px';
     }
+
+    function startBackgroundMovement() {
+      clearInterval(myClock01); // Clear any existing interval
+      myClock01 = setInterval(moveBackground, mySpeed01);
+    }
+
+    function fasterBackground() {
+      mySpeed01 = Math.max(10, mySpeed01 - 30); // Decrease speed, minimum 10
+      startBackgroundMovement(); // Restart movement with new speed
+    }
+
+    function slowerBackground() {
+      mySpeed01 = Math.min(1000, mySpeed01 + 30); // Increase speed, maximum 1000
+      startBackgroundMovement(); // Restart movement with new speed
+    }
   </script>
 
   <h1 style="color: #396dbf;" align="center">t2a19-move-background</h1>
 
-  <input id="myButton01" type="button" value="background move left" onclick="moveBackground()">
-  <input type="button" value="Auto Background Left Faster" onclick="{
-    clearInterval(myClock01);
-    mySpeed01 -= 30;
-    if (mySpeed01 < 10) mySpeed01 = 10;
-    myClock01 = setInterval(moveBackground, mySpeed01);
-  }">
-  <input type="button" value="Auto Background Left slower" onclick="{
-    clearInterval(myClock01);
-    mySpeed01 += 30;
-    if (mySpeed01 > 1000) mySpeed01 = 1000;
-    myClock01 = setInterval(moveBackground, mySpeed01);
-  }">
+  <input id="myButton01" type="button" value="Background Move Left" onclick="moveBackground()">
+  <input type="button" value="Auto Background Left Faster" onclick="fasterBackground()">
+  <input type="button" value="Auto Background Left Slower" onclick="slowerBackground()">
   
   <input type="button" id="myButton02" value="Image Right" onclick="{
     const image = document.getElementById('Image01');
@@ -37,8 +41,9 @@
     myClock02 = setInterval(() => document.getElementById('myButton02').click(), 30);
   }">
   
-  <img id="Image01" style="position:relative; width:100px; height:80px; top:0px; left:0px;" src="https://i.etsystatic.com/17358183/r/il/18a584/3757074450/il_570xN.3757074450_o5mt.jpg">
+  <img id="Image01" style="position:relative; width:100px; height:80px; top:0px; left:0px;" src="https://i.etsystatic.com/17358183/r/il/18a584/3757074450/il_570xN.3757074450_o5mt.jpg" alt="Example Image">
 </body>
+
 
 
 
