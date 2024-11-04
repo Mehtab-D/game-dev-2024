@@ -1,137 +1,86 @@
-<h1 align=center>t1a09-decision-if-mehtab.html</h1>
-<body style="background-color: lightblue;">
-
-</body>
-
-Input:<input type=text id="myText1" value="Mehtab>
-Input:<input type=number id="myNum1" value="14"
-<div id="myDiv01">...</div>
-
-<input type=button value="Is Mehtab" onClick="{
-  let myIn1=document.getElementById('myText1').value 
-  document.getElementById('myDiv01').innerHMTL='<br>'
-  }
-  }"><br>
-
-<input type=button value="Is Mehtab else" onclick="{
-letmyIn1=document.getElementById('myText1').value
-document.getElementById('myDiv01').innerHMTL='<br>'
-if(myIn1=='Mehtab'){
-  document.getElementById('myDiv01').innerHTML='Hi Mehtab'
-} else {
-  document.getElementById('myDiv01').innerHTML='Was expecting Mehtab>:'
-}
-}"><br>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Things to Do When Bored</title>
+    <title>Decision Making with JavaScript</title>
     <style>
-        #options {
-            display: none;
+        body {
+            background-color: lightblue;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        input[type="text"], input[type="number"] {
+            margin: 10px 0;
+            padding: 10px;
+            width: 200px;
+        }
+        input[type="button"] {
+            padding: 10px 15px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        #output {
             margin-top: 20px;
+            font-weight: bold;
         }
     </style>
 </head>
 <body>
-    <label for="boredInput">Input: </label>
-    <input type="text" id="boredInput" placeholder="Type here...">
-    <button id="enterButton">Enter</button>
-    <div id="options">
-        <p>Output:</p>
-        <ul>
-            <li>Read a book</li>
-            <li>Go for a walk</li>
-            <li>Try a new recipe</li>
-            <li>Learn a new skill online</li>
-            <li>Watch a movie</li>
-            <li>Do some exercise</li>
-            <li>Call a friend</li>
-        </ul>
-    </div>
 
-    <script>
-        document.getElementById('enterButton').addEventListener('click', function() {
-            var input = document.getElementById('boredInput').value.toLowerCase();
-            if (input === "things to do when you're bored") {
-                document.getElementById('options').style.display = 'block';
-            } else {
-                alert('Please enter the correct phrase: "things to do when you\'re bored"');
-            }
-        });
-    </script>
-</body>
-</html>
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Things to Do When Bored</title>
-    <script>
-        function displayInput() {
-            var input = document.getElementById("userInput").value;
-            document.getElementById("output").innerText = "Read a book";
+<h1 align="center">Decision Making Example</h1>
+
+<!-- Input Section -->
+<label for="myText1">Input Text:</label>
+<input type="text" id="myText1" value="Mehtab"><br>
+
+<label for="myNum1">Input Number:</label>
+<input type="number" id="myNum1" value="14"><br>
+
+<!-- Buttons for Decisions -->
+<input type="button" value="Is Mehtab" onclick="checkName('Mehtab')"><br>
+<input type="button" value="Is Mehtab Else" onclick="checkName('Not Mehtab')"><br>
+
+<!-- Output Display -->
+<div id="output"></div>
+
+<!-- Boredom Suggestions -->
+<h2>Things to Do When Bored</h2>
+<input type="text" id="boredInput" placeholder="Type here...">
+<button id="enterButton">Enter</button>
+<div id="options" style="display:none;">
+    <p>Output:</p>
+    <ul>
+        <li>Read a book</li>
+        <li>Go for a walk</li>
+        <li>Try a new recipe</li>
+        <li>Learn a new skill online</li>
+        <li>Watch a movie</li>
+        <li>Do some exercise</li>
+        <li>Call a friend</li>
+    </ul>
+</div>
+
+<script>
+    function checkName(expectedName) {
+        let myIn1 = document.getElementById('myText1').value;
+        if (myIn1 === expectedName) {
+            document.getElementById('output').innerHTML = `Hi ${myIn1}!`;
+        } else {
+            document.getElementById('output').innerHTML = `Was expecting ${expectedName}.`;
         }
-    </script>
-</head>
-<body>
-    <h2>Simple Button with Input and Output</h2>
-    <input type="text" id="userInput" placeholder="Enter something">
-    <button onclick="displayInput()">Submit</button>
-    <p id="output"></p>
-</body>
-</html>
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Things to Do When Bored</title>
-    <script>
-        function displayInput() {
-            var input = document.getElementById("userInput").value;
-            var output = document.getElementById("output");
-            var activities = [
-                "Read a book",
-                "Go for a walk",
-                "Try a new recipe",
-                "Learn a new hobby",
-                "Watch a movie",
-                "Do a puzzle",
-            
-            ];
-            output.innerHTML = "You entered: " + input + "<br>Here are some things to do when you're bored:<ul>";
-            for (var i = 0; i < activities.length; i++) {
-                output.innerHTML += "<li>" + activities[i] + "</li>";
-            }
-            output.innerHTML += "</ul>";
+    }
+
+    document.getElementById('enterButton').addEventListener('click', function() {
+        var input = document.getElementById('boredInput').value.toLowerCase();
+        if (input === "things to do when you're bored") {
+            document.getElementById('options').style.display = 'block';
+        } else {
+            alert('Please enter the correct phrase: "things to do when you\'re bored"');
         }
-    </script>
-</head>
-<body>
-    <h2>Things to Do When Bored</h2>
-    <input type="text" id="userInput" placeholder="Enter something">
-    <button onclick="displayInput()">Submit</button>
-    <div id="output"></div>
-</body>
-</html>
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Clear Text Output</title>
-</head>
-<body>
-    <div id="output"></div>
-    <button onclick="clearText()">OK</button>
+    });
+</script>
 
-    <script>
-        function clearText() {
-            document.getElementById('output').innerText = '';
-        }
-    </script>
 </body>
 </html>
 
-
-
-    
