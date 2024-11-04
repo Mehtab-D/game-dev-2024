@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Welcome to my Website</title>
+    <title>Welcome to My Website</title>
     <style>
         /* CSS Styles */
 
@@ -35,6 +35,55 @@
         header p {
             font-size: 1.2rem;
             color: #555; /* Slightly softer text */
+        }
+
+        /* Navigation Styles */
+        nav {
+            margin-top: 1rem;
+        }
+
+        nav ul {
+            list-style-type: none;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        nav ul li {
+            position: relative;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #000;
+            font-size: 1.1rem;
+            padding: 0.5rem;
+        }
+
+        /* Dropdown Styles */
+        nav ul li ul {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #ddbce3;
+            padding: 0.5rem;
+            border-radius: 5px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        nav ul li ul li {
+            margin: 0;
+        }
+
+        nav ul li ul li a {
+            font-size: 1rem;
+            color: #000;
+            white-space: nowrap;
+        }
+
+        nav ul li:hover ul {
+            display: block;
         }
 
         main {
@@ -76,8 +125,21 @@
 </head>
 <body>
     <header>
-        <h1>Minimalist Website</h1>
+        <h1>Welcome to My Website</h1>
         <p>Your elegant and simple online space</p>
+        <nav>
+            <ul>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#services">Services</a>
+                    <ul>
+                        <li><a href="#design">Design Consulting</a></li>
+                        <li><a href="#webdev">Web Development</a></li>
+                        <li><a href="#strategy">Brand Strategy</a></li>
+                    </ul>
+                </li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
     </header>
     
     <main>
