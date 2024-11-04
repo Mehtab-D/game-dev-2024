@@ -3,104 +3,107 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Enhanced Minimalist Webpage</title>
+    <title>Minimalist Website</title>
     <style>
-        body {
-            font-family: 'Arial', sans-serif;
+        /* CSS Styles */
+
+        * {
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
-            color: #333;
+            box-sizing: border-box;
         }
-        header {
-            background-color: #ffffff;
-            padding: 20px;
-            text-align: center;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-        header h1 {
-            margin: 0;
-            font-size: 2.5em;
-            letter-spacing: 1px;
-        }
-        nav a {
-            margin: 0 15px;
-            color: #3498db;
-            text-decoration: none;
-            font-weight: bold;
-            transition: color 0.3s;
-        }
-        nav a:hover {
-            color: #2c3e50;
-            text-decoration: underline;
-        }
-        .container {
-            max-width: 900px;
-            margin: 40px auto;
-            padding: 20px;
-            background: #ffffff;
-            border-radius: 8px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-        }
-        h2 {
-            color: #3498db;
-            margin-top: 30px;
-            font-size: 2em;
-        }
-        p {
+
+        body {
+            font-family: Arial, sans-serif;
+            color: #000; /* Black text */
+            background-color: #fff; /* White background */
             line-height: 1.6;
-            font-size: 1.1em;
         }
+
+        header {
+            text-align: center;
+            padding: 2rem;
+            background-color: #ddbce3; /* Soft lavender header */
+            border-bottom: 1px solid #ccc;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            color: #000; /* Black title text */
+        }
+
+        header p {
+            font-size: 1.2rem;
+            color: #555; /* Slightly softer text */
+        }
+
+        main {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        section {
+            margin-bottom: 2rem;
+        }
+
+        section h2 {
+            font-size: 1.8rem;
+            color: #000; /* Black section titles */
+            border-bottom: 2px solid #ddbce3; /* Lavender accent */
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        section p, section ul {
+            font-size: 1rem;
+            color: #333; /* Darker body text */
+        }
+
         ul {
-            padding-left: 20px;
-            margin: 10px 0;
+            list-style-type: none;
         }
+
         footer {
             text-align: center;
-            padding: 20px;
-            background-color: #ffffff;
-            color: #333;
-            border-top: 1px solid #ddd;
-        }
-        footer p {
-            margin: 0;
+            padding: 1rem;
+            background-color: #ddbce3; /* Lavender footer */
+            color: #000; /* Black text in footer */
+            font-size: 0.9rem;
+            border-top: 1px solid #ccc;
         }
     </style>
 </head>
 <body>
-
-<header>
-    <h1>Welcome to My Minimalist Webpage</h1>
-    <nav>
-        <a href="#about">About</a>
-        <a href="#services">Services</a>
-        <a href="#contact">Contact</a>
-    </nav>
-</header>
-
-<div class="container">
-    <h2 id="about">About Us</h2>
-    <p>Welcome to our enhanced minimalist webpage. We focus on simplicity and clarity, delivering quality content and an elegant design.</p>
-    <p>Our mission is to provide an optimal user experience with minimal distractions.</p>
-
-    <h2 id="services">Our Services</h2>
-    <p>We offer a range of services tailored to meet your needs:</p>
-    <ul>
-        <li>Web Development</li>
-        <li>Graphic Design</li>
-        <li>Content Creation</li>
-    </ul>
-
-    <h2 id="contact">Contact Us</h2>
-    <p>If you have any inquiries, please reach out to us via email: <a href="mailto:info@example.com">info@example.com</a>.</p>
-</div>
-
-<footer>
-    <p>&copy; 2024 My Minimalist Webpage. All rights reserved.</p>
-</footer>
-
+    <header>
+        <h1>Minimalist Website</h1>
+        <p>Your elegant and simple online space</p>
+    </header>
+    
+    <main>
+        <section id="about">
+            <h2>About Us</h2>
+            <p>Welcome to our minimalist website. We believe in the power of simplicity and elegance.</p>
+        </section>
+        
+        <section id="services">
+            <h2>Our Services</h2>
+            <ul>
+                <li>Design Consulting</li>
+                <li>Web Development</li>
+                <li>Brand Strategy</li>
+            </ul>
+        </section>
+        
+        <section id="contact">
+            <h2>Contact Us</h2>
+            <p>Email: info@minimalistwebsite.com</p>
+            <p>Phone: +123 456 7890</p>
+        </section>
+    </main>
+    
+    <footer>
+        <p>&copy; 2024 Minimalist Website. All rights reserved.</p>
+    </footer>
 </body>
 </html>
