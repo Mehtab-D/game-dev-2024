@@ -15,16 +15,37 @@
         <input type="button" value="Add to Counter" onclick="addToCounter()">
         <div id="counterDisplay">Count: 0</div> <!-- Display for button count -->
         <div id="errorDisplay" style="color: red;"></div> <!-- Display for error messages -->
+
+        <h2>Last Converted Temperature</h2>
+        <div id="lastConvertedDisplay"></div> <!-- Display for the last converted temperature -->
+
+        <h2>Product List</h2>
+        <div id="productListDisplay"></div> <!-- Display for product list -->
     </div>
 
     <script>
         let newButtonClickCount = 0; // Variable to count clicks for the new button
         let counterTotal = 0; // Variable to keep track of total count
+        let lastConvertedFahrenheit = null; // Variable to store the last converted temperature
+        let productList = ["Apple", "Banana", "Cherry", "Date", "Elderberry"]; // Product list array
+
+        // Display the product list on the page
+        function displayProductList() {
+            const productListDisplay = document.getElementById('productListDisplay');
+            productListDisplay.innerHTML = ""; // Clear previous list
+            productList.forEach(product => {
+                const listItem = document.createElement('div');
+                listItem.innerText = product; // Add product to the list
+                productListDisplay.appendChild(listItem); // Display product on the page
+            });
+        }
 
         function convertToFahrenheit() {
             const celsius = document.getElementById('celsius').value;
             const fahrenheit = (celsius * 9 / 5) + 32;
+            lastConvertedFahrenheit = fahrenheit; // Update the last converted temperature
             document.getElementById('fahrenheitDisplay').innerText = `${celsius}°C is ${fahrenheit.toFixed(2)}°F`;
+            document.getElementById('lastConvertedDisplay').innerText = `Last Converted: ${lastConvertedFahrenheit.toFixed(2)}°F`; // Display the last converted temperature
         }
 
         function addToCounter() {
@@ -47,7 +68,8 @@
             newButtonClickCount++; // Increment click count for new button
             document.getElementById('newButtonClickCountDisplay').innerText = `Clicked: ${newButtonClickCount} times`; // Update display
         }
+
+        // Call the function to display the product list when the page loads
+        displayProductList();
     </script>
 </body>
-
-
