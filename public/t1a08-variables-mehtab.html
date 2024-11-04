@@ -1,5 +1,3 @@
-
-
 <h1 align="center">t1a08-variables-mehtab</h1>
 <body style="background-color: #f5e4f4;">
     <style>
@@ -12,17 +10,37 @@
         <input type="button" value="Convert to Fahrenheit" onclick="convertToFahrenheit()">
         <div id="fahrenheitDisplay"></div>
 
-        <input type="button" value="Click Me" onclick="countNewButtonClick()">
-        <div id="newButtonClickCountDisplay">Clicked: 0 times</div> <!-- Display for button click count -->
+        <h2>Add to Counter</h2>
+        <input type="number" id="counterInput" placeholder="Enter a number">
+        <input type="button" value="Add to Counter" onclick="addToCounter()">
+        <div id="counterDisplay">Count: 0</div> <!-- Display for button count -->
+        <div id="errorDisplay" style="color: red;"></div> <!-- Display for error messages -->
     </div>
 
     <script>
         let newButtonClickCount = 0; // Variable to count clicks for the new button
+        let counterTotal = 0; // Variable to keep track of total count
 
         function convertToFahrenheit() {
             const celsius = document.getElementById('celsius').value;
             const fahrenheit = (celsius * 9 / 5) + 32;
             document.getElementById('fahrenheitDisplay').innerText = `${celsius}°C is ${fahrenheit.toFixed(2)}°F`;
+        }
+
+        function addToCounter() {
+            const input = document.getElementById('counterInput').value;
+            const inputNumber = Number(input); // Convert input to a number
+            const errorDisplay = document.getElementById('errorDisplay');
+
+            // Validate input
+            if (isNaN(inputNumber) || inputNumber < 0) {
+                errorDisplay.innerText = "Please enter a valid positive number.";
+                return; // Exit the function if input is invalid
+            }
+
+            errorDisplay.innerText = ""; // Clear error message if input is valid
+            counterTotal += inputNumber; // Add the valid input to the total count
+            document.getElementById('counterDisplay').innerText = `Count: ${counterTotal}`; // Update display
         }
 
         function countNewButtonClick() {
@@ -31,17 +49,5 @@
         }
     </script>
 </body>
-
-/*User Interaction:
-A user types 5 into the input box and clicks "Add to Counter."
-The total count will now show Count: 5.
-If the user then enters 3 and clicks again, the count will update to Count: 8.
-If the user enters -2 or a non-numeric value (like abc), an error message will appear saying, "Please enter a valid positive number."
-This application is a straightforward way to practice input handling, validation, and displaying results in JavaScript. If you have any specific features or changes in mind, let me know!*/
-
-
-
-
-
 
 
