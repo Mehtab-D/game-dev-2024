@@ -3,67 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Awesome Webpage</title>
+    <title>Minimalist Webpage</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f0f0f0;
+            background-color: #f9f9f9;
             color: #333;
         }
         header {
-            background-color: #3498db;
-            color: white;
+            background-color: #fff;
             padding: 20px;
             text-align: center;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
-        nav {
-            margin: 20px 0;
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
         }
         nav a {
             margin: 0 15px;
             color: #3498db;
             text-decoration: none;
+            font-weight: bold;
         }
         nav a:hover {
             text-decoration: underline;
         }
         .container {
-            display: flex;
-            justify-content: space-between;
-            margin: 20px;
-        }
-        .content {
-            flex: 3;
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
             background: white;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
-        .sidebar {
-            flex: 1;
-            background: #e7e7e7;
-            padding: 20px;
-            border-radius: 5px;
-            margin-left: 20px;
+        h2 {
+            color: #3498db;
+        }
+        p {
+            line-height: 1.6;
         }
         footer {
             text-align: center;
             padding: 20px;
-            background-color: #3498db;
-            color: white;
-            position: relative;
-            bottom: 0;
-            width: 100%;
+            background-color: #fff;
+            color: #333;
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
         }
     </style>
 </head>
 <body>
 
 <header>
-    <h1>Welcome to My Awesome Webpage</h1>
+    <h1>My Minimalist Webpage</h1>
     <nav>
         <a href="#about">About</a>
         <a href="#services">Services</a>
@@ -72,47 +66,25 @@
 </header>
 
 <div class="container">
-    <div class="content" id="about">
-        <h2>About Us</h2>
-        <p>This is a simple webpage created to demonstrate HTML and CSS structure.</p>
-        <p>We focus on providing quality content and design.</p>
-    </div>
-    
-    <div class="sidebar">
-        <h3>Latest News</h3>
-        <ul>
-            <li>New updates coming soon!</li>
-            <li>Check out our latest blog post.</li>
-            <li>Join our newsletter for updates.</li>
-        </ul>
-    </div>
-</div>
+    <h2 id="about">About Us</h2>
+    <p>Welcome to our clean and minimalist webpage. We focus on simplicity and clarity in our design and content.</p>
+    <p>Our goal is to provide you with the best user experience without unnecessary distractions.</p>
 
-<div class="container">
-    <div class="content" id="services">
-        <h2>Our Services</h2>
-        <p>We offer a variety of services to cater to your needs:</p>
-        <ul>
-            <li>Web Development</li>
-            <li>Graphic Design</li>
-            <li>Content Creation</li>
-        </ul>
-    </div>
+    <h2 id="services">Our Services</h2>
+    <p>We offer a variety of services tailored to your needs:</p>
+    <ul>
+        <li>Web Development</li>
+        <li>Graphic Design</li>
+        <li>Content Creation</li>
+    </ul>
 
-    <div class="sidebar">
-        <h3>Quick Links</h3>
-        <ul>
-            <li><a href="#about">About Us</a></li>
-            <li><a href="#services">Our Services</a></li>
-            <li><a href="#contact">Contact Us</a></li>
-        </ul>
-    </div>
+    <h2 id="contact">Contact Us</h2>
+    <p>For inquiries, please reach out to us via email at <a href="mailto:info@example.com">info@example.com</a>.</p>
 </div>
 
 <footer>
-    <p>&copy; 2024 My Awesome Webpage. All rights reserved.</p>
+    <p>&copy; 2024 My Minimalist Webpage. All rights reserved.</p>
 </footer>
 
 </body>
 </html>
-
