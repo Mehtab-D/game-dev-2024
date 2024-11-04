@@ -23,6 +23,11 @@
         <input type="text" id="productInput" placeholder="Add a product">
         <input type="button" value="Add Product" onclick="addProduct()">
         <div id="productListDisplay"></div> <!-- Display for product list -->
+
+        <h2>Animal Input</h2>
+        <input type="text" id="animalInput" placeholder="Type an animal">
+        <input type="button" value="Submit" onclick="showAnimal()">
+        <div id="displayAnimal"></div> <!-- Display for the animal input -->
     </div>
 
     <script>
@@ -78,10 +83,19 @@
             document.getElementById('counterDisplay').innerText = `Count: ${counterTotal}`; // Update display
         }
 
+        function showAnimal() {
+            // Declare a variable to store the input
+            let animal = document.getElementById('animalInput').value;
+            // Display the animal name
+            document.getElementById('displayAnimal').innerText = "You typed: " + animal;
+            document.getElementById('animalInput').value = ""; // Clear the input field
+        }
+
         function countNewButtonClick() {
             newButtonClickCount++; // Increment click count for new button
             document.getElementById('newButtonClickCountDisplay').innerText = `Clicked: ${newButtonClickCount} times`; // Update display
         }
     </script>
 </body>
+
 
