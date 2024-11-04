@@ -32,12 +32,11 @@
             font-size: 24px;
             cursor: pointer;
             border-radius: 10px;
-            transition: transform 0.3s;
+            transition: background-color 0.3s;
         }
         .card.flipped {
             background-color: #fff;
             color: #4CAF50;
-            transform: rotateY(180deg);
         }
     </style>
 </head>
@@ -53,7 +52,6 @@
     let firstCard, secondCard;
     let matchedPairs = 0;
 
-    // Shuffle cards
     function shuffle(array) {
         for (let i = array.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
@@ -62,7 +60,6 @@
         return array;
     }
 
-    // Create card elements
     function createCards() {
         const container = document.getElementById('gameContainer');
         const shuffledCards = shuffle(cards);
@@ -75,7 +72,6 @@
         });
     }
 
-    // Flip card
     function flipCard() {
         if (this.classList.contains('flipped') || cardFlipped) return;
 
@@ -91,7 +87,6 @@
         }
     }
 
-    // Check for match
     function checkForMatch() {
         const isMatch = firstCard.getAttribute('data-value') === secondCard.getAttribute('data-value');
 
@@ -112,17 +107,14 @@
         }
     }
 
-    // Reset card states
     function resetCards() {
         cardFlipped = false;
         firstCard = null;
         secondCard = null;
     }
 
-    // Initialize the game
     createCards();
 </script>
 
 </body>
 </html>
-
