@@ -2,6 +2,11 @@
 <body style="background-color: #f5e4f4;">
     <style>
         * { color: #0c0e36; }
+        .poster {
+            width: 150px; /* Adjust the size as needed */
+            margin: 10px;
+            cursor: pointer; /* Change cursor to pointer on hover */
+        }
     </style>
 
     <div class="temp-converter">
@@ -38,6 +43,14 @@
         <h2>Favorite Color</h2>
         <input type="color" id="colorInput" value="#3498db">
         <input type="button" value="Set Favorite Color" onclick="setFavoriteColor()">
+
+        <h2>Movie Recommendations</h2>
+        <div id="moviePosters">
+            <img src="https://m.media-amazon.com/images/I/81Nu7JmZbBL._AC_UF894,1000_QL80_.jpg" alt="Movie Poster 1" class="poster" onclick="showRecommendation('Movie 1')">
+            <img src="https://m.media-amazon.com/images/I/71x1RHSaEhL._AC_UF894,1000_QL80_.jpg" alt="Movie Poster 2" class="poster" onclick="showRecommendation('Movie 2')">
+            <img src="https://www.companyfolders.com/blog/media/2017/07/moon.jpg" alt="Movie Poster 3" class="poster" onclick="showRecommendation('Movie 3')">
+        </div>
+        <div id="recommendationMessage"></div>
     </div>
 
     <script>
@@ -116,13 +129,13 @@
         }
 
         function calculateAge() {
-            const birthYear = document.getElementById('birthYear').value; // Get the birth year input
-            const currentYear = new Date().getFullYear(); // Get the current year
-            const age = currentYear - birthYear; // Calculate age
+            const birthYear = document.getElementById('birthYear').value; 
+            const currentYear = new Date().getFullYear(); 
+            const age = currentYear - birthYear; 
 
             if (birthYear.trim() === "" || isNaN(age) || age < 0) {
                 document.getElementById('ageDisplay').innerText = "Please enter a valid birth year.";
-                return; // Exit if input is invalid
+                return; 
             }
 
             document.getElementById('ageDisplay').innerText = `Your age is: ${age} years`;
@@ -132,6 +145,9 @@
             favoriteColor = document.getElementById('colorInput').value; 
             document.body.style.backgroundColor = favoriteColor; 
         }
+
+        function showRecommendation(movieName) {
+            document.getElementById('recommendationMessage').innerText = `You should watch ${movieName}!`;
+        }
     </script>
 </body>
-
