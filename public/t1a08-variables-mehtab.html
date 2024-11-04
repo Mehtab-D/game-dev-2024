@@ -13,21 +13,27 @@
         <h2>Add to Counter</h2>
         <input type="number" id="counterInput" placeholder="Enter a number">
         <input type="button" value="Add to Counter" onclick="addToCounter()">
-        <div id="counterDisplay">Count: 0</div> <!-- Display for button count -->
-        <div id="errorDisplay" style="color: red;"></div> <!-- Display for error messages -->
+        <div id="counterDisplay">Count: 0</div>
+        <div id="errorDisplay" style="color: red;"></div>
 
         <h2>First Converted Temperature</h2>
-        <div id="lastConvertedDisplay"></div> <!-- Display for the first converted temperature -->
+        <div id="lastConvertedDisplay"></div>
 
         <h2>Product List</h2>
         <input type="text" id="productInput" placeholder="Add a product">
         <input type="button" value="Add Product" onclick="addProduct()">
-        <div id="productListDisplay"></div> <!-- Display for product list -->
+        <div id="productListDisplay"></div>
 
         <h2>Animal Input</h2>
-        <input type="text" id="animalInput" placeholder="Type an animal">
+        <input type="text" id="animalInput" placeholder="Type an animal" oninput="updateCharCount()">
         <input type="button" value="Submit" onclick="showAnimal()">
-        <div id="displayAnimal"></div> <!-- Display for the animal input -->
+        <div id="displayAnimal"></div>
+        <div id="charCountDisplay">Character Count: 0</div>
+
+        <h2>Age Calculator</h2>
+        <input type="number" id="birthYear" placeholder="Enter your birth year">
+        <input type="button" value="Calculate Age" onclick="calculateAge()">
+        <div id="ageDisplay"></div> <!-- Display for age -->
 
         <h2>Favorite Color</h2>
         <input type="color" id="colorInput" value="#3498db">
@@ -35,83 +41,97 @@
     </div>
 
     <script>
-        let newButtonClickCount = 0; // Variable to count clicks for the new button
-        let counterTotal = 0; // Variable to keep track of total count
-        let lastConvertedFahrenheit = null; // Variable to store the last converted temperature
-        let firstConvertedFahrenheit = null; // Variable to store the first converted temperature
-        let productList = []; // Product list array
-        let favoriteColor = '#3498db'; // Default color
-        let animalList = []; // Array to store animal names
+        let newButtonClickCount = 0; 
+        let counterTotal = 0; 
+        let lastConvertedFahrenheit = null; 
+        let firstConvertedFahrenheit = null; 
+        let productList = []; 
+        let favoriteColor = '#3498db'; 
+        let animalList = []; 
+        let charCount = 0; 
 
-        // Display the product list on the page
         function displayProductList() {
             const productListDisplay = document.getElementById('productListDisplay');
-            productListDisplay.innerHTML = ""; // Clear previous list
+            productListDisplay.innerHTML = ""; 
             productList.forEach(product => {
                 const listItem = document.createElement('div');
-                listItem.innerText = product; // Add product to the list
-                productListDisplay.appendChild(listItem); // Display product on the page
+                listItem.innerText = product; 
+                productListDisplay.appendChild(listItem);
             });
         }
 
         function addProduct() {
-            const productInput = document.getElementById('productInput').value; // Get the user input
+            const productInput = document.getElementById('productInput').value; 
             if (productInput.trim() === "") {
-                alert("Please enter a product name."); // Alert if input is empty
-                return; // Exit the function if input is empty
+                alert("Please enter a product name.");
+                return; 
             }
-
-            productList.push(productInput); // Add the product to the list
-            displayProductList(); // Update the displayed product list
-            document.getElementById('productInput').value = ""; // Clear the input field
+            productList.push(productInput);
+            displayProductList(); 
+            document.getElementById('productInput').value = ""; 
         }
 
         function convertToFahrenheit() {
             const celsius = document.getElementById('celsius').value;
             const fahrenheit = (celsius * 9 / 5) + 32;
 
-            // Only set the firstConvertedFahrenheit if it's null (i.e., the first conversion)
             if (firstConvertedFahrenheit === null) {
-                firstConvertedFahrenheit = fahrenheit; // Store the first converted temperature
+                firstConvertedFahrenheit = fahrenheit; 
             }
 
             document.getElementById('fahrenheitDisplay').innerText = `${celsius}°C is ${fahrenheit.toFixed(2)}°F`;
-            document.getElementById('lastConvertedDisplay').innerText = `First Converted: ${firstConvertedFahrenheit ? firstConvertedFahrenheit.toFixed(2) + '°F' : 'N/A'}`; // Display the first converted temperature
+            document.getElementById('lastConvertedDisplay').innerText = `First Converted: ${firstConvertedFahrenheit ? firstConvertedFahrenheit.toFixed(2) + '°F' : 'N/A'}`;
         }
 
         function addToCounter() {
             const input = document.getElementById('counterInput').value;
-            const inputNumber = Number(input); // Convert input to a number
+            const inputNumber = Number(input); 
             const errorDisplay = document.getElementById('errorDisplay');
 
-            // Validate input
             if (isNaN(inputNumber) || inputNumber < 0) {
                 errorDisplay.innerText = "Please enter a valid positive number.";
-                return; // Exit the function if input is invalid
+                return; 
             }
 
-            errorDisplay.innerText = ""; // Clear error message if input is valid
-            counterTotal += inputNumber; // Add the valid input to the total count
-            document.getElementById('counterDisplay').innerText = `Count: ${counterTotal}`; // Update display
+            errorDisplay.innerText = ""; 
+            counterTotal += inputNumber; 
+            document.getElementById('counterDisplay').innerText = `Count: ${counterTotal}`; 
         }
 
         function showAnimal() {
-            let animal = document.getElementById('animalInput').value; // Retrieve animal input
+            let animal = document.getElementById('animalInput').value; 
             if (animal.trim() === "") {
-                alert("Please enter an animal name."); // Alert if input is empty
-                return; // Exit the function if input is empty
+                alert("Please enter an animal name."); 
+                return; 
             }
-            
-            animalList.push(animal); // Add the new animal to the list
-            document.getElementById('animalInput').value = ""; // Clear input field
-
-            // Update the display with all animals
+            animalList.push(animal); 
+            document.getElementById('animalInput').value = ""; 
             document.getElementById('displayAnimal').innerHTML = "Animals: " + animalList.join(", ");
         }
 
+        function updateCharCount() {
+            const animalInput = document.getElementById('animalInput').value; 
+            charCount = animalInput.length; 
+            document.getElementById('charCountDisplay').innerText = `Character Count: ${charCount}`;
+        }
+
+        function calculateAge() {
+            const birthYear = document.getElementById('birthYear').value; // Get the birth year input
+            const currentYear = new Date().getFullYear(); // Get the current year
+            const age = currentYear - birthYear; // Calculate age
+
+            if (birthYear.trim() === "" || isNaN(age) || age < 0) {
+                document.getElementById('ageDisplay').innerText = "Please enter a valid birth year.";
+                return; // Exit if input is invalid
+            }
+
+            document.getElementById('ageDisplay').innerText = `Your age is: ${age} years`;
+        }
+
         function setFavoriteColor() {
-            favoriteColor = document.getElementById('colorInput').value; // Update variable with selected color
-            document.body.style.backgroundColor = favoriteColor; // Change background color
+            favoriteColor = document.getElementById('colorInput').value; 
+            document.body.style.backgroundColor = favoriteColor; 
         }
     </script>
 </body>
+
