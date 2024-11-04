@@ -28,6 +28,10 @@
         <input type="text" id="animalInput" placeholder="Type an animal">
         <input type="button" value="Submit" onclick="showAnimal()">
         <div id="displayAnimal"></div> <!-- Display for the animal input -->
+
+        <h2>Favorite Color</h2>
+        <input type="color" id="colorInput" value="#3498db">
+        <input type="button" value="Set Favorite Color" onclick="setFavoriteColor()">
     </div>
 
     <script>
@@ -35,6 +39,8 @@
         let counterTotal = 0; // Variable to keep track of total count
         let lastConvertedFahrenheit = null; // Variable to store the last converted temperature
         let productList = []; // Product list array
+        let favoriteColor = '#3498db'; // Default color
+        let animalList = []; // Array to store animal names
 
         // Display the product list on the page
         function displayProductList() {
@@ -84,18 +90,22 @@
         }
 
         function showAnimal() {
-            // Declare a variable to store the input
-            let animal = document.getElementById('animalInput').value;
-            // Display the animal name
-            document.getElementById('displayAnimal').innerText = "You typed: " + animal;
-            document.getElementById('animalInput').value = ""; // Clear the input field
+            let animal = document.getElementById('animalInput').value; // Retrieve animal input
+            if (animal.trim() === "") {
+                alert("Please enter an animal name."); // Alert if input is empty
+                return; // Exit the function if input is empty
+            }
+            
+            animalList.push(animal); // Add the new animal to the list
+            document.getElementById('animalInput').value = ""; // Clear input field
+
+            // Update the display with all animals
+            document.getElementById('displayAnimal').innerHTML = "Animals: " + animalList.join(", ");
         }
 
-        function countNewButtonClick() {
-            newButtonClickCount++; // Increment click count for new button
-            document.getElementById('newButtonClickCountDisplay').innerText = `Clicked: ${newButtonClickCount} times`; // Update display
+        function setFavoriteColor() {
+            favoriteColor = document.getElementById('colorInput').value; // Update variable with selected color
+            document.body.style.backgroundColor = favoriteColor; // Change background color
         }
     </script>
 </body>
-
-
