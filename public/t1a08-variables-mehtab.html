@@ -20,6 +20,8 @@
         <div id="lastConvertedDisplay"></div> <!-- Display for the last converted temperature -->
 
         <h2>Product List</h2>
+        <input type="text" id="productInput" placeholder="Add a product">
+        <input type="button" value="Add Product" onclick="addProduct()">
         <div id="productListDisplay"></div> <!-- Display for product list -->
     </div>
 
@@ -27,7 +29,7 @@
         let newButtonClickCount = 0; // Variable to count clicks for the new button
         let counterTotal = 0; // Variable to keep track of total count
         let lastConvertedFahrenheit = null; // Variable to store the last converted temperature
-        let productList = ["Apple", "Banana", "Cherry", "Date", "Elderberry"]; // Product list array
+        let productList = []; // Product list array
 
         // Display the product list on the page
         function displayProductList() {
@@ -38,6 +40,18 @@
                 listItem.innerText = product; // Add product to the list
                 productListDisplay.appendChild(listItem); // Display product on the page
             });
+        }
+
+        function addProduct() {
+            const productInput = document.getElementById('productInput').value; // Get the user input
+            if (productInput.trim() === "") {
+                alert("Please enter a product name."); // Alert if input is empty
+                return; // Exit the function if input is empty
+            }
+
+            productList.push(productInput); // Add the product to the list
+            displayProductList(); // Update the displayed product list
+            document.getElementById('productInput').value = ""; // Clear the input field
         }
 
         function convertToFahrenheit() {
@@ -68,8 +82,6 @@
             newButtonClickCount++; // Increment click count for new button
             document.getElementById('newButtonClickCountDisplay').innerText = `Clicked: ${newButtonClickCount} times`; // Update display
         }
-
-        // Call the function to display the product list when the page loads
-        displayProductList();
     </script>
 </body>
+
