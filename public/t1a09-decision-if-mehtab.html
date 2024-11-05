@@ -11,7 +11,6 @@
             padding: 20px;
             background-image: linear-gradient(to right, #a3aed1, #94a3d1, #7e91cc);
             font-family: Arial, sans-serif;
-            
         }
         h1 {
             text-align: center;
@@ -85,6 +84,15 @@
     <div id="switchResult" class="output"></div>
 </div>
 
+<!-- Random Decision Maker Section -->
+<div class="section">
+    <h2>Random Decision Maker</h2>
+    <label for="optionsInput">Enter options (separate by commas):</label><br>
+    <input type="text" id="optionsInput" placeholder="Option 1, Option 2, Option 3">
+    <button onclick="makeRandomDecision()">Make a Decision</button>
+    <div id="decisionResult" style="margin-top: 10px; font-size: 20px;"></div>
+</div>
+
 <script>
     // If Statement Example
     function checkVotingEligibility() {
@@ -141,6 +149,19 @@
         }
 
         switchResult.textContent = `Day: ${dayName}`;
+    }
+
+    // Random Decision Maker Example
+    function makeRandomDecision() {
+        var options = document.getElementById('optionsInput').value.split(',');
+        options = options.map(option => option.trim()).filter(option => option.length > 0); // Clean up spaces and empty options
+
+        if (options.length > 0) {
+            var randomIndex = Math.floor(Math.random() * options.length);
+            document.getElementById('decisionResult').innerText = "Random Decision: " + options[randomIndex];
+        } else {
+            document.getElementById('decisionResult').innerText = "Please enter at least one option.";
+        }
     }
 </script>
 
