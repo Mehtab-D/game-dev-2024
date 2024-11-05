@@ -6,119 +6,142 @@
     <title>Decision-Making Examples</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            border: 2px dashed #7f4af0;
             margin: 20px;
+            padding: 20px;
+            background-image: linear-gradient(to right, #d7c5ed, #cdb1f0, #c298f5);
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            text-align: center;
         }
         .section {
             margin-bottom: 20px;
-            padding: 10px;
+            padding: 15px;
             border: 1px solid #ddd;
             border-radius: 5px;
             background-color: #f9f9f9;
+            box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            font-weight: bold;
+        }
+        input[type="number"], input[type="text"] {
+            margin-top: 5px;
+            padding: 8px;
+            width: 100%;
+            max-width: 200px;
+            margin-bottom: 10px;
         }
         button {
-            margin-top: 10px;
             padding: 8px 12px;
             background-color: #4CAF50;
             color: white;
             border: none;
             border-radius: 5px;
             cursor: pointer;
+            font-size: 14px;
         }
         button:hover {
             background-color: #45a049;
+        }
+        #output {
+            margin-top: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            color: #333;
         }
     </style>
 </head>
 <body>
 
-    <h1>ta109-decision-if-mehtab</h1>
+<h1>t1a09-decision-if-mehtab</h1>
 
-    <!-- If Statement Example -->
-    <div class="section">
-        <h2>If Statement</h2>
-        <p>Check if you are eligible to vote by entering your age:</p>
-        <input type="number" id="ageInput" placeholder="Enter your age">
-        <button onclick="checkVotingEligibility()">Check Eligibility</button>
-        <p id="ifResult"></p>
-    </div>
+<!-- If Statement Example -->
+<div class="section">
+    <h2>If Statement</h2>
+    <label>Check Voting Eligibility</label><br>
+    <input type="number" id="ageInput" placeholder="Enter your age">
+    <button onclick="checkVotingEligibility()">Check Eligibility</button>
+    <div id="ifResult" class="output"></div>
+</div>
 
-    <!-- If...Else Example -->
-    <div class="section">
-        <h2>If...Else Statement</h2>
-        <p>Check if it is day or evening based on the time (0 - 24):</p>
-        <input type="number" id="timeInput" placeholder="Enter time (0-24)">
-        <button onclick="checkTime()">Check Time</button>
-        <p id="ifElseResult"></p>
-    </div>
+<!-- If...Else Example -->
+<div class="section">
+    <h2>If...Else Statement</h2>
+    <label>Check Time of Day</label><br>
+    <input type="number" id="timeInput" placeholder="Enter time (0-24)">
+    <button onclick="checkTime()">Check Time</button>
+    <div id="ifElseResult" class="output"></div>
+</div>
 
-    <!-- Switch Statement Example -->
-    <div class="section">
-        <h2>Switch Statement</h2>
-        <p>Enter a number (1-7) to get the day of the week:</p>
-        <input type="number" id="dayInput" placeholder="Enter a number (1-7)">
-        <button onclick="getDay()">Get Day</button>
-        <p id="switchResult"></p>
-    </div>
+<!-- Switch Statement Example -->
+<div class="section">
+    <h2>Switch Statement</h2>
+    <label>Find Day of the Week</label><br>
+    <input type="number" id="dayInput" placeholder="Enter a number (1-7)">
+    <button onclick="getDay()">Get Day</button>
+    <div id="switchResult" class="output"></div>
+</div>
 
-    <script>
-        // If Statement Example
-        function checkVotingEligibility() {
-            const age = document.getElementById("ageInput").value;
-            const ifResult = document.getElementById("ifResult");
-            if (age >= 18) {
-                ifResult.textContent = "You are eligible to vote!";
-            } else {
-                ifResult.textContent = "You are not eligible to vote.";
-            }
+<script>
+    // If Statement Example
+    function checkVotingEligibility() {
+        const age = document.getElementById("ageInput").value;
+        const ifResult = document.getElementById("ifResult");
+        if (age >= 18) {
+            ifResult.textContent = "You are eligible to vote!";
+        } else {
+            ifResult.textContent = "You are not eligible to vote.";
+        }
+    }
+
+    // If...Else Example
+    function checkTime() {
+        const time = document.getElementById("timeInput").value;
+        const ifElseResult = document.getElementById("ifElseResult");
+        if (time < 18) {
+            ifElseResult.textContent = "Good day!";
+        } else {
+            ifElseResult.textContent = "Good evening!";
+        }
+    }
+
+    // Switch Statement Example
+    function getDay() {
+        const day = document.getElementById("dayInput").value;
+        const switchResult = document.getElementById("switchResult");
+        let dayName;
+
+        switch (parseInt(day)) {
+            case 1:
+                dayName = "Monday";
+                break;
+            case 2:
+                dayName = "Tuesday";
+                break;
+            case 3:
+                dayName = "Wednesday";
+                break;
+            case 4:
+                dayName = "Thursday";
+                break;
+            case 5:
+                dayName = "Friday";
+                break;
+            case 6:
+                dayName = "Saturday";
+                break;
+            case 7:
+                dayName = "Sunday";
+                break;
+            default:
+                dayName = "Invalid day";
         }
 
-        // If...Else Example
-        function checkTime() {
-            const time = document.getElementById("timeInput").value;
-            const ifElseResult = document.getElementById("ifElseResult");
-            if (time < 18) {
-                ifElseResult.textContent = "Good day!";
-            } else {
-                ifElseResult.textContent = "Good evening!";
-            }
-        }
-
-        // Switch Statement Example
-        function getDay() {
-            const day = document.getElementById("dayInput").value;
-            const switchResult = document.getElementById("switchResult");
-            let dayName;
-
-            switch (parseInt(day)) {
-                case 1:
-                    dayName = "Monday";
-                    break;
-                case 2:
-                    dayName = "Tuesday";
-                    break;
-                case 3:
-                    dayName = "Wednesday";
-                    break;
-                case 4:
-                    dayName = "Thursday";
-                    break;
-                case 5:
-                    dayName = "Friday";
-                    break;
-                case 6:
-                    dayName = "Saturday";
-                    break;
-                case 7:
-                    dayName = "Sunday";
-                    break;
-                default:
-                    dayName = "Invalid day";
-            }
-
-            switchResult.textContent = `Day: ${dayName}`;
-        }
-    </script>
+        switchResult.textContent = `Day: ${dayName}`;
+    }
+</script>
 
 </body>
 </html>
