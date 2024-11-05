@@ -93,6 +93,19 @@
     <div id="decisionResult" style="margin-top: 10px; font-size: 20px;"></div>
 </div>
 
+<!-- Meal Recommendation Section -->
+<div class="section">
+    <h2>Meal Recommendation</h2>
+    <label for="dietInput">Select your dietary preference:</label><br>
+    <select id="dietInput">
+        <option value="vegetarian">Vegetarian</option>
+        <option value="vegan">Vegan</option>
+        <option value="meat">Meat-Lover</option>
+    </select>
+    <button onclick="recommendMeal()">Get Meal Recommendation</button>
+    <div id="mealResult" style="margin-top: 10px; font-size: 20px;"></div>
+</div>
+
 <script>
     // If Statement Example
     function checkVotingEligibility() {
@@ -163,8 +176,30 @@
             document.getElementById('decisionResult').innerText = "Please enter at least one option.";
         }
     }
+
+    // Meal Recommendation Example
+    function recommendMeal() {
+        const diet = document.getElementById("dietInput").value;
+        const mealResult = document.getElementById("mealResult");
+        let recommendation;
+
+        switch (diet) {
+            case "vegetarian":
+                recommendation = "How about a delicious vegetable stir-fry?";
+                break;
+            case "vegan":
+                recommendation = "You could try a hearty lentil soup!";
+                break;
+            case "meat":
+                recommendation = "How about a grilled steak with vegetables?";
+                break;
+            default:
+                recommendation = "Please select a valid dietary preference.";
+        }
+
+        mealResult.textContent = recommendation;
+    }
 </script>
 
 </body>
 </html>
-
