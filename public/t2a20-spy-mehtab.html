@@ -52,10 +52,10 @@
 <textarea id="myArea03" rows="4" cols="70"></textarea><br><br>
 
 <script>
-    // Function to encrypt text
+    
     function encryptText() {
         let myTemp = '';
-        let myString = document.getElementById('myArea').value.toLowerCase().split('');
+        let myString = document.getElementById('myArea').value.toLowerCase().split('');           /* this part of the code is the function that encrypts the text*/
         
         for (let myLoop = 0; myLoop < myString.length; myLoop++) {
             myTemp = myString[myLoop];
@@ -67,16 +67,16 @@
             myString[myLoop] = myTemp;
         }
         
-        // Display the encrypted text
-        document.getElementById('myArea02').value = myString.join('');
+     
+        document.getElementById('myArea02').value = myString.join('');        /* this part shows/displays the encrypted text (2nd text box)*/
     }
 
-    // Function to decrypt text
+   
     function decryptText() {
         let myTemp = '';
         let myString = document.getElementById('myArea02').value.toLowerCase().split('');
 
-        for (let myLoop = 0; myLoop < myString.length; myLoop++) {
+        for (let myLoop = 0; myLoop < myString.length; myLoop++) {                                      /*this part of the code is the fun to decrypt the text*/
             myTemp = myString[myLoop];
 
             // Decryption logic (reverse the encryption)
@@ -86,8 +86,8 @@
             myString[myLoop] = myTemp;
         }
 
-        // Display the decrypted text
-        document.getElementById('myArea03').value = myString.join('');
+      
+        document.getElementById('myArea03').value = myString.join('');             /*this part shows/displays the decrypted text (3rd text box)*/
     }
 </script>
 
