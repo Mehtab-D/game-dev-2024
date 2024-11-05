@@ -51,11 +51,30 @@
             font-weight: bold;
             color: #333;
         }
+
+        h3#greeting {
+            font-size: 30px;
+            font-weight: bold;
+            margin-top: 10px;
+            color: #27186b;
+        }
     </style>
 </head>
 <body>
 
-<h1>t1a09-decision-if-mehtab</h1>
+<h1>Decision-Making Examples</h1>
+
+<!-- Language Selector Section -->
+<div class="section">
+    <h2>Language Selector</h2>
+    <label for="language">Choose a language:</label><br>
+    <select id="language" onchange="changeLanguage()">
+        <option value="english">English</option>
+        <option value="spanish">Español</option>
+        <option value="french">Français</option>
+    </select>
+    <h3 id="greeting">Hello</h3>
+</div>
 
 <!-- If Statement Example -->
 <div class="section">
@@ -125,6 +144,26 @@
 </div>
 
 <script>
+    // Language Selector Function
+    function changeLanguage() {
+        const language = document.getElementById("language").value;
+        const greeting = document.getElementById("greeting");
+
+        switch (language) {
+            case "english":
+                greeting.textContent = "Hello";
+                break;
+            case "spanish":
+                greeting.textContent = "Hola";
+                break;
+            case "french":
+                greeting.textContent = "Bonjour";
+                break;
+            default:
+                greeting.textContent = "Hello";
+        }
+    }
+
     // If Statement Example
     function checkVotingEligibility() {
         const age = document.getElementById("ageInput").value;
