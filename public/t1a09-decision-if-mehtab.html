@@ -3,84 +3,122 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Decision Making with JavaScript</title>
+    <title>Decision-Making Examples</title>
     <style>
         body {
-            background-color: lightblue;
             font-family: Arial, sans-serif;
-            padding: 20px;
+            margin: 20px;
         }
-        input[type="text"], input[type="number"] {
-            margin: 10px 0;
+        .section {
+            margin-bottom: 20px;
             padding: 10px;
-            width: 200px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #f9f9f9;
         }
-        input[type="button"] {
-            padding: 10px 15px;
-            cursor: pointer;
+        button {
             margin-top: 10px;
+            padding: 8px 12px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
         }
-        #output {
-            margin-top: 20px;
-            font-weight: bold;
+        button:hover {
+            background-color: #45a049;
         }
     </style>
 </head>
 <body>
 
-<h1 align="center">Decision Making Example</h1>
+    <h1>ta109-decision-if-mehtab</h1>
 
-<!-- Input Section -->
-<label for="myText1">Input Text:</label>
-<input type="text" id="myText1" value="Mehtab"><br>
+    <!-- If Statement Example -->
+    <div class="section">
+        <h2>If Statement</h2>
+        <p>Check if you are eligible to vote by entering your age:</p>
+        <input type="number" id="ageInput" placeholder="Enter your age">
+        <button onclick="checkVotingEligibility()">Check Eligibility</button>
+        <p id="ifResult"></p>
+    </div>
 
-<label for="myNum1">Input Number:</label>
-<input type="number" id="myNum1" value="14"><br>
+    <!-- If...Else Example -->
+    <div class="section">
+        <h2>If...Else Statement</h2>
+        <p>Check if it is day or evening based on the time (0 - 24):</p>
+        <input type="number" id="timeInput" placeholder="Enter time (0-24)">
+        <button onclick="checkTime()">Check Time</button>
+        <p id="ifElseResult"></p>
+    </div>
 
-<!-- Buttons for Decisions -->
-<input type="button" value="Is Mehtab" onclick="checkName('Mehtab')"><br>
-<input type="button" value="Is Mehtab Else" onclick="checkName('Not Mehtab')"><br>
+    <!-- Switch Statement Example -->
+    <div class="section">
+        <h2>Switch Statement</h2>
+        <p>Enter a number (1-7) to get the day of the week:</p>
+        <input type="number" id="dayInput" placeholder="Enter a number (1-7)">
+        <button onclick="getDay()">Get Day</button>
+        <p id="switchResult"></p>
+    </div>
 
-<!-- Output Display -->
-<div id="output"></div>
-
-<!-- Boredom Suggestions -->
-<h2>Things to Do When Bored</h2>
-<input type="text" id="boredInput" placeholder="Type here...">
-<button id="enterButton">Enter</button>
-<div id="options" style="display:none;">
-    <p>Output:</p>
-    <ul>
-        <li>Read a book</li>
-        <li>Go for a walk</li>
-        <li>Try a new recipe</li>
-        <li>Learn a new skill online</li>
-        <li>Watch a movie</li>
-        <li>Do some exercise</li>
-        <li>Call a friend</li>
-    </ul>
-</div>
-
-<script>
-    function checkName(expectedName) {
-        let myIn1 = document.getElementById('myText1').value;
-        if (myIn1 === expectedName) {
-            document.getElementById('output').innerHTML = `Hi ${myIn1}!`;
-        } else {
-            document.getElementById('output').innerHTML = `Was expecting ${expectedName}.`;
+    <script>
+        // If Statement Example
+        function checkVotingEligibility() {
+            const age = document.getElementById("ageInput").value;
+            const ifResult = document.getElementById("ifResult");
+            if (age >= 18) {
+                ifResult.textContent = "You are eligible to vote!";
+            } else {
+                ifResult.textContent = "You are not eligible to vote.";
+            }
         }
-    }
 
-    document.getElementById('enterButton').addEventListener('click', function() {
-        var input = document.getElementById('boredInput').value.toLowerCase();
-        if (input === "things to do when you're bored") {
-            document.getElementById('options').style.display = 'block';
-        } else {
-            alert('Please enter the correct phrase: "things to do when you\'re bored"');
+        // If...Else Example
+        function checkTime() {
+            const time = document.getElementById("timeInput").value;
+            const ifElseResult = document.getElementById("ifElseResult");
+            if (time < 18) {
+                ifElseResult.textContent = "Good day!";
+            } else {
+                ifElseResult.textContent = "Good evening!";
+            }
         }
-    });
-</script>
+
+        // Switch Statement Example
+        function getDay() {
+            const day = document.getElementById("dayInput").value;
+            const switchResult = document.getElementById("switchResult");
+            let dayName;
+
+            switch (parseInt(day)) {
+                case 1:
+                    dayName = "Monday";
+                    break;
+                case 2:
+                    dayName = "Tuesday";
+                    break;
+                case 3:
+                    dayName = "Wednesday";
+                    break;
+                case 4:
+                    dayName = "Thursday";
+                    break;
+                case 5:
+                    dayName = "Friday";
+                    break;
+                case 6:
+                    dayName = "Saturday";
+                    break;
+                case 7:
+                    dayName = "Sunday";
+                    break;
+                default:
+                    dayName = "Invalid day";
+            }
+
+            switchResult.textContent = `Day: ${dayName}`;
+        }
+    </script>
 
 </body>
 </html>
-
