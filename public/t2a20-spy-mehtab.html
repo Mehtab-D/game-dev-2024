@@ -1,21 +1,54 @@
-<h1 align=center>t2a120-spy-mehtab</h1>
-<textarea id="myArea" rows=4 cols=70>Hello how are you</textarea><br>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Encrypt/Decrypt</title>
+</head>
+<body>
 
-<input type=button value="encrypt" onclick="{
-  let myTemp=''
-  myString=document.getElementById('myArea01').value.toLowerCase().split('')
-  for (let myLoop=0; myLoop<myString.length; myLoop++){
-  myTemp=myString[myLoop]
-  if (myString[myLoop]=='e') {myTemp='f'}
-  if (myString[myLoop]='h') {myTemp='i'}
-  myString[myLoop]=myTemp
-  }
-  document.getElementById('myArea02').value=myString.join('')
-}"><br><br>
+<h1 align="center">t2a120-spy-mehtab</h1>
 
-<text area id="myArea02" rows=4 cols=7-></textarea><br>
-  <input type=button value="decrypt" onclick="{
-    alert('Sorry, you have to do this!')
-  }"><br><br>
-  <textarea id-="myArea03" rows=4 cols=70></textarea><br>
-  
+<textarea id="myArea" rows="4" cols="70">Hello how are you</textarea><br><br>
+
+<!-- Encrypt Button -->
+<input type="button" value="encrypt" onclick="encryptText()"><br><br>
+
+<!-- Encrypted Textarea -->
+<textarea id="myArea02" rows="4" cols="70"></textarea><br><br>
+
+<!-- Decrypt Button -->
+<input type="button" value="decrypt" onclick="decryptText()"><br><br>
+
+<!-- Decrypted Textarea (For Decryption) -->
+<textarea id="myArea03" rows="4" cols="70"></textarea><br><br>
+
+<script>
+    // Function to encrypt text
+    function encryptText() {
+        let myTemp = '';
+        let myString = document.getElementById('myArea').value.toLowerCase().split('');
+        
+        for (let myLoop = 0; myLoop < myString.length; myLoop++) {
+            myTemp = myString[myLoop];
+
+            // Encryption logic (simple example, extend as needed)
+            if (myString[myLoop] === 'e') { myTemp = 'f'; }
+            if (myString[myLoop] === 'h') { myTemp = 'i'; }
+            
+            myString[myLoop] = myTemp;
+        }
+        
+        // Display the encrypted text
+        document.getElementById('myArea02').value = myString.join('');
+    }
+
+    // Function to decrypt text (For now, just a simple alert)
+    function decryptText() {
+        alert('Sorry, you have to do this!');
+    }
+</script>
+
+</body>
+</html>
+
