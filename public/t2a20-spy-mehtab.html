@@ -4,6 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Simple Encrypt/Decrypt</title>
+    <style>
+        /* Set a light blue background for the entire webpage */
+        body {
+            background-color: #dfeff5;
+            font-family: Arial, sans-serif; 
+        }
+        /* Optional: Style the text area */
+        textarea {
+            border: 2px dotted #a2ddf5;
+            padding: 10px;
+            font-size: 16px;
+        }
+        /* Style the buttons */
+        input[type="button"] {
+            background-color: #e2f7bc; /* Green background */
+            color: black;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        input[type="button"]:hover {
+            background-color: #bcccf7;
+        }
+        h1 {
+            color: #333; /* Dark gray text for the title */
+        }
+    </style>
 </head>
 <body>
 
@@ -43,12 +71,25 @@
         document.getElementById('myArea02').value = myString.join('');
     }
 
-    // Function to decrypt text (For now, just a simple alert)
+    // Function to decrypt text
     function decryptText() {
-        alert('Sorry, you have to do this!');
+        let myTemp = '';
+        let myString = document.getElementById('myArea02').value.toLowerCase().split('');
+
+        for (let myLoop = 0; myLoop < myString.length; myLoop++) {
+            myTemp = myString[myLoop];
+
+            // Decryption logic (reverse the encryption)
+            if (myString[myLoop] === 'f') { myTemp = 'e'; }
+            if (myString[myLoop] === 'i') { myTemp = 'h'; }
+
+            myString[myLoop] = myTemp;
+        }
+
+        // Display the decrypted text
+        document.getElementById('myArea03').value = myString.join('');
     }
 </script>
 
 </body>
 </html>
-
