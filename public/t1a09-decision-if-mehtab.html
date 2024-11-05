@@ -115,6 +115,15 @@
     <div id="activityResult" style="margin-top: 10px; font-size: 20px;"></div>
 </div>
 
+<!-- Weather-Based Activity Suggestion Section -->
+<div class="section">
+    <h2>Weather-Based Activity</h2>
+    <label for="weatherInput">Enter weather (sunny, rainy, snowy):</label><br>
+    <input type="text" id="weatherInput" placeholder="sunny, rainy, snowy">
+    <button onclick="getWeatherActivity()">Get Activity</button>
+    <div id="weatherActivityResult" style="margin-top: 10px; font-size: 20px;"></div>
+</div>
+
 <script>
     // If Statement Example
     function checkVotingEligibility() {
@@ -223,8 +232,23 @@
             activityResult.textContent = "Please enter a valid time (0-24).";
         }
     }
+
+    // Weather-Based Activity Example
+    function getWeatherActivity() {
+        const weather = document.getElementById("weatherInput").value.toLowerCase();
+        const weatherActivityResult = document.getElementById("weatherActivityResult");
+        
+        if (weather === "sunny") {
+            weatherActivityResult.textContent = "How about a picnic in the park?";
+        } else if (weather === "rainy") {
+            weatherActivityResult.textContent = "A perfect day for indoor board games!";
+        } else if (weather === "snowy") {
+            weatherActivityResult.textContent = "Time for some winter sports like snowboarding!";
+        } else {
+            weatherActivityResult.textContent = "Please enter a valid weather condition (sunny, rainy, snowy).";
+        }
+    }
 </script>
 
 </body>
 </html>
-
