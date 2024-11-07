@@ -7,8 +7,7 @@
 </head>
   <style>
 <body>
-  background-color: #e6eefa;
-    </style>
+    background-color:#e6eefa;
   <h1 align="center">t2a21-canvas-mehtab</h1>
 
   <canvas id="myCanvas" width="500" height="500" style="border:1px solid black;"></canvas><br><br>
@@ -78,32 +77,32 @@
       myContext.fillRect(100, 300, 200, 400);
     }
 
-    // Function to draw the candy cane
+    // Function to draw the candy cane (more realistic shape)
     function drawCandyCane() {
       // Clear the canvas before drawing
       myContext.clearRect(0, 0, canvas.width, canvas.height);
 
-      // Draw the candy cane shape (arc and line)
+      // Draw the curved candy cane shape (arc + smooth line)
       myContext.beginPath();
       myContext.lineWidth = 10;
       myContext.strokeStyle = 'white';
-      myContext.arc(200, 150, 100, Math.PI / 4, 3 * Math.PI / 4, false);
-      myContext.stroke();
+      myContext.moveTo(250, 150); // Starting point for the cane
 
-      // Draw the hook part of the cane (the line going down)
-      myContext.beginPath();
-      myContext.moveTo(200, 150); // Start at the top of the arc
-      myContext.lineTo(200, 300);  // Draw down vertically
-      myContext.lineWidth = 12;  // Wider line for the body of the cane
+      // Create the candy cane's curved shape using quadraticCurveTo for smoothness
+      myContext.quadraticCurveTo(350, 50, 300, 200); // Quadratic curve for smooth arc
+      myContext.lineWidth = 12;
       myContext.strokeStyle = 'white';
       myContext.stroke();
 
-      // Draw the red and white stripes
-      var stripeWidth = 12;
+      // Draw alternating red and white stripes
+      var stripeWidth = 15; // Width of the stripes
+      var stripeSpacing = 20; // Spacing between stripes along the curve
       for (var i = 0; i < 10; i++) {
         myContext.beginPath();
-        myContext.moveTo(200, 150 + (i * 15));  // Starting point for each stripe
-        myContext.lineTo(200, 150 + ((i + 1) * 15));  // Ending point of each stripe
+        var startAngle = 0.2 * i;  // Angle increment for each stripe
+        var endAngle = startAngle + 0.2;  // Create stripe sections
+
+        myContext.arc(250, 150, 100, startAngle, endAngle);  // Create a curved stripe
         myContext.lineWidth = stripeWidth;
         myContext.strokeStyle = (i % 2 === 0) ? 'red' : 'white';  // Alternate red and white
         myContext.stroke();
@@ -112,5 +111,3 @@
   </script>
 </body>
 </html>
-
-    
