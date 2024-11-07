@@ -203,12 +203,12 @@
     // Toggle snowfall animation
     function toggleSnowfall() {
       if (!isSnowfallActive) {
-        isSnowfallActive = true; // Enable snowfall
-        createSnowflakes();     // Create new snowflakes
+        isSnowfallActive = true;
+        createSnowflakes();     
         animateSnowfall();      // Start the snowfall animation
       } else {
         isSnowfallActive = false; // Disable snowfall
-        myContext.clearRect(0, 0, canvas.width, canvas.height); // Clear the canvas
+        myContext.clearRect(0, 0, canvas.width, canvas.height); 
       }
     }
   </script>
