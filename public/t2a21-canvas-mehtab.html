@@ -101,6 +101,7 @@
       myContext.fillStyle = '#e6eefa'; // Light pastel blue background color
       myContext.fillRect(0, 0, canvas.width, canvas.height);        
 
+
       myContext.strokeStyle = '#003366';  /*snowflake color and the width of the lines for it*/
       myContext.lineWidth = 5;
 
@@ -190,7 +191,8 @@
 
     function animateSnowfall() {
       if (isSnowfallActive) {
-        drawSnowflakes(); // Draw snowflakes over the existing content
+        // Don't clear the whole canvas, just draw snowflakes on top
+        drawSnowflakes(); 
         requestAnimationFrame(animateSnowfall); // Keep the animation going
       }
     }
