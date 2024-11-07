@@ -40,7 +40,7 @@
   <input type="button" value="Linear Gradient" onclick="drawGradient()">
   
   <!-- New button to draw the snowflake -->
-  <input type="button" value="Draw Snowflake" onclick="toggleSnowfall()">
+  <input type="button" value="Draw Snowflake" onclick="drawSnowflake()">
 
   <script>
     var canvas = document.getElementById('myCanvas');
@@ -148,8 +148,8 @@
 
   
     var snowflakes = [];                    /*this part creates the snowfall animation*/
-    var isSnowfallActive = false;           /* Flag to control snowfall visibility */
 
+    
     function Snowflake(x, y, radius, speed) {
       this.x = x;
       this.y = y;                                  /*this part is a class for the falling snow*/
@@ -193,25 +193,15 @@
 
     
     function animateSnowfall() {
-      if (isSnowfallActive) {
-        myContext.clearRect(0, 0, canvas.width, canvas.height); // Clear canvas
-        drawSnowflakes(); // Draw falling snowflakes
-        requestAnimationFrame(animateSnowfall); // Keep the animation going
-      }
+      myContext.clearRect(0, 0, canvas.width, canvas.height); // Clear canvas
+      drawSnowflakes(); // Draw falling snowflakes
+      requestAnimationFrame(animateSnowfall); // Keep the animation going
     }
 
-    // Toggle snowfall animation
-    function toggleSnowfall() {
-      if (!isSnowfallActive) {
-        isSnowfallActive = true;
-        createSnowflakes();     
-        animateSnowfall();      // Start the snowfall animation
-      } else {
-        isSnowfallActive = false; // Disable snowfall
-        myContext.clearRect(0, 0, canvas.width, canvas.height); 
-      }
-    }
+    // Initialize and start snowfall animation
+    createSnowflakes();
+    animateSnowfall();
+
   </script>
 </body>
 </html>
-
