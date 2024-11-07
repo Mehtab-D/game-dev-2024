@@ -1,46 +1,75 @@
-<h1 align=center>t2a21-canvas-mehtab</h1>
-You use loops and variables to make fast fancy drawings<br><br>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Canvas Drawing</title>
+</head>
+<body>
+  <h1 align="center">t2a21-canvas-mehtab</h1>
 
-<input type=button value=".lineTo(30,200)" onclick="{
-  myContext.beginPath();
-  myContext.lineWidth=1;
-  myContext.moveTo(20,10);
-  myContext.lineTo(30,200)
-  myContext.stroke();
-  }">
+  <canvas id="myCanvas" width="500" height="500" style="border:1px solid black;"></canvas><br><br>
 
-  <input type=button value=".arc(95,50,40,0,2* Math.PI)" onclick="{
-    myContext.beginPath();
-    myContext.lineWidth=10;
-    myContext.strokeStyle='green';
-    myContext.arc(95,50,40,0,2 *Math.PI);
-    myContext.stroke();
-    }">
+  <input type="button" value=".lineTo(30,200)" onclick="drawLine()">
+  <input type="button" value=".arc(95,50,40,0,2* Math.PI)" onclick="drawArc()">
+  <input type="button" value=".fillText('Hello World',400,100)" onclick="drawText()">
+  <input type="button" value=".quadraticCurveTo(100,220,240,110)" onclick="drawQuadraticCurve()">
+  <input type="button" value=".createLinearGradient(100,300,200,400)" onclick="drawGradient()">
 
-    <input type=button value=".fillText('Hello World',400,100)" onclick="{
-      myContext.font='20px Arial';
-      myContext.fillText('Hello World',400,100);
-      myContext.translate(400,100);
-      myContext.rotate(60* Math.PI/180);
-      myContext.fillText('Hello World',10,10);
-      myContext.storke();
-      myContext.resetTransform();
-      //myContext.rotate(-60* Math.PI/180);
-    }">
+  <script>
+    var canvas = document.getElementById('myCanvas');
+    var myContext = canvas.getContext('2d');
 
-<input type=button value=".quadraticCurveTo(100,220,240,110)" onclick="{
-  myContext.beginPath();
-  myContext.moveTo(300,100);
-  myContext.quadraticCurveTo(100,220,240,110);
-  myContext.stroke();
-}">
+    // Line to (30,200)
+    function drawLine() {
+      myContext.beginPath();
+      myContext.lineWidth = 1;
+      myContext.moveTo(20, 10);
+      myContext.lineTo(30, 200);
+      myContext.stroke();
+    }
 
-<input type=button value=".createLinearGradient(100,300,200,400)" onclick="{
-  let myGradient=myContext.createLinearGradient(100,300,200,400);
-  myGradient.addColorStop(0,'red');
-   myGradient.addColorStop(0.5,'blue');
-   myGradient.addColorStop(1,'yellow');
+    // Arc at (95,50) with radius 40
+    function drawArc() {
+      myContext.beginPath();
+      myContext.lineWidth = 10;
+      myContext.strokeStyle = 'green';
+      myContext.arc(95, 50, 40, 0, 2 * Math.PI);
+      myContext.stroke();
+    }
 
-  myContext.fillStyle=myGradient;
-  myContext.fillRect(100,300,200,400);
+    // Fill text 'Hello World' at (400, 100)
+    function drawText() {
+      myContext.font = '20px Arial';
+      myContext.fillText('Hello World', 400, 100);
       
+      // Apply transformation for rotated text
+      myContext.translate(400, 100);
+      myContext.rotate(60 * Math.PI / 180);
+      myContext.fillText('Hello World', 10, 10);
+      
+      // Reset transformation
+      myContext.resetTransform();
+    }
+
+    // Quadratic curve to (100,220) and (240,110)
+    function drawQuadraticCurve() {
+      myContext.beginPath();
+      myContext.moveTo(300, 100);
+      myContext.quadraticCurveTo(100, 220, 240, 110);
+      myContext.stroke();
+    }
+
+    // Linear gradient from (100, 300) to (200, 400)
+    function drawGradient() {
+      var myGradient = myContext.createLinearGradient(100, 300, 200, 400);
+      myGradient.addColorStop(0, 'red');
+      myGradient.addColorStop(0.5, 'blue');
+      myGradient.addColorStop(1, 'yellow');
+
+      myContext.fillStyle = myGradient;
+      myContext.fillRect(100, 300, 200, 400);
+    }
+  </script>
+</body>
+</html>
