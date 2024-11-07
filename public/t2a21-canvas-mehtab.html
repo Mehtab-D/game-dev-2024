@@ -34,11 +34,11 @@
   <canvas id="myCanvas" width="500" height="500"></canvas><br><br>
 
   <!-- Buttons for various drawing actions -->
-  <input type="button" value=".lineTo(30,200)" onclick="drawLine()">
-  <input type="button" value=".arc(95,50,40,0,2* Math.PI)" onclick="drawArc()">
-  <input type="button" value=".fillText('Hello World',400,100)" onclick="drawText()">
-  <input type="button" value=".quadraticCurveTo(100,220,240,110)" onclick="drawQuadraticCurve()">
-  <input type="button" value=".createLinearGradient(100,300,200,400)" onclick="drawGradient()">
+  <input type="button" value="Line" onclick="drawLine()">
+  <input type="button" value="Arc" onclick="drawArc()">
+  <input type="button" value="Hello World Angle Text" onclick="drawText()">
+  <input type="button" value="Quadratic Curve" onclick="drawQuadraticCurve()">
+  <input type="button" value="Linear Gradient" onclick="drawGradient()">
   
   <!-- New button to draw the snowflake -->
   <input type="button" value="Draw Snowflake" onclick="drawSnowflake()">
@@ -65,7 +65,6 @@
       myContext.stroke();
     }
 
-    // Fill text 'Hello World' at (400, 100)
     function drawText() {
       myContext.font = '20px Arial';                        /*Hello World text*/
       myContext.fillText('Hello World', 400, 100);
@@ -92,7 +91,7 @@
       var myGradient = myContext.createLinearGradient(100, 300, 200, 400);           /*gradient*/
       myGradient.addColorStop(0, 'red');
       myGradient.addColorStop(0.5, 'blue');
-      myGradient.addColorStop(1, 'yellow');
+      myGradient.addColorStop(1, 'purple');
 
       myContext.fillStyle = myGradient;
       myContext.fillRect(100, 300, 200, 400);
