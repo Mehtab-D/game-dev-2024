@@ -40,7 +40,7 @@
   <input type="button" value="Linear Gradient" onclick="drawGradient()">
   
   <!-- New button to draw the snowflake -->
-  <input type="button" value="Draw Snowflake" onclick="drawSnowflake()">
+  <input type="button" value="Draw Snowflake" onclick="toggleSnowfall()">
 
   <script>
     var canvas = document.getElementById('myCanvas');
@@ -146,13 +146,13 @@
       }
     }
 
-    // Snowfall animation
-    var snowflakes = [];
+  
+    var snowflakes = [];                    /*this part creates the snowfall animation*/
+    var isSnowfallActive = false;           /* Flag to control snowfall visibility */
 
-    // Snowflake class for falling snow
     function Snowflake(x, y, radius, speed) {
       this.x = x;
-      this.y = y;
+      this.y = y;                                  /*this part is a class for the falling snow*/
       this.radius = radius;
       this.speed = speed;
     }
@@ -168,42 +168,50 @@
       }
     }
 
-    // Draw and animate snowflakes
+    
     function drawSnowflakes() {
-      for (var i = 0; i < snowflakes.length; i++) {
+      for (var i = 0; i < snowflakes.length; i++) {            /*this draws the snowflake*/
         var snowflake = snowflakes[i];
 
-        // Draw each snowflake
+        
         myContext.beginPath();
-        myContext.arc(snowflake.x, snowflake.y, snowflake.radius, 0, Math.PI * 2);
+        myContext.arc(snowflake.x, snowflake.y, snowflake.radius, 0, Math.PI * 2);       /*this draws each snowflake*/
         myContext.fillStyle = 'white';
         myContext.fill();
         myContext.closePath();
 
-        // Update snowflake position
+        
         snowflake.y += snowflake.speed;
 
-        // Reset snowflake to top if it falls off the bottom
-        if (snowflake.y > canvas.height) {
-          snowflake.y = -snowflake.radius;
+  
+        if (snowflake.y > canvas.height) {                                 
+          snowflake.y = -snowflake.radius;             /*this resets the snowfall when it has fallen to the bottom*/                        
           snowflake.x = Math.random() * canvas.width;
         }
       }
     }
 
-    // Animate the snow
+    
     function animateSnowfall() {
-      myContext.clearRect(0, 0, canvas.width, canvas.height); // Clear canvas
-      drawSnowflakes(); // Draw falling snowflakes
-      requestAnimationFrame(animateSnowfall); // Keep the animation going
+      if (isSnowfallActive) {
+        myContext.clearRect(0, 0, canvas.width, canvas.height); // Clear canvas
+        drawSnowflakes(); // Draw falling snowflakes
+        requestAnimationFrame(animateSnowfall); // Keep the animation going
+      }
     }
 
-    // Initialize and start snowfall animation
-    createSnowflakes();
-    animateSnowfall();
-
+    // Toggle snowfall animation
+    function toggleSnowfall() {
+      if (!isSnowfallActive) {
+        isSnowfallActive = true; // Enable snowfall
+        createSnowflakes();     // Create new snowflakes
+        animateSnowfall();      // Start the snowfall animation
+      } else {
+        isSnowfallActive = false; // Disable snowfall
+        myContext.clearRect(0, 0, canvas.width, canvas.height); // Clear the canvas
+      }
+    }
   </script>
 </body>
 </html>
-
 
