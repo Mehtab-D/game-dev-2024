@@ -41,6 +41,9 @@
   
   <!-- New button to draw the snowflake -->
   <input type="button" value="Draw Snowflake" onclick="drawSnowflake()">
+  
+  <!-- New button to start the snowfall animation -->
+  <input type="button" value="Start Snowfall" onclick="startSnowfall()">
 
   <script>
     var canvas = document.getElementById('myCanvas');
@@ -95,7 +98,6 @@
 
     // Snowflake function with 6 branches
     function drawSnowflake() {
-      // Clear the canvas before drawing and set the background color
       myContext.fillStyle = '#e6eefa'; // Light pastel blue background color
       myContext.fillRect(0, 0, canvas.width, canvas.height);        
 
@@ -146,10 +148,9 @@
       }
     }
 
-  
     var snowflakes = [];                    /*this part creates the snowfall animation*/
+    var isSnowfallActive = false;           /* Flag to control snowfall visibility */
 
-    
     function Snowflake(x, y, radius, speed) {
       this.x = x;
       this.y = y;                                  /*this part is a class for the falling snow*/
@@ -168,22 +169,18 @@
       }
     }
 
-    
     function drawSnowflakes() {
       for (var i = 0; i < snowflakes.length; i++) {            /*this draws the snowflake*/
         var snowflake = snowflakes[i];
 
-        
         myContext.beginPath();
         myContext.arc(snowflake.x, snowflake.y, snowflake.radius, 0, Math.PI * 2);       /*this draws each snowflake*/
         myContext.fillStyle = 'white';
         myContext.fill();
         myContext.closePath();
 
-        
         snowflake.y += snowflake.speed;
 
-  
         if (snowflake.y > canvas.height) {                                 
           snowflake.y = -snowflake.radius;             /*this resets the snowfall when it has fallen to the bottom*/                        
           snowflake.x = Math.random() * canvas.width;
@@ -191,16 +188,22 @@
       }
     }
 
-    
     function animateSnowfall() {
-      myContext.clearRect(0, 0, canvas.width, canvas.height); // Clear canvas
-      drawSnowflakes(); // Draw falling snowflakes
-      requestAnimationFrame(animateSnowfall); // Keep the animation going
+      if (isSnowfallActive) {
+        myContext.clearRect(0, 0, canvas.width, canvas.height); // Clear canvas
+        drawSnowflakes(); // Draw falling snowflakes
+        requestAnimationFrame(animateSnowfall); // Keep the animation going
+      }
     }
 
-    // Initialize and start snowfall animation
-    createSnowflakes();
-    animateSnowfall();
+    // Start snowfall animation
+    function startSnowfall() {
+      if (!isSnowfallActive) {
+        isSnowfallActive = true; // Enable snowfall
+        createSnowflakes();     // Create new snowflakes
+        animateSnowfall();      // Start the snowfall animation
+      }
+    }
 
   </script>
 </body>
