@@ -4,14 +4,34 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Interactive Canvas Drawing</title>
-</head>
   <style>
+    /* Set the background color for the entire webpage */
+    body {
+      background-color: #e6eefa; 
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh; /* Full viewport height */
+      flex-direction: column;
+    }
+
+    /* Center the canvas and buttons */
+    canvas {
+      border: 1px solid black;
+    }
+
+    button {
+      margin: 5px;
+    }
+  </style>
+</head>
 <body>
-    background-color:#e6eefa;
-    </style>
   <h1 align="center">t2a21-canvas-mehtab</h1>
 
-  <canvas id="myCanvas" width="500" height="500" style="border:1px solid black;"></canvas><br><br>
+  <canvas id="myCanvas" width="500" height="500"></canvas><br><br>
 
   <!-- Buttons for various drawing actions -->
   <input type="button" value=".lineTo(30,200)" onclick="drawLine()">
@@ -20,8 +40,8 @@
   <input type="button" value=".quadraticCurveTo(100,220,240,110)" onclick="drawQuadraticCurve()">
   <input type="button" value=".createLinearGradient(100,300,200,400)" onclick="drawGradient()">
   
-  <!-- New button to draw the candy cane -->
-  <input type="button" value="Draw Candy Cane" onclick="drawCandyCane()">
+  <!-- New button to draw the snowflake -->
+  <input type="button" value="Draw Snowflake" onclick="drawSnowflake()">
 
   <script>
     var canvas = document.getElementById('myCanvas');
@@ -78,37 +98,64 @@
       myContext.fillRect(100, 300, 200, 400);
     }
 
-    // Function to draw the candy cane (more realistic shape)
-    function drawCandyCane() {
-      // Clear the canvas before drawing
-      myContext.clearRect(0, 0, canvas.width, canvas.height);
+    // Function to draw a snowflake with dark blue color
+    function drawSnowflake() {
+      // Clear the canvas before drawing and set the background color
+      myContext.fillStyle = '#e6eefa'; // Light pastel blue background color
+      myContext.fillRect(0, 0, canvas.width, canvas.height); // Fill the entire canvas with the background color
 
-      // Draw the curved candy cane shape (arc + smooth line)
-      myContext.beginPath();
-      myContext.lineWidth = 10;
-      myContext.strokeStyle = 'white';
-      myContext.moveTo(250, 150); // Starting point for the cane
+      // Set up the snowflake color and line width
+      myContext.strokeStyle = '#003366'; // Dark blue color for the snowflake
+      myContext.lineWidth = 5;
 
-      // Create the candy cane's curved shape using quadraticCurveTo for smoothness
-      myContext.quadraticCurveTo(350, 50, 300, 200); // Quadratic curve for smooth arc
-      myContext.lineWidth = 12;
-      myContext.strokeStyle = 'white';
-      myContext.stroke();
+      // Function to draw a single arm of the snowflake
+      function drawSnowflakeArm(x, y, length, angle) {
+        myContext.save();
+        myContext.translate(x, y); // Move to the center
+        myContext.rotate(angle); // Rotate the line to the correct angle
 
-      // Draw alternating red and white stripes
-      var stripeWidth = 15; // Width of the stripes
-      var stripeSpacing = 20; // Spacing between stripes along the curve
-      for (var i = 0; i < 10; i++) {
+        // Draw the arm (line)
         myContext.beginPath();
-        var startAngle = 0.2 * i;  // Angle increment for each stripe
-        var endAngle = startAngle + 0.2;  // Create stripe sections
-
-        myContext.arc(250, 150, 100, startAngle, endAngle);  // Create a curved stripe
-        myContext.lineWidth = stripeWidth;
-        myContext.strokeStyle = (i % 2 === 0) ? 'red' : 'white';  // Alternate red and white
+        myContext.moveTo(0, 0);
+        myContext.lineTo(0, -length); // Length of the arm
         myContext.stroke();
+
+        // Draw the branches of the arm
+        myContext.save();
+        myContext.translate(0, -length); // Move to the end of the arm
+
+        // Draw the smaller branches
+        myContext.save();
+        myContext.rotate(Math.PI / 6); // Rotate by 30 degrees
+        myContext.beginPath();
+        myContext.moveTo(0, 0);
+        myContext.lineTo(0, -length / 3);
+        myContext.stroke();
+        myContext.restore();
+
+        myContext.save();
+        myContext.rotate(-Math.PI / 3); // Rotate by -30 degrees
+        myContext.beginPath();
+        myContext.moveTo(0, 0);
+        myContext.lineTo(0, -length / 3);
+        myContext.stroke();
+        myContext.restore();
+
+        myContext.restore();
+        myContext.restore();
+      }
+
+      // Draw 6 arms of the snowflake, evenly spaced
+      var x = canvas.width / 2;
+      var y = canvas.height / 2;
+      var armLength = 80; // Length of the snowflake's arms
+
+      for (var i = 0; i < 6; i++) {
+        var angle = (i * Math.PI / 3); // 60 degree separation between arms
+        drawSnowflakeArm(x, y, armLength, angle);
       }
     }
   </script>
 </body>
 </html>
+
