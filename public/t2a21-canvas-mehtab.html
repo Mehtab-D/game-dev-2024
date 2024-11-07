@@ -190,8 +190,7 @@
 
     function animateSnowfall() {
       if (isSnowfallActive) {
-        myContext.clearRect(0, 0, canvas.width, canvas.height); // Clear canvas
-        drawSnowflakes(); // Draw falling snowflakes
+        drawSnowflakes(); // Draw snowflakes over the existing content
         requestAnimationFrame(animateSnowfall); // Keep the animation going
       }
     }
