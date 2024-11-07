@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Interactive Canvas Drawing</title>
   <style>
-  
     body {
       background-color: #e6eefa; 
       font-family: Arial, sans-serif;
@@ -69,7 +68,6 @@
       myContext.font = '20px Arial';                        /*Hello World text*/
       myContext.fillText('Hello World', 400, 100);
       
-   
       myContext.translate(400, 100);
       myContext.rotate(60 * Math.PI / 180);
       myContext.fillText('Hello World', 10, 10);           /*for rotated text*/
@@ -78,14 +76,12 @@
       myContext.resetTransform();
     }
 
-   
     function drawQuadraticCurve() {
       myContext.beginPath();
       myContext.moveTo(300, 100);                           /*for quadratic curve*/
       myContext.quadraticCurveTo(100, 220, 240, 110);
       myContext.stroke();
     }
-
 
     function drawGradient() {
       var myGradient = myContext.createLinearGradient(100, 300, 200, 400);           /*gradient*/
@@ -97,32 +93,29 @@
       myContext.fillRect(100, 300, 200, 400);
     }
 
-   
+    // Snowflake function with 6 branches
     function drawSnowflake() {
-      // Clear the canvas before drawing and set the background color          /*clears canvas before adding snowflake also added the color*/
-      myContext.fillStyle = '#e6eefa'; // Light pastel blue background color            
+      // Clear the canvas before drawing and set the background color
+      myContext.fillStyle = '#e6eefa'; // Light pastel blue background color
       myContext.fillRect(0, 0, canvas.width, canvas.height);        
 
-    
       myContext.strokeStyle = '#003366';  /*snowflake color and the width of the lines for it*/
       myContext.lineWidth = 5;
 
       function drawSnowflakeArm(x, y, length, angle) {
         myContext.save();
-        myContext.translate(x, y); // Move to the center                    /*single arm of the snowflake*/
+        myContext.translate(x, y); // Move to the center
         myContext.rotate(angle); // Rotate the line to the correct angle
 
-    
         myContext.beginPath();
         myContext.moveTo(0, 0);
-        myContext.lineTo(0, -length);      /*another arm of the snowflake*/
+        myContext.lineTo(0, -length);      /*draws a main arm of the snowflake*/
         myContext.stroke();
 
-       
         myContext.save();
-        myContext.translate(0, -length); // Move to the end of the arm          /*this part is the branches of the arm*/
+        myContext.translate(0, -length); // Move to the end of the arm
 
-        
+        // Branches of the snowflake arm
         myContext.save();
         myContext.rotate(Math.PI / 6); // Rotate by 30 degrees      
         myContext.beginPath();
@@ -130,7 +123,7 @@
         myContext.lineTo(0, -length / 3);
         myContext.stroke();
         myContext.restore();
-                                                                                /*and this part makes the smaller branches*/
+
         myContext.save();
         myContext.rotate(-Math.PI / 3); // Rotate by -30 degrees            
         myContext.beginPath();
@@ -143,17 +136,74 @@
         myContext.restore();
       }
 
-     
       var x = canvas.width / 2;
-      var y = canvas.height / 2;                                     /*this part draws 6 arms for the snowflake and it makes sure that the space is even between it all*/
+      var y = canvas.height / 2;                                     /*center of the snowflake*/
       var armLength = 80;             /*length of the snowflake's arm*/
 
       for (var i = 0; i < 6; i++) {
-        var angle = (i * Math.PI / 3);       /*60 degree seperation between arms*/
+        var angle = (i * Math.PI / 3);       /*60 degree separation between arms*/
         drawSnowflakeArm(x, y, armLength, angle);
       }
     }
+
+    // Snowfall animation
+    var snowflakes = [];
+
+    // Snowflake class for falling snow
+    function Snowflake(x, y, radius, speed) {
+      this.x = x;
+      this.y = y;
+      this.radius = radius;
+      this.speed = speed;
+    }
+
+    // Create snowflakes
+    function createSnowflakes() {
+      for (var i = 0; i < 100; i++) {
+        var radius = Math.random() * 3 + 2; // Random size between 2 and 5
+        var x = Math.random() * canvas.width; // Random x position
+        var y = Math.random() * canvas.height; // Random y position
+        var speed = Math.random() * 3 + 1; // Random speed
+        snowflakes.push(new Snowflake(x, y, radius, speed));
+      }
+    }
+
+    // Draw and animate snowflakes
+    function drawSnowflakes() {
+      for (var i = 0; i < snowflakes.length; i++) {
+        var snowflake = snowflakes[i];
+
+        // Draw each snowflake
+        myContext.beginPath();
+        myContext.arc(snowflake.x, snowflake.y, snowflake.radius, 0, Math.PI * 2);
+        myContext.fillStyle = 'white';
+        myContext.fill();
+        myContext.closePath();
+
+        // Update snowflake position
+        snowflake.y += snowflake.speed;
+
+        // Reset snowflake to top if it falls off the bottom
+        if (snowflake.y > canvas.height) {
+          snowflake.y = -snowflake.radius;
+          snowflake.x = Math.random() * canvas.width;
+        }
+      }
+    }
+
+    // Animate the snow
+    function animateSnowfall() {
+      myContext.clearRect(0, 0, canvas.width, canvas.height); // Clear canvas
+      drawSnowflakes(); // Draw falling snowflakes
+      requestAnimationFrame(animateSnowfall); // Keep the animation going
+    }
+
+    // Initialize and start snowfall animation
+    createSnowflakes();
+    animateSnowfall();
+
   </script>
 </body>
 </html>
+
 
