@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Interactive Canvas Drawing</title>
   <style>
-    /* Set the background color for the entire webpage */
+  
     body {
       background-color: #e6eefa; 
       font-family: Arial, sans-serif;
@@ -67,29 +67,29 @@
 
     // Fill text 'Hello World' at (400, 100)
     function drawText() {
-      myContext.font = '20px Arial';
+      myContext.font = '20px Arial';                        /*Hello World text*/
       myContext.fillText('Hello World', 400, 100);
       
-      // Apply transformation for rotated text
+   
       myContext.translate(400, 100);
       myContext.rotate(60 * Math.PI / 180);
-      myContext.fillText('Hello World', 10, 10);
+      myContext.fillText('Hello World', 10, 10);           /*for rotated text*/
       
       // Reset transformation
       myContext.resetTransform();
     }
 
-    // Quadratic curve to (100,220) and (240,110)
+   
     function drawQuadraticCurve() {
       myContext.beginPath();
-      myContext.moveTo(300, 100);
+      myContext.moveTo(300, 100);                           /*for quadratic curve*/
       myContext.quadraticCurveTo(100, 220, 240, 110);
       myContext.stroke();
     }
 
-    // Linear gradient from (100, 300) to (200, 400)
+
     function drawGradient() {
-      var myGradient = myContext.createLinearGradient(100, 300, 200, 400);
+      var myGradient = myContext.createLinearGradient(100, 300, 200, 400);           /*gradient*/
       myGradient.addColorStop(0, 'red');
       myGradient.addColorStop(0.5, 'blue');
       myGradient.addColorStop(1, 'yellow');
@@ -98,43 +98,42 @@
       myContext.fillRect(100, 300, 200, 400);
     }
 
-    // Function to draw a snowflake with dark blue color
+   
     function drawSnowflake() {
-      // Clear the canvas before drawing and set the background color
-      myContext.fillStyle = '#e6eefa'; // Light pastel blue background color
-      myContext.fillRect(0, 0, canvas.width, canvas.height); // Fill the entire canvas with the background color
+      // Clear the canvas before drawing and set the background color          /*clears canvas before adding snowflake also added the color*/
+      myContext.fillStyle = '#e6eefa'; // Light pastel blue background color            
+      myContext.fillRect(0, 0, canvas.width, canvas.height);        
 
-      // Set up the snowflake color and line width
-      myContext.strokeStyle = '#003366'; // Dark blue color for the snowflake
+    
+      myContext.strokeStyle = '#003366';  /*snowflake color and the width of the lines for it*/
       myContext.lineWidth = 5;
 
-      // Function to draw a single arm of the snowflake
       function drawSnowflakeArm(x, y, length, angle) {
         myContext.save();
-        myContext.translate(x, y); // Move to the center
+        myContext.translate(x, y); // Move to the center                    /*single arm of the snowflake*/
         myContext.rotate(angle); // Rotate the line to the correct angle
 
-        // Draw the arm (line)
+    
         myContext.beginPath();
         myContext.moveTo(0, 0);
-        myContext.lineTo(0, -length); // Length of the arm
+        myContext.lineTo(0, -length);      /*another arm of the snowflake*/
         myContext.stroke();
 
-        // Draw the branches of the arm
+       
         myContext.save();
-        myContext.translate(0, -length); // Move to the end of the arm
+        myContext.translate(0, -length); // Move to the end of the arm          /*this part is the branches of the arm*/
 
-        // Draw the smaller branches
+        
         myContext.save();
-        myContext.rotate(Math.PI / 6); // Rotate by 30 degrees
+        myContext.rotate(Math.PI / 6); // Rotate by 30 degrees      
         myContext.beginPath();
         myContext.moveTo(0, 0);
         myContext.lineTo(0, -length / 3);
         myContext.stroke();
         myContext.restore();
-
+                                                                                /*and this part makes the smaller branches*/
         myContext.save();
-        myContext.rotate(-Math.PI / 3); // Rotate by -30 degrees
+        myContext.rotate(-Math.PI / 3); // Rotate by -30 degrees            
         myContext.beginPath();
         myContext.moveTo(0, 0);
         myContext.lineTo(0, -length / 3);
@@ -145,13 +144,13 @@
         myContext.restore();
       }
 
-      // Draw 6 arms of the snowflake, evenly spaced
+     
       var x = canvas.width / 2;
-      var y = canvas.height / 2;
-      var armLength = 80; // Length of the snowflake's arms
+      var y = canvas.height / 2;                                     /*this part draws 6 arms for the snowflake and it makes sure that the space is even between it all*/
+      var armLength = 80;             /*length of the snowflake's arm*/
 
       for (var i = 0; i < 6; i++) {
-        var angle = (i * Math.PI / 3); // 60 degree separation between arms
+        var angle = (i * Math.PI / 3);       /*60 degree seperation between arms*/
         drawSnowflakeArm(x, y, armLength, angle);
       }
     }
