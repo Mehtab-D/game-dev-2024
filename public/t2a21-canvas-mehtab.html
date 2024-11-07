@@ -10,11 +10,15 @@
 
   <canvas id="myCanvas" width="500" height="500" style="border:1px solid black;"></canvas><br><br>
 
+  <!-- Buttons for various drawing actions -->
   <input type="button" value=".lineTo(30,200)" onclick="drawLine()">
   <input type="button" value=".arc(95,50,40,0,2* Math.PI)" onclick="drawArc()">
   <input type="button" value=".fillText('Hello World',400,100)" onclick="drawText()">
   <input type="button" value=".quadraticCurveTo(100,220,240,110)" onclick="drawQuadraticCurve()">
   <input type="button" value=".createLinearGradient(100,300,200,400)" onclick="drawGradient()">
+  
+  <!-- New button to draw the candy cane -->
+  <input type="button" value="Draw Candy Cane" onclick="drawCandyCane()">
 
   <script>
     var canvas = document.getElementById('myCanvas');
@@ -70,6 +74,40 @@
       myContext.fillStyle = myGradient;
       myContext.fillRect(100, 300, 200, 400);
     }
+
+    // Function to draw the candy cane
+    function drawCandyCane() {
+      // Clear the canvas before drawing
+      myContext.clearRect(0, 0, canvas.width, canvas.height);
+
+      // Draw the candy cane shape (arc and line)
+      myContext.beginPath();
+      myContext.lineWidth = 10;
+      myContext.strokeStyle = 'white';
+      myContext.arc(200, 150, 100, Math.PI / 4, 3 * Math.PI / 4, false);
+      myContext.stroke();
+
+      // Draw the hook part of the cane (the line going down)
+      myContext.beginPath();
+      myContext.moveTo(200, 150); // Start at the top of the arc
+      myContext.lineTo(200, 300);  // Draw down vertically
+      myContext.lineWidth = 12;  // Wider line for the body of the cane
+      myContext.strokeStyle = 'white';
+      myContext.stroke();
+
+      // Draw the red and white stripes
+      var stripeWidth = 12;
+      for (var i = 0; i < 10; i++) {
+        myContext.beginPath();
+        myContext.moveTo(200, 150 + (i * 15));  // Starting point for each stripe
+        myContext.lineTo(200, 150 + ((i + 1) * 15));  // Ending point of each stripe
+        myContext.lineWidth = stripeWidth;
+        myContext.strokeStyle = (i % 2 === 0) ? 'red' : 'white';  // Alternate red and white
+        myContext.stroke();
+      }
+    }
   </script>
 </body>
 </html>
+
+    
