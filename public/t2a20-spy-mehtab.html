@@ -5,10 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Simple Encrypt/Decrypt</title>
     <style>
-     
         body {
             background-color: #dfeff5;
-            font-family: Arial, sans-serif; 
+            font-family: Arial, sans-serif;
         }
         
         textarea {
@@ -40,22 +39,34 @@
 <textarea id="myArea" rows="4" cols="70">Hello how are you</textarea><br><br>
 
 <!-- Encrypt Button -->
-<input type="button" value="encrypt" onclick="encryptText()"><br><br>
+<input type="button" value="Encrypt (Shift Cipher)" onclick="encryptText()"><br><br>
 
-<!-- Encrypted Textarea -->
+<!-- Encrypted Textarea (Shift Cipher) -->
 <textarea id="myArea02" rows="4" cols="70"></textarea><br><br>
 
 <!-- Decrypt Button -->
-<input type="button" value="decrypt" onclick="decryptText()"><br><br>
+<input type="button" value="Decrypt (Shift Cipher)" onclick="decryptText()"><br><br>
 
 <!-- Decrypted Textarea (For Decryption) -->
 <textarea id="myArea03" rows="4" cols="70"></textarea><br><br>
 
+<!-- Number Substitution Encrypt Button -->
+<input type="button" value="Encrypt (Number Substitution)" onclick="encryptNumberSubstitution()"><br><br>
+
+<!-- Encrypted Textarea (Number Substitution) -->
+<textarea id="myArea04" rows="4" cols="70"></textarea><br><br>
+
+<!-- Number Substitution Decrypt Button -->
+<input type="button" value="Decrypt (Number Substitution)" onclick="decryptNumberSubstitution()"><br><br>
+
+<!-- Decrypted Textarea (For Number Substitution) -->
+<textarea id="myArea05" rows="4" cols="70"></textarea><br><br>
+
 <script>
-    
+    // Shift Cipher Encryption (Original code)
     function encryptText() {
         let myTemp = '';
-        let myString = document.getElementById('myArea').value.toLowerCase().split('');           /* this part of the code is the function that encrypts the text*/
+        let myString = document.getElementById('myArea').value.toLowerCase().split(''); // Get the text and convert to lowercase
         
         for (let myLoop = 0; myLoop < myString.length; myLoop++) {
             myTemp = myString[myLoop];
@@ -66,17 +77,16 @@
             
             myString[myLoop] = myTemp;
         }
-        
-     
-        document.getElementById('myArea02').value = myString.join('');        /* this part shows/displays the encrypted text (2nd text box)*/
+
+        document.getElementById('myArea02').value = myString.join(''); // Display encrypted text
     }
 
-   
+    // Shift Cipher Decryption
     function decryptText() {
         let myTemp = '';
         let myString = document.getElementById('myArea02').value.toLowerCase().split('');
 
-        for (let myLoop = 0; myLoop < myString.length; myLoop++) {                                      /*this part of the code is the function to decrypt the text*/
+        for (let myLoop = 0; myLoop < myString.length; myLoop++) {
             myTemp = myString[myLoop];
 
             // Decryption logic (reverse the encryption)
@@ -86,8 +96,49 @@
             myString[myLoop] = myTemp;
         }
 
-      
-        document.getElementById('myArea03').value = myString.join('');             /*this part shows/displays the decrypted text (3rd text box)*/
+        document.getElementById('myArea03').value = myString.join(''); // Display decrypted text
+    }
+
+    // Number Substitution Cipher: Encrypts the text as numbers (a=1, b=2, ..., z=26)
+    function encryptNumberSubstitution() {
+        let myString = document.getElementById('myArea').value.toLowerCase().split(''); // Get the text and convert to lowercase
+        let encryptedNumbers = [];
+
+        for (let myLoop = 0; myLoop < myString.length; myLoop++) {
+            let char = myString[myLoop];
+            let number = 0;
+
+            // Convert letters to corresponding number (a=1, b=2, ..., z=26)
+            if (char >= 'a' && char <= 'z') {
+                number = char.charCodeAt(0) - 96;  // 'a' = 97, so subtract 96 to get 1 for 'a'
+                encryptedNumbers.push(number);
+            } else {
+                encryptedNumbers.push(char);  // Keep non-alphabetic characters as-is (spaces, punctuation, etc.)
+            }
+        }
+
+        document.getElementById('myArea04').value = encryptedNumbers.join(' '); // Display encrypted text as numbers
+    }
+
+    // Number Substitution Cipher: Decrypts numbers back to letters (1=a, 2=b, ..., 26=z)
+    function decryptNumberSubstitution() {
+        let myString = document.getElementById('myArea04').value.split(' '); // Get the encrypted numbers and split by space
+        let decryptedText = [];
+
+        for (let myLoop = 0; myLoop < myString.length; myLoop++) {
+            let char = myString[myLoop];
+            let letter = '';
+
+            // Convert numbers back to corresponding letters (1=a, 2=b, ..., 26=z)
+            if (!isNaN(char) && char >= 1 && char <= 26) {
+                letter = String.fromCharCode(parseInt(char) + 96);  // Convert number back to letter
+                decryptedText.push(letter);
+            } else {
+                decryptedText.push(char);  // Keep non-numeric characters as-is
+            }
+        }
+
+        document.getElementById('myArea05').value = decryptedText.join(''); // Display decrypted text
     }
 </script>
 
