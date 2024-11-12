@@ -14,94 +14,128 @@
             border: 2px dotted #a2ddf5;
             padding: 10px;
             font-size: 16px;
+            width: 40%; /* Adjust width for text areas */
+            margin: 10px;
         }
         
         input[type="button"] {
-            background-color: #e2f7bc; /* styles the button */
+            background-color: #e2f7bc;
             color: black;
             padding: 10px 20px;
             border: none;
             cursor: pointer;
             font-size: 16px;
+            margin: 10px;
         }
         input[type="button"]:hover {
             background-color: #bcccf7;
         }
         h1 {
-            color: #333; /* Dark gray text for the title */
+            color: #333;
+            text-align: center;
         }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cipher-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 20px;
+        }
+
     </style>
 </head>
 <body>
 
-<h1 align="center">t2a20-spy-mehtab</h1>
+<h1>t2a20-spy-mehtab</h1>
 
-<textarea id="myArea" rows="4" cols="70">Hello how are you</textarea><br><br>
+<div class="container">
+    <!-- Shift Cipher Section -->
+    <div class="cipher-container">
+        <h3>Shift Cipher</h3>
 
-<!-- Encrypt Button -->
-<input type="button" value="Encrypt (Shift Cipher)" onclick="encryptText()"><br><br>
+        <!-- Input for Shift Cipher -->
+        <textarea id="shiftInput" rows="4" cols="70">Hello how are you</textarea><br>
 
-<!-- Encrypted Textarea (Shift Cipher) -->
-<textarea id="myArea02" rows="4" cols="70"></textarea><br><br>
+        <!-- Encrypt Button (Shift Cipher) -->
+        <input type="button" value="Encrypt" onclick="encryptShiftText()"><br><br>
 
-<!-- Decrypt Button -->
-<input type="button" value="Decrypt (Shift Cipher)" onclick="decryptText()"><br><br>
+        <!-- Encrypted Textarea (Shift Cipher) -->
+        <textarea id="shiftEncrypted" rows="4" cols="70"></textarea><br><br>
 
-<!-- Decrypted Textarea (For Decryption) -->
-<textarea id="myArea03" rows="4" cols="70"></textarea><br><br>
+        <!-- Decrypt Button (Shift Cipher) -->
+        <input type="button" value="Decrypt" onclick="decryptShiftText()"><br><br>
 
-<!-- Number Substitution Encrypt Button -->
-<input type="button" value="Encrypt (Number Substitution)" onclick="encryptNumberSubstitution()"><br><br>
+        <!-- Decrypted Textarea (Shift Cipher) -->
+        <textarea id="shiftDecrypted" rows="4" cols="70"></textarea><br><br>
+    </div>
 
-<!-- Encrypted Textarea (Number Substitution) -->
-<textarea id="myArea04" rows="4" cols="70"></textarea><br><br>
+    <!-- Number Substitution Cipher Section -->
+    <div class="cipher-container">
+        <h3>Number Substitution Cipher</h3>
 
-<!-- Number Substitution Decrypt Button -->
-<input type="button" value="Decrypt (Number Substitution)" onclick="decryptNumberSubstitution()"><br><br>
+        <!-- Input for Number Substitution Cipher -->
+        <textarea id="numberInput" rows="4" cols="70">Hello how are you</textarea><br>
 
-<!-- Decrypted Textarea (For Number Substitution) -->
-<textarea id="myArea05" rows="4" cols="70"></textarea><br><br>
+        <!-- Encrypt Button (Number Substitution) -->
+        <input type="button" value="Encrypt (Number)" onclick="encryptNumberSubstitution()"><br><br>
+
+        <!-- Encrypted Textarea (Number Substitution) -->
+        <textarea id="numberEncrypted" rows="4" cols="70"></textarea><br><br>
+
+        <!-- Decrypt Button (Number Substitution) -->
+        <input type="button" value="Decrypt (Number)" onclick="decryptNumberSubstitution()"><br><br>
+
+        <!-- Decrypted Textarea (Number Substitution) -->
+        <textarea id="numberDecrypted" rows="4" cols="70"></textarea><br><br>
+    </div>
+</div>
 
 <script>
-    // Shift Cipher Encryption (Original code)
-    function encryptText() {
+    // Shift Cipher Encryption
+    function encryptShiftText() {
         let myTemp = '';
-        let myString = document.getElementById('myArea').value.toLowerCase().split(''); // Get the text and convert to lowercase
+        let myString = document.getElementById('shiftInput').value.toLowerCase().split(''); // Get text and convert to lowercase
         
         for (let myLoop = 0; myLoop < myString.length; myLoop++) {
             myTemp = myString[myLoop];
 
-            // Encryption logic (simple example, extend as needed)
+            // Shift Cipher Encryption logic (simple example)
             if (myString[myLoop] === 'e') { myTemp = 'f'; }
             if (myString[myLoop] === 'h') { myTemp = 'i'; }
             
             myString[myLoop] = myTemp;
         }
 
-        document.getElementById('myArea02').value = myString.join(''); // Display encrypted text
+        document.getElementById('shiftEncrypted').value = myString.join(''); // Display encrypted text for Shift Cipher
     }
 
     // Shift Cipher Decryption
-    function decryptText() {
+    function decryptShiftText() {
         let myTemp = '';
-        let myString = document.getElementById('myArea02').value.toLowerCase().split('');
+        let myString = document.getElementById('shiftEncrypted').value.toLowerCase().split('');
 
         for (let myLoop = 0; myLoop < myString.length; myLoop++) {
             myTemp = myString[myLoop];
 
-            // Decryption logic (reverse the encryption)
+            // Shift Cipher Decryption logic (reverse the encryption)
             if (myString[myLoop] === 'f') { myTemp = 'e'; }
             if (myString[myLoop] === 'i') { myTemp = 'h'; }
 
             myString[myLoop] = myTemp;
         }
 
-        document.getElementById('myArea03').value = myString.join(''); // Display decrypted text
+        document.getElementById('shiftDecrypted').value = myString.join(''); // Display decrypted text for Shift Cipher
     }
 
-    // Number Substitution Cipher: Encrypts the text as numbers (a=1, b=2, ..., z=26)
+    // Number Substitution Cipher: Encrypt (letters to numbers)
     function encryptNumberSubstitution() {
-        let myString = document.getElementById('myArea').value.toLowerCase().split(''); // Get the text and convert to lowercase
+        let myString = document.getElementById('numberInput').value.toLowerCase().split(''); // Get text and convert to lowercase
         let encryptedNumbers = [];
 
         for (let myLoop = 0; myLoop < myString.length; myLoop++) {
@@ -117,12 +151,12 @@
             }
         }
 
-        document.getElementById('myArea04').value = encryptedNumbers.join(' '); // Display encrypted text as numbers
+        document.getElementById('numberEncrypted').value = encryptedNumbers.join(' '); // Display encrypted numbers
     }
 
-    // Number Substitution Cipher: Decrypts numbers back to letters (1=a, 2=b, ..., 26=z)
+    // Number Substitution Cipher: Decrypt (numbers back to letters)
     function decryptNumberSubstitution() {
-        let myString = document.getElementById('myArea04').value.split(' '); // Get the encrypted numbers and split by space
+        let myString = document.getElementById('numberEncrypted').value.split(' '); // Get encrypted numbers and split by space
         let decryptedText = [];
 
         for (let myLoop = 0; myLoop < myString.length; myLoop++) {
@@ -138,9 +172,10 @@
             }
         }
 
-        document.getElementById('myArea05').value = decryptedText.join(''); // Display decrypted text
+        document.getElementById('numberDecrypted').value = decryptedText.join(''); // Display decrypted text for Number Substitution
     }
 </script>
 
 </body>
 </html>
+
