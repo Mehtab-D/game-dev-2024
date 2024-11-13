@@ -4,12 +4,12 @@
   <br><br><br><br>
 
   <script>
-    // Global variables
-    let myGlobalX = 0;
-    let myClock;
+    
+    let myGlobalX = 0;        /*this part keeps track of x postion of the backgorund image*/
+    let myClock;           /*controls the timing*/
 
-    // Function to check if two elements hit
-    function myHitOther(my1, my2) {
+
+    function myHitOther(my1, my2) {                                     /*function that checks if two things on the screen hit each other*/
       let left1 = parseInt(document.getElementById(my1).style.left);
       let right1 = left1 + parseInt(document.getElementById(my1).style.width);
       let top1 = parseInt(document.getElementById(my1).style.top);
@@ -28,7 +28,7 @@
 
     // Function to check for hits and trigger the loss screen
     function myCheckHit() {
-      if (myHitOther('myImg01', 'myImg02')) {
+      if (myHitOther('myImg01', 'myImg02')) {             
         gameOver();
       }
     }
