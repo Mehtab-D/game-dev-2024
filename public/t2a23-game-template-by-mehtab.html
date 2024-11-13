@@ -26,43 +26,62 @@
       return false;
     }
 
-    // Function to check for hits
+    // Function to check for hits and trigger the loss screen
     function myCheckHit() {
       if (myHitOther('myImg01', 'myImg02')) {
-        alert('You lose');
-        document.getElementById('myImg01').style.left = '20px';
-        location = 'google.ca';  // Go to your next level
+        gameOver();
       }
       if (myHitOther('myImg01', 'myImg03')) {
-        alert('You lose 3');
-        // document.getElementById('myImg01').style.left = '20px';
+        gameOver();
       }
-      // Add more collision checks here if needed
+    }
+
+    // Game over function to hide the game and show the retry screen
+    function gameOver() {
+      // Hide the game elements
+      document.getElementById('gameArea').style.display = 'none';
+      
+      // Show the retry screen
+      document.getElementById('retryScreen').style.display = 'block';
+    }
+
+    // Function to restart the game (reload the page)
+    function restartGame() {
+      location.reload();  // Reload the page to start over
     }
   </script>
 
-  <!-- Images -->
-  <img id="myImg01" style="position:absolute; width:100px; height:80px; top:0px; left:50px;" src="https://i5.walmartimages.ca/images/Enlarge/094/514/6000200094514.jpg">
-  <img id="myImg02" style="position:absolute; width:100px; height:80px; top:0px; left:250px;" src="https://example.com/path/to/your-image02.jpg">
-  <img id="myImg03" style="position:absolute; width:100px; height:80px; top:150px; left:300px;" src="https://example.com/path/to/your-image03.jpg">
+  <!-- Game Area -->
+  <div id="gameArea">
+    <!-- Images -->
+    <img id="myImg01" style="position:absolute; width:100px; height:80px; top:0px; left:50px;" src="https://i5.walmartimages.ca/images/Enlarge/094/514/6000200094514.jpg">
+    <img id="myImg02" style="position:absolute; width:100px; height:80px; top:0px; left:250px;" src="https://example.com/path/to/your-image02.jpg">
+    <img id="myImg03" style="position:absolute; width:100px; height:80px; top:150px; left:300px;" src="https://example.com/path/to/your-image03.jpg">
 
-  <!-- Buttons -->
-  <input type="button" value="Auto Background Left" onclick="{
-    clearInterval(myClock);
-    let myTemp = '100px 0px';
-    myClock = setInterval(function() {
-      myGlobalX -= 5;
-      myTemp = myGlobalX + 'px 0px';
-      document.getElementById('myBody').style.backgroundPosition = myTemp;
-    }, 10);
-  }">
+    <!-- Buttons -->
+    <input type="button" value="Auto Background Left" onclick="{
+      clearInterval(myClock);
+      let myTemp = '100px 0px';
+      myClock = setInterval(function() {
+        myGlobalX -= 5;
+        myTemp = myGlobalX + 'px 0px';
+        document.getElementById('myBody').style.backgroundPosition = myTemp;
+      }, 10);
+    }">
 
-  <input type="button" value="Image Right Fast Button onTouchStart" onclick="{
-    document.getElementById('myImg01').style.left = 
-    (parseInt(document.getElementById('myImg01').style.left) + 10) + 'px';
-    myCheckHit(); // Check for all collisions
-  }">
-  
+    <input type="button" value="Image Right Fast Button onTouchStart" onclick="{
+      document.getElementById('myImg01').style.left = 
+      (parseInt(document.getElementById('myImg01').style.left) + 10) + 'px';
+      myCheckHit(); // Check for all collisions
+    }">
+  </div>
+
+  <!-- Retry Screen -->
+  <div id="retryScreen" style="display:none; text-align:center;">
+    <h2>You Lose!</h2>
+    <p>Do you want to try again?</p>
+    <button onclick="restartGame()">Retry</button>
+  </div>
+
   <br><br>
-
 </body>
