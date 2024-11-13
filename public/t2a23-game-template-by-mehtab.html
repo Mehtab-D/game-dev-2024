@@ -1,6 +1,6 @@
 <body id="myBody" style="background-repeat:no-repeat; background-size:80%" background="https://example.com/path/to/your-background-image.jpg">
   
-  <h1 align="center">t2a23-game-template-by-mehtab</h1>
+  <h1 align="center">t2a23 Game Template By Mehtab</h1>
   <br><br><br><br>
 
   <script>
@@ -31,9 +31,6 @@
       if (myHitOther('myImg01', 'myImg02')) {
         gameOver();
       }
-      if (myHitOther('myImg01', 'myImg03')) {
-        gameOver();
-      }
     }
 
     // Game over function to hide the game and show the retry screen
@@ -53,10 +50,11 @@
 
   <!-- Game Area -->
   <div id="gameArea">
-    <!-- Images -->
+    <!-- Apple Image (Moving Object) -->
     <img id="myImg01" style="position:absolute; width:100px; height:80px; top:0px; left:50px;" src="https://i5.walmartimages.ca/images/Enlarge/094/514/6000200094514.jpg">
-    <img id="myImg02" style="position:absolute; width:100px; height:80px; top:0px; left:250px;" src="https://example.com/path/to/your-image02.jpg">
-    <img id="myImg03" style="position:absolute; width:100px; height:80px; top:150px; left:300px;" src="https://example.com/path/to/your-image03.jpg">
+
+    <!-- Box Image (Obstacle) -->
+    <img id="myImg02" style="position:absolute; width:100px; height:80px; top:0px; left:250px;" src="https://www.upack.in/media/catalog/product/cache/205cdd4bf6e8fc8cf30978dd64d31b81/u/p/upkj233p282_1.jpg">
 
     <!-- Buttons -->
     <input type="button" value="Auto Background Left" onclick="{
