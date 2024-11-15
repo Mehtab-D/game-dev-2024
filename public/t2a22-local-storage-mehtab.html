@@ -17,14 +17,22 @@
   Text example: <input id="myText1" type="text" size="70" value="" placeholder="Write here to store"><br>
 
   <input type="button" value="Store Text" onClick="{
-    localStorage.setItem('myStoredText', document.getElementById('myText1').value);
-    alert(document.getElementById('myText1').value + '\nHas been stored');
+    var textToStore = document.getElementById('myText1').value;
+    localStorage.setItem('myStoredText', textToStore);
+    
+    // Display the stored message on the screen
+    document.getElementById('storedMessage').innerText = textToStore + ' has been stored.';
+    
+    // Clear the input field
     document.getElementById('myText1').value = '';
   }">
 
   <input type="button" value="Retrieve Text" onClick="{
     document.getElementById('myText1').value = localStorage.getItem('myStoredText');
   }">
+
+  <!-- This is where the stored text message will be displayed -->
+  <p id="storedMessage" style="color: green; font-weight: bold;"></p>
 
   <script>
     // Optionally you can add JS to handle the onUnload event more cleanly
@@ -35,4 +43,3 @@
 
 </body>
 </html>
-
