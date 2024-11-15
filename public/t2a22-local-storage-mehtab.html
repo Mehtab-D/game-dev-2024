@@ -1,23 +1,38 @@
-<h1>t2a22-local-storage-mehtab</h1>
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Local Storage Example</title>
+</head>
 <body onload="{
-  myStorage=localStorage.getItem('myStoredText')
-  if(myStorage !=null){
-  document.getElementById('myText1').value=myStorage
+  myStorage = localStorage.getItem('myStoredText');
+  if (myStorage != null) {
+    document.getElementById('myText1').value = myStorage;
   }
+}">
+
+  <h1>t2a22-local-storage-mehtab</h1>
+
+  Text example: <input id="myText1" type="text" size="70" value="" placeholder="Write here to store"><br>
+
+  <input type="button" value="Store Text" onClick="{
+    localStorage.setItem('myStoredText', document.getElementById('myText1').value);
+    alert(document.getElementById('myText1').value + '\nHas been stored');
+    document.getElementById('myText1').value = '';
   }">
 
-  <body onunload="{
-    localstorage.setItem('myStoredText',document.getElementById('myText1').value)
-    }">
+  <input type="button" value="Retrieve Text" onClick="{
+    document.getElementById('myText1').value = localStorage.getItem('myStoredText');
+  }">
 
-    Text example: <input id="myText1" type=text size=70 value="" placeholder="Write here to store"><br>
-    <input type="button" value="Store Text" onClick="{
-      localStorage.setItem('myStoredText',document.getElementById('myText1').value)
-      alert(document.getElementById('myText1').value+'/nHas been stored')
-      document.getElementById('myText1').value=''
-      }">
+  <script>
+    // Optionally you can add JS to handle the onUnload event more cleanly
+    window.onbeforeunload = function() {
+      localStorage.setItem('myStoredText', document.getElementById('myText1').value);
+    };
+  </script>
 
-    <input type="button' value="Retrieve Text" onClick="{
-    document.getElementById('myText1').value=localStorage.getItem('myStoredText')
-    }">
+</body>
+</html>
+
