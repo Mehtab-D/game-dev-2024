@@ -5,53 +5,53 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Local Storage</title>
   <style>
-    /* CSS to center the h1 element */
+  
     h1 {
       text-align: center;
     }
 
-    /* CSS to set background color */
+  
     body {
-      background-color: #e3ffe9; /* Light green background */
+      background-color: #e3ffe9;                /*head section is where the style set*/
     }
 
-    /* CSS to style the stored text message */
+    
     #storedMessage {
-      color: #271442; /* Dark purple color */
+      color: #271442;
       font-weight: bold;
     }
   </style>
 </head>
 <body onload="{
   myStorage = localStorage.getItem('myStoredText');
-  if (myStorage != null) {
+  if (myStorage != null) {                                        /*body section checks if there is any saved text, and if there is do it puts that saved text back into the text box*/
     document.getElementById('myText1').value = myStorage;
   }
 }">
 
   <h1>t2a22-local-storage-mehtab</h1>
 
-  Text example: <input id="myText1" type="text" size="70" value="" placeholder="Write here to store"><br>
+  Text example: <input id="myText1" type="text" size="70" value="" placeholder="Write here to store"><br>     /*you type sutff here*/
 
   <input type="button" value="Store Text" onClick="{
-    var textToStore = document.getElementById('myText1').value;
-    localStorage.setItem('myStoredText', textToStore);
+    var textToStore = document.getElementById('myText1').value;         /*this buttons allows the saving of the text*/
+    localStorage.setItem('myStoredText', textToStore);        /*local storage keeps the text*/
     
-    // Display the stored message on the screen
+  
     document.getElementById('storedMessage').innerText = textToStore + ' has been stored.';
     
-    // Clear the input field
+  
     document.getElementById('myText1').value = '';
   }">
 
   <input type="button" value="Retrieve Text" onClick="{
-    document.getElementById('myText1').value = localStorage.getItem('myStoredText');
+    document.getElementById('myText1').value = localStorage.getItem('myStoredText');      /*this part of the code retrieves the text*/
   }">
 
-  <!-- New Clear Button -->
+
   <input type="button" value="Clear Text" onClick="{
-    // Clear input field, stored message, and localStorage
-    document.getElementById('myText1').value = '';
+   
+    document.getElementById('myText1').value = '';                   /*empties the text form the box and from the screen*/
     document.getElementById('storedMessage').innerText = '';
     localStorage.removeItem('myStoredText');
   }">
