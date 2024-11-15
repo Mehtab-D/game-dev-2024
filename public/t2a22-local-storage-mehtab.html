@@ -28,7 +28,7 @@
     document.getElementById('myText1').value = myStorage;
   }
 }">
-  
+
   <h1>t2a22-local-storage-mehtab</h1>
 
   Text example: <input id="myText1" type="text" size="70" value="" placeholder="Write here to store"><br>
@@ -46,6 +46,14 @@
 
   <input type="button" value="Retrieve Text" onClick="{
     document.getElementById('myText1').value = localStorage.getItem('myStoredText');
+  }">
+
+  <!-- New Clear Button -->
+  <input type="button" value="Clear All" onClick="{
+    // Clear input field, stored message, and localStorage
+    document.getElementById('myText1').value = '';
+    document.getElementById('storedMessage').innerText = '';
+    localStorage.removeItem('myStoredText');
   }">
 
   <!-- This is where the stored text message will be displayed -->
