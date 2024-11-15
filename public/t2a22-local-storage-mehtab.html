@@ -4,6 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Local Storage</title>
+  <style>
+    /* CSS to center the h1 element */
+    h1 {
+      text-align: center;
+    }
+  </style>
 </head>
 <body onload="{
   myStorage = localStorage.getItem('myStoredText');
@@ -32,7 +38,7 @@
   }">
 
   <!-- This is where the stored text message will be displayed -->
-  <p id="storedMessage" style="color: green; font-weight: bold;"></p>
+  <p id="storedMessage" style="color: #271442; font-weight: bold;"></p>
 
   <script>
     // Optionally you can add JS to handle the onUnload event more cleanly
