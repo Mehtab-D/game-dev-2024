@@ -5,53 +5,92 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Local Storage</title>
   <style>
-  
     h1 {
       text-align: center;
     }
 
-  
     body {
-      background-color: #e3ffe9;                /*head section is where the style set*/
+      background-color: #e3ffe9;
     }
 
-    
     #storedMessage {
       color: #271442;
       font-weight: bold;
+    }
+
+    ul {
+      list-style-type: none;
+      padding-left: 0;
+    }
+
+    li {
+      background-color: #fff;
+      margin: 5px;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      width: 300px;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: left;
+    }
+
+    input[type="text"] {
+      padding: 8px;
+      width: 250px;
+      margin-bottom: 10px;
+    }
+
+    input[type="button"] {
+      padding: 10px 15px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    input[type="button"]:hover {
+      background-color: #45a049;
     }
   </style>
 </head>
 <body onload="{
   myStorage = localStorage.getItem('myStoredText');
-  if (myStorage != null) {                                        /*body section checks if there is any saved text, and if there is do it puts that saved text back into the text box*/
+  if (myStorage != null) {
     document.getElementById('myText1').value = myStorage;
+  }
+
+  // Load items from localStorage for the list
+  const storedItems = localStorage.getItem('storedItems');
+  if (storedItems) {
+    const itemsArray = JSON.parse(storedItems);
+    const storedListElement = document.getElementById('storedList');
+    itemsArray.forEach(function(item) {
+      const li = document.createElement('li');
+      li.textContent = item;
+      storedListElement.appendChild(li);
+    });
   }
 }">
 
   <h1>t2a22-local-storage-mehtab</h1>
 
-  Text example: <input id="myText1" type="text" size="70" value="" placeholder="Write here to store"><br>     
-
+  <!-- Text example to store a single item -->
+  Text example: <input id="myText1" type="text" size="70" value="" placeholder="Write here to store"><br>
   <input type="button" value="Store Text" onClick="{
-    var textToStore = document.getElementById('myText1').value;         /*this buttons allows the saving of the text*/
-    localStorage.setItem('myStoredText', textToStore);        /*local storage keeps the text*/
-    
-  
+    var textToStore = document.getElementById('myText1').value;
+    localStorage.setItem('myStoredText', textToStore);
     document.getElementById('storedMessage').innerText = textToStore + ' has been stored.';
-    
-  
     document.getElementById('myText1').value = '';
   }">
 
   <input type="button" value="Retrieve Text" onClick="{
-    document.getElementById('myText1').value = localStorage.getItem('myStoredText');      /*this part of the code retrieves the text*/
+    document.getElementById('myText1').value = localStorage.getItem('myStoredText');
   }">
 
-
   <input type="button" value="Clear Text" onClick="{
-   
-    document.getElementById('myText1').value = '';                   /*empties the text form the box and from the screen*/
+    document.getElementById('myText1').value = '';
     document.getElementById('storedMessage').innerText = '';
     localStorage.removeItem('myStoredText');
   }">
@@ -59,12 +98,64 @@
   <!-- This is where the stored text message will be displayed -->
   <p id="storedMessage"></p>
 
+  <h2>Add Items to List</h2>
+  <input id="myText2" type="text" placeholder="Enter item to add to list">
+  <br><br>
+  <input type="button" value="Add to List" onClick="addItemToList()">
+  <input type="button" value="Clear All Items" onClick="clearAllItems()">
+  
+  <!-- Display list of stored items -->
+  <ul id="storedList"></ul>
+
   <script>
+    // Function to add an item to the list and save it to localStorage
+    function addItemToList() {
+      const newItem = document.getElementById('myText2').value.trim();
+      
+      if (newItem !== '') {
+        // Get existing items from localStorage or create a new array if none exist
+        let itemsArray = localStorage.getItem('storedItems') ? JSON.parse(localStorage.getItem('storedItems')) : [];
+
+        // Add the new item to the array
+        itemsArray.push(newItem);
+
+        // Save the updated array back to localStorage
+        localStorage.setItem('storedItems', JSON.stringify(itemsArray));
+
+        // Add the new item to the displayed list
+        const storedListElement = document.getElementById('storedList');
+        const li = document.createElement('li');
+        li.textContent = newItem;
+        storedListElement.appendChild(li);
+
+        // Clear the input field
+        document.getElementById('myText2').value = '';
+
+        // Display a message that the item was added
+        document.getElementById('storedMessage').innerText = newItem + ' has been added to the list.';
+      } else {
+        document.getElementById('storedMessage').innerText = 'Please enter a valid item.';
+      }
+    }
+
+    // Function to clear all items from the list and localStorage
+    function clearAllItems() {
+      // Clear the list on the screen
+      document.getElementById('storedList').innerHTML = '';
+
+      // Remove all items from localStorage
+      localStorage.removeItem('storedItems');
+
+      // Display a message
+      document.getElementById('storedMessage').innerText = 'All items have been cleared.';
+    }
+
     // Optionally you can add JS to handle the onUnload event more cleanly
-    window.onbeforeunload = function() {                                                            /*Hey, before I go, I need to save something!   its like the webpage saying this*/
+    window.onbeforeunload = function() {
       localStorage.setItem('myStoredText', document.getElementById('myText1').value);
     };
   </script>
 
 </body>
 </html>
+
