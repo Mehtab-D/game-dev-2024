@@ -6,82 +6,128 @@
     <title>Arrays By Mehtab</title>
     <style>
         body {
-            background-color: #ebccd7;
+            border: 2px dotted #4b0f54;
+            margin: 20px;
+            padding: 20px;
+            background-image: linear-gradient(to right, #f3e4f5, #eab8f2, #e08ced);
+            font-family: Arial, sans-serif;
         }
         h1 {
             text-align: center;
         }
-        #myDiv01, #myDiv02 {
-            margin-top: 20px;
+        .section {
+            margin-bottom: 20px;
+            padding: 15px;
+            border: 1px dotted #233363;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+            box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1);
         }
+        label {
+            font-weight: bold;
+        }
+        input[type="number"], input[type="text"] {
+            margin-top: 5px;
+            padding: 8px;
+            width: 100%;
+            max-width: 200px;
+            margin-bottom: 10px;
+        }
+        button {
+            padding: 8px 12px;
+            background-color: #27186b;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        button:hover {
+            background-color: #a3aed1;
+        }
+        #output {
+            margin-top: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .output {
+            font-size: 16px;
+            font-weight: bold;
+            color: #27186b;
+            margin-top: 10px;
+        }
+
     </style>
 </head>
 <body>
-    <h1>t1a11-arrays-mehtab</h1>
 
-    <label for="myFirstName">Input: </label>
-    <input type="text" id="myFirstName" value="Fred"><br>
+<h1>Arrays by Mehtab</h1>
+
+<!-- Set and Show Array Buttons Section -->
+<div class="section">
+    <h2>Array Operations</h2>
 
     <!-- Set and Show Array Buttons -->
-    <input type="button" value="Set Array" onClick="setArray()">
-    <input type="button" value="Show Array" onClick="showArray()"><br>
+    <button onclick="setArray()">Set Array</button>
+    <button onclick="showArray()">Show Array</button><br>
 
     <!-- Show Mixed Array Button -->
-    <input type="button" value="Show Mixed Array" onClick="showMixedArray()"><br>
+    <button onclick="showMixedArray()">Show Mixed Array</button><br>
 
     <!-- Show Number Array Button -->
-    <input type="button" value="Show Number Array" onClick="showNumberArray()"><br>
+    <button onclick="showNumberArray()">Show Number Array</button><br>
 
-    <div id="myDiv01"></div>
-    <div id="myDiv02"></div>
+    <div id="myDiv01" class="output"></div>
+    <div id="myDiv02" class="output"></div>
+</div>
 
-    <script>
-        // Set a few Global Variables
-        let myMax = 6;
-        let myArray = new Array(myMax);  // Array with 6 elements
-        let mixedArray = ['Fred', 42, true, 'Mary', 3.14, 'Peter'];
-        let numberArray = [10, 20, 30, 40, 50];  // Number Array
+<script>
+    // Set a few Global Variables
+    let myMax = 6;
+    let myArray = new Array(myMax);  // Array with 6 elements
+    let mixedArray = ['Fred', 42, true, 'Mary', 3.14, 'Peter'];
+    let numberArray = [10, 20, 30, 40, 50];  // Number Array
 
-        function setArray() {
-            // Setting values in the array
-            myArray[0] = 'Fred';
-            myArray[1] = 'Mary';
-            myArray[2] = 'Peter';
+    function setArray() {
+        // Setting values in the array
+        myArray[0] = 'Fred';
+        myArray[1] = 'Mary';
+        myArray[2] = 'Peter';
 
-            // Update the content in myDiv01
-            document.getElementById('myDiv01').textContent = 'You set the array';
+        // Update the content in myDiv01
+        document.getElementById('myDiv01').textContent = 'You have set the array: [' + myArray.join(', ') + ']';
+    }
+
+    function showArray() {
+        let output = '';
+        // Looping through the array and displaying its contents
+        for (let i = 0; i < 3; i++) {
+            output += 'myArray[' + i + '] = ' + myArray[i] + '\n';
         }
+        document.getElementById('myDiv01').textContent = output;
+    }
 
-        function showArray() {
-            let output = '';
-            // Looping through the array and displaying its contents
-            for (let i = 0; i < 3; i++) {
-                output += 'myArray[' + i + '] = ' + myArray[i] + '\n';
-            }
-            document.getElementById('myDiv01').textContent = output;
+    function showMixedArray() {
+        let output = '';
+        // Looping through the mixed array and displaying its contents
+        for (let i = 0; i < mixedArray.length; i++) {
+            output += 'mixedArray[' + i + '] = ' + mixedArray[i] + '\n';
         }
+        document.getElementById('myDiv02').textContent = output;
+    }
 
-        function showMixedArray() {
-            let output = '';
-            // Looping through the mixed array and displaying its contents
-            for (let i = 0; i < mixedArray.length; i++) {
-                output += 'mixedArray[' + i + '] = ' + mixedArray[i] + '\n';
-            }
-            document.getElementById('myDiv02').textContent = output;
+    // Function to show the number array
+    function showNumberArray() {
+        let output = '';
+        // Looping through the number array and displaying its contents
+        for (let i = 0; i < numberArray.length; i++) {
+            output += 'numberArray[' + i + '] = ' + numberArray[i] + '\n';
         }
+        document.getElementById('myDiv01').textContent = output;
+    }
+</script>
 
-        // Function to show the number array
-        function showNumberArray() {
-            let output = '';
-            // Looping through the number array and displaying its contents
-            for (let i = 0; i < numberArray.length; i++) {
-                output += 'numberArray[' + i + '] = ' + numberArray[i] + '\n';
-            }
-            document.getElementById('myDiv01').textContent = output;
-        }
-    </script>
 </body>
 </html>
-
-
-
