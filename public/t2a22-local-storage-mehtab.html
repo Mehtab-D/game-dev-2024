@@ -110,6 +110,7 @@
   <input id="myText2" type="text" placeholder="Enter item to add to list">
   <br><br>
   <input type="button" value="Add to List" onClick="addItemToList()">
+  <input type="button" value="Retrieve Items" onClick="retrieveItems()">
   <input type="button" value="Clear All Items" onClick="clearAllItems()">
   
   <!-- Display list of stored items -->
@@ -143,6 +144,29 @@
         document.getElementById('storedMessage').innerText = newItem + ' has been added to the list.';
       } else {
         document.getElementById('storedMessage').innerText = 'Please enter a valid item.';
+      }
+    }
+
+    // Function to retrieve and display all items from localStorage
+    function retrieveItems() {
+      const storedItems = localStorage.getItem('storedItems');
+      if (storedItems) {
+        const itemsArray = JSON.parse(storedItems);
+        const storedListElement = document.getElementById('storedList');
+        
+        // Clear current list before adding items again
+        storedListElement.innerHTML = '';
+        
+        // Display each item from the list
+        itemsArray.forEach(function(item) {
+          const li = document.createElement('li');
+          li.textContent = item;
+          storedListElement.appendChild(li);
+        });
+
+        document.getElementById('storedMessage').innerText = 'Items have been retrieved from localStorage.';
+      } else {
+        document.getElementById('storedMessage').innerText = 'No items found in localStorage.';
       }
     }
 
