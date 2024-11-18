@@ -85,8 +85,15 @@
     document.getElementById('myText1').value = '';
   }">
 
-  <input type="button" value="Retrieve Text" onClick="{
-    document.getElementById('myText1').value = localStorage.getItem('myStoredText');
+  <!-- Retrieve the recent stored text -->
+  <input type="button" value="Retrieve Recent Text" onClick="{
+    var recentText = localStorage.getItem('myStoredText');
+    if (recentText) {
+      document.getElementById('myText1').value = recentText;
+      document.getElementById('storedMessage').innerText = 'Recent text retrieved: ' + recentText;
+    } else {
+      document.getElementById('storedMessage').innerText = 'No recent text stored yet.';
+    }
   }">
 
   <input type="button" value="Clear Text" onClick="{
@@ -158,4 +165,3 @@
 
 </body>
 </html>
-
