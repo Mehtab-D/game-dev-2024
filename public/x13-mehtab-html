@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analog Clock</title>
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body Styling */
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+        /* Clock Container */
+        .clock {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            border: 10px solid #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #fff;
+        }
+
+        /* Center Circle */
+        .center-circle {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: #333;
+            border-radius: 50%;
+        }
+
+        /* Clock Hands */
+        .hour-hand,
+        .minute-hand,
+        .second-hand {
+            position: absolute;
+            bottom: 50%;
+            left: 50%;
+            transform-origin: 50% 100%;
+            background-color: #333;
+            border-radius: 10px;
+        }
+
+        /* Hour Hand */
+        .hour-hand {
+            width: 6px;
+            height: 60px;
+            background-color: #000;
+        }
+
+        /* Minute Hand */
+        .minute-hand {
+            width: 4px;
+            height: 80px;
+            background-color: #555;
+        }
+
+        /* Second Hand */
+        .second-hand {
+            width: 2px;
+            height: 100px;
+            background-color: red;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="clock">
+        <div class="hour-hand" id="hour-hand"></div>
+        <div class="minute-hand" id="minute-hand"></div>
+        <div class="second-hand" id="second-hand"></div>
+        <div class="center-circle"></div>
+    </div>
+
+    <script>
+        function updateClock() {
+            const now = new Date();
+
+            // Get the current time (hours, minutes, seconds)
+            const hours = now.getHours();
+            const minutes = now.getMinutes();
+            const seconds = now.getSeconds();
+
+            // Calculate the rotation of each hand based on the current time
+            const hourDeg = (hours % 12) * 30 + (minutes / 60) * 30;  // 30 degrees per hour
+            const minuteDeg = minutes * 6 + (seconds / 60) * 6;        // 6 degrees per minute
+            const secondDeg = seconds * 6;                              // 6 degrees per second
+
+            // Get the elements for each hand
+            const hourHand = document.getElementById('hour-hand');
+            const minuteHand = document.getElementById('minute-hand');
+            const secondHand = document.getElementById('second-hand');
+
+            // Update the rotation of each hand
+            hourHand.style.transform = `rotate(${hourDeg}deg)`;
+            minuteHand.style.transform = `rotate(${minuteDeg}deg)`;
+            secondHand.style.transform = `rotate(${secondDeg}deg)`;
+        }
+
+        // Update the clock every second
+        setInterval(updateClock, 1000);
+
+        // Initial clock update
+        updateClock();
+    </script>
+
+</body>
+</html>
