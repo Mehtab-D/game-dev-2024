@@ -29,6 +29,9 @@
     <!-- Show Mixed Array Button -->
     <input type="button" value="Show Mixed Array" onClick="showMixedArray()"><br>
 
+    <!-- Show Number Array Button -->
+    <input type="button" value="Show Number Array" onClick="showNumberArray()"><br>
+
     <div id="myDiv01"></div>
     <div id="myDiv02"></div>
 
@@ -37,6 +40,7 @@
         let myMax = 6;
         let myArray = new Array(myMax);  // Array with 6 elements
         let mixedArray = ['Fred', 42, true, 'Mary', 3.14, 'Peter'];
+        let numberArray = [10, 20, 30, 40, 50];  // Number Array
 
         function setArray() {
             // Setting values in the array
@@ -65,8 +69,19 @@
             }
             document.getElementById('myDiv02').textContent = output;
         }
+
+        // Function to show the number array
+        function showNumberArray() {
+            let output = '';
+            // Looping through the number array and displaying its contents
+            for (let i = 0; i < numberArray.length; i++) {
+                output += 'numberArray[' + i + '] = ' + numberArray[i] + '\n';
+            }
+            document.getElementById('myDiv01').textContent = output;
+        }
     </script>
 </body>
 </html>
+
 
 
