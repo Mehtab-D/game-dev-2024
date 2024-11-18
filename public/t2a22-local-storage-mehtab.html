@@ -53,7 +53,6 @@
     input[type="button"]:hover {
       background-color: #e6987d;  /* Lighter shade for hover effect */
     }
-
   </style>
 </head>
 <body onload="{
@@ -81,9 +80,13 @@
   Text example: <input id="myText1" type="text" size="70" value="" placeholder="Write here to store"><br>
   <input type="button" value="Store Text" onClick="{
     var textToStore = document.getElementById('myText1').value;
-    localStorage.setItem('myStoredText', textToStore);
-    document.getElementById('storedMessage').innerText = textToStore + ' has been stored.';
-    document.getElementById('myText1').value = '';
+    if (textToStore) {
+      localStorage.setItem('myStoredText', textToStore);
+      document.getElementById('storedMessage').innerText = textToStore + ' has been stored.';
+      document.getElementById('myText1').value = '';
+    } else {
+      document.getElementById('storedMessage').innerText = 'Please enter text to store.';
+    }
   }">
 
   <!-- Retrieve the recent stored text -->
@@ -191,5 +194,3 @@
 
 </body>
 </html>
-
-
