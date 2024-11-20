@@ -1,18 +1,44 @@
-FIRST BUTTON-adjusting images positoning and height add 10 pixels to it
-image moved to the right
-SECOND BUTTON-is sharing the name of the url of the website which was moving objects,'mydocument.images' is a collection of the images showcased in the webpage
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Positioning and URL Sharing</title>
+</head>
+<body>
+<h1>t2a25-moving-objects-mehtab</h1>
+  <!-- Content -->
+  <p>This also is not bold <b id="myB"> Hi this is bold</b> this is not <br></p>
+  <ol id="myList">
+    <li> cool </li>
+    <li> more cool </li>
+  </ol>
 
-This also is not bold <b id="myB"> Hi this is bold</b> this is not <br>
-<ol id="myList">
-  <li > cool
-  <li> more cool 
-</ol><
+  <!-- Image to manipulate -->
+  <img id="myImage" src="https://via.placeholder.com/150" alt="Example Image">
+
+  <!-- Buttons -->
+  <input type="button" value="Adjust Image Position & Height" onclick="adjustImage()">
+  <input type="button" value="Share URL of the Page" onclick="shareURL()">
 
   <script>
-    document.getElementById('myB').name='myBtag'
-    document.getElementById('myList').name='myListTag'
+    // Function to adjust the image position and height
+    function adjustImage() {
+      const img = document.getElementById('myImage');
+      img.style.height = (img.clientHeight + 10) + 'px'; // Add 10 pixels to the height
+      img.style.marginLeft = '10px'; // Move the image to the right
+    }
+
+    // Function to share the URL of the webpage
+    function shareURL() {
+      const url = window.location.href; // Get the current page URL
+      alert("The URL of this page is: " + url); // Show the URL in an alert box
+    }
+
+    // Modify the names of elements for further manipulation if needed
+    document.getElementById('myB').name = 'myBtag';
+    document.getElementById('myList').name = 'myListTag';
   </script>
-  <!-- with the buttons--->
-  <input type=button value="15 document.getElementById('myB')"
-  onclick="{myObjectData(document.getElementById('myB'))}">
-  
+
+</body>
+</html>
