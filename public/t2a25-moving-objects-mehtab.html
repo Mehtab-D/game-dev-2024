@@ -4,45 +4,51 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Image Positioning and URL Display</title>
+  <style>
+    /* Centering the <h1> */
+    h1 {
+      text-align: center;
+    }
+  </style>
 </head>
 <body>
-<h1 center= t2a25-moving-objects-mehtab</h1>
-  <!-- Content -->
-  <p>This also is not bold <b id="myB"> Hi this is bold</b> this is not <br></p>       /*this is some bold text*/
-  <ol id="myList"> 
-    <li> cool </li>
-    <li> more cool </li>                       /*this is a list*/
-  </ol>
 
-  <!-- Image to manipulate -->
-  <img id="myImage" src="https://via.placeholder.com/150" alt="Example Image">              /*this is where the image is located*/
+<h1>t2a25-moving-objects-mehtab</h1>
 
-  <!-- Buttons -->
-  <input type="button" value="Adjust Image Position & Height" onclick="adjustImage()">                /*two buttons*/
-  <input type="button" value="Show Image URL" onclick="showImageURL()">
+<!-- Content -->
+<p>This also is not bold <b id="myB">Hi this is bold</b> this is not</p> <!-- this is some bold text -->
 
-  <!-- Placeholder to display the image URL -->
-  <p id="imageURLDisplay">Image URL will appear here.</p>
+<ol id="myList"> 
+  <li>cool</li>
+  <li>more cool</li> <!-- this is a list -->
+</ol>
 
-  <script>
-    
-    function adjustImage() {
-      const img = document.getElementById('myImage');
-      img.style.height = (img.clientHeight + 10) + 'px';  /* 10 pixels to the right*/           /*adjusts the image's position and height*/
-      img.style.marginLeft = '10px'; // Move the image to the right
-    }
+<!-- Image to manipulate -->
+<img id="myImage" src="https://via.placeholder.com/150" alt="Example Image"> <!-- this is where the image is located -->
 
-   
-    function showImageURL() {
-      const img = document.getElementById('myImage');
-      const imgURL = img.src; // Get the image URL from the `src` attribute
-      document.getElementById('imageURLDisplay').textContent = "Image URL: " + imgURL; // Display it in the paragraph      /*this part displays the url of the image*/
-    }
+<!-- Buttons -->
+<input type="button" value="Adjust Image Position & Height" onclick="adjustImage()"> <!-- two buttons -->
+<input type="button" value="Show Image URL" onclick="showImageURL()">
 
-  
-    document.getElementById('myB').name = 'myBtag';                      /*this modifies the names of elements for further manipulation if needed*/
-    document.getElementById('myList').name = 'myListTag';
-  </script>
+<!-- Placeholder to display the image URL -->
+<p id="imageURLDisplay">Image URL will appear here.</p>
+
+<script>
+  function adjustImage() {
+    const img = document.getElementById('myImage');
+    img.style.height = (img.clientHeight + 10) + 'px';  /* 10 pixels to increase the image height */
+    img.style.marginLeft = '10px'; // Move the image to the right
+  }
+
+  function showImageURL() {
+    const img = document.getElementById('myImage');
+    const imgURL = img.src; // Get the image URL from the `src` attribute
+    document.getElementById('imageURLDisplay').textContent = "Image URL: " + imgURL; // Display it in the paragraph
+  }
+
+  document.getElementById('myB').name = 'myBtag'; // Modify the name of the bold element
+  document.getElementById('myList').name = 'myListTag'; // Modify the name of the list
+</script>
 
 </body>
 </html>
