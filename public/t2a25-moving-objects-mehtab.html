@@ -8,39 +8,39 @@
 <body>
 
   <!-- Content -->
-  <p>This also is not bold <b id="myB"> Hi this is bold</b> this is not <br></p>
-  <ol id="myList">
+  <p>This also is not bold <b id="myB"> Hi this is bold</b> this is not <br></p>       /*this is some bold text*/
+  <ol id="myList"> 
     <li> cool </li>
-    <li> more cool </li>
+    <li> more cool </li>                       /*this is a list*/
   </ol>
 
   <!-- Image to manipulate -->
-  <img id="myImage" src="https://via.placeholder.com/150" alt="Example Image">
+  <img id="myImage" src="https://via.placeholder.com/150" alt="Example Image">              /*this is where the image is located*/
 
   <!-- Buttons -->
-  <input type="button" value="Adjust Image Position & Height" onclick="adjustImage()">
+  <input type="button" value="Adjust Image Position & Height" onclick="adjustImage()">                /*two buttons*/
   <input type="button" value="Show Image URL" onclick="showImageURL()">
 
   <!-- Placeholder to display the image URL -->
   <p id="imageURLDisplay">Image URL will appear here.</p>
 
   <script>
-    // Function to adjust the image position and height
+    
     function adjustImage() {
       const img = document.getElementById('myImage');
-      img.style.height = (img.clientHeight + 10) + 'px'; // Add 10 pixels to the height
+      img.style.height = (img.clientHeight + 10) + 'px';  /* 10 pixels to the right*/           /*adjusts the image's position and height*/
       img.style.marginLeft = '10px'; // Move the image to the right
     }
 
-    // Function to display the URL of the image
+   
     function showImageURL() {
       const img = document.getElementById('myImage');
       const imgURL = img.src; // Get the image URL from the `src` attribute
-      document.getElementById('imageURLDisplay').textContent = "Image URL: " + imgURL; // Display it in the paragraph
+      document.getElementById('imageURLDisplay').textContent = "Image URL: " + imgURL; // Display it in the paragraph      /*this part displays the url of the image*/
     }
 
-    // Modify the names of elements for further manipulation if needed
-    document.getElementById('myB').name = 'myBtag';
+  
+    document.getElementById('myB').name = 'myBtag';                      /*this modifies the names of elements for further manipulation if needed*/
     document.getElementById('myList').name = 'myListTag';
   </script>
 
