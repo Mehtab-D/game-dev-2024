@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Image Positioning and URL Sharing</title>
+  <title>Image Positioning and URL Display</title>
 </head>
 <body>
-<h1>t2a25-moving-objects-mehtab</h1>
+
   <!-- Content -->
   <p>This also is not bold <b id="myB"> Hi this is bold</b> this is not <br></p>
   <ol id="myList">
@@ -19,7 +19,10 @@
 
   <!-- Buttons -->
   <input type="button" value="Adjust Image Position & Height" onclick="adjustImage()">
-  <input type="button" value="Share URL of the Page" onclick="shareURL()">
+  <input type="button" value="Show Image URL" onclick="showImageURL()">
+
+  <!-- Placeholder to display the image URL -->
+  <p id="imageURLDisplay">Image URL will appear here.</p>
 
   <script>
     // Function to adjust the image position and height
@@ -29,10 +32,11 @@
       img.style.marginLeft = '10px'; // Move the image to the right
     }
 
-    // Function to share the URL of the webpage
-    function shareURL() {
-      const url = window.location.href; // Get the current page URL
-      alert("The URL of this page is: " + url); // Show the URL in an alert box
+    // Function to display the URL of the image
+    function showImageURL() {
+      const img = document.getElementById('myImage');
+      const imgURL = img.src; // Get the image URL from the `src` attribute
+      document.getElementById('imageURLDisplay').textContent = "Image URL: " + imgURL; // Display it in the paragraph
     }
 
     // Modify the names of elements for further manipulation if needed
