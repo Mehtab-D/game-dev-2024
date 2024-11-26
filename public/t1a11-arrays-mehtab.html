@@ -108,6 +108,9 @@
     <!-- Show 2D Grid Array Button -->
     <button onclick="show2DGridArray()">Show 2D Grid Array</button><br>
 
+    <!-- Show Random Number Array Button -->
+    <button onclick="showRandomNumberArray()">Show Random Number Array</button><br>
+
     <div id="myDiv01" class="output"></div>
     <div id="myDiv02" class="output"></div>
 </div>
@@ -127,6 +130,12 @@
         [6, 7, 8, 9, 10],
         [11, 12, 13, 14, 15]
     ];
+
+    // Create a random number array with 10 elements (random numbers between 1 and 100)
+    let randomNumberArray = [];
+    for (let i = 0; i < 10; i++) {
+        randomNumberArray.push(Math.floor(Math.random() * 100) + 1);
+    }
 
     function setArray() {
         // Setting values in the array
@@ -174,7 +183,6 @@
         document.getElementById('myDiv01').textContent = output;
     }
 
-    // Function to show the string array
     function showStringArray() {
         let output = '';
         // Looping through the string array and displaying its contents
@@ -198,6 +206,12 @@
         output += '</table>';
 
         document.getElementById('myDiv01').innerHTML = output;
+    }
+
+    // Function to show the Random Number array
+    function showRandomNumberArray() {
+        let output = 'Random Numbers: ' + randomNumberArray.join(', ');
+        document.getElementById('myDiv01').textContent = output;
     }
 
 </script>
