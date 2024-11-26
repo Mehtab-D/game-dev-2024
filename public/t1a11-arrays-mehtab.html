@@ -82,6 +82,9 @@
     <!-- Show Boolean Array Button -->
     <button onclick="showBooleanArray()">Show Boolean Array</button><br>
 
+    <!-- Show String Array Button -->
+    <button onclick="showStringArray()">Show String Array</button><br>
+
     <div id="myDiv01" class="output"></div>
     <div id="myDiv02" class="output"></div>
 </div>
@@ -93,6 +96,7 @@
     let mixedArray = ['Fred', 42, true, 'Mary', 3.14, 'Peter'];
     let numberArray = [10, 20, 30, 40, 50];  // Number Array
     let booleanArray = [true, false, true, false, true]; // Boolean Array
+    let stringArray = ['Alice', 'Bob', 'Charlie', 'David', 'Eve']; // String Array
 
     function setArray() {
         // Setting values in the array
@@ -131,11 +135,21 @@
         document.getElementById('myDiv01').textContent = output;
     }
 
-    // Function to show boolean array
     function showBooleanArray() {
         let output = '';
+        // Looping through the boolean array and displaying its contents
         for (let i = 0; i < booleanArray.length; i++) {
             output += 'booleanArray[' + i + '] = ' + booleanArray[i] + '\n';
+        }
+        document.getElementById('myDiv01').textContent = output;
+    }
+
+    // Function to show the string array
+    function showStringArray() {
+        let output = '';
+        // Looping through the string array and displaying its contents
+        for (let i = 0; i < stringArray.length; i++) {
+            output += 'stringArray[' + i + '] = ' + stringArray[i] + '\n';
         }
         document.getElementById('myDiv01').textContent = output;
     }
