@@ -23,6 +23,8 @@ Nothing: <input type="text" id="myText01" value="Useless at the moment"><br>
     'age': 50,
     'eyeColor': 'blue'
   };
+  // Clear previous content
+  document.getElementById('myDiv01').innerHTML = '';
   document.getElementById('myDiv01').innerHTML = '<br>myPerson Object has properties:<br>';
   document.getElementById('myDiv01').innerHTML += 'firstName: ' + myPerson.firstName + '<br>';
   document.getElementById('myDiv01').innerHTML += 'lastName: ' + myPerson.lastName + '<br>';
@@ -40,6 +42,9 @@ Nothing: <input type="text" id="myText01" value="Useless at the moment"><br>
     'imageURL': 'https://upload.wikimedia.org/wikipedia/commons/7/7a/The_Great_Gatsby_Cover_1925_Retouched.jpg' 
   };
   
+  // Clear previous content
+  document.getElementById('myDiv01').innerHTML = '';
+  
   document.getElementById('myDiv01').innerHTML = '<br>Book Object has properties:<br>';
   document.getElementById('myDiv01').innerHTML += 'title: ' + book.title + '<br>';
   document.getElementById('myDiv01').innerHTML += 'author: ' + book.author + '<br>';
@@ -47,8 +52,7 @@ Nothing: <input type="text" id="myText01" value="Useless at the moment"><br>
   document.getElementById('myDiv01').innerHTML += 'genre: ' + book.genre + '<br>';
 
   // Adding the book image
-  document.getElementById('myDiv01').innerHTML += '<img src="' + book.imageURL + '" alt="Book Cover" style="max-width: 200px; margin-top: 10px;">';
+  document.getElementById('myDiv01').innerHTML += '<img src="' + book.imageURL + '" alt="Book Cover" style="max-width: 200px; height:auto; margin-top: 10px;">';
 }">
 
 <div id="myDiv01">...</div>
-
