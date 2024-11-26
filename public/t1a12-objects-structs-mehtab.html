@@ -30,19 +30,25 @@ Nothing: <input type="text" id="myText01" value="Useless at the moment"><br>
   document.getElementById('myDiv01').innerHTML += 'eyeColor: ' + myPerson.eyeColor + '<br>';
 }">
 
-<!-- Button to display book object -->
+<!-- Button to display book object with an image -->
 <input type="button" value="Book Object Set and Show" onClick="{
   let book = {
     'title': 'The Great Gatsby',
     'author': 'F. Scott Fitzgerald',
     'yearPublished': 1925,
-    'genre': 'Fiction'
+    'genre': 'Fiction',
+    'imageURL': 'https://upload.wikimedia.org/wikipedia/commons/7/7a/The_Great_Gatsby_Cover_1925_Retouched.jpg' 
   };
+  
   document.getElementById('myDiv01').innerHTML = '<br>Book Object has properties:<br>';
   document.getElementById('myDiv01').innerHTML += 'title: ' + book.title + '<br>';
   document.getElementById('myDiv01').innerHTML += 'author: ' + book.author + '<br>';
   document.getElementById('myDiv01').innerHTML += 'yearPublished: ' + book.yearPublished + '<br>';
   document.getElementById('myDiv01').innerHTML += 'genre: ' + book.genre + '<br>';
+
+  // Adding the book image
+  document.getElementById('myDiv01').innerHTML += '<img src="' + book.imageURL + '" alt="Book Cover" style="max-width: 200px; margin-top: 10px;">';
 }">
 
 <div id="myDiv01">...</div>
+
