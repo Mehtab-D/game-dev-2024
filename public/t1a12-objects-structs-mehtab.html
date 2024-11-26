@@ -20,7 +20,8 @@ Nothing: <input type="text" id="myText01" value="Objects"><br>
 <input type="button" value="Book Object Set and Show" onClick="showBook()">
 <input type="button" value="Movie Object Set and Show" onClick="showMovie()">
 
-<!-- Buttons for animal selection -->
+<!-- Heading and Buttons for animal selection -->
+<h4>Choose an Animal</h4>
 <input type="button" value="Elephant" onClick="showAnimal('elephant')">
 <input type="button" value="Jellyfish" onClick="showAnimal('jellyfish')">
 <input type="button" value="Owl" onClick="showAnimal('owl')">
@@ -115,7 +116,7 @@ Nothing: <input type="text" id="myText01" value="Objects"><br>
   function showAnimal(animalChoice) {
     const animal = animals[animalChoice];
     const animalInfoDiv = document.getElementById('myDiv01');
-    animalInfoDiv.innerHTML = `
+    animalInfoDiv.innerHTML = ` 
       <h3>${animal.name}</h3>
       <p><strong>Habitat:</strong> ${animal.habitat}</p>
       <img src="${animal.imageURL}" alt="${animal.name}" style="max-width: 300px; height:auto; margin-top: 10px;">
