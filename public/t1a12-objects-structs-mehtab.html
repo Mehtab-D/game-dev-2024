@@ -15,14 +15,15 @@ let myPerson = {
 <h4>Example working Objects code</h4>
 Nothing: <input type="text" id="myText01" value="Objects"><br>
 
-<!-- Button to display myPerson object -->
+<!-- Buttons for existing objects -->
 <input type="button" value="Example Object Set and Show" onClick="showPerson()">
-
-<!-- Button to display book object with an image -->
 <input type="button" value="Book Object Set and Show" onClick="showBook()">
-
-<!-- Button to display movie object with a poster -->
 <input type="button" value="Movie Object Set and Show" onClick="showMovie()">
+
+<!-- Buttons for animal selection -->
+<input type="button" value="Elephant" onClick="showAnimal('elephant')">
+<input type="button" value="Jellyfish" onClick="showAnimal('jellyfish')">
+<input type="button" value="Owl" onClick="showAnimal('owl')">
 
 <div id="myDiv01">...</div>
 
@@ -89,5 +90,35 @@ Nothing: <input type="text" id="myText01" value="Objects"><br>
 
     // Adding the movie poster image
     document.getElementById('myDiv01').innerHTML += '<img src="' + movie.posterURL + '" alt="Movie Poster" style="max-width: 200px; height:auto; margin-top: 10px;">';
+  }
+
+  // Animal objects for elephant, jellyfish, and owl
+  const animals = {
+    'elephant': {
+      'name': 'Elephant',
+      'habitat': 'Savannah, Grasslands, Forests',
+      'imageURL': 'https://upload.wikimedia.org/wikipedia/commons/6/69/Elephant_in_the_Serengeti.jpg'
+    },
+    'jellyfish': {
+      'name': 'Jellyfish',
+      'habitat': 'Oceans, Warm Seas',
+      'imageURL': 'https://upload.wikimedia.org/wikipedia/commons/6/6c/Atlantic_jellyfish.jpg'
+    },
+    'owl': {
+      'name': 'Owl',
+      'habitat': 'Forests, Grasslands, Deserts',
+      'imageURL': 'https://upload.wikimedia.org/wikipedia/commons/d/d1/Great_Horned_Owl.jpg'
+    }
+  };
+
+  // Function to display selected animal information
+  function showAnimal(animalChoice) {
+    const animal = animals[animalChoice];
+    const animalInfoDiv = document.getElementById('myDiv01');
+    animalInfoDiv.innerHTML = `
+      <h3>${animal.name}</h3>
+      <p><strong>Habitat:</strong> ${animal.habitat}</p>
+      <img src="${animal.imageURL}" alt="${animal.name}" style="max-width: 300px; height:auto; margin-top: 10px;">
+    `;
   }
 </script>
