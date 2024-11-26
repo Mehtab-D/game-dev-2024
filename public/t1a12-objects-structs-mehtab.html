@@ -16,43 +16,52 @@ let myPerson = {
 Nothing: <input type="text" id="myText01" value="Useless at the moment"><br>
 
 <!-- Button to display myPerson object -->
-<input type="button" value="Example Object Set and Show" onClick="{
-  let myPerson = {
-    'firstName': 'John',
-    'lastName': 'Doe',
-    'age': 50,
-    'eyeColor': 'blue'
-  };
-  // Clear previous content
-  document.getElementById('myDiv01').innerHTML = '';
-  document.getElementById('myDiv01').innerHTML = '<br>myPerson Object has properties:<br>';
-  document.getElementById('myDiv01').innerHTML += 'firstName: ' + myPerson.firstName + '<br>';
-  document.getElementById('myDiv01').innerHTML += 'lastName: ' + myPerson.lastName + '<br>';
-  document.getElementById('myDiv01').innerHTML += 'age: ' + myPerson.age + '<br>';
-  document.getElementById('myDiv01').innerHTML += 'eyeColor: ' + myPerson.eyeColor + '<br>';
-}">
+<input type="button" value="Example Object Set and Show" onClick="showPerson()">
 
 <!-- Button to display book object with an image -->
-<input type="button" value="Book Object Set and Show" onClick="{
-  let book = {
-    'title': 'The Great Gatsby',
-    'author': 'F. Scott Fitzgerald',
-    'yearPublished': 1925,
-    'genre': 'Fiction',
-    'imageURL': 'https://upload.wikimedia.org/wikipedia/commons/7/7a/The_Great_Gatsby_Cover_1925_Retouched.jpg' 
-  };
-  
-  // Clear previous content
-  document.getElementById('myDiv01').innerHTML = '';
-  
-  document.getElementById('myDiv01').innerHTML = '<br>Book Object has properties:<br>';
-  document.getElementById('myDiv01').innerHTML += 'title: ' + book.title + '<br>';
-  document.getElementById('myDiv01').innerHTML += 'author: ' + book.author + '<br>';
-  document.getElementById('myDiv01').innerHTML += 'yearPublished: ' + book.yearPublished + '<br>';
-  document.getElementById('myDiv01').innerHTML += 'genre: ' + book.genre + '<br>';
-
-  // Adding the book image
-  document.getElementById('myDiv01').innerHTML += '<img src="' + book.imageURL + '" alt="Book Cover" style="max-width: 200px; height:auto; margin-top: 10px;">';
-}">
+<input type="button" value="Book Object Set and Show" onClick="showBook()">
 
 <div id="myDiv01">...</div>
+
+<script>
+  // Function to show person object
+  function showPerson() {
+    let myPerson = {
+      'firstName': 'John',
+      'lastName': 'Doe',
+      'age': 50,
+      'eyeColor': 'blue'
+    };
+
+    // Clear previous content
+    document.getElementById('myDiv01').innerHTML = '';
+    document.getElementById('myDiv01').innerHTML += '<br>myPerson Object has properties:<br>';
+    document.getElementById('myDiv01').innerHTML += 'firstName: ' + myPerson.firstName + '<br>';
+    document.getElementById('myDiv01').innerHTML += 'lastName: ' + myPerson.lastName + '<br>';
+    document.getElementById('myDiv01').innerHTML += 'age: ' + myPerson.age + '<br>';
+    document.getElementById('myDiv01').innerHTML += 'eyeColor: ' + myPerson.eyeColor + '<br>';
+  }
+
+  // Function to show book object with an image
+  function showBook() {
+    let book = {
+      'title': 'The Great Gatsby',
+      'author': 'F. Scott Fitzgerald',
+      'yearPublished': 1925,
+      'genre': 'Fiction',
+      'imageURL': 'https://upload.wikimedia.org/wikipedia/commons/7/7a/The_Great_Gatsby_Cover_1925_Retouched.jpg' 
+    };
+
+    // Clear previous content
+    document.getElementById('myDiv01').innerHTML = '';
+  
+    document.getElementById('myDiv01').innerHTML += '<br>Book Object has properties:<br>';
+    document.getElementById('myDiv01').innerHTML += 'title: ' + book.title + '<br>';
+    document.getElementById('myDiv01').innerHTML += 'author: ' + book.author + '<br>';
+    document.getElementById('myDiv01').innerHTML += 'yearPublished: ' + book.yearPublished + '<br>';
+    document.getElementById('myDiv01').innerHTML += 'genre: ' + book.genre + '<br>';
+
+    // Adding the book image
+    document.getElementById('myDiv01').innerHTML += '<img src="' + book.imageURL + '" alt="Book Cover" style="max-width: 200px; height:auto; margin-top: 10px;">';
+  }
+</script>
