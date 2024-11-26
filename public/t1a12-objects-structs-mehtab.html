@@ -12,7 +12,7 @@ let myPerson = {
 }
 </pre>
 
-<h2>Different Objects</h2>
+<h4>Example working Objects code</h4>
 Nothing: <input type="text" id="myText01" value="Useless at the moment"><br>
 
 <!-- Button to display myPerson object -->
@@ -20,6 +20,9 @@ Nothing: <input type="text" id="myText01" value="Useless at the moment"><br>
 
 <!-- Button to display book object with an image -->
 <input type="button" value="Book Object Set and Show" onClick="showBook()">
+
+<!-- Button to display movie object with a poster -->
+<input type="button" value="Movie Object Set and Show" onClick="showMovie()">
 
 <div id="myDiv01">...</div>
 
@@ -49,12 +52,12 @@ Nothing: <input type="text" id="myText01" value="Useless at the moment"><br>
       'author': 'F. Scott Fitzgerald',
       'yearPublished': 1925,
       'genre': 'Fiction',
-      'imageURL': 'https://upload.wikimedia.org/wikipedia/commons/7/7a/The_Great_Gatsby_Cover_1925_Retouched.jpg' 
+      'imageURL': 'https://upload.wikimedia.org/wikipedia/commons/7/7a/The_Great_Gatsby_Cover_1925_Retouched.jpg'
     };
 
     // Clear previous content
     document.getElementById('myDiv01').innerHTML = '';
-  
+
     document.getElementById('myDiv01').innerHTML += '<br>Book Object has properties:<br>';
     document.getElementById('myDiv01').innerHTML += 'title: ' + book.title + '<br>';
     document.getElementById('myDiv01').innerHTML += 'author: ' + book.author + '<br>';
@@ -63,5 +66,28 @@ Nothing: <input type="text" id="myText01" value="Useless at the moment"><br>
 
     // Adding the book image
     document.getElementById('myDiv01').innerHTML += '<img src="' + book.imageURL + '" alt="Book Cover" style="max-width: 200px; height:auto; margin-top: 10px;">';
+  }
+
+  // Function to show movie object with a poster image
+  function showMovie() {
+    let movie = {
+      'title': 'Star Wars: Revenge of the Sith',
+      'director': 'George Lucas',
+      'releaseYear': 2005,
+      'genre': 'Science Fiction/Action',
+      'posterURL': 'https://m.media-amazon.com/images/M/MV5BNTc4MTc3NTQ5OF5BMl5BanBnXkFtZTcwOTg0NjI4NA@@._V1_QL75_UY281_CR11,0,190,281_.jpg'
+    };
+
+    // Clear previous content
+    document.getElementById('myDiv01').innerHTML = '';
+
+    document.getElementById('myDiv01').innerHTML += '<br>Movie Object has properties:<br>';
+    document.getElementById('myDiv01').innerHTML += 'Title: ' + movie.title + '<br>';
+    document.getElementById('myDiv01').innerHTML += 'Director: ' + movie.director + '<br>';
+    document.getElementById('myDiv01').innerHTML += 'Release Year: ' + movie.releaseYear + '<br>';
+    document.getElementById('myDiv01').innerHTML += 'Genre: ' + movie.genre + '<br>';
+
+    // Adding the movie poster image
+    document.getElementById('myDiv01').innerHTML += '<img src="' + movie.posterURL + '" alt="Movie Poster" style="max-width: 200px; height:auto; margin-top: 10px;">';
   }
 </script>
