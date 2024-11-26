@@ -79,6 +79,9 @@
     <!-- Show Number Array Button -->
     <button onclick="showNumberArray()">Show Number Array</button><br>
 
+    <!-- Show Boolean Array Button -->
+    <button onclick="showBooleanArray()">Show Boolean Array</button><br>
+
     <div id="myDiv01" class="output"></div>
     <div id="myDiv02" class="output"></div>
 </div>
@@ -89,6 +92,7 @@
     let myArray = new Array(myMax);  // Array with 6 elements
     let mixedArray = ['Fred', 42, true, 'Mary', 3.14, 'Peter'];
     let numberArray = [10, 20, 30, 40, 50];  // Number Array
+    let booleanArray = [true, false, true, false, true]; // Boolean Array
 
     function setArray() {
         // Setting values in the array
@@ -118,7 +122,6 @@
         document.getElementById('myDiv02').textContent = output;
     }
 
-    // Function to show the number array
     function showNumberArray() {
         let output = '';
         // Looping through the number array and displaying its contents
@@ -127,6 +130,16 @@
         }
         document.getElementById('myDiv01').textContent = output;
     }
+
+    // Function to show boolean array
+    function showBooleanArray() {
+        let output = '';
+        for (let i = 0; i < booleanArray.length; i++) {
+            output += 'booleanArray[' + i + '] = ' + booleanArray[i] + '\n';
+        }
+        document.getElementById('myDiv01').textContent = output;
+    }
+
 </script>
 
 </body>
