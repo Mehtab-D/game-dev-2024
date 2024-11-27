@@ -125,6 +125,43 @@ Show: <input type="text" id="myText01" value="Objects"><br>
 <input type="button" value="Reset" onclick="resetContent()">
 
 <script>
+  // Weather data for different cities
+  const weatherData = {
+    'New York': {
+      'condition': 'Cloudy',
+      'temperature': 22
+    },
+    'Chicago': {
+      'condition': 'Sunny',
+      'temperature': 18
+    },
+    'Los Angeles': {
+      'condition': 'Clear',
+      'temperature': 25
+    },
+    'San Francisco': {
+      'condition': 'Foggy',
+      'temperature': 15
+    }
+  };
+
+  // Function to check weather
+  function checkWeather() {
+    const cityInput = document.getElementById('cityInput').value.trim();
+    const cities = cityInput.split(',').map(city => city.trim());
+
+    let cityWeather = '';
+    cities.forEach(city => {
+      if (weatherData[city]) {
+        cityWeather += `${city} Weather: ${weatherData[city].condition}, Temperature: ${weatherData[city].temperature}°C<br>`;
+      } else {
+        cityWeather += `${city} not found in weather data.<br>`;
+      }
+    });
+
+    document.getElementById('myDiv01').innerHTML = cityWeather;
+  }
+
   // Animal objects for elephant, jellyfish, and owl
   const animals = {
     'elephant': {
@@ -214,23 +251,6 @@ Show: <input type="text" id="myText01" value="Objects"><br>
     document.getElementById('myDiv01').innerHTML += '<img src="' + movie.posterURL + '" alt="Movie Poster" style="max-width: 200px; height:auto; margin-top: 10px;">';
   }
 
-  // Function to check weather
-  function checkWeather() {
-    const cityInput = document.getElementById('cityInput').value.trim();
-    const cities = cityInput.split(',').map(city => city.trim());
-
-    let cityWeather = '';
-    cities.forEach(city => {
-      if (weatherData[city]) {
-        cityWeather += `${city} Weather: ${weatherData[city].condition}, Temperature: ${weatherData[city].temperature}°C<br>`;
-      } else {
-        cityWeather += `${city} not found in weather data.<br>`;
-      }
-    });
-
-    document.getElementById('myDiv01').innerHTML = cityWeather;
-  }
-
   // Function to reset all content
   function resetContent() {
     document.getElementById('myDiv01').innerHTML = '';
@@ -242,5 +262,3 @@ Show: <input type="text" id="myText01" value="Objects"><br>
 
 </body>
 </html>
-
-  
