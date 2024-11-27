@@ -20,7 +20,6 @@
     .puzzle-piece {
       width: 100px;
       height: 100px;
-      background-size: 300px 300px; /* original image size for the background */
       border: 1px solid #000;
       cursor: pointer;
       display: flex;
@@ -28,6 +27,7 @@
       align-items: center;
       font-size: 24px;
       position: relative;
+      background-size: 300px 300px; /* Size of the full image (it should match the image's actual size) */
     }
     .hidden {
       visibility: hidden;
@@ -61,6 +61,8 @@
     let image = new Image();
     let puzzlePieces = [];
     const puzzleSize = 3; // 3x3 grid, 9 pieces
+    const pieceWidth = 100;  // width of each puzzle piece
+    const pieceHeight = 100; // height of each puzzle piece
     let shuffledPieces = [];
 
     // Load the image from URL
@@ -71,13 +73,6 @@
 
     function createPuzzle(image) {
       puzzlePieces = [];
-      const canvas = document.createElement('canvas');
-      const ctx = canvas.getContext('2d');
-      canvas.width = image.width;
-      canvas.height = image.height;
-
-      ctx.drawImage(image, 0, 0);
-
       const pieceWidth = image.width / puzzleSize;
       const pieceHeight = image.height / puzzleSize;
 
@@ -107,7 +102,12 @@
       shuffledPieces.forEach((piece, index) => {
         const div = document.createElement('div');
         div.classList.add('puzzle-piece');
-        div.style.backgroundPosition = `-${piece.x}px -${piece.y}px`; // Use background from image
+        
+        // Set the background position to display the correct part of the image
+        div.style.backgroundImage = `url('${imageURL}')`;
+        div.style.backgroundPosition = `-${piece.x}px -${piece.y}px`; // Show the right piece of the image
+        div.style.width = `${pieceWidth}px`;
+        div.style.height = `${pieceHeight}px`;
         div.dataset.index = index;
         div.draggable = true;
         div.addEventListener('dragstart', onDragStart);
