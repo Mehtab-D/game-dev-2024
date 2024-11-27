@@ -1,1 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Puzzle Game</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 20px;
+    }
+    #puzzle-container {
+      display: grid;
+      grid-template-columns: repeat(3, 100px); /* 3x3 puzzle */
+      grid-gap: 10px;
+      margin-top: 20px;
+      justify-content: center;
+    }
+    .puzzle-piece {
+      width: 100px;
+      height: 100px;
+      background-size: 300px 300px; /* image size (the full image size will be used to set the background for each piece) */
+      border: 1px solid #000;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 24px;
+      background-color: lightgray;
+    }
+    .hidden {
+      visibility: hidden;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Image Puzzle Game</h1>
+  <p>Click to load the world map image and solve the puzzle.</p>
+
+  <div id="puzzle-container"></div>
+  <button id="checkBtn" class="hidden" onclick="checkSolution()">Check Solution</button>
+  <p id="status"></p>
+
+  <script>
+    const imageURL = 'https://www.custom-wallpaper-printing.co.uk/custom/catalog/map/Light-Political-World-Map-Mural-665429155-Z.jpg';
+    let image = new Image();
+    let puzzlePieces = [];
+    const puzzleSize = 3; // 3x3 grid, 9 pieces
+    const pieceWidth = 100;
+    let shuffledPieces = [];
+    let correctPositions = [];
+
+    // Load the image from URL
+    image.src = imageURL;
+    image.onload = function () {
+      createPuzzle(image);
+    };
+
+    function createPuzzle(image) {
+      puzzlePieces = [];
+      const canvas = document.createElement('canvas');
+      const ctx = canvas.getContext('2d');
+      canvas.width = image.width;
+      canvas.height = image.height;
+
+      ctx.drawImage(image, 0, 0);
+
+      const pieceWidth = image.width / puzzleSize;
+      const pieceHeight = image.height / puzzleSize;
+
+      // Create the puzzle pieces
+      for (let y = 0; y < puzzleSize; y++) {
+        for (let x = 0; x < puzzleSize; x++) {
+          const piece = {
+            x: x * pieceWidth,
+            y: y * pieceHeight,
+            width: pieceWidth,
+            height: pieceHeight,
+            id: y * puzzleSize + x, // Unique ID for each piece
+          };
+          puzzlePieces.push(piece);
+        }
+      }
+
+      shuffledPieces = [...puzzlePieces];
+      shuffledPieces.sort(() => Math.random() - 0.5); // Shuffle pieces
+
+      renderPuzzle();
+    }
+
+    function renderPuzzle() {
+      const container = document.getElementById('puzzle-container');
+      container.innerHTML = ''; // Clear the previous pieces
+      shuffledPieces.forEach((piece, index) => {
+        const div = document.createElement('div');
+        div.classList.add('puzzle-piece');
+        div.style.backgroundPosition = `-${piece.x}px -${piece.y}px`;
+        div.draggable = true;
+        div.dataset.index = index;
+        div.addEventListener('dragstart', onDragStart);
+        div.addEventListener('dragover', onDragOver);
+        div.addEventListener('drop', onDrop);
+        container.appendChild(div);
+      });
+      document.getElementById('checkBtn').classList.remove('hidden');
+    }
+
+    // Drag and drop event handlers
+    function onDragStart(e) {
+      e.dataTransfer.setData('text/plain', e.target.dataset.index);
+    }
+
+    function onDragOver(e) {
+      e.preventDefault();
+    }
+
+    function onDrop(e) {
+      e.preventDefault();
+      const draggedIndex = e.dataTransfer.getData('text/plain');
+      const targetIndex = e.target.dataset.index;
+
+      const draggedPiece = shuffledPieces[draggedIndex];
+      shuffledPieces[draggedIndex] = shuffledPieces[targetIndex];
+      shuffledPieces[targetIndex] = draggedPiece;
+
+      renderPuzzle();
+    }
+
+    // Function to check if the puzzle is solved
+    function checkSolution() {
+      const isSolved = shuffledPieces.every((piece, index) => piece.id === index);
+      document.getElementById('status').textContent = isSolved ? 'Puzzle solved!' : 'Try again!';
+    }
+  </script>
+
+</body>
+</html>
 
