@@ -106,11 +106,11 @@ Nothing: <input type="text" id="myText01" value="Objects"><br>
 <input type="button" value="Book Object Set and Show" onClick="showBook()">
 <input type="button" value="Movie Object Set and Show" onClick="showMovie()">
 
-<!-- Heading and Buttons for animal selection -->
-<h4>Choose an Animal</h4>
-<input type="button" value="Elephant" onClick="showAnimal('elephant')" class="animal-button">
-<input type="button" value="Jellyfish" onClick="showAnimal('jellyfish')" class="animal-button">
-<input type="button" value="Owl" onClick="showAnimal('owl')" class="animal-button">
+<!-- Weather Section -->
+<h4>Enter your city (New York or Chicago):</h4>
+<input type="text" id="cityInput" value="New York, Chicago" placeholder="Erase one city" />
+
+<input type="button" value="Check Weather" onclick="checkWeather()">
 
 <div id="myDiv01">...</div>
 
@@ -179,33 +179,26 @@ Nothing: <input type="text" id="myText01" value="Objects"><br>
     document.getElementById('myDiv01').innerHTML += '<img src="' + movie.posterURL + '" alt="Movie Poster" style="max-width: 200px; height:auto; margin-top: 10px;">';
   }
 
-  // Animal objects for elephant, jellyfish, and owl
-  const animals = {
-    'elephant': {
-      'name': 'Elephant',
-      'habitat': 'Savannah, Grasslands, Forests',
-      'imageURL': 'https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTdse_U9h1cxpwy4Xxpojmiz4osOc1M5Dle2i84LzphtZJPcrJng0IqvHiq5Ie4VZ4hRNIl4IgSUlIAfpx5cwI-aw'
-    },
-    'jellyfish': {
-      'name': 'Jellyfish',
-      'habitat': 'Oceans, Warm Seas',
-      'imageURL': 'https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRVAzDu69PJJ_Esdiyex10BD1G_vtppUfRoJQOF_zmPybE2q3VE1fhGc89NphDuv4i3Qr6CI3lJPCIgNwE03NBHEA'
-    },
-    'owl': {
-      'name': 'Owl',
-      'habitat': 'Forests, Grasslands, Deserts',
-      'imageURL': 'https://media.istockphoto.com/id/155827871/photo/nosy-burrowing-owl-with-big-eyes-staring-at-the-camera.jpg?s=612x612&w=0&k=20&c=kMd-o10k3O05jfn80NOScYx9odCdhJWafHH4_dbf-aE='
+  // Check weather for selected city
+  function checkWeather() {
+    let cityInput = document.getElementById('cityInput').value;
+    let city = cityInput.split(",").map(item => item.trim())[0]; // Get the first city from input
+
+    // Mock weather data based on the city (can be replaced with real API)
+    let weatherData = {
+      'New York': { weather: 'Sunny', tempCelsius: 15 },
+      'Chicago': { weather: 'Raining', tempCelsius: 10 }
+    };
+
+    let weather = weatherData[city];
+    
+    if (weather) {
+      document.getElementById('myDiv01').innerHTML = `Weather in ${city}:<br>`;
+      document.getElementById('myDiv01').innerHTML += `Condition: ${weather.weather}<br>`;
+      document.getElementById('myDiv01').innerHTML += `Temperature: ${weather.tempCelsius}°C<br>`;
+    } else {
+      document.getElementById('myDiv01').innerHTML = `Weather information is not available for ${city}. Please choose New York or Chicago.`;
     }
-  };
-
-  // Function to show animal details
-  function showAnimal(animalKey) {
-    const animal = animals[animalKey];
-    document.getElementById('myDiv01').innerHTML = '';
-
-    document.getElementById('myDiv01').innerHTML += '<h4>' + animal.name + '</h4>';
-    document.getElementById('myDiv01').innerHTML += 'Habitat: ' + animal.habitat + '<br>';
-    document.getElementById('myDiv01').innerHTML += '<img src="' + animal.imageURL + '" alt="' + animal.name + '" style="max-width: 250px; height:auto; margin-top: 10px;">';
   }
 </script>
 
