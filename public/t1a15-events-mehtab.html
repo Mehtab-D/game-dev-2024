@@ -3,26 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Events</title>
+    <title>Events and Interactive Elements</title>
     <style>
+        /* Global styles */
         body {
+            margin: 0;
+            background-color: #fbe6ff;
             display: flex;
             flex-direction: column;
             align-items: center;
             height: 100vh;
-            background-color: #fbe6ff;
-            margin: 0;
         }
+
         h1 {
             text-align: center;
-            margin-top: 20px; /* Adjust as needed */
+            margin-top: 20px;
         }
-        .button-container {
-            display: flex;
-            justify-content: flex-end; /* Aligns items to the right */
-            width: 100%;
-            padding-right: 20px; /* Optional: Adds some padding from the right edge */
-        }
+
         button {
             padding: 10px 20px;
             font-size: 16px;
@@ -33,153 +30,30 @@
             cursor: pointer;
             transition: background-color 0.3s ease;
         }
+
         button:hover {
             background-color: #b4b0ff;
         }
-    </style>
-</head>
-<body>
-    <h1>Events By Mehtab</h1>
-    <div class="button-container">
-        <button id="myButton">Click Me</button>
-    </div>
 
-    <script>
-        document.getElementById('myButton').addEventListener('click', function() {
-            alert('Button was clicked!');
-        });
-    </script>
-    
-</body>
-</html>
-
-
-<body onMouseMove="{
-    document.getElementById('myDiv01').innerHTML='x:${event.clientX],y:${event.clientY}'
-    }"onKeyDown="{
-    document.getElementById('
-
-    
-<div class="input-container" style="display: flex; justify-content: flex-start; width: 100%; padding-left: 20px; margin-top: 20px;">
-    <label for="numberSelect">Select the Number 5:</label>
-    <select id="numberSelect">
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-    </select>
-</div>
-<div class="image-container" id="imageContainer" style="display: none; margin-top: 20px;">
-    <img src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_640.jpg" alt="Descriptive Alt Text" height="200" width="300">
-    <button id="okButton">OK</button>
-</div>
-
-<script>
-    document.getElementById('numberSelect').addEventListener('change', function() {
-        if (this.value === '5') {
-            document.getElementById('imageContainer').style.display = 'block';
-        } else {
-            document.getElementById('imageContainer').style.display = 'none';
-        }
-    });
-
-    document.getElementById('okButton').addEventListener('click', function() {
-        document.getElementById('imageContainer').style.display = 'none';
-    });
-</script>
-
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arrow Key Button with Spin</title>
-    <style>
-        #myButton, #okButton {
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
-            margin: 10px;
-        }
-
-        #arrow {
-            display: none; /* Initially hidden */
-            font-size: 50px;
-            animation: spin 2s linear infinite; /* Spinning animation */
-        }
-
-        @keyframes spin {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-    </style>
-</head>
-<body>
-    <button id="myButton">Press the Down Arrow!</button>
-    <div id="arrow">⬇️</div>
-    <button id="okButton" style="display: none;">OK</button> <!-- Initially hidden -->
-
-    <script>
-        const button = document.getElementById('myButton');
-        const arrow = document.getElementById('arrow');
-        const okButton = document.getElementById('okButton');
-
-        // Function to show the arrow and OK button
-        function showArrow() {
-            arrow.style.display = 'block';          // Show the spinning arrow
-            okButton.style.display = 'inline-block'; // Show the OK button
-        }
-
-        // Event listener for keydown
-        document.addEventListener('keydown', function(event) {
-            if (event.key === 'ArrowDown') {
-                button.click();  // Trigger button click
-            }
-        });
-
-        // Click event listener for the main button
-        button.addEventListener('click', function() {
-            showArrow(); // Show arrow and OK button
-        });
-
-        // Click event listener for the OK button
-        okButton.addEventListener('click', function() {
-            arrow.style.display = 'none';       // Hide the spinning arrow
-            okButton.style.display = 'none';    // Hide the OK button
-        });
-    </script>
-</body>
-
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Scrollbar with Color Change</title>
-    <style>
-        body {
-            height: 2000px; /* Make the page tall enough to scroll */
-            margin: 0;
+        /* Input container and select box */
+        .input-container {
             display: flex;
+            justify-content: flex-start;
+            width: 100%;
+            padding-left: 20px;
+            margin-top: 20px;
         }
+
         #scrollBox {
             width: 20px;
-            height: 100%; /* Full height */
-            background-color: black; /* Initial color */
-            transition: background-color 0.5s; /* Smooth transition */
-            position: fixed; /* Keep it fixed while scrolling */
-            left: 10px; /* Position from the left */
-            top: 0; /* Start at the top */
+            height: 100%;
+            background-color: black;
+            transition: background-color 0.5s;
+            position: fixed;
+            left: 10px;
+            top: 0;
         }
-        .content {
-            margin-left: 50px; /* Leave space for the scroll box */
-            padding: 20px;
-            font-size: 24px;
-            color: #333;
-        }
+
         /* Custom scrollbar styling */
         ::-webkit-scrollbar {
             width: 10px;
@@ -194,163 +68,90 @@
         ::-webkit-scrollbar-track {
             background: #f1f1f1;
         }
+
+        /* Resize image container */
+        .resize-handle {
+            width: 10px;
+            height: 10px;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            cursor: nwse-resize;
+        }
+
     </style>
 </head>
 <body>
+
+    <h1>Events By Mehtab</h1>
+
+    <!-- Button for triggering alert -->
+    <div class="button-container" style="width: 100%; padding-right: 20px; text-align: right;">
+        <button id="myButton">Click Me</button>
+    </div>
+
+    <!-- Event triggered by select box value -->
+    <div class="input-container">
+        <label for="numberSelect">Select the Number 5:</label>
+        <select id="numberSelect">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select>
+    </div>
+
+    <div class="image-container" id="imageContainer" style="display: none; margin-top: 20px;">
+        <img src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_640.jpg" alt="Descriptive Alt Text" height="200" width="300">
+        <button id="okButton">OK</button>
+    </div>
+
+    <!-- Scroll bar example -->
     <div id="scrollBox"></div>
-    <div class="content">
-        <h3>Use the Scroll Bar to Change the Box Color!</h3>
-        
-        <!-- Add more content here to allow scrolling -->
-        <div style="height: 1500px;"></div> <!-- Just to add more scrollable content -->
+
+    <!-- Image resizing example -->
+    <div id="resizableContainer" style="position: relative;">
+        <img id="resizableImage" src="https://i.etsystatic.com/8073388/r/il/8e53f8/806908565/il_570xN.806908565_lyd0.jpg" alt="Resizing Image" style="max-width: 100%; height: auto;">
+        <div class="resize-handle" id="resizeHandle"></div>
     </div>
 
     <script>
+        // Button click event
+        document.getElementById('myButton').addEventListener('click', function() {
+            alert('Button was clicked!');
+        });
+
+        // Select change event to show image when number 5 is selected
+        document.getElementById('numberSelect').addEventListener('change', function() {
+            if (this.value === '5') {
+                document.getElementById('imageContainer').style.display = 'block';
+            } else {
+                document.getElementById('imageContainer').style.display = 'none';
+            }
+        });
+
+        // OK button to hide image
+        document.getElementById('okButton').addEventListener('click', function() {
+            document.getElementById('imageContainer').style.display = 'none';
+        });
+
+        // Scroll bar color change
         window.onscroll = function() {
             let scrollPosition = window.scrollY;
             let windowHeight = window.innerHeight;
             let documentHeight = document.body.scrollHeight;
             let maxScroll = documentHeight - windowHeight;
-            
-            // Calculate the scroll percentage
             let scrollPercent = scrollPosition / maxScroll;
-
-            // Change the color of the scroll box
             let newColor = `rgb(${Math.floor(255 * scrollPercent)}, ${Math.floor(255 * (1 - scrollPercent))}, 0)`;
             document.getElementById('scrollBox').style.backgroundColor = newColor;
         };
-    </script>
-</body>
-</html>
 
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Name Input Example</title>
-    <style>
-        body {
-            margin: 0;
-            
-            position: relative; /* Enable positioning for children */
-        }
-
-        .form-container {
-            position: absolute; /* Positioning relative to the body */
-            top: 20px; /* Distance from the top */
-            left: 70px; /* Distance from the left */
-        }
-
-        input {
-            padding: 10px;
-            font-size: 16px;
-            margin-bottom: 10px;
-        }
-
-        button {
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
-            margin-top: 10px;
-        }
-
-        #message {
-            margin-top: 20px;
-            font-size: 18px;
-            display: none; /* Hidden initially */
-        }
-    </style>
-</head>
-<body>
-    <div class="form-container">
-        <input type="text" id="nameInput" placeholder="Enter your name" oninput="updateName()">
-        <button id="submitButton" onclick="submitName()">Submit</button>
-        <div id="message"></div>
-        <button id="okButton" style="display: none;" onclick="hideMessage()">OK</button>
-    </div>
-
-    <script>
-        let userName = '';
-
-        function updateName() {
-            userName = document.getElementById('nameInput').value;
-        }
-
-        function submitName() {
-            const messageDiv = document.getElementById('message');
-            if (userName) {
-                messageDiv.textContent = `Yay, ${userName}!`;
-                messageDiv.style.display = 'block'; // Show the message
-                document.getElementById('okButton').style.display = 'block'; // Show the OK button
-            } else {
-                alert('Please enter your name!');
-            }
-        }
-
-        function hideMessage() {
-            document.getElementById('message').style.display = 'none'; // Hide message
-            document.getElementById('okButton').style.display = 'none'; // Hide OK button
-            document.getElementById('nameInput').value = ''; // Clear input
-            userName = ''; // Reset userName
-        }
-    </script>
-</body>
-</html>
-
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manual Image Resize Example</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 20px;
-            text-align: center;
-        }
-
-        #resizableContainer {
-            display: inline-block; /* Keep container around the image */
-            position: absolute; /* Position for resizing handle */
-            top: 70px; /* Change this to adjust vertical position */
-            left: 30px; /* Change this to adjust horizontal position */
-        }
-
-        img {
-            max-width: 100%; /* Make the image responsive */
-            height: auto; /* Maintain aspect ratio */
-            transition: width 0.3s; /* Smooth transition for width change */
-        }
-
-        .resize-handle {
-            width: 10px;
-            height: 10px;
-        
-            position: absolute;
-            bottom: 0;
-            right: 0;
-            cursor: nwse-resize; /* Resize cursor */
-        }
-    </style>
-</head>
-<body>
-    <h2>Resize the Image</h2>
-    <div id="resizableContainer">
-        <img id="resizableImage" src="https://i.etsystatic.com/8073388/r/il/8e53f8/806908565/il_570xN.806908565_lyd0.jpg" alt="Resizing Image">
-        <div class="resize-handle" id="resizeHandle"></div>
-    </div>
-
-    <script>
+        // Image resize handling
         const image = document.getElementById('resizableImage');
         const resizeHandle = document.getElementById('resizeHandle');
 
         let isResizing = false;
-
-        // Mouse down event to start resizing
         resizeHandle.addEventListener('mousedown', (e) => {
             isResizing = true;
             document.addEventListener('mousemove', resizeImage);
@@ -359,15 +160,13 @@
 
         function resizeImage(e) {
             if (isResizing) {
-                // Calculate new width and height
                 const newWidth = e.clientX - image.getBoundingClientRect().left;
-                const aspectRatio = image.naturalWidth / image.naturalHeight; // Maintain aspect ratio
-                const newHeight = newWidth / aspectRatio; // Calculate height based on width
+                const aspectRatio = image.naturalWidth / image.naturalHeight;
+                const newHeight = newWidth / aspectRatio;
 
-                // Set the new size only if they're positive
                 if (newWidth > 0 && newHeight > 0) {
-                    image.style.width = `${newWidth}px`; // Use backticks for template literals
-                    image.style.height = `${newHeight}px`; // Use backticks for template literals
+                    image.style.width = `${newWidth}px`;
+                    image.style.height = `${newHeight}px`;
                 }
             }
         }
@@ -378,9 +177,6 @@
             document.removeEventListener('mouseup', stopResizing);
         }
     </script>
+
 </body>
 </html>
-
-
-
-
