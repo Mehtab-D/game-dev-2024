@@ -12,8 +12,8 @@
     }
     #puzzle-container {
       display: grid;
-      grid-template-columns: repeat(3, 100px); /* 3x3 puzzle */
-      grid-gap: 10px;
+      grid-template-columns: repeat(4, 100px); /* 4x4 puzzle, square pieces */
+      grid-gap: 5px;
       margin-top: 20px;
       justify-content: center;
     }
@@ -27,7 +27,7 @@
       align-items: center;
       font-size: 24px;
       position: relative;
-      background-size: 300px 300px; /* Size of the full image (it should match the image's actual size) */
+      background-size: 400px 400px; /* Adjust based on the 4x4 grid */
     }
     .hidden {
       visibility: hidden;
@@ -38,31 +38,28 @@
       margin-top: 20px;
     }
 
-    /* Add puzzle piece shape */
+    /* Square puzzle pieces with no jagged edges (simple square shape) */
     .puzzle-piece {
-      clip-path: polygon(
-        0% 25%, 25% 0%, 50% 0%, 75% 0%, 100% 25%, 
-        100% 75%, 75% 100%, 50% 100%, 25% 100%, 0% 75%
-      );
+      clip-path: none; /* No jagged edges, just square */
     }
   </style>
 </head>
 <body>
 
   <h1>Puzzle</h1>
-  <p>Click to load the world map image and solve the puzzle.</p>
+  <p>Click to load the new image and solve the puzzle.</p>
 
   <div id="puzzle-container"></div>
   <button id="checkBtn" class="hidden" onclick="checkSolution()">Check Solution</button>
   <p id="status"></p>
 
   <script>
-    const imageURL = 'https://www.custom-wallpaper-printing.co.uk/custom/catalog/map/Light-Political-World-Map-Mural-665429155-Z.jpg';
+    const imageURL = 'https://cdn.britannica.com/45/5645-050-B9EC0205/head-treasure-flower-disk-flowers-inflorescence-ray.jpg';
     let image = new Image();
     let puzzlePieces = [];
-    const puzzleSize = 3; // 3x3 grid, 9 pieces
-    const pieceWidth = 100;  // width of each puzzle piece
-    const pieceHeight = 100; // height of each puzzle piece
+    const puzzleSize = 4; // 4x4 grid, 16 pieces
+    const pieceWidth = 100; // Size of each square piece (100px)
+    const pieceHeight = 100; // Same height for square pieces
     let shuffledPieces = [];
 
     // Load the image from URL
@@ -103,9 +100,9 @@
         const div = document.createElement('div');
         div.classList.add('puzzle-piece');
         
-        // Set the background position to display the correct part of the image
+        // Set the background image and position for each puzzle piece
         div.style.backgroundImage = `url('${imageURL}')`;
-        div.style.backgroundPosition = `-${piece.x}px -${piece.y}px`; // Show the right piece of the image
+        div.style.backgroundPosition = `-${piece.x}px -${piece.y}px`; // Show the correct section of the image
         div.style.width = `${pieceWidth}px`;
         div.style.height = `${pieceHeight}px`;
         div.dataset.index = index;
