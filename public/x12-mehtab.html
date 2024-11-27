@@ -20,7 +20,7 @@
     .puzzle-piece {
       width: 100px;
       height: 100px;
-      background-size: 300px 300px; /* image size (the full image size will be used to set the background for each piece) */
+      background-size: 300px 300px; /* original image size for the background */
       border: 1px solid #000;
       cursor: pointer;
       display: flex;
@@ -28,9 +28,23 @@
       align-items: center;
       font-size: 24px;
       background-color: #f9fae3;
+      position: relative;
     }
     .hidden {
       visibility: hidden;
+    }
+    #status {
+      font-size: 18px;
+      font-weight: bold;
+      margin-top: 20px;
+    }
+
+    /* Add puzzle piece shape */
+    .puzzle-piece {
+      clip-path: polygon(
+        0% 25%, 25% 0%, 50% 0%, 75% 0%, 100% 25%, 
+        100% 75%, 75% 100%, 50% 100%, 25% 100%, 0% 75%
+      );
     }
   </style>
 </head>
@@ -48,9 +62,7 @@
     let image = new Image();
     let puzzlePieces = [];
     const puzzleSize = 3; // 3x3 grid, 9 pieces
-    const pieceWidth = 100;
     let shuffledPieces = [];
-    let correctPositions = [];
 
     // Load the image from URL
     image.src = imageURL;
@@ -97,11 +109,13 @@
         const div = document.createElement('div');
         div.classList.add('puzzle-piece');
         div.style.backgroundPosition = `-${piece.x}px -${piece.y}px`;
-        div.draggable = true;
         div.dataset.index = index;
+        div.draggable = true;
         div.addEventListener('dragstart', onDragStart);
         div.addEventListener('dragover', onDragOver);
         div.addEventListener('drop', onDrop);
+        div.addEventListener('dragenter', onDragEnter);
+        div.addEventListener('dragleave', onDragLeave);
         container.appendChild(div);
       });
       document.getElementById('checkBtn').classList.remove('hidden');
@@ -113,7 +127,7 @@
     }
 
     function onDragOver(e) {
-      e.preventDefault();
+      e.preventDefault(); // Allow dropping by preventing the default behavior
     }
 
     function onDrop(e) {
@@ -121,11 +135,20 @@
       const draggedIndex = e.dataTransfer.getData('text/plain');
       const targetIndex = e.target.dataset.index;
 
+      // Swap the pieces
       const draggedPiece = shuffledPieces[draggedIndex];
       shuffledPieces[draggedIndex] = shuffledPieces[targetIndex];
       shuffledPieces[targetIndex] = draggedPiece;
 
       renderPuzzle();
+    }
+
+    function onDragEnter(e) {
+      e.target.style.border = '2px dashed #555'; // Highlight the target area
+    }
+
+    function onDragLeave(e) {
+      e.target.style.border = '1px solid #000'; // Reset border
     }
 
     // Function to check if the puzzle is solved
@@ -137,4 +160,3 @@
 
 </body>
 </html>
-
