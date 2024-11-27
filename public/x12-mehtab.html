@@ -87,8 +87,9 @@
         }
       }
 
+      // Shuffle the pieces only once
       shuffledPieces = [...puzzlePieces];
-      shuffledPieces.sort(() => Math.random() - 0.5); // Shuffle pieces
+      shuffledPieces.sort(() => Math.random() - 0.5); // Shuffle pieces once
 
       renderPuzzle();
     }
