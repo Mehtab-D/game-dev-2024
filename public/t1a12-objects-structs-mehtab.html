@@ -1,4 +1,90 @@
-<h1 align="center">t1a12-objects-structs-mehtab</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>t1a12-objects-structs-mehtab</title>
+    <style>
+        body {
+            border: 2px dotted #f7f5f7; /* Dashed border around the content */
+            margin: 20px; /* Space between border and content */
+            padding: 20px; /* Space inside the border */
+            background-color: #9e4483;
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            text-align: center; /* Center-aligned heading */
+            font-size: 2em;
+            color: #f7f5f7;
+        }
+
+        h4 {
+            font-size: 1.2em;
+            color: #6e4b8b;
+            margin-bottom: 10px;
+        }
+
+        #myDiv01 {
+            background-color: #f4e0e6;
+            border: 1px solid #d1b4d8;
+            padding: 10px;
+            margin-top: 20px;
+            font-size: 1.1em;
+            color: #6c4b8b;
+        }
+
+        input[type="text"], input[type="button"], input[type="number"], input[type="date"] {
+            padding: 8px;
+            font-size: 1em;
+            margin: 5px;
+            border: 1px solid #cdb1f0;
+            border-radius: 4px;
+        }
+
+        input[type="button"] {
+            background-color: #9a6bbd;
+            color: white;
+            cursor: pointer;
+        }
+
+        input[type="button"]:hover {
+            background-color: #7f4af0;
+        }
+
+        #season-image, #fireworks {
+            max-width: 300px;
+            height: auto;
+            margin-top: 10px;
+        }
+
+        .animal-button {
+            background-color: #9a6bbd;
+            color: white;
+            padding: 10px;
+            margin: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .animal-button:hover {
+            background-color: #7f4af0;
+        }
+
+        .animal-info {
+            margin-top: 20px;
+        }
+
+        .animal-info img {
+            max-width: 250px;
+            height: auto;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>t1a12-objects-structs-mehtab</h1>
 
 <a href="#">Good reference to JavaScript Objects</a><br>
 
@@ -22,12 +108,9 @@ Nothing: <input type="text" id="myText01" value="Objects"><br>
 
 <!-- Heading and Buttons for animal selection -->
 <h4>Choose an Animal</h4>
-<input type="button" value="Elephant" onClick="showAnimal('elephant')">
-<input type="button" value="Jellyfish" onClick="showAnimal('jellyfish')">
-<input type="button" value="Owl" onClick="showAnimal('owl')">
-
-<!-- Reset Button -->
-<input type="button" value="Reset" onClick="resetContent()">
+<input type="button" value="Elephant" onClick="showAnimal('elephant')" class="animal-button">
+<input type="button" value="Jellyfish" onClick="showAnimal('jellyfish')" class="animal-button">
+<input type="button" value="Owl" onClick="showAnimal('owl')" class="animal-button">
 
 <div id="myDiv01">...</div>
 
@@ -111,23 +194,20 @@ Nothing: <input type="text" id="myText01" value="Objects"><br>
     'owl': {
       'name': 'Owl',
       'habitat': 'Forests, Grasslands, Deserts',
-      'imageURL': 'https://media.istockphoto.com/id/1323187200/photo/spotted-owlet.jpg?s=612x612&w=0&k=20&c=Y0103wykL7LJBhBNUi2HH3uNlCuRZ3I2xVrZcUgryt4='
+      'imageURL': 'https://media.istockphoto.com/id/128491639/photo/close-up-of-an-owl.jpg?s=612x612&w=0&k=20&c=FhKbUkGVJH8S1sSv9NY0M8DEhXZgOPzxTnkbSjrYMOw='
     }
   };
 
-  // Function to display selected animal information
-  function showAnimal(animalChoice) {
-    const animal = animals[animalChoice];
-    const animalInfoDiv = document.getElementById('myDiv01');
-    animalInfoDiv.innerHTML = ` 
-      <h3>${animal.name}</h3>
-      <p><strong>Habitat:</strong> ${animal.habitat}</p>
-      <img src="${animal.imageURL}" alt="${animal.name}" style="max-width: 300px; height:auto; margin-top: 10px;">
-    `;
-  }
+  // Function to show animal details
+  function showAnimal(animalKey) {
+    const animal = animals[animalKey];
+    document.getElementById('myDiv01').innerHTML = '';
 
-  // Reset function to clear all content
-  function resetContent() {
-    document.getElementById('myDiv01').innerHTML = ''; // Clear the content
+    document.getElementById('myDiv01').innerHTML += '<h4>' + animal.name + '</h4>';
+    document.getElementById('myDiv01').innerHTML += 'Habitat: ' + animal.habitat + '<br>';
+    document.getElementById('myDiv01').innerHTML += '<img src="' + animal.imageURL + '" alt="' + animal.name + '" style="max-width: 250px; height:auto; margin-top: 10px;">';
   }
 </script>
+
+</body>
+</html>
