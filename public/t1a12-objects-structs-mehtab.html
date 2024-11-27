@@ -109,7 +109,6 @@ Show: <input type="text" id="myText01" value="Objects"><br>
 <!-- Weather Section -->
 <h4>Check the Weather (New York or Chicago):</h4>
 <input type="text" id="cityInput" value="New York, Chicago" placeholder="Erase one city" />
-
 <input type="button" value="Check Weather" onclick="checkWeather()">
 
 <div id="myDiv01">...</div>
@@ -121,6 +120,9 @@ Show: <input type="text" id="myText01" value="Objects"><br>
 <button class="animal-button" onclick="showAnimal('owl')">Owl</button>
 
 <div id="animalInfo" class="animal-info"></div>
+
+<!-- Reset Button -->
+<input type="button" value="Reset" onclick="resetContent()">
 
 <script>
   // Animal objects for elephant, jellyfish, and owl
@@ -147,7 +149,7 @@ Show: <input type="text" id="myText01" value="Objects"><br>
     const animal = animals[animalKey];
     
     // Display the animal's information
-    let animalInfoHTML = `
+    let animalInfoHTML = ` 
       <h4>${animal.name}</h4>
       <p>Habitat: ${animal.habitat}</p>
       <img src="${animal.imageURL}" alt="${animal.name}" style="max-width: 300px; height: auto;">
@@ -212,18 +214,6 @@ Show: <input type="text" id="myText01" value="Objects"><br>
     document.getElementById('myDiv01').innerHTML += '<img src="' + movie.posterURL + '" alt="Movie Poster" style="max-width: 200px; height:auto; margin-top: 10px;">';
   }
 
-  // Weather object for New York and Chicago
-  const weatherData = {
-    'New York': {
-      'condition': 'Sunny',
-      'temperature': 22
-    },
-    'Chicago': {
-      'condition': 'Raining',
-      'temperature': 16
-    }
-  };
-
   // Function to check weather
   function checkWeather() {
     const cityInput = document.getElementById('cityInput').value.trim();
@@ -240,11 +230,17 @@ Show: <input type="text" id="myText01" value="Objects"><br>
 
     document.getElementById('myDiv01').innerHTML = cityWeather;
   }
+
+  // Function to reset all content
+  function resetContent() {
+    document.getElementById('myDiv01').innerHTML = '';
+    document.getElementById('animalInfo').innerHTML = '';
+    document.getElementById('cityInput').value = 'New York, Chicago';
+    document.getElementById('myText01').value = 'Objects';
+  }
 </script>
 
 </body>
 </html>
 
-
-       
   
