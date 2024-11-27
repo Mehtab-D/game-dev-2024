@@ -26,6 +26,9 @@ Nothing: <input type="text" id="myText01" value="Objects"><br>
 <input type="button" value="Jellyfish" onClick="showAnimal('jellyfish')">
 <input type="button" value="Owl" onClick="showAnimal('owl')">
 
+<!-- Reset Button -->
+<input type="button" value="Reset" onClick="resetContent()">
+
 <div id="myDiv01">...</div>
 
 <script>
@@ -121,5 +124,10 @@ Nothing: <input type="text" id="myText01" value="Objects"><br>
       <p><strong>Habitat:</strong> ${animal.habitat}</p>
       <img src="${animal.imageURL}" alt="${animal.name}" style="max-width: 300px; height:auto; margin-top: 10px;">
     `;
+  }
+
+  // Reset function to clear all content
+  function resetContent() {
+    document.getElementById('myDiv01').innerHTML = ''; // Clear the content
   }
 </script>
