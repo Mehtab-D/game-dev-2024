@@ -17,6 +17,8 @@
 
         #flashcards-container {
             display: flex;
+            justify-content: center;
+            align-items: center;
             flex-direction: column;
             gap: 20px;
         }
@@ -29,6 +31,7 @@
             box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
             perspective: 1000px;
             cursor: pointer;
+            display: none; /* Hide all flashcards by default */
         }
 
         .flashcard-inner {
@@ -58,15 +61,16 @@
         .flashcard-front {
             background-color: #4CAF50;
             color: white;
-            font-size: 24px;
+            font-size: 40px; /* Make the word bigger */
             font-weight: bold;
         }
 
         .flashcard-back {
             background-color: #f7f7f7;
             color: #333;
-            font-size: 18px;
+            font-size: 16px; /* Make pronunciation and meaning smaller */
             transform: rotateY(180deg);
+            padding-top: 10px;
         }
 
         .flashcard-container {
@@ -75,12 +79,37 @@
             gap: 10px;
         }
 
+        .button-container {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
     </style>
 </head>
 <body>
 
     <div id="flashcards-container">
         <!-- Flashcards will be dynamically inserted here -->
+    </div>
+
+    <div class="button-container">
+        <button id="prev-btn">Previous</button>
+        <button id="next-btn">Next</button>
     </div>
 
     <script>
@@ -108,13 +137,16 @@
             }
         ];
 
+        let currentCardIndex = 0; // To keep track of which flashcard is currently displayed
+
         // Function to create and display flashcards
         function createFlashcards() {
             const container = document.getElementById("flashcards-container");
 
-            flashcardsData.forEach(card => {
+            flashcardsData.forEach((card, index) => {
                 const flashcard = document.createElement("div");
                 flashcard.classList.add("flashcard");
+                if (index === currentCardIndex) flashcard.style.display = "block"; // Show the first card
 
                 // Create the inner part of the flashcard
                 const innerCard = document.createElement("div");
@@ -142,10 +174,29 @@
             });
         }
 
+        // Function to show the next flashcard
+        function showNextCard() {
+            const cards = document.querySelectorAll(".flashcard");
+            cards[currentCardIndex].style.display = "none"; // Hide current card
+            currentCardIndex = (currentCardIndex + 1) % flashcardsData.length; // Move to the next card
+            cards[currentCardIndex].style.display = "block"; // Show next card
+        }
+
+        // Function to show the previous flashcard
+        function showPreviousCard() {
+            const cards = document.querySelectorAll(".flashcard");
+            cards[currentCardIndex].style.display = "none"; // Hide current card
+            currentCardIndex = (currentCardIndex - 1 + flashcardsData.length) % flashcardsData.length; // Move to the previous card
+            cards[currentCardIndex].style.display = "block"; // Show previous card
+        }
+
+        // Event listeners for buttons
+        document.getElementById("next-btn").addEventListener("click", showNextCard);
+        document.getElementById("prev-btn").addEventListener("click", showPreviousCard);
+
         // Call the function to display the flashcards
         createFlashcards();
     </script>
-    
+
 </body>
 </html>
-
