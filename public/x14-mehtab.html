@@ -70,13 +70,21 @@
             color: #333;
             font-size: 16px; /* Make pronunciation and meaning smaller */
             transform: rotateY(180deg);
-            padding-top: 10px;
+            padding-top: 20px; /* Add spacing between pronunciation and meaning */
+            display: flex;
+            flex-direction: column; /* Stack items vertically */
+            justify-content: center;
+            align-items: center;
         }
 
-        .flashcard-container {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
+        .flashcard-back .pronunciation {
+            font-size: 18px; /* Make pronunciation slightly bigger */
+            font-weight: bold;
+        }
+
+        .flashcard-back .meaning {
+            font-size: 16px;
+            margin-top: 10px; /* Space between pronunciation and meaning */
         }
 
         .button-container {
@@ -160,7 +168,7 @@
                 // Back of the card (Pronunciation and Meaning)
                 const back = document.createElement("div");
                 back.classList.add("flashcard-back");
-                back.innerHTML = `<strong>Pronunciation:</strong> ${card.pronunciation}<br><strong>Meaning:</strong> ${card.meaning}`;
+                back.innerHTML = `<div class="pronunciation"><strong>Pronunciation:</strong> ${card.pronunciation}</div><div class="meaning"><strong>Meaning:</strong> ${card.meaning}</div>`;
 
                 // Append front and back to the inner part of the flashcard
                 innerCard.appendChild(front);
