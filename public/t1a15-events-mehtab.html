@@ -63,6 +63,18 @@
             object-fit: cover;
             transition: width 0.3s ease, height 0.3s ease;
         }
+
+        /* Styling for the quiz container */
+        .quiz-container {
+            position: absolute;
+            left: 20px; /* Position it to the left */
+            top: 350px; /* Adjust the vertical position */
+        }
+        #quiz-feedback {
+            font-size: 20px;
+            color: #333;
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
@@ -79,6 +91,23 @@
     <div class="resize-container">
         <div id="resize-heading" style="font-size: 18px; color: #666;">Resize the Image by hovering over and using mouse scroll</div>
         <img id="resizable-image" class="resizable-image" src="https://st.depositphotos.com/1005145/2280/i/450/depositphotos_22808756-stock-photo-beautiful-sunset-in-the-spring.jpg" alt="Resizable Image">
+    </div>
+
+    <!-- Quiz Section -->
+    <div class="quiz-container">
+        <div style="font-size: 18px; color: #666;">What is 5 + 2?</div>
+        <select id="quiz-select">
+            <option value="">Select an answer</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option> <!-- Correct Answer -->
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+        </select>
+        <div id="quiz-feedback"></div> <!-- Feedback will show here -->
     </div>
 
     <script>
@@ -107,6 +136,22 @@
                 // Scroll up: increase size
                 resizableImage.style.width = (currentWidth + 20) + 'px';
                 resizableImage.style.height = (currentHeight + 15) + 'px';
+            }
+        });
+
+        // Quiz Event - Check answer when selection changes
+        let quizSelect = document.getElementById('quiz-select');
+        let quizFeedback = document.getElementById('quiz-feedback');
+
+        quizSelect.addEventListener('change', function() {
+            let answer = quizSelect.value;
+
+            if (answer === '7') {
+                quizFeedback.textContent = "Correct!"; // Display "Correct!" if the answer is 7
+                quizFeedback.style.color = "green"; // Optional: green color for correct answer
+            } else {
+                quizFeedback.textContent = "Incorrect!"; // Display "Incorrect!" if wrong answer
+                quizFeedback.style.color = "red"; // Optional: red color for incorrect answer
             }
         });
     </script>
