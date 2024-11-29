@@ -34,12 +34,33 @@
             top: 100px; /* Position it below the small heading */
             right: 20px; /* Align to the right */
         }
+        /* Styling for the frosted image */
+        .image-container {
+            position: absolute;
+            left: 20px; /* Position the image on the left side */
+            top: 150px; /* Adjust the vertical position */
+        }
+        .frosted-image {
+            width: 300px;
+            height: 200px;
+            object-fit: cover;
+            filter: blur(10px); /* Apply the blur effect initially */
+            transition: filter 0.3s ease; /* Smooth transition when hover */
+        }
+        .image-container:hover .frosted-image {
+            filter: none; /* Remove the blur effect on hover */
+        }
     </style>
 </head>
 <body>
     <h1>t1a15-events-mehtab</h1>
     <div id="small-heading">Press the Down Arrow</div> <!-- Small heading aligned to the right -->
     <div id="message">Key has been pressed!</div> <!-- Message that shows up when the key is pressed -->
+
+    <!-- Frosted Image Container -->
+    <div class="image-container">
+        <img class="frosted-image" src="https://img.freepik.com/premium-photo/beautiful-butterfly-images-brighten-your-day_1199394-94530.jpg" alt="Frosted Image"> <!-- Replace this with the image URL -->
+    </div>
 
     <script>
         // Add event listener for keydown
