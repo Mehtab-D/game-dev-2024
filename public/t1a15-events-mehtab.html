@@ -12,18 +12,18 @@
             height: 100vh;
             background-color: #fbe6ff;
             margin: 0;
-            position: relative; /* For absolute positioning of child elements */
+            position: relative;
         }
         h1 {
             text-align: center;
             margin-top: 20px;
         }
         #small-heading {
-            font-size: 18px; /* Smaller font size */
+            font-size: 18px;
             color: #666;
             position: absolute;
-            top: 60px; /* Adjust the vertical position */
-            right: 20px; /* Align to the right */
+            top: 60px;
+            right: 20px;
         }
         #message {
             display: none;
@@ -31,67 +31,71 @@
             color: #333;
             margin-top: 20px;
             position: absolute;
-            top: 100px; /* Position it below the small heading */
-            right: 20px; /* Align to the right */
+            top: 100px;
+            right: 20px;
         }
         /* Styling for the frosted image */
         .image-container {
             position: absolute;
-            left: 20px; /* Position the image on the left side */
-            top: 150px; /* Adjust the vertical position */
+            left: 20px;
+            top: 150px;
         }
         .frosted-image {
             width: 300px;
             height: 200px;
             object-fit: cover;
-            filter: blur(10px); /* Apply the blur effect initially */
-            transition: filter 0.3s ease; /* Smooth transition when hover */
+            filter: blur(10px);
+            transition: filter 0.3s ease;
         }
         .image-container:hover .frosted-image {
-            filter: none; /* Remove the blur effect on hover */
+            filter: none;
         }
-        
+
         /* Styling for the resizable image */
         .resize-container {
             position: absolute;
-            right: 20px; /* Position the image on the right side */
-            top: 150px; /* Adjust the vertical position */
+            right: 20px;
+            top: 150px;
         }
         .resizable-image {
-            width: 300px; /* Initial width of the image */
-            height: 200px; /* Initial height of the image */
+            width: 300px;
+            height: 200px;
             object-fit: cover;
-            transition: width 0.3s ease, height 0.3s ease; /* Smooth transition when resized */
+            transition: width 0.3s ease, height 0.3s ease;
         }
     </style>
 </head>
 <body>
     <h1>t1a15-events-mehtab</h1>
-    <div id="small-heading">Press the Down Arrow</div> <!-- Small heading aligned to the right -->
-    <div id="message">Key has been pressed!</div> <!-- Message that shows up when the key is pressed -->
+    <div id="small-heading">Press the Down Arrow</div>
+    <div id="message">Key has been pressed!</div>
 
     <!-- Frosted Image Container -->
     <div class="image-container">
-        <img class="frosted-image" src="https://img.freepik.com/premium-photo/beautiful-butterfly-images-brighten-your-day_1199394-94530.jpg" alt="Frosted Image"> <!-- Replace this with the frosted image URL -->
+        <img class="frosted-image" src="https://img.freepik.com/premium-photo/beautiful-butterfly-images-brighten-your-day_1199394-94530.jpg" alt="Frosted Image">
     </div>
 
     <!-- Resize Image Container -->
     <div class="resize-container">
-        <div id="resize-heading" style="font-size: 18px; color: #666;">Resize the Image</div> <!-- Heading above the resizable image -->
-        <img id="resizable-image" class="resizable-image" src="https://media.istockphoto.com/id/1403500817/photo/the-craggies-in-the-blue-ridge-mountains.jpg?s=612x612&w=0&k=20&c=N-pGA8OClRVDzRfj_9AqANnOaDS3devZWwrQNwZuDSk=" alt="Resizable Image"> <!-- Replace this with the resizable image URL -->
+        <div id="resize-heading" style="font-size: 18px; color: #666;">Resize the Image</div>
+        <img id="resizable-image" class="resizable-image" src="https://st.depositphotos.com/1005145/2280/i/450/depositphotos_22808756-stock-photo-beautiful-sunset-in-the-spring.jpg" alt="Resizable Image">
     </div>
 
     <script>
-        // Add event listener for keydown
+        // Add event listener for keydown (ArrowDown)
         document.addEventListener('keydown', function(event) {
-            if (event.key === 'ArrowDown') { // Check if the down arrow key was pressed
+            if (event.key === 'ArrowDown') {
                 document.getElementById('message').style.display = 'block'; // Show the message
             }
         });
 
-        // Add event listeners for resizing the image on mouse scroll
+        // Add event listener for resizing the image on mouse scroll
         let resizableImage = document.getElementById('resizable-image');
+        
+        // Prevent the default scroll behavior and handle image resizing
         resizableImage.addEventListener('wheel', function(event) {
+            event.preventDefault(); // Prevent the default scroll behavior on the page
+
             let currentWidth = resizableImage.offsetWidth;
             let currentHeight = resizableImage.offsetHeight;
 
