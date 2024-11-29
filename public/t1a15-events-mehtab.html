@@ -75,6 +75,17 @@
             color: #333;
             margin-top: 10px;
         }
+
+        /* Styling for the new event (click to change color) */
+        .click-container {
+            position: absolute;
+            right: 20px;
+            top: 500px; /* Adjust the vertical position */
+        }
+        #helloText {
+            font-size: 24px;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
@@ -108,6 +119,12 @@
             <option value="12">12</option>
         </select>
         <div id="quiz-feedback"></div> <!-- Feedback will show here -->
+    </div>
+
+    <!-- Click to Change Color Section -->
+    <div class="click-container">
+        <div style="font-size: 18px; color: #666;">Click the Text</div>
+        <p id="helloText">Hello</p> <!-- The text that changes color when clicked -->
     </div>
 
     <script>
@@ -153,6 +170,11 @@
                 quizFeedback.textContent = "Incorrect!"; // Display "Incorrect!" if wrong answer
                 quizFeedback.style.color = "red"; // Optional: red color for incorrect answer
             }
+        });
+
+        // Add event listener for click event on the "Hello" text
+        document.getElementById('helloText').addEventListener('click', function() {
+            this.style.color = 'purple';  // Change the text color to purple when clicked
         });
     </script>
 </body>
