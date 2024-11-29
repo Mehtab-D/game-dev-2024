@@ -15,35 +15,27 @@
         }
         h1 {
             text-align: center;
-            margin-top: 20px; /* Adjust as needed */
+            margin-top: 20px;
         }
-        .button-container {
-            display: flex;
-            justify-content: flex-end; /* Aligns items to the right */
-            width: 100%;
-            padding-right: 20px; /* Optional: Adds some padding from the right edge */
-        }
-        button {
-            padding: 10px 20px;
-            font-size: 16px;
-            color: white;
-            background-color: #0d3f75;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-        button:hover {
-            background-color: #b4b0ff;
-        }
-        #arrow {
-            display: none; /* Initially hidden */
-            font-size: 50px;
-            animation: spin 2s linear infinite; /* Spinning animation */
-        }
-        @keyframes spin {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
+        #message {
+            display: none;
+            font-size: 24px;
+            color: #333;
+            margin-top: 20px;
         }
     </style>
 </head>
+<body>
+    <h1>t1a15-events-mehtab</h1>
+    <div id="message">Key has been pressed!</div>
+
+    <script>
+        // Add event listener for keydown
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'ArrowDown') { // Check if the down arrow key was pressed
+                document.getElementById('message').style.display = 'block'; // Show the message
+            }
+        });
+    </script>
+</body>
+</html>
