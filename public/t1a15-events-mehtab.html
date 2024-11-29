@@ -50,6 +50,19 @@
         .image-container:hover .frosted-image {
             filter: none; /* Remove the blur effect on hover */
         }
+        
+        /* Styling for the resizable image */
+        .resize-container {
+            position: absolute;
+            right: 20px; /* Position the image on the right side */
+            top: 150px; /* Adjust the vertical position */
+        }
+        .resizable-image {
+            width: 300px; /* Initial width of the image */
+            height: 200px; /* Initial height of the image */
+            object-fit: cover;
+            transition: width 0.3s ease, height 0.3s ease; /* Smooth transition when resized */
+        }
     </style>
 </head>
 <body>
@@ -59,7 +72,13 @@
 
     <!-- Frosted Image Container -->
     <div class="image-container">
-        <img class="frosted-image" src="https://img.freepik.com/premium-photo/beautiful-butterfly-images-brighten-your-day_1199394-94530.jpg" alt="Frosted Image"> <!-- Replace this with the image URL -->
+        <img class="frosted-image" src="https://img.freepik.com/premium-photo/beautiful-butterfly-images-brighten-your-day_1199394-94530.jpg" alt="Frosted Image"> <!-- Replace this with the frosted image URL -->
+    </div>
+
+    <!-- Resize Image Container -->
+    <div class="resize-container">
+        <div id="resize-heading" style="font-size: 18px; color: #666;">Resize the Image</div> <!-- Heading above the resizable image -->
+        <img id="resizable-image" class="resizable-image" src="https://media.istockphoto.com/id/1403500817/photo/the-craggies-in-the-blue-ridge-mountains.jpg?s=612x612&w=0&k=20&c=N-pGA8OClRVDzRfj_9AqANnOaDS3devZWwrQNwZuDSk=" alt="Resizable Image"> <!-- Replace this with the resizable image URL -->
     </div>
 
     <script>
@@ -67,6 +86,23 @@
         document.addEventListener('keydown', function(event) {
             if (event.key === 'ArrowDown') { // Check if the down arrow key was pressed
                 document.getElementById('message').style.display = 'block'; // Show the message
+            }
+        });
+
+        // Add event listeners for resizing the image on mouse scroll
+        let resizableImage = document.getElementById('resizable-image');
+        resizableImage.addEventListener('wheel', function(event) {
+            let currentWidth = resizableImage.offsetWidth;
+            let currentHeight = resizableImage.offsetHeight;
+
+            if (event.deltaY > 0) {
+                // Scroll down: decrease size
+                resizableImage.style.width = (currentWidth - 20) + 'px';
+                resizableImage.style.height = (currentHeight - 15) + 'px';
+            } else {
+                // Scroll up: increase size
+                resizableImage.style.width = (currentWidth + 20) + 'px';
+                resizableImage.style.height = (currentHeight + 15) + 'px';
             }
         });
     </script>
