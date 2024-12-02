@@ -209,7 +209,9 @@
             let originalPosition = img.getBoundingClientRect();
             let newPosition = (originalPosition.left > window.innerWidth / 2) ? "left" : "right";
 
-            img.style.transform = translateX(${newPosition === 'left' ? window.innerWidth - originalPosition.right : -originalPosition.left}px);
+            // Corrected line for transform with proper syntax
+            img.style.transform = `translateX(${newPosition === 'left' ? window.innerWidth - originalPosition.right : -originalPosition.left}px)`;
+            
             setTimeout(function() {
                 img.style.transform = 'translateX(0)';
             }, 1000);  // Reset to original position after 1 second
