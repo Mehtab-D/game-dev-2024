@@ -169,6 +169,17 @@
     </div>
 
     <script>
+        // Add event listener for mouseup to detect text highlight on the title
+        document.getElementById('title').addEventListener('mouseup', function() {
+            // Check if there is text selected
+            const selectedText = window.getSelection().toString();
+
+            if (selectedText) {
+                // Change the title color to purple when text is selected
+                this.style.color = 'purple';
+            }
+        });
+
         // Add event listener for keydown (ArrowDown)
         document.addEventListener('keydown', function(event) {
             if (event.key === 'ArrowDown') {
@@ -218,59 +229,32 @@
             this.style.color = 'purple';  // Change the text color to purple when clicked
         });
 
-        // Highlight title text to change its color when highlighted
-        let title = document.getElementById('title');
-        title.addEventListener('mouseup', function() {
-            let selectedText = window.getSelection().toString();
-            if (selectedText) {
-                title.style.color = 'purple'; // Change title color to purple when highlighted
-            }
-        });
-
-        // Reset title color when text is unhighlighted
-        title.addEventListener('selectionchange', function() {
-            if (window.getSelection().isCollapsed) {
-                title.style.color = ''; // Reset color when text is unhighlighted
-            }
-        });
-
         // Double click to move the animated side girl image
         document.getElementById('animated-side-girl').addEventListener('dblclick', function() {
-            let img = this;
-            let originalPosition = img.getBoundingClientRect();
-            let newPosition = (originalPosition.left > window.innerWidth / 2) ? "left" : "right";
-
-            img.style.transform = `translateX(${newPosition === 'left' ? window.innerWidth - originalPosition.right : -originalPosition.left}px)`;
-            
-            setTimeout(function() {
-                img.style.transform = 'translateX(0)';
-            }, 1000);  // Reset to original position after 1 second
+            this.style.transform = 'translateX(300px)';  // Move the image 300px to the right
         });
 
-        // Drag to spin the text event
+        // Add drag functionality to the spinning text
         let spinText = document.getElementById('spinText');
-        let isDragging = false;
-        let startX = 0;
-        let rotation = 0;
-
-        spinText.addEventListener('mousedown', function(event) {
-            isDragging = true;
-            startX = event.clientX;
-            spinText.style.transition = 'none';
-        });
-
-        document.addEventListener('mousemove', function(event) {
-            if (isDragging) {
-                let deltaX = event.clientX - startX;
-                rotation += deltaX / 2;
-                spinText.style.transform = `rotate(${rotation}deg)`;
-                startX = event.clientX;
+        
+        spinText.addEventListener('mousedown', function(e) {
+            let initialX = e.clientX;
+            let initialY = e.clientY;
+            
+            function onMouseMove(e) {
+                let deltaX = e.clientX - initialX;
+                let deltaY = e.clientY - initialY;
+                
+                spinText.style.transform = `rotate(${deltaX}deg)`;
             }
-        });
-
-        document.addEventListener('mouseup', function() {
-            isDragging = false;
-            spinText.style.transition = 'transform 0.3s ease';
+            
+            function onMouseUp() {
+                document.removeEventListener('mousemove', onMouseMove);
+                document.removeEventListener('mouseup', onMouseUp);
+            }
+            
+            document.addEventListener('mousemove', onMouseMove);
+            document.addEventListener('mouseup', onMouseUp);
         });
     </script>
 </body>
