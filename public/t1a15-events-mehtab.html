@@ -118,6 +118,15 @@
             cursor: pointer;
             transition: transform 0.3s ease;
         }
+
+        /* Styling for the "highlight to change color" section */
+        .highlight-container {
+            position: absolute;
+            top: 250px;
+            left: 20px;
+            font-size: 18px;
+            color: #666;
+        }
     </style>
 </head>
 <body>
@@ -157,6 +166,11 @@
     <div class="click-container">
         <div style="font-size: 18px; color: #666;">Click the Text to Change the Color</div>
         <p id="helloText">Hello</p> <!-- The text that changes color when clicked -->
+    </div>
+
+    <!-- Highlight to Change Color Section -->
+    <div class="highlight-container">
+        <div id="highlightText">Highlight to change color</div>
     </div>
 
     <!-- New Animated Side Girl Image -->
@@ -220,6 +234,19 @@
             this.style.color = 'purple';  // Change the text color to purple when clicked
         });
 
+        // Highlight text to change color event
+        let highlightText = document.getElementById('highlightText');
+        document.addEventListener('selectionchange', function() {
+            let selection = window.getSelection();
+            if (selection.toString()) {
+                // Change the color of the highlighted text to blue
+                highlightText.style.color = 'blue';
+            } else {
+                // Reset the color when no text is selected
+                highlightText.style.color = '#666';
+            }
+        });
+
         // Double click to move the animated side girl image
         document.getElementById('animated-side-girl').addEventListener('dblclick', function() {
             let img = this;
@@ -265,4 +292,3 @@
     </script>
 </body>
 </html>
-
