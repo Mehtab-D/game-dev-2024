@@ -180,11 +180,12 @@
             }
         });
 
-        // Add event listener for keydown (ArrowDown)
+        // Add event listener for keydown (ArrowDown) to show a message
         document.addEventListener('keydown', function(event) {
             if (event.key === 'ArrowDown') {
-                // Display a message when down arrow is pressed
-                alert("Down arrow pressed!");  // Or show a custom message
+                let highlightMessage = document.getElementById('highlightMessage');
+                highlightMessage.textContent = "You pressed the Down Arrow!"; // Display a message when down arrow is pressed
+                highlightMessage.style.color = "blue"; // Optionally change message color
             }
         });
 
