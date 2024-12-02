@@ -106,6 +106,18 @@
             color: #666;
             margin-bottom: 10px;
         }
+
+        /* Styling for the spinning text container */
+        .spin-container {
+            position: absolute;
+            right: 20px;
+            top: 600px; /* Adjust the vertical position */
+        }
+        #spinText {
+            font-size: 24px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
     </style>
 </head>
 <body>
@@ -151,6 +163,11 @@
     <div class="animated-image-container">
         <div id="image-text">Double click to move the image</div>
         <img id="animated-side-girl" class="animated-side-girl" src="https://static.vecteezy.com/system/resources/thumbnails/024/692/112/small_2x/ai-generated-ai-generative-beautiful-rhododendron-flowers-over-sunset-mountains-field-landscape-graphic-art-photo.jpg" alt="Animated Side Girl">
+    </div>
+
+    <!-- Spinning Text Section -->
+    <div class="spin-container">
+        <p id="spinText">Drag me to spin!</p> <!-- The text that will spin on drag -->
     </div>
 
     <script>
@@ -216,6 +233,36 @@
                 img.style.transform = 'translateX(0)';
             }, 1000);  // Reset to original position after 1 second
         });
+
+        // Drag to spin the text event
+        let spinText = document.getElementById('spinText');
+        let isDragging = false;
+        let startX = 0;
+        let rotation = 0;
+
+        // Mouse down event: Start tracking the drag
+        spinText.addEventListener('mousedown', function(event) {
+            isDragging = true;
+            startX = event.clientX;  // Record the starting X position
+            spinText.style.transition = 'none';  // Disable transition while dragging for smooth behavior
+        });
+
+        // Mouse move event: Update the text rotation as the mouse moves
+        document.addEventListener('mousemove', function(event) {
+            if (isDragging) {
+                let deltaX = event.clientX - startX;  // Calculate horizontal movement
+                rotation += deltaX / 2;  // Update the rotation based on horizontal movement (you can adjust the factor)
+                spinText.style.transform = `rotate(${rotation}deg)`;  // Apply the rotation
+                startX = event.clientX;  // Update the startX for next move
+            }
+        });
+
+        // Mouse up event: Stop tracking the drag
+        document.addEventListener('mouseup', function() {
+            isDragging = false;
+            spinText.style.transition = 'transform 0.3s ease';  // Add transition back when the drag ends
+        });
     </script>
 </body>
 </html>
+
