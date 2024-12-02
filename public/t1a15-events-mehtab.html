@@ -86,6 +86,26 @@
             font-size: 24px;
             cursor: pointer;
         }
+
+        /* Styling for the new animated side girl image */
+        .animated-image-container {
+            position: absolute;
+            left: 20px;
+            top: 500px;
+            text-align: center;
+        }
+        .animated-side-girl {
+            width: 150px;  /* You can adjust the size of the image */
+            height: auto;
+            cursor: pointer;
+            transition: transform 1s ease-in-out;
+        }
+
+        #image-text {
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 10px;
+        }
     </style>
 </head>
 <body>
@@ -125,6 +145,12 @@
     <div class="click-container">
         <div style="font-size: 18px; color: #666;">Click the Text to Change the Color</div>
         <p id="helloText">Hello</p> <!-- The text that changes color when clicked -->
+    </div>
+
+    <!-- New Animated Side Girl Image -->
+    <div class="animated-image-container">
+        <div id="image-text">Double click to move the image</div>
+        <img id="animated-side-girl" class="animated-side-girl" src="https://images.rawpixel.com/image_png_800/cHJpdmF0ZS9zdGF0aWMvaW1hZ2VzL3dlYnNpdGUvMjAyMy0wMy9mcnBpdGFoYXlhX2RyYWdvbl9mcnVpdF9waXRheWEtaW1hZ2Utam9iMTc3OF8xLnBuZw.png" alt="Animated Side Girl">
     </div>
 
     <script>
@@ -175,6 +201,18 @@
         // Add event listener for click event on the "Hello" text
         document.getElementById('helloText').addEventListener('click', function() {
             this.style.color = 'purple';  // Change the text color to purple when clicked
+        });
+
+        // Double click to move the animated side girl image
+        document.getElementById('animated-side-girl').addEventListener('dblclick', function() {
+            let img = this;
+            let originalPosition = img.getBoundingClientRect();
+            let newPosition = (originalPosition.left > window.innerWidth / 2) ? "left" : "right";
+
+            img.style.transform = `translateX(${newPosition === 'left' ? window.innerWidth - originalPosition.right : -originalPosition.left}px)`;
+            setTimeout(function() {
+                img.style.transform = 'translateX(0)';
+            }, 1000);  // Reset to original position after 1 second
         });
     </script>
 </body>
