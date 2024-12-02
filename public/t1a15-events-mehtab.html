@@ -17,6 +17,7 @@
         h1 {
             text-align: center;
             margin-top: 20px;
+            cursor: pointer;  /* Make it clear the title can be highlighted */
         }
         #small-heading {
             font-size: 18px;
@@ -25,14 +26,10 @@
             top: 60px;
             right: 20px;
         }
-        #message {
-            display: none;
-            font-size: 24px;
-            color: #333;
-            margin-top: 20px;
-            position: absolute;
-            top: 100px;
-            right: 20px;
+        #highlightMessage {
+            font-size: 18px;
+            color: #666;
+            margin-top: 10px;
         }
         /* Styling for the frosted image */
         .image-container {
@@ -50,7 +47,6 @@
         .image-container:hover .frosted-image {
             filter: none;
         }
-
         /* Styling for the resizable image */
         .resize-container {
             position: absolute;
@@ -118,21 +114,14 @@
             cursor: pointer;
             transition: transform 0.3s ease;
         }
-
-        /* Styling for the "highlight to change color" section */
-        .highlight-container {
-            position: absolute;
-            top: 250px;
-            left: 20px;
-            font-size: 18px;
-            color: #666;
-        }
     </style>
 </head>
 <body>
-    <h1>t1a15-events-mehtab</h1>
+    <h1 id="title">t1a15-events-mehtab</h1>
     <div id="small-heading">Press the Down Arrow</div>
-    <div id="message">Key has been pressed!</div>
+    
+    <!-- Highlight to Change Color Message -->
+    <div id="highlightMessage">Highlight the title text to change its color</div>
 
     <!-- Frosted Image Container -->
     <div class="image-container">
@@ -166,11 +155,6 @@
     <div class="click-container">
         <div style="font-size: 18px; color: #666;">Click the Text to Change the Color</div>
         <p id="helloText">Hello</p> <!-- The text that changes color when clicked -->
-    </div>
-
-    <!-- Highlight to Change Color Section -->
-    <div class="highlight-container">
-        <div id="highlightText">Highlight to change color</div>
     </div>
 
     <!-- New Animated Side Girl Image -->
@@ -234,16 +218,19 @@
             this.style.color = 'purple';  // Change the text color to purple when clicked
         });
 
-        // Highlight text to change color event
-        let highlightText = document.getElementById('highlightText');
-        document.addEventListener('selectionchange', function() {
-            let selection = window.getSelection();
-            if (selection.toString()) {
-                // Change the color of the highlighted text to blue
-                highlightText.style.color = 'blue';
-            } else {
-                // Reset the color when no text is selected
-                highlightText.style.color = '#666';
+        // Highlight title text to change its color when highlighted
+        let title = document.getElementById('title');
+        title.addEventListener('mouseup', function() {
+            let selectedText = window.getSelection().toString();
+            if (selectedText) {
+                title.style.color = 'purple'; // Change title color to purple when highlighted
+            }
+        });
+
+        // Reset title color when text is unhighlighted
+        title.addEventListener('selectionchange', function() {
+            if (window.getSelection().isCollapsed) {
+                title.style.color = ''; // Reset color when text is unhighlighted
             }
         });
 
@@ -253,7 +240,6 @@
             let originalPosition = img.getBoundingClientRect();
             let newPosition = (originalPosition.left > window.innerWidth / 2) ? "left" : "right";
 
-            // Corrected line for transform with proper syntax
             img.style.transform = `translateX(${newPosition === 'left' ? window.innerWidth - originalPosition.right : -originalPosition.left}px)`;
             
             setTimeout(function() {
@@ -267,27 +253,24 @@
         let startX = 0;
         let rotation = 0;
 
-        // Mouse down event: Start tracking the drag
         spinText.addEventListener('mousedown', function(event) {
             isDragging = true;
-            startX = event.clientX;  // Record the starting X position
-            spinText.style.transition = 'none';  // Disable transition while dragging for smooth behavior
+            startX = event.clientX;
+            spinText.style.transition = 'none';
         });
 
-        // Mouse move event: Update the text rotation as the mouse moves
         document.addEventListener('mousemove', function(event) {
             if (isDragging) {
-                let deltaX = event.clientX - startX;  // Calculate horizontal movement
-                rotation += deltaX / 2;  // Update the rotation based on horizontal movement (you can adjust the factor)
-                spinText.style.transform = `rotate(${rotation}deg)`;  // Apply the rotation
-                startX = event.clientX;  // Update the startX for next move
+                let deltaX = event.clientX - startX;
+                rotation += deltaX / 2;
+                spinText.style.transform = `rotate(${rotation}deg)`;
+                startX = event.clientX;
             }
         });
 
-        // Mouse up event: Stop tracking the drag
         document.addEventListener('mouseup', function() {
             isDragging = false;
-            spinText.style.transition = 'transform 0.3s ease';  // Add transition back when the drag ends
+            spinText.style.transition = 'transform 0.3s ease';
         });
     </script>
 </body>
