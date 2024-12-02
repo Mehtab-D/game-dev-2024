@@ -30,7 +30,6 @@
             font-size: 18px;
             color: #666;
             margin-top: 10px;
-            display: none;  /* Initially hide the message */
         }
         /* Styling for the frosted image */
         .image-container {
@@ -185,8 +184,7 @@
         document.addEventListener('keydown', function(event) {
             if (event.key === 'ArrowDown') {
                 let highlightMessage = document.getElementById('highlightMessage');
-                highlightMessage.style.display = 'block'; // Show the message
-                highlightMessage.textContent = "You pressed the Down Arrow!"; // Change the message content
+                highlightMessage.textContent = "You pressed the Down Arrow!"; // Display a message when down arrow is pressed
                 highlightMessage.style.color = "blue"; // Optionally change message color
             }
         });
@@ -249,7 +247,7 @@
                 let deltaX = e.clientX - initialX;
                 let deltaY = e.clientY - initialY;
                 
-                spinText.style.transform = `rotate(${deltaX}deg)`;
+                spinText.style.transform = rotate(${deltaX}deg);
             }
             
             function onMouseUp() {
@@ -263,4 +261,3 @@
     </script>
 </body>
 </html>
-
