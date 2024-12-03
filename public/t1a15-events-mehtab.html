@@ -63,8 +63,8 @@
         /* Styling for the quiz container */
         .quiz-container {
             position: absolute;
-            left: 20px; /* Position it to the left */
-            top: 350px; /* Adjust the vertical position */
+            left: 20px;
+            top: 350px;
         }
         #quiz-feedback {
             font-size: 20px;
@@ -76,7 +76,7 @@
         .click-container {
             position: absolute;
             right: 20px;
-            top: 500px; /* Adjust the vertical position */
+            top: 500px;
         }
         #helloText {
             font-size: 24px;
@@ -91,7 +91,7 @@
             text-align: center;
         }
         .animated-side-girl {
-            width: 150px;  /* You can adjust the size of the image */
+            width: 150px;
             height: auto;
             cursor: pointer;
             transition: transform 1s ease-in-out;
@@ -107,7 +107,7 @@
         .spin-container {
             position: absolute;
             right: 20px;
-            top: 600px; /* Adjust the vertical position */
+            top: 600px;
         }
         #spinText {
             font-size: 24px;
@@ -169,95 +169,82 @@
     </div>
 
     <script>
-        // Add event listener for mouseup to detect text highlight on the title
-        document.getElementById('title').addEventListener('mouseup', function() {
-            // Check if there is text selected
-            const selectedText = window.getSelection().toString();
+        window.onload = function() {
+            // 1. Highlight Title
+            document.getElementById('title').addEventListener('mouseup', function() {
+                const selectedText = window.getSelection().toString();
+                if (selectedText) {
+                    this.style.color = 'purple';
+                }
+            });
 
-            if (selectedText) {
-                // Change the title color to purple when text is selected
+            // 2. Arrow Down Key Event
+            document.addEventListener('keydown', function(event) {
+                if (event.key === 'ArrowDown') {
+                    let highlightMessage = document.getElementById('highlightMessage');
+                    highlightMessage.textContent = "You pressed the Down Arrow!";
+                    highlightMessage.style.color = "blue";
+                }
+            });
+
+            // 3. Resize Image on Mouse Scroll
+            let resizableImage = document.getElementById('resizable-image');
+            resizableImage.addEventListener('wheel', function(event) {
+                event.preventDefault();
+                let currentWidth = resizableImage.offsetWidth;
+                let currentHeight = resizableImage.offsetHeight;
+
+                if (event.deltaY > 0) {
+                    resizableImage.style.width = (currentWidth - 20) + 'px';
+                    resizableImage.style.height = (currentHeight - 15) + 'px';
+                } else {
+                    resizableImage.style.width = (currentWidth + 20) + 'px';
+                    resizableImage.style.height = (currentHeight + 15) + 'px';
+                }
+            });
+
+            // 4. Quiz Event
+            let quizSelect = document.getElementById('quiz-select');
+            let quizFeedback = document.getElementById('quiz-feedback');
+            quizSelect.addEventListener('change', function() {
+                let answer = quizSelect.value;
+                if (answer === '7') {
+                    quizFeedback.textContent = "Correct!";
+                    quizFeedback.style.color = "green";
+                } else {
+                    quizFeedback.textContent = "Incorrect!";
+                    quizFeedback.style.color = "red";
+                }
+            });
+
+            // 5. Click to Change Color for Hello Text
+            document.getElementById('helloText').addEventListener('click', function() {
                 this.style.color = 'purple';
-            }
-        });
+            });
 
-        // Add event listener for keydown (ArrowDown) to show a message
-        document.addEventListener('keydown', function(event) {
-            if (event.key === 'ArrowDown') {
-                let highlightMessage = document.getElementById('highlightMessage');
-                highlightMessage.textContent = "You pressed the Down Arrow!"; // Display a message when down arrow is pressed
-                highlightMessage.style.color = "blue"; // Optionally change message color
-            }
-        });
+            // 6. Double-click to Move Animated Side Girl Image
+            document.getElementById('animated-side-girl').addEventListener('dblclick', function() {
+                this.style.transform = 'translateX(300px)';
+            });
 
-        // Add event listener for resizing the image on mouse scroll
-        let resizableImage = document.getElementById('resizable-image');
-        
-        // Prevent the default scroll behavior and handle image resizing
-        resizableImage.addEventListener('wheel', function(event) {
-            event.preventDefault(); // Prevent the default scroll behavior on the page
+            // 7. Drag to Spin Text
+            let spinText = document.getElementById('spinText');
+            spinText.addEventListener('mousedown', function(e) {
+                let initialX = e.clientX;
+                function onMouseMove(e) {
+                    let deltaX = e.clientX - initialX;
+                    spinText.style.transform = `rotate(${deltaX}deg)`;
+                }
 
-            let currentWidth = resizableImage.offsetWidth;
-            let currentHeight = resizableImage.offsetHeight;
+                function onMouseUp() {
+                    document.removeEventListener('mousemove', onMouseMove);
+                    document.removeEventListener('mouseup', onMouseUp);
+                }
 
-            if (event.deltaY > 0) {
-                // Scroll down: decrease size
-                resizableImage.style.width = (currentWidth - 20) + 'px';
-                resizableImage.style.height = (currentHeight - 15) + 'px';
-            } else {
-                // Scroll up: increase size
-                resizableImage.style.width = (currentWidth + 20) + 'px';
-                resizableImage.style.height = (currentHeight + 15) + 'px';
-            }
-        });
-
-        // Quiz Event - Check answer when selection changes
-        let quizSelect = document.getElementById('quiz-select');
-        let quizFeedback = document.getElementById('quiz-feedback');
-
-        quizSelect.addEventListener('change', function() {
-            let answer = quizSelect.value;
-
-            if (answer === '7') {
-                quizFeedback.textContent = "Correct!"; // Display "Correct!" if the answer is 7
-                quizFeedback.style.color = "green"; // Optional: green color for correct answer
-            } else {
-                quizFeedback.textContent = "Incorrect!"; // Display "Incorrect!" if wrong answer
-                quizFeedback.style.color = "red"; // Optional: red color for incorrect answer
-            }
-        });
-
-        // Add event listener for click event on the "Hello" text
-        document.getElementById('helloText').addEventListener('click', function() {
-            this.style.color = 'purple';  // Change the text color to purple when clicked
-        });
-
-        // Double click to move the animated side girl image
-        document.getElementById('animated-side-girl').addEventListener('dblclick', function() {
-            this.style.transform = 'translateX(300px)';  // Move the image 300px to the right
-        });
-
-        // Add drag functionality to the spinning text
-        let spinText = document.getElementById('spinText');
-        
-        spinText.addEventListener('mousedown', function(e) {
-            let initialX = e.clientX;
-            let initialY = e.clientY;
-            
-            function onMouseMove(e) {
-                let deltaX = e.clientX - initialX;
-                let deltaY = e.clientY - initialY;
-                
-                spinText.style.transform = rotate(${deltaX}deg);
-            }
-            
-            function onMouseUp() {
-                document.removeEventListener('mousemove', onMouseMove);
-                document.removeEventListener('mouseup', onMouseUp);
-            }
-            
-            document.addEventListener('mousemove', onMouseMove);
-            document.addEventListener('mouseup', onMouseUp);
-        });
+                document.addEventListener('mousemove', onMouseMove);
+                document.addEventListener('mouseup', onMouseUp);
+            });
+        };
     </script>
 </body>
 </html>
