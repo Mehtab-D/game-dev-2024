@@ -5,124 +5,86 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Moving Background</title>
   <style>
-    /* Global Styles */
     body {
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-      background-image: url('https://media.istockphoto.com/id/1398999936/vector/illustration-of-light-blue-dots-and-striped-circles-pattern-background.jpg?s=612x612&w=0&k=20&c=4277V1AOFLZoU4qsrM99_JrimDq5Cbg6Bxc7Fk7yUJY='); 
-      background-repeat: no-repeat; 
-      background-size: cover; 
-      background-position: center;
-      position: relative;
+      /* Any body styling */
     }
 
-    h1 {
-      color: #396dbf;
-      text-align: center;
-      padding: 20px;
-    }
-
-    /* Button Styles */
     input[type="button"] {
-      background-color: #5d9fcf;
-      color: white;
+      background-color: #5d9fcf; /* Button background color */
+      color: white; /* Button text color */
       border: none;
-      padding: 12px 25px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 16px;
-      margin: 10px;
-      transition: background-color 0.3s, transform 0.2s ease-in-out;
+      padding: 10px 20px; /* Top/bottom and left/right padding */
+      border-radius: 5px; /* Rounded corners */
+      cursor: pointer; /* Pointer cursor on hover */
+      font-size: 16px; /* Font size */
+      margin: 5px; /* Margin between buttons */
+      transition: background-color 0.3s, transform 0.2s; /* Smooth transition */
     }
 
     input[type="button"]:hover {
-      background-color: #2a5f99;
-      transform: scale(1.05);
+      background-color: #2a5f99; /* Darker color on hover */
+      transform: scale(1.05); /* Button will be a little bigger when mouse hovers */
     }
-
-    /* Speed Display */
-    #speedDisplay {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      color: black;
-      font-size: 18px;
-      font-weight: bold;
-    }
-
-    /* Image Styles */
-    #Image01 {
-      position: absolute;
-      width: 100px;
-      height: 80px;
-      top: 50%;
-      left: 0;
-      transform: translateY(-50%);
-    }
-
   </style>
 </head>
-<body>
-  <h1>t2a19 - Moving Background and Image</h1>
-
-  <!-- Buttons for background control -->
-  <input id="moveLeftBtn" type="button" value="Move Background Left" onclick="moveBackground()">
-  <input type="button" value="Speed Up" onclick="fasterBackground()">
-  <input type="button" value="Slow Down" onclick="slowerBackground()">
-  
-  <!-- Button for image movement -->
-  <input type="button" id="moveImageBtn" value="Move Image Right" onclick="moveImage()"><br><br>
-
-  <!-- Speed Display -->
-  <div id="speedDisplay">Speed: 400</div>
-
-  <!-- Image -->
-  <img id="Image01" src="https://i.etsystatic.com/17358183/r/il/18a584/3757074450/il_570xN.3757074450_o5mt.jpg" alt="Example Image">
-
+<body id="myBody" style="background-image: url('https://media.istockphoto.com/id/1398999936/vector/illustration-of-light-blue-dots-and-striped-circles-pattern-background.jpg?s=612x612&w=0&k=20&c=4277V1AOFLZoU4qsrM99_JrimDq5Cbg6Bxc7Fk7yUJY='); background-repeat: no-repeat; background-size: cover; background-position: center;">
   <script>
     let myGlobalX = 0;
-    let backgroundTimer;  // Timer for background movement
-    let moveSpeed = 400; // Initial background speed
-    let speedDisplay = document.getElementById('speedDisplay');
+    let myClock01; // Timer for background movement
+    let mySpeed01 = 400; // Initial speed for background
+    let speedDisplay = document.createElement('div');
 
-    // Move background to the left
+    // Speed display setup
+    speedDisplay.style.position = 'absolute';
+    speedDisplay.style.top = '10px';
+    speedDisplay.style.right = '10px';
+    speedDisplay.style.color = 'black';
+    document.body.appendChild(speedDisplay);
+
+    // Move background
     function moveBackground() {
-      myGlobalX -= 5; // Move background left
-      document.body.style.backgroundPosition = `${myGlobalX}px 0px`;
-      speedDisplay.innerText = `Speed: ${moveSpeed}`;
+      myGlobalX -= 5; // Move left
+      document.getElementById('myBody').style.backgroundPosition = myGlobalX + 'px 0px';
+      speedDisplay.innerText = 'Speed: ' + mySpeed01; // Display current speed
     }
 
-    // Start the background movement with the current speed
+    // Start background movement
     function startBackgroundMovement() {
-      clearInterval(backgroundTimer); // Clear any existing movement
-      backgroundTimer = setInterval(moveBackground, moveSpeed); // Restart movement with new speed
+      clearInterval(myClock01); // Clear any existing interval
+      myClock01 = setInterval(moveBackground, mySpeed01);
     }
 
-    // Increase background speed (move faster)
+    // Adjust speed for background
     function fasterBackground() {
-      moveSpeed = Math.max(10, moveSpeed - 50); // Decrease interval time for faster movement
-      startBackgroundMovement(); // Restart with faster speed
+      mySpeed01 = Math.max(10, mySpeed01 - 50); // Decrease speed significantly
+      startBackgroundMovement(); // Restart movement with new speed
     }
 
-    // Decrease background speed (move slower)
     function slowerBackground() {
-      moveSpeed = Math.min(1000, moveSpeed + 50); // Increase interval time for slower movement
-      startBackgroundMovement(); // Restart with slower speed
+      mySpeed01 = Math.min(1000, mySpeed01 + 50); // Increase speed significantly
+      startBackgroundMovement(); // Restart movement with new speed
     }
 
     // Move image to the right
-    function moveImage() {
+    function moveImageRight() {
       const image = document.getElementById('Image01');
-      const currentLeft = parseInt(image.style.left) || 0; // Get current position of image
-      image.style.left = (currentLeft + 10) + 'px'; // Move the image 10px to the right
+      image.style.left = (parseInt(image.style.left) + 10) + 'px';
     }
 
-    // Initialize the background movement
-    startBackgroundMovement();
+    // Button function to move image right on click
+    function moveImage() {
+      moveImageRight();
+    }
   </script>
+
+  <h1 style="color: #396dbf;" align="center">t2a19-move-background</h1>
+
+  <input id="myButton01" type="button" value="Background Move Left" onclick="moveBackground()">
+  <input type="button" value="Auto Background Left Faster" onclick="fasterBackground()">
+  <input type="button" value="Auto Background Left Slower" onclick="slowerBackground()">
+  
+  <input type="button" id="myButton02" value="Move Image Right" onclick="moveImage()"><br><br>
+
+  <img id="Image01" style="position:relative; width:100px; height:80px; top:0px; left:0px;" src="https://i.etsystatic.com/17358183/r/il/18a584/3757074450/il_570xN.3757074450_o5mt.jpg" alt="Example Image">
 </body>
 </html>
-
-
-  
