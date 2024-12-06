@@ -16,7 +16,7 @@
             margin: 0;
             color: black;
         }
-
+                                                       /*layout of the game*/
         .game-container {
             text-align: center;
         }
@@ -90,52 +90,50 @@
     <script>
         let sequence = [];
         let userSequence = [];
-        let gameStarted = false;
+        let gameStarted = false;           /*javascript controls the game logic like showing the sequence*/
         let gameOver = false;
 
-        const buttons = document.querySelectorAll('.button');
-        const statusDiv = document.getElementById('status');
+        const buttons = document.querySelectorAll('.button');    /*controls colors simon says*/
+        const statusDiv = document.getElementById('status');           /*stores colors the user clicked*/
         const startButton = document.getElementById('start-button');
 
         // Start Game Function
         startButton.addEventListener('click', startGame);
 
-        // Button Click Event
+    
         buttons.forEach(button => {
             button.addEventListener('click', (e) => {
                 if (!gameStarted || gameOver) return;
 
-                const clickedColor = e.target.id;
+                const clickedColor = e.target.id;                     /*click button flashes the color*/
                 userSequence.push(clickedColor);
                 flashButton(clickedColor);
                 checkUserSequence();
             });
         });
 
-        // Start a new game
         function startGame() {
             sequence = [];
             userSequence = [];
             gameStarted = true;
             gameOver = false;
-            statusDiv.textContent = 'Simon is showing the sequence...';
+            statusDiv.textContent = 'Simon is showing the sequence...';            /*starts the game*/
             startButton.disabled = true;
             addColorToSequence();
         }
 
-        // Add a new color to the sequence and show it
         function addColorToSequence() {
             const colors = ['red', 'green', 'blue', 'yellow'];
-            const randomColor = colors[Math.floor(Math.random() * colors.length)];
+            const randomColor = colors[Math.floor(Math.random() * colors.length)];        /*add a new color to the sequence and show it*/
             sequence.push(randomColor);
 
-            // Flash the sequence
-            flashSequence(0);
+          
+            flashSequence(0);        /*flash the sequence*/
         }
 
-        // Flash the sequence
+      
         function flashSequence(index) {
-            if (index < sequence.length) {
+            if (index < sequence.length) {       /*flash the sequence*/
                 const color = sequence[index];
                 flashButton(color);
 
@@ -147,13 +145,13 @@
             }
         }
 
-        // Flash a specific button by making it brighter
+     
         function flashButton(color) {
-            const button = document.getElementById(color);
+            const button = document.getElementById(color);              /*flashes a specific button by making it brighter*/
             button.style.opacity = 1;  // Make the button brighter
 
-            // Apply a slight "scale-up" effect to emphasize the flash
-            button.style.transform = "scale(1.1)";
+          
+            button.style.transform = "scale(1.1)";                                /*emphasizes the flash*/
 
             setTimeout(() => {
                 button.style.opacity = 0.8; // Return to original opacity
@@ -161,12 +159,12 @@
             }, 500);
         }
 
-        // Check if the user's sequence matches Simon's sequence
+      
         function checkUserSequence() {
-            const lastIndex = userSequence.length - 1;
+            const lastIndex = userSequence.length - 1;                           /*checks if the users sequence matches simon's sequence*/
             if (userSequence[lastIndex] !== sequence[lastIndex]) {
                 gameOver = true;
-                statusDiv.textContent = 'Game Over! Click "Start Game" to try again.';
+                statusDiv.textContent = 'Game Over! Click "Start Game" to try again.'; 
                 startButton.disabled = false;
             } else if (userSequence.length === sequence.length) {
                 setTimeout(() => {
