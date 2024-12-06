@@ -10,9 +10,9 @@
       padding: 0;
       color: white;
       background-image: url('https://onetreeplanted.org/cdn/shop/articles/Healthy_Forest_30c85fe5-6bca-45d3-ad0b-054f94dbef76_3000x.jpg?v=1689261462');
-      background-repeat: repeat-x; /* Ensures the background repeats horizontally */
+      background-repeat: repeat-x;
       background-size: cover;
-      background-position: 0 0; /* Starts with background at position 0 */
+      background-position: 0 0;
       height: 100vh;
       width: 100%;
       overflow: hidden;
@@ -32,19 +32,10 @@
       overflow: hidden;
     }
 
-    #myImg01 {
+    #myImg01, #myImg02 {
       position: absolute;
       width: 100px;
       height: 80px;
-    }
-
-    /* Box class adjusted to ensure correct size and background scaling */
-    .box {
-      position: absolute;
-      width: 100px;   /* Set size for the box */
-      height: 80px;   /* Set size for the box */
-      background-size: cover; /* Makes sure the image covers the div */
-      background-position: center; /* Centers the image within the div */
     }
 
     #retryScreen {
@@ -74,22 +65,13 @@
 </head>
 <body id="myBody">
 
-  <h1>game template</h1>
+  <h1>Game Template by Mehtab</h1>
 
   <div id="gameArea">
     <img id="myImg01" style="top: 50px; left: 50px;" src="https://i5.walmartimages.ca/images/Enlarge/094/514/6000200094514.jpg" alt="Game Image 1">
 
-    <!-- Apple Image (Moving Object) -->
-    <img id="myImg02" style="top: 80px; left: 100px;" src="https://www.upack.in/media/catalog/product/cache/205cdd4bf6e8fc8cf30978dd64d31b81/u/p/upkj233p282_1.jpg" alt="Apple Image">
+    <img id="myImg02" style="top: 150px; left: 250px;" src="https://www.upack.in/media/catalog/product/cache/205cdd4bf6e8fc8cf30978dd64d31b81/u/p/upkj233p282_1.jpg" alt="Game Image 2">
 
-    <!-- Multiple Boxes (Obstacle Images) with background images -->
-    <div class="box" style="top: 200px; left: 500px; background-image: url('https://www.upack.in/media/catalog/product/cache/205cdd4bf6e8fc8cf30978dd64d31b81/u/p/upkj233p282_1.jpg');"></div>
-    <div class="box" style="top: 400px; left: 800px; background-image: url('https://www.upack.in/media/catalog/product/cache/205cdd4bf6e8fc8cf30978dd64d31b81/u/p/upkj233p282_1.jpg');"></div>
-    <div class="box" style="top: 600px; left: 1200px; background-image: url('https://www.upack.in/media/catalog/product/cache/205cdd4bf6e8fc8cf30978dd64d31b81/u/p/upkj233p282_1.jpg');"></div>
-    <div class="box" style="top: 100px; left: 1300px; background-image: url('https://www.upack.in/media/catalog/product/cache/205cdd4bf6e8fc8cf30978dd64d31b81/u/p/upkj233p282_1.jpg');"></div>
-    <div class="box" style="top: 500px; left: 1500px; background-image: url('https://www.upack.in/media/catalog/product/cache/205cdd4bf6e8fc8cf30978dd64d31b81/u/p/upkj233p282_1.jpg');"></div>
-
-    <!-- Buttons -->
     <input type="button" value="Auto Background Left" onclick="{
       clearInterval(myClock);
       let myTemp = '100px 0px';
@@ -100,13 +82,13 @@
         }
         myTemp = myGlobalX + 'px 0px';
         document.getElementById('myBody').style.backgroundPosition = myTemp;
-      }, 50); /* Increase interval time to slow down movement */
+      }, 50);
     }">
 
     <input type="button" value="Image Right Fast Button onTouchStart" onclick="{
-      document.getElementById('myImg01').style.left = 
-      (parseInt(document.getElementById('myImg01').style.left) + 10) + 'px';
-      myCheckHit(); /* Check for all collisions */
+      let appleImg = document.getElementById('myImg01');
+      appleImg.style.left = (parseInt(appleImg.style.left) + 10) + 'px';
+      myCheckHit(); 
     }">
   </div>
 
@@ -118,21 +100,25 @@
   </div>
 
   <script>
-    let myGlobalX = 0;        /* This part keeps track of x position of the background image */
-    let myClock;           /* Controls the timing */
+    let myGlobalX = 0;  // Keeps track of background position
+    let myClock;
 
-    function myHitOther(my1, my2) {  /* Function that checks if two things on the screen hit each other */
-      let left1 = parseInt(document.getElementById(my1).style.left);
-      let right1 = left1 + parseInt(document.getElementById(my1).style.width);
-      let top1 = parseInt(document.getElementById(my1).style.top);
-      let bottom1 = top1 + parseInt(document.getElementById(my1).style.height);
-      let left2 = parseInt(document.getElementById(my2).style.left);
-      let right2 = left2 + parseInt(document.getElementById(my2).style.width);
-      let top2 = parseInt(document.getElementById(my2).style.top);
-      let bottom2 = top2 + parseInt(document.getElementById(my2).style.height);
+    function myHitOther(my1, my2) {
+      let img1 = document.getElementById(my1);
+      let img2 = document.getElementById(my2);
 
-      // Check for collision
-      if ((right1 >= left2) && (bottom1 >= top2) && (left1 <= right2) && (top1 <= bottom2)) {
+      let left1 = parseInt(img1.style.left);
+      let right1 = left1 + img1.width;
+      let top1 = parseInt(img1.style.top);
+      let bottom1 = top1 + img1.height;
+
+      let left2 = parseInt(img2.style.left);
+      let right2 = left2 + img2.width;
+      let top2 = parseInt(img2.style.top);
+      let bottom2 = top2 + img2.height;
+
+      // Check for collision: If there's any overlap
+      if (right1 > left2 && left1 < right2 && bottom1 > top2 && top1 < bottom2) {
         return true;
       }
       return false;
@@ -140,26 +126,40 @@
 
     // Function to check for hits and trigger the loss screen
     function myCheckHit() {
-      const boxes = document.querySelectorAll('.box');
-      boxes.forEach(function(box) {
-        if (myHitOther('myImg01', box.id)) {
-          gameOver();
-        }
-      });
+      if (myHitOther('myImg01', 'myImg02')) {
+        gameOver();
+      }
     }
 
     // Game over function to hide the game and show the retry screen
     function gameOver() {
-      // Hide the game elements
       document.getElementById('gameArea').style.display = 'none';
-
-      // Show the retry screen
       document.getElementById('retryScreen').style.display = 'block';
     }
 
     function restartGame() {
-      location.reload(); /* Restarts the game and reloads the page to start over */
+      location.reload(); /* Restarts the game */
     }
+
+    // Move the apple image using arrow keys
+    document.addEventListener('keydown', function(event) {
+      let appleImg = document.getElementById('myImg01');
+      let currentLeft = parseInt(appleImg.style.left);
+      let currentTop = parseInt(appleImg.style.top);
+
+      // Arrow keys: left, up, right, down
+      if (event.key === "ArrowLeft") {
+        appleImg.style.left = (currentLeft - 10) + "px"; // Move left
+      } else if (event.key === "ArrowRight") {
+        appleImg.style.left = (currentLeft + 10) + "px"; // Move right
+      } else if (event.key === "ArrowUp") {
+        appleImg.style.top = (currentTop - 10) + "px"; // Move up
+      } else if (event.key === "ArrowDown") {
+        appleImg.style.top = (currentTop + 10) + "px"; // Move down
+      }
+
+      myCheckHit(); // Check for collisions after each move
+    });
   </script>
 
 </body>
