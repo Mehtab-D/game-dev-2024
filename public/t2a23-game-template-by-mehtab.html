@@ -9,7 +9,6 @@
       margin: 0;
       padding: 0;
       color: white;
-    
       background-image: url('https://onetreeplanted.org/cdn/shop/articles/Healthy_Forest_30c85fe5-6bca-45d3-ad0b-054f94dbef76_3000x.jpg?v=1689261462');
       background-repeat: repeat-x; /* Ensures the background repeats horizontally */
       background-size: cover;
@@ -141,7 +140,28 @@
     function restartGame() {
       location.reload(); /* Restarts the game and reloads the page to start over */
     }
+
+    // Move the apple image using arrow keys
+    document.addEventListener('keydown', function(event) {
+      let appleImg = document.getElementById('myImg01');
+      let currentLeft = parseInt(appleImg.style.left);
+      let currentTop = parseInt(appleImg.style.top);
+
+      // Arrow keys: left, up, right, down
+      if (event.key === "ArrowLeft") {
+        appleImg.style.left = (currentLeft - 10) + "px"; // Move left
+      } else if (event.key === "ArrowRight") {
+        appleImg.style.left = (currentLeft + 10) + "px"; // Move right
+      } else if (event.key === "ArrowUp") {
+        appleImg.style.top = (currentTop - 10) + "px"; // Move up
+      } else if (event.key === "ArrowDown") {
+        appleImg.style.top = (currentTop + 10) + "px"; // Move down
+      }
+
+      myCheckHit(); // Check for collisions after each move
+    });
   </script>
 
 </body>
 </html>
+
