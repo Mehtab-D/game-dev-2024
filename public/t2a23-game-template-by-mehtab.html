@@ -6,20 +6,100 @@
   <title>Game Template</title>
   <style>
     body {
+      margin: 0;
+      padding: 0;
       color: white;
+      font-family: Arial, sans-serif;
+      background-image: url('https://onetreeplanted.org/cdn/shop/articles/Healthy_Forest_30c85fe5-6bca-45d3-ad0b-054f94dbef76_3000x.jpg?v=1689261462');
+      background-repeat: repeat-x; /* Ensures the background repeats horizontally */
+      background-size: cover;
+      background-position: 0 0; /* Starts with background at position 0 */
+      height: 100vh;
+      width: 100%;
+      overflow: hidden;
     }
 
+    h1 {
+      text-align: center;
+      font-size: 36px;
+      color: white;
+      margin-top: 20px;
+    }
+
+    #gameArea {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    #myImg01, #myImg02 {
+      position: absolute;
+      width: 100px;
+      height: 80px;
+    }
+
+    #retryScreen {
+      display: none;
+      text-align: center;
+      color: white;
+      font-size: 24px;
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 18px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
   </style>
 </head>
-  <body>
-    <style>
-color:white;
-      </body>
-    </style>
-<body id="myBody" style="background-repeat:no-repeat; background-size:100%;" background="https://onetreeplanted.org/cdn/shop/articles/Healthy_Forest_30c85fe5-6bca-45d3-ad0b-054f94dbef76_3000x.jpg?v=1689261462">
+<body id="myBody">
 
-  <h1 align="center">t2a23-game-template-by-mehtab</h1>
-  <br><br><br><br>
+  <h1>Game Template by Mehtab</h1>
+
+  <div id="gameArea">
+    <img id="myImg01" style="top: 50px; left: 50px;" src="https://i5.walmartimages.ca/images/Enlarge/094/514/6000200094514.jpg" alt="Game Image 1">
+
+    <img id="myImg02" style="top: 150px; left: 250px;" src="https://www.upack.in/media/catalog/product/cache/205cdd4bf6e8fc8cf30978dd64d31b81/u/p/upkj233p282_1.jpg" alt="Game Image 2">
+
+    <!-- Buttons -->
+    <input type="button" value="Auto Background Left" onclick="{
+      clearInterval(myClock);
+      let myTemp = '100px 0px';
+      myClock = setInterval(function() {
+        myGlobalX -= 1; /* Move slower by reducing the pixel shift */
+        if (myGlobalX <= -100) { /* If the background has moved off-screen */
+          myGlobalX = 0; /* Reset to the starting position */
+        }
+        myTemp = myGlobalX + 'px 0px';
+        document.getElementById('myBody').style.backgroundPosition = myTemp;
+      }, 50); /* Increase interval time to slow down movement */
+    }">
+
+    <input type="button" value="Image Right Fast Button onTouchStart" onclick="{
+      document.getElementById('myImg01').style.left = 
+      (parseInt(document.getElementById('myImg01').style.left) + 10) + 'px';
+      myCheckHit(); /* Check for all collisions */
+    }">
+  </div>
+
+  <!-- Retry Screen -->
+  <div id="retryScreen" style="display:none; text-align:center;">
+    <h2>You Lose!</h2>
+    <p>Do you want to try again?</p>
+    <button onclick="restartGame()">Retry</button>
+  </div>
 
   <script>
     let myGlobalX = 0;        /* This part keeps track of x position of the background image */
@@ -63,38 +143,5 @@ color:white;
     }
   </script>
 
-  <!-- Game Area -->
-  <div id="gameArea">
-    <img id="myImg01" style="position:absolute; width:100px; height:80px; top:0px; left:50px;" src="https://i5.walmartimages.ca/images/Enlarge/094/514/6000200094514.jpg" alt="Game Image 1">
-
-    <!-- Apple Image (Moving Object) -->
-    <img id="myImg02" style="position:absolute; width:100px; height:80px; top:0px; left:250px;" src="https://www.upack.in/media/catalog/product/cache/205cdd4bf6e8fc8cf30978dd64d31b81/u/p/upkj233p282_1.jpg" alt="Game Image 2">
-
-    <!-- Buttons -->
-    <input type="button" value="Auto Background Left" onclick="{
-      clearInterval(myClock);
-      let myTemp = '100px 0px';
-      myClock = setInterval(function() {
-        myGlobalX -= 1; /* Move slower by reducing the pixel shift */
-        myTemp = myGlobalX + 'px 0px';
-        document.getElementById('myBody').style.backgroundPosition = myTemp;
-      }, 50); /* Increase interval time to slow down movement */
-    }">
-
-    <input type="button" value="Image Right Fast Button onTouchStart" onclick="{
-      document.getElementById('myImg01').style.left = 
-      (parseInt(document.getElementById('myImg01').style.left) + 10) + 'px';
-      myCheckHit(); /* Check for all collisions */
-    }">
-  </div>
-
-  <!-- Retry Screen -->
-  <div id="retryScreen" style="display:none; text-align:center;">
-    <h2>You Lose!</h2>
-    <p>Do you want to try again?</p>
-    <button onclick="restartGame()">Retry</button>
-  </div>
-
-  <br><br>
 </body>
 </html>
