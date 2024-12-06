@@ -32,10 +32,14 @@
       overflow: hidden;
     }
 
-    #myImg01, #myImg02 {
+    #myImg01, #myImg02, .box {
       position: absolute;
       width: 100px;
       height: 80px;
+    }
+
+    .box {
+      background-color: rgba(255, 0, 0, 0.5); /* Semi-transparent red */
     }
 
     #retryScreen {
@@ -71,6 +75,12 @@
     <img id="myImg01" style="top: 50px; left: 50px;" src="https://i5.walmartimages.ca/images/Enlarge/094/514/6000200094514.jpg" alt="Game Image 1">
 
     <img id="myImg02" style="top: 150px; left: 250px;" src="https://www.upack.in/media/catalog/product/cache/205cdd4bf6e8fc8cf30978dd64d31b81/u/p/upkj233p282_1.jpg" alt="Game Image 2">
+
+    <!-- Multiple boxes added here -->
+    <div class="box" style="top: 100px; left: 300px;"></div>
+    <div class="box" style="top: 300px; left: 500px;"></div>
+    <div class="box" style="top: 500px; left: 700px;"></div>
+    <div class="box" style="top: 200px; left: 900px;"></div>
 
     <input type="button" value="Auto Background Left" onclick="{
       clearInterval(myClock);
@@ -124,10 +134,13 @@
       return false;
     }
 
-    // Function to check for hits and trigger the loss screen
+    // Function to check for hits with all boxes
     function myCheckHit() {
-      if (myHitOther('myImg01', 'myImg02')) {
-        gameOver();
+      let boxes = document.querySelectorAll('.box'); // Select all boxes
+      for (let i = 0; i < boxes.length; i++) {
+        if (myHitOther('myImg01', boxes[i].id || `box${i}`)) {
+          gameOver();
+        }
       }
     }
 
