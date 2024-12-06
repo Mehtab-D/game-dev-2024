@@ -68,10 +68,10 @@
       clearInterval(myClock);
       let myTemp = '100px 0px';
       myClock = setInterval(function() {
-        myGlobalX -= 5;
+        myGlobalX -= 1; /* Move slower by reducing the pixel shift */
         myTemp = myGlobalX + 'px 0px';
         document.getElementById('myBody').style.backgroundPosition = myTemp;
-      }, 10);
+      }, 50); /* Increase interval time to slow down movement */
     }">
 
     <input type="button" value="Image Right Fast Button onTouchStart" onclick="{
