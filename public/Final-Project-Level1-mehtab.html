@@ -40,6 +40,43 @@ function myCheckHit(){
    }
 }
 
+// Function to move the character
+function moveCharacter(direction) {
+    let img = document.getElementById('myImg01');
+    let left = parseInt(img.style.left);
+    let top = parseInt(img.style.top);
+
+    if (direction === 'left') {
+        img.style.left = (left - 10) + 'px';
+    } else if (direction === 'right') {
+        img.style.left = (left + 10) + 'px';
+    } else if (direction === 'up') {
+        img.style.top = (top - 10) + 'px';
+    } else if (direction === 'down') {
+        img.style.top = (top + 10) + 'px';
+    }
+
+    myCheckHit();
+}
+
+// Event listener for keyboard arrow keys
+document.addEventListener('keydown', function(event) {
+    switch(event.key) {
+        case 'ArrowLeft':
+            moveCharacter('left');
+            break;
+        case 'ArrowRight':
+            moveCharacter('right');
+            break;
+        case 'ArrowUp':
+            moveCharacter('up');
+            break;
+        case 'ArrowDown':
+            moveCharacter('down');
+            break;
+    }
+});
+
 </script>
 
 <input type=button value="Auto Background Left" onclick="{
@@ -68,4 +105,3 @@ function myCheckHit(){
 <img id="myImg03" src="myImgNew.jpg"  style="position:absolute; width:200px; height:10px; left:500px; top:400px;">
 <img id="myImg04" src="myImgNew.jpg"  style="position:absolute; width:100px; height:80px; left:800px; top:400px;">
 </body>
-
