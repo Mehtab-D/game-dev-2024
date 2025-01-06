@@ -30,8 +30,8 @@ function myHitOther(my1, my2) {
 function myCheckHit() {
    // Check for collisions with each carrot
    for (let i = 1; i <= totalCarrots; i++) {
-       let carrot = document.getElementById('myImg0' + i);
-       if (myHitOther('myImg01', 'myImg0' + i) && carrot.style.display !== 'none') {
+       let carrot = document.getElementById('myImg' + i);
+       if (myHitOther('myImg01', 'myImg' + i) && carrot.style.display !== 'none') {
            carrot.style.display = 'none';  // Hide carrot
            carrotsCollected++;  // Increment the carrots collected
        }
