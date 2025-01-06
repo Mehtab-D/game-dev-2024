@@ -5,7 +5,7 @@
 <script>
 // Global variables
 let carrotsCollected = 0;  // Track how many carrots are collected
-let totalCarrots = 8;  // Total number of carrots
+let totalCarrots = 4;  // Total number of carrots
 let myGlobalX = 0;
 let myClock;
 
@@ -29,12 +29,17 @@ function myHitOther(my1, my2) {
 // Function to check if the rabbit has hit any carrots
 function myCheckHit() {
    // Check for collisions with each carrot
-   for (let i = 1; i <= totalCarrots; i++) {
-       let carrot = document.getElementById('myImg0' + i);
-       if (myHitOther('myImg01', 'myImg0' + i) && carrot.style.display !== 'none') {
-           carrot.style.display = 'none';  // Hide carrot
-           carrotsCollected++;  // Increment the carrots collected
-       }
+   if (myHitOther('myImg01', 'myImg02') && document.getElementById('myImg02').style.display !== 'none') {
+       document.getElementById('myImg02').style.display = 'none';  // Hide carrot
+       carrotsCollected++;  // Increment the carrots collected
+   }   
+   if (myHitOther('myImg01', 'myImg03') && document.getElementById('myImg03').style.display !== 'none') {
+       document.getElementById('myImg03').style.display = 'none';  // Hide carrot
+       carrotsCollected++;  // Increment the carrots collected
+   }   
+   if (myHitOther('myImg01', 'myImg04') && document.getElementById('myImg04').style.display !== 'none') {
+       document.getElementById('myImg04').style.display = 'none';  // Hide carrot
+       carrotsCollected++;  // Increment the carrots collected
    }
 
    // Check if all carrots are collected
@@ -44,6 +49,7 @@ function myCheckHit() {
            // Move to the next level (for now, let's reload the page)
            location.reload();  // Or navigate to a new level page
        }, 100);  // Delay to make sure all carrots are hidden before showing the message
+   }
 }
 
 // Function to move the rabbit
@@ -107,14 +113,9 @@ document.addEventListener('keydown', function(event) {
 <!-- Rabbit Image -->
 <img id="myImg01" src="https://raw.githubusercontent.com/Mehtab-D/game-dev-2024/refs/heads/main/New%20Piskel%20(5).gif" style="position:absolute; width:200px; height:200px; left: 50px; top:190px;">
 
-<!-- 8 Carrots placed randomly -->
-<img id="myImg01" src="https://raw.githubusercontent.com/Mehtab-D/game-dev-2024/refs/heads/main/New%20Piskel%20(7).gif" style="position:absolute; width:50px; height:50px; left:350px; top:90px;">
-<img id="myImg02" src="https://raw.githubusercontent.com/Mehtab-D/game-dev-2024/refs/heads/main/New%20Piskel%20(7).gif" style="position:absolute; width:50px; height:50px; left:500px; top:200px;">
-<img id="myImg03" src="https://raw.githubusercontent.com/Mehtab-D/game-dev-2024/refs/heads/main/New%20Piskel%20(7).gif" style="position:absolute; width:50px; height:50px; left:200px; top:300px;">
-<img id="myImg04" src="https://raw.githubusercontent.com/Mehtab-D/game-dev-2024/refs/heads/main/New%20Piskel%20(7).gif" style="position:absolute; width:50px; height:50px; left:700px; top:100px;">
-<img id="myImg05" src="https://raw.githubusercontent.com/Mehtab-D/game-dev-2024/refs/heads/main/New%20Piskel%20(7).gif" style="position:absolute; width:50px; height:50px; left:100px; top:400px;">
-<img id="myImg06" src="https://raw.githubusercontent.com/Mehtab-D/game-dev-2024/refs/heads/main/New%20Piskel%20(7).gif" style="position:absolute; width:50px; height:50px; left:800px; top:250px;">
-<img id="myImg07" src="https://raw.githubusercontent.com/Mehtab-D/game-dev-2024/refs/heads/main/New%20Piskel%20(7).gif" style="position:absolute; width:50px; height:50px; left:900px; top:400px;">
-<img id="myImg08" src="https://raw.githubusercontent.com/Mehtab-D/game-dev-2024/refs/heads/main/New%20Piskel%20(7).gif" style="position:absolute; width:50px; height:50px; left:150px; top:150px;">
-</body>
+<!-- Carrot Images using your provided URL -->
+<img id="myImg02" src="https://raw.githubusercontent.com/Mehtab-D/game-dev-2024/refs/heads/main/New%20Piskel%20(7).gif" style="position:absolute; width:50px; height:50px; left:350px; top:90px;">
+<img id="myImg03" src="https://raw.githubusercontent.com/Mehtab-D/game-dev-2024/refs/heads/main/New%20Piskel%20(7).gif" style="position:absolute; width:50px; height:50px; left:500px; top:100px;">
+<img id="myImg04" src="https://raw.githubusercontent.com/Mehtab-D/game-dev-2024/refs/heads/main/New%20Piskel%20(7).gif" style="position:absolute; width:50px; height:50px; left:800px; top:400px;">
 
+</body>
