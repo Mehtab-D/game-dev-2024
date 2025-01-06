@@ -1,6 +1,6 @@
 <body id="myBody" style="background-repeat: repeat; background-size: 80%; background-image: url('https://i.pinimg.com/736x/0a/d7/6b/0ad76b1facb2323fbc5cffe58f604b32.jpg');">
 
-<h1 align="center"><font color="#32a852" style="font-size: 56px;">Final Project Level 1</font></h1>
+<h1 align="center"><font color="#f7b763" style="font-size: 56px;">Final Project Level 1</font></h1>
 
 <script>
 // Global variables
@@ -29,24 +29,26 @@ function myHitOther(my1, my2) {
 // Function to check if the rabbit has hit any carrots
 function myCheckHit() {
    // Check for collisions with each carrot
-   if (myHitOther('myImg01', 'myImg02')) {
+   if (myHitOther('myImg01', 'myImg02') && document.getElementById('myImg02').style.display !== 'none') {
        document.getElementById('myImg02').style.display = 'none';  // Hide carrot
-       carrotsCollected++;
+       carrotsCollected++;  // Increment the carrots collected
    }   
-   if (myHitOther('myImg01', 'myImg03')) {
+   if (myHitOther('myImg01', 'myImg03') && document.getElementById('myImg03').style.display !== 'none') {
        document.getElementById('myImg03').style.display = 'none';  // Hide carrot
-       carrotsCollected++;
+       carrotsCollected++;  // Increment the carrots collected
    }   
-   if (myHitOther('myImg01', 'myImg04')) {
+   if (myHitOther('myImg01', 'myImg04') && document.getElementById('myImg04').style.display !== 'none') {
        document.getElementById('myImg04').style.display = 'none';  // Hide carrot
-       carrotsCollected++;
+       carrotsCollected++;  // Increment the carrots collected
    }
 
    // Check if all carrots are collected
    if (carrotsCollected === totalCarrots) {
-       alert('You collected all the carrots! Proceeding to the next level...');
-       // Move to the next level (or reload, for now let's just reload the page)
-       location.reload();  // Or you can redirect to another page for the next level
+       setTimeout(function() {
+           alert('You collected all the carrots! Proceeding to the next level...');
+           // Move to the next level (for now, let's reload the page)
+           location.reload();  // Or navigate to a new level page
+       }, 100);  // Delay to make sure all carrots are hidden before showing the message
    }
 }
 
