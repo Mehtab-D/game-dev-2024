@@ -30,8 +30,8 @@ function myHitOther(my1, my2) {
 function myCheckHit() {
    // Check for collisions with each carrot
    for (let i = 1; i <= totalCarrots; i++) {
-       let carrot = document.getElementById('myImg' + i);
-       if (myHitOther('myImg01', 'myImg' + i) && carrot.style.display !== 'none') {
+       let carrot = document.getElementById('myImg0' + i);
+       if (myHitOther('myImg01', 'myImg0' + i) && carrot.style.display !== 'none') {
            carrot.style.display = 'none';  // Hide carrot
            carrotsCollected++;  // Increment the carrots collected
        }
@@ -117,3 +117,4 @@ document.addEventListener('keydown', function(event) {
 <img id="myImg07" src="https://raw.githubusercontent.com/Mehtab-D/game-dev-2024/refs/heads/main/New%20Piskel%20(7).gif" style="position:absolute; width:50px; height:50px; left:900px; top:400px;">
 <img id="myImg08" src="https://raw.githubusercontent.com/Mehtab-D/game-dev-2024/refs/heads/main/New%20Piskel%20(7).gif" style="position:absolute; width:50px; height:50px; left:150px; top:150px;">
 </body>
+
