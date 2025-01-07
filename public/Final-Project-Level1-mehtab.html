@@ -4,8 +4,8 @@
 
 <script>
 // Global variables
-let carrotsCollected = 0;  // Track how many carrots are collected
-let totalCarrots = 8;  // Total number of carrots
+let carrotsCollected = 0;  /*tracks how many carrots are collected*/
+let totalCarrots = 8; 
 let myGlobalX = 0;
 let myClock;
 
@@ -28,49 +28,48 @@ function myHitOther(my1, my2) {
     return !(left1 + width1 < left2 || left1 > left2 + width2 || top1 + height1 < top2 || top1 > top2 + height2);
 }
 
-// Function to check if the rabbit has hit any carrots
-function myCheckHit() {
-    // Check for collisions with each carrot
+function myCheckHit() {                                            /*this is the function to check if the rabbit has hit any carrots*/
+    /* Check for collisions with each carrot*/
     if (myHitOther('myImg01', 'myImg02') && document.getElementById('myImg02').style.display !== 'none') {
-        document.getElementById('myImg02').style.display = 'none';  // Hide carrot
+        document.getElementById('myImg02').style.display = 'none';  /*hides the carot*/
         carrotsCollected++;  // Increment the carrots collected
     }   
     if (myHitOther('myImg01', 'myImg03') && document.getElementById('myImg03').style.display !== 'none') {
         document.getElementById('myImg03').style.display = 'none';  // Hide carrot
-        carrotsCollected++;  // Increment the carrots collected
+        carrotsCollected++;  // adds the carrots collected
     }   
     if (myHitOther('myImg01', 'myImg04') && document.getElementById('myImg04').style.display !== 'none') {
-        document.getElementById('myImg04').style.display = 'none';  // Hide carrot
-        carrotsCollected++;  // Increment the carrots collected
+        document.getElementById('myImg04').style.display = 'none';  /*hides the carrot*/
+        carrotsCollected++;  // adds the carrots collected
     }   
     if (myHitOther('myImg01', 'myImg05') && document.getElementById('myImg05').style.display !== 'none') {
-        document.getElementById('myImg05').style.display = 'none';  // Hide carrot
-        carrotsCollected++;  // Increment the carrots collected
+        document.getElementById('myImg05').style.display = 'none';  /*hides the carrot*/
+        carrotsCollected++;  // adds the carrots collected
     }   
     if (myHitOther('myImg01', 'myImg06') && document.getElementById('myImg06').style.display !== 'none') {
         document.getElementById('myImg06').style.display = 'none';  // Hide carrot
-        carrotsCollected++;  // Increment the carrots collected
+        carrotsCollected++;  // add the carrots collected
     }   
     if (myHitOther('myImg01', 'myImg07') && document.getElementById('myImg07').style.display !== 'none') {
         document.getElementById('myImg07').style.display = 'none';  // Hide carrot
-        carrotsCollected++;  // Increment the carrots collected
+        carrotsCollected++;  // add the carrots collected
     }   
     if (myHitOther('myImg01', 'myImg08') && document.getElementById('myImg08').style.display !== 'none') {
         document.getElementById('myImg08').style.display = 'none';  // Hide carrot
-        carrotsCollected++;  // Increment the carrots collected
+        carrotsCollected++;  // add the carrots collected
     }
 
-    // Check if all carrots are collected
-    if (carrotsCollected === totalCarrots) {
+ 
+    if (carrotsCollected === totalCarrots) {   /*this part checks if all the carrots are collected*/
         setTimeout(function() {
             alert('You collected all the carrots! Proceeding to the next level...');
-            location.reload();  // Reload page to start the next level or game
+            location.reload(); /*reload the page to strt the next level*/
         }, 100);
     }
 }
 
-// Function to move the rabbit
-function moveCharacter(direction) {
+
+function moveCharacter(direction) {      /*function to move the rabbit*/
     let img = document.getElementById('myImg01');
     let left = parseInt(img.style.left);
     let top = parseInt(img.style.top);
@@ -85,7 +84,7 @@ function moveCharacter(direction) {
         img.style.top = (top + 10) + 'px';
     }
 
-    myCheckHit();  // Check if rabbit hits any carrots
+    myCheckHit();    /*this checks if the rabbit hits any of the carrots*/
 }
 
 // Event listener for keyboard arrow keys
@@ -128,10 +127,10 @@ document.addEventListener('keydown', function(event) {
     myCheckHit();   
 }"><br><br>
 
-<!-- Rabbit and Carrots -->
+/*rabbit image*/
 <img id="myImg01" src="https://raw.githubusercontent.com/Mehtab-D/game-dev-2024/refs/heads/main/New%20Piskel%20(5).gif" style="position:absolute; width:200px; height:200px; left: 50px; top:190px;" />
 
-<!-- Carrot Images -->
+/*carrot images*/
 <img id="myImg02" src="https://raw.githubusercontent.com/Mehtab-D/game-dev-2024/refs/heads/main/New%20Piskel%20(7).gif" style="position:absolute; width:150px; height:150px; left:350px; top:90px; transform: rotate(-15deg);" />
 <img id="myImg03" src="https://raw.githubusercontent.com/Mehtab-D/game-dev-2024/refs/heads/main/New%20Piskel%20(7).gif" style="position:absolute; width:150px; height:150px; left:600px; top:200px; transform: rotate(15deg);" />
 <img id="myImg04" src="https://raw.githubusercontent.com/Mehtab-D/game-dev-2024/refs/heads/main/New%20Piskel%20(7).gif" style="position:absolute; width:150px; height:150px; left:1000px; top:600px; transform: rotate(-15deg);" />
