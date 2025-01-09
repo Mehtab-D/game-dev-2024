@@ -1,4 +1,4 @@
-<body id="myBody" style="background-image: url('https://i.pinimg.com/236x/33/38/98/33389803dcb02bfc2641e7e9c8f75ca6.jpg'); background-repeat: no-repeat; background-size: cover;">
+<body id="myBody" style="background-image: url('https://raw.githubusercontent.com/Mehtab-D/game-dev-2024/refs/heads/main/Untitled%20(Poster%20-%2020%20x%2016%20in).png'); background-repeat: no-repeat; background-size: cover;">
 
     <h1 align="center"><font color="#ffffff" style="font-size: 40px;">Final Project Level 2</font></h1>
 
@@ -103,20 +103,49 @@
     <img id="myImg07" src="https://raw.githubusercontent.com/Mehtab-D/game-dev-2024/refs/heads/main/New%20Piskel%20(9).gif" style="position:absolute; width:150px; height:150px; left:1800px; top:300px;" />
     <img id="myImg08" src="https://raw.githubusercontent.com/Mehtab-D/game-dev-2024/refs/heads/main/New%20Piskel%20(9).gif" style="position:absolute; width:150px; height:150px; left:500px; top:500px;" />
 
-    <!-- Add disappearing seeds -->
     <script>
-    // Set the seeds to disappear after 5 seconds
+    // Function to animate seeds one by one
     let seedDisappearTime = 5000;
+    let seedFlashTime = 1000;
+    let seeds = ['myImg02', 'myImg03', 'myImg04', 'myImg05', 'myImg06', 'myImg07', 'myImg08', 'myImg09', 'myImg10', 'myImg11'];
 
-    function disappearSeed(seedId) {
-        setTimeout(function() {
-            document.getElementById(seedId).style.display = 'none';  // Hide seed after time
-        }, seedDisappearTime);
+    // Flash effect CSS animation
+    function addFlashEffect(seedId) {
+        let seed = document.getElementById(seedId);
+        seed.style.animation = `flash ${seedFlashTime}ms linear 0s infinite`;
     }
 
-    // Start the disappearing seeds
-    let seedsToDisappear = ['myImg02', 'myImg03', 'myImg04', 'myImg05', 'myImg06', 'myImg07', 'myImg08', 'myImg09', 'myImg10', 'myImg11'];
-    seedsToDisappear.forEach(seedId => disappearSeed(seedId));
+    // Move seed to a new spot and fade out
+    function fadeAndMoveSeed(seedId) {
+        let seed = document.getElementById(seedId);
+        let newLeft = Math.floor(Math.random() * window.innerWidth);  // Random new position
+        let newTop = Math.floor(Math.random() * window.innerHeight); 
+
+        // Move the seed to a new position
+        seed.style.transition = 'all 2s ease-out';
+        seed.style.left = newLeft + 'px';
+        seed.style.top = newTop + 'px';
+
+        // Fade out the seed over time
+        setTimeout(function() {
+            seed.style.opacity = 0;
+        }, seedFlashTime);
+    }
+
+    // Sequentially animate seeds
+    function animateSeeds() {
+        seeds.forEach((seedId, index) => {
+            setTimeout(function() {
+                addFlashEffect(seedId); // Add flash effect
+                setTimeout(function() {
+                    fadeAndMoveSeed(seedId); // Fade and move after flashing
+                }, seedFlashTime);
+            }, index * (seedDisappearTime + seedFlashTime)); // Delay each seed's animation
+        });
+    }
+
+    // Start the animation for the seeds
+    animateSeeds();
     </script>
 
 </body>
