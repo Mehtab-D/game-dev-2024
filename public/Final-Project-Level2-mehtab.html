@@ -105,42 +105,41 @@
 
     <script>
     // Function to animate seeds one by one
-    let seedDisappearTime = 5000;
-    let seedFlashTime = 1000;
+    let seedDisappearTime = 5000;  // 5 seconds
     let seeds = ['myImg02', 'myImg03', 'myImg04', 'myImg05', 'myImg06', 'myImg07', 'myImg08', 'myImg09', 'myImg10', 'myImg11'];
 
-    // Flash effect CSS animation
-    function addFlashEffect(seedId) {
+    // Function to fade the seed out slowly
+    function fadeOutSeed(seedId) {
         let seed = document.getElementById(seedId);
-        seed.style.animation = `flash ${seedFlashTime}ms linear 0s infinite`;
+        seed.style.transition = 'opacity 3s ease-out';  // Slow fade-out effect
+        seed.style.opacity = 0;  // Fade out
     }
 
-    // Move seed to a new spot and fade out
-    function fadeAndMoveSeed(seedId) {
+    // Function to reposition the seed to a random position
+    function repositionSeed(seedId) {
         let seed = document.getElementById(seedId);
-        let newLeft = Math.floor(Math.random() * window.innerWidth);  // Random new position
-        let newTop = Math.floor(Math.random() * window.innerHeight); 
+        let newLeft = Math.floor(Math.random() * (window.innerWidth - seed.offsetWidth));  // Random new position
+        let newTop = Math.floor(Math.random() * (window.innerHeight - seed.offsetHeight));
 
-        // Move the seed to a new position
-        seed.style.transition = 'all 2s ease-out';
+        seed.style.transition = 'all 0s';  // Instant transition to new position
         seed.style.left = newLeft + 'px';
         seed.style.top = newTop + 'px';
 
-        // Fade out the seed over time
-        setTimeout(function() {
-            seed.style.opacity = 0;
-        }, seedFlashTime);
+        setTimeout(() => {
+            seed.style.opacity = 1;  // Make the seed visible again
+            seed.style.transition = 'opacity 3s ease-out';  // Slow fade-in effect
+        }, 100); // A brief delay before fading back in
     }
 
-    // Sequentially animate seeds
+    // Sequentially fade and move seeds
     function animateSeeds() {
         seeds.forEach((seedId, index) => {
             setTimeout(function() {
-                addFlashEffect(seedId); // Add flash effect
+                fadeOutSeed(seedId);  // Fade out the seed
                 setTimeout(function() {
-                    fadeAndMoveSeed(seedId); // Fade and move after flashing
-                }, seedFlashTime);
-            }, index * (seedDisappearTime + seedFlashTime)); // Delay each seed's animation
+                    repositionSeed(seedId);  // Move the seed to a new location after fade-out
+                }, 3000);  // Wait until the fade-out is complete before repositioning
+            }, index * seedDisappearTime);  // Delay each seed's animation by 5 seconds
         });
     }
 
