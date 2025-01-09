@@ -1,1 +1,123 @@
+<body id="myBody" style="background-image: url('https://img.craftpix.net/2022/10/Free-Sky-with-Clouds-Background-Pixel-Art8.jpg'); background-repeat: repeat; background-size: 80%;">
+
+    <h1 align="center"><font color="#ffffff" style="font-size: 40px;">Final Project Level 2</font></h1>
+
+    <script>
+    // Global variables
+    let seedsCollected = 0;  
+    let totalSeeds = 10;  // Increase the number of seeds for level 2
+    let myClock;
+
+    // Collision detection function
+    function myHitOther(my1, my2) {
+        let el1 = document.getElementById(my1);
+        let el2 = document.getElementById(my2);
+
+        let left1 = el1.offsetLeft;
+        let top1 = el1.offsetTop;
+        let width1 = el1.offsetWidth;
+        let height1 = el1.offsetHeight;
+
+        let left2 = el2.offsetLeft;
+        let top2 = el2.offsetTop;
+        let width2 = el2.offsetWidth;
+        let height2 = el2.offsetHeight;
+
+        // Check for collision by comparing bounding boxes
+        return !(left1 + width1 < left2 || left1 > left2 + width2 || top1 + height1 < top2 || top1 > top2 + height2);
+    }
+
+    function myCheckHit() {  // Check for seed collisions
+        let seeds = ['myImg02', 'myImg03', 'myImg04', 'myImg05', 'myImg06', 'myImg07', 'myImg08', 'myImg09', 'myImg10', 'myImg11'];
+
+        seeds.forEach(seedId => {
+            if (myHitOther('myImg01', seedId) && document.getElementById(seedId).style.display !== 'none') {
+                document.getElementById(seedId).style.display = 'none';  // Hide the seed
+                seedsCollected++;  // Increment the collected seeds count
+            }
+        });
+
+        if (seedsCollected === totalSeeds) {  // Check if all seeds are collected
+            setTimeout(function() {
+                alert('You collected all the seeds! Proceeding to the next level...');
+            }, 100);
+        }
+    }
+
+    function moveCharacter(direction) {  // Move the new character
+        let img = document.getElementById('myImg01');
+        let left = parseInt(img.style.left);
+        let top = parseInt(img.style.top);
+
+        if (direction === 'left') {
+            img.style.left = (left - 10) + 'px';
+        } else if (direction === 'right') {
+            img.style.left = (left + 10) + 'px';
+        } else if (direction === 'up') {
+            img.style.top = (top - 10) + 'px';
+        } else if (direction === 'down') {
+            img.style.top = (top + 10) + 'px';
+        }
+
+        myCheckHit();  // Check if the new character hits any of the seeds
+    }
+
+    // Event listener for keyboard arrow keys
+    document.addEventListener('keydown', function(event) {
+        switch(event.key) {
+            case 'ArrowLeft':
+                moveCharacter('left');
+                break;
+            case 'ArrowRight':
+                moveCharacter('right');
+                break;
+            case 'ArrowUp':
+                moveCharacter('up');
+                break;
+            case 'ArrowDown':
+                moveCharacter('down');
+                break;
+        }
+    });
+    </script>
+
+    <!-- Buttons for touch/mouse support -->
+    <input type="button" value="Right" onTouchStart="this.click(); event.preventDefault();" onclick="{
+        document.getElementById('myImg01').style.left = parseInt(document.getElementById('myImg01').style.left) + 10 + 'px';
+        myCheckHit();   
+    }">
+    <input type="button" value="Down" onTouchStart="this.click(); event.preventDefault();" onclick="{
+        document.getElementById('myImg01').style.top = parseInt(document.getElementById('myImg01').style.top) + 10 + 'px';
+        myCheckHit();   
+    }"><br><br>
+
+    <!-- New character (replacing rabbit) -->
+    <img id="myImg01" src="https://piskel-imgstore-b.appspot.com/img/674b3b73-bcba-11ef-8057-3f0bac968f48.gif" style="position:absolute; width:200px; height:200px; left: 50px; top:190px;" />
+
+    <!-- Seed images (replacing carrots) -->
+    <img id="myImg02" src="https://raw.githubusercontent.com/Mehtab-D/game-dev-2024/refs/heads/main/New%20Piskel%20(9).gif" style="position:absolute; width:150px; height:150px; left:300px; top:50px;" />
+    <img id="myImg03" src="https://raw.githubusercontent.com/Mehtab-D/game-dev-2024/refs/heads/main/New%20Piskel%20(9).gif" style="position:absolute; width:150px; height:150px; left:800px; top:200px;" />
+    <img id="myImg04" src="https://raw.githubusercontent.com/Mehtab-D/game-dev-2024/refs/heads/main/New%20Piskel%20(9).gif" style="position:absolute; width:150px; height:150px; left:300px; top:400px;" />
+    <img id="myImg05" src="https://raw.githubusercontent.com/Mehtab-D/game-dev-2024/refs/heads/main/New%20Piskel%20(9).gif" style="position:absolute; width:150px; height:150px; left:1000px; top:100px;" />
+    <img id="myImg06" src="https://raw.githubusercontent.com/Mehtab-D/game-dev-2024/refs/heads/main/New%20Piskel%20(9).gif" style="position:absolute; width:150px; height:150px; left:1500px; top:600px;" />
+    <img id="myImg07" src="https://raw.githubusercontent.com/Mehtab-D/game-dev-2024/refs/heads/main/New%20Piskel%20(9).gif" style="position:absolute; width:150px; height:150px; left:1800px; top:300px;" />
+    <img id="myImg08" src="https://raw.githubusercontent.com/Mehtab-D/game-dev-2024/refs/heads/main/New%20Piskel%20(9).gif" style="position:absolute; width:150px; height:150px; left:500px; top:500px;" />
+
+    <!-- Add disappearing seeds -->
+    <script>
+    // Set the seeds to disappear after 5 seconds
+    let seedDisappearTime = 5000;
+
+    function disappearSeed(seedId) {
+        setTimeout(function() {
+            document.getElementById(seedId).style.display = 'none';  // Hide seed after time
+        }, seedDisappearTime);
+    }
+
+    // Start the disappearing seeds
+    let seedsToDisappear = ['myImg02', 'myImg03', 'myImg04', 'myImg05', 'myImg06', 'myImg07', 'myImg08', 'myImg09', 'myImg10', 'myImg11'];
+    seedsToDisappear.forEach(seedId => disappearSeed(seedId));
+    </script>
+
+</body>
 
