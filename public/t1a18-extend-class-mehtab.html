@@ -1,48 +1,63 @@
 <script>
     class myAnimal {
-        constructor(passName, passAge) {
+        constructor(passName, passAge, passType, passColor) {
             this.myName = passName;
             this.myAge = passAge;
+            this.myType = passType;
+            this.myColor = passColor;
         }
 
         myShow() {
-            document.getElementById('myDiv01').innerHTML = 'Hello ' + this.myName + '<br>';
+            // Return a string for displaying the animal's info
+            return `${this.myName} is a ${this.myColor} ${this.myType} and is ${this.myAge} years old.`;
         }
     }
 
-    class myCat extends myAnimal {
-        myShow() {
-            document.getElementById('myDiv01').innerHTML = this.myName + ' is a great cat<br>';
+    // Array to store multiple animals
+    let animals = [];
+
+    // Function to add an animal to the list
+    function addAnimal() {
+        const name = document.getElementById('animalName').value;
+        const age = document.getElementById('animalAge').value;
+        const type = document.getElementById('animalType').value;
+        const color = document.getElementById('animalColor').value;
+
+        // Check if the input fields are not empty
+        if (!name || !age || !color) {
+            alert('Please fill in all fields!');
+            return;
         }
+
+        // Create a new animal object
+        const newAnimal = new myAnimal(name, age, type, color);
+        animals.push(newAnimal); // Add the new animal to the array
+
+        // Create a string to display all animals
+        let output = '<h4>Animals:</h4>';
+        animals.forEach((animal, index) => {
+            output += `<p>Animal ${index + 1}: ${animal.myShow()}</p>`;
+        });
+
+        // Update the div to show all animals
+        document.getElementById('myDiv01').innerHTML = output;
     }
 </script>
 
 <h1 align="center">t2a04-extend-class-by-mehtab</h1>
 
-<h4>Example Class Code:</h4>
-<pre>
-    class myCat extends myAnimal {
-        myShow() {
-            document.getElementById('myDiv01').innerHTML = this.myName + ' is a great cat<br>';
-        }
-    }
-</pre>
+<h4>Enter Animal Details:</h4>
+Name: <input type="text" id="animalName"><br>
+Age: <input type="number" id="animalAge"><br>
+Type: <select id="animalType">
+    <option value="Dog">Dog</option>
+    <option value="Cat">Cat</option>
+</select><br>
+Color: <input type="text" id="animalColor"><br>
 
-<h4>Example working Classes code:</h4>
-<input type="button" value="Set and Show Animal" onClick="{
-    const myDog = new myAnimal('Snickers', 5);
-    myDog.myShow();
-}">
+<!-- Button to trigger the addAnimal function -->
+<input type="button" value="Create and Show Animals" onClick="addAnimal()">
 
-<h4>Example Extending Class Code:</h4>
-<input type="button" value="Create and Show Cat" onClick="{
-    const myPet = new myCat('Fluffy', 14);
-    myPet.myShow();
-}">
-
+<h4>Animal List:</h4>
+<!-- Div where animal details will be shown -->
 <div id="myDiv01">...</div>
-
-
-
-
-
