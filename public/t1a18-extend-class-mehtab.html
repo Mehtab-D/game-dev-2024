@@ -3,15 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Animal List</title>
+    <title>Candy List</title>
     <style>
-       
         body {
-            background-color: #3299a8; 
+            background-color: #ffcccb; /* Light pink background */
             font-family: Arial, sans-serif;
             margin: 20px;
         }
-        
+
         h1 {
             color: #fff;
         }
@@ -24,14 +23,14 @@
         input[type="button"] {
             padding: 10px;
             margin: 5px;
-            background-color: #79ccd9;
+            background-color: #ff6699;
             color: white;
             border: none;
             cursor: pointer;
         }
 
         input[type="button"]:hover {
-            background-color: #45a049;
+            background-color: #e65c80;
         }
 
         #myDiv01 {
@@ -45,96 +44,114 @@
         button {
             margin-left: 10px;
             padding: 5px;
-            background-color: #5cabb8;
+            background-color: #ff3399;
             color: white;
             border: none;
             cursor: pointer;
         }
 
         button:hover {
-            background-color: #256f7a;
+            background-color: #e6336d;
         }
     </style>
 </head>
 <body>
 
-    <h1 align="center">t2a04-extend-class-by-mehtab</h1>
+    <h1 align="center">Candy List</h1>
 
-    <h4>Example Class Code:</h4>
-    <pre>
-        class myCat extends myAnimal {
-            myShow(){
-                document.getElementById('myDiv01').innerHTML = this.myName + ' is a great cat<br>';
-            }
-        }
-    </pre>
-
-    <h4>Example working Classes code:</h4>
-    <input type="button" value="Set and Show Animal" onClick="showExampleAnimal()">
-
-    <h4>Enter Animal Details:</h4>
-    Name: <input type="text" id="animalName"><br>
-    Age: <input type="number" id="animalAge"><br>
-    Type: <select id="animalType">
-        <option value="Dog">Dog</option>
-        <option value="Cat">Cat</option>
+    <h4>Enter Candy Details:</h4>
+    Name: <input type="text" id="candyName"><br>
+    Flavor: <input type="text" id="candyFlavor"><br>
+    Sweetness Level (1-10): <input type="number" id="candySweetness" min="1" max="10"><br>
+    Type: <select id="candyType">
+        <option value="Chocolate">Chocolate</option>
+        <option value="Gummy">Gummy</option>
+        <option value="Lollipop">Lollipop</option> <!-- Add more candy types here -->
     </select><br>
-    Color: <input type="text" id="animalColor"><br>
 
-    <!-- Button to create and show multiple animals -->
-    <input type="button" value="Create and Show Animals" onClick="addAnimal()">
+    <!-- Button to create and show multiple candies -->
+    <input type="button" value="Create and Show Candies" onClick="addCandy()">
 
-    <h4>Animal List:</h4>
-    <!-- Div where animal details will be shown -->
+    <h4>Candy List:</h4>
+    <!-- Div where candy details will be shown -->
     <div id="myDiv01">...</div>
 
     <script>
-        class myAnimal {
-            constructor(passName, passAge) {
-                this.myName = passName;
-                this.myAge = passAge;
+        // Base class for Candy
+        class Candy {
+            constructor(name, flavor, sweetness) {
+                this.name = name;
+                this.flavor = flavor;
+                this.sweetness = sweetness;
             }
-            
-            myShow() {    
-                document.getElementById('myDiv01').innerHTML = 'Hello ' + this.myName + '<br>';
+
+            showDetails() {
+                document.getElementById('myDiv01').innerHTML = `${this.name} is a delicious ${this.flavor} flavored candy with a sweetness level of ${this.sweetness}!<br>`;
             }
         }
 
-        // Array to store multiple animals
-        let animals = [];
+        // Class for Chocolate Candy
+        class Chocolate extends Candy {
+            showDetails() {
+                document.getElementById('myDiv01').innerHTML = `${this.name} is a rich chocolate candy with a sweetness level of ${this.sweetness}.<br>`;
+            }
+        }
 
-        // Function to create and show animals
-        function addAnimal() {
-            const name = document.getElementById('animalName').value;
-            const age = document.getElementById('animalAge').value;
-            const type = document.getElementById('animalType').value;
-            const color = document.getElementById('animalColor').value;
+        // Class for Gummy Candy
+        class Gummy extends Candy {
+            showDetails() {
+                document.getElementById('myDiv01').innerHTML = `${this.name} is a chewy gummy candy with a sweetness level of ${this.sweetness}.<br>`;
+            }
+        }
 
-            if (!name || !age || !color) {
+        // Class for Lollipop Candy
+        class Lollipop extends Candy {
+            showDetails() {
+                document.getElementById('myDiv01').innerHTML = `${this.name} is a sweet lollipop with a sweetness level of ${this.sweetness}.<br>`;
+            }
+        }
+
+        // Array to store multiple candies
+        let candies = [];
+
+        // Function to create and show candies
+        function addCandy() {
+            const name = document.getElementById('candyName').value;
+            const flavor = document.getElementById('candyFlavor').value;
+            const sweetness = document.getElementById('candySweetness').value;
+            const type = document.getElementById('candyType').value;
+
+            if (!name || !flavor || !sweetness) {
                 alert('Please fill in all fields!');
                 return;
             }
 
-            // Create a new animal object
-            const newAnimal = new myAnimal(name, age);
-            animals.push(newAnimal);
+            let newCandy;
 
-            // Create a string to display all animals
-            let output = '<h4>Animals:</h4>';
-            animals.forEach((animal, index) => {
-                output += `<p>Animal ${index + 1}: ${animal.myName} is a ${color} ${type} and is ${age} years old.</p>`;
+            // Create the correct type of candy based on the selected type
+            if (type === 'Chocolate') {
+                newCandy = new Chocolate(name, flavor, sweetness); // Use Chocolate class
+            } else if (type === 'Gummy') {
+                newCandy = new Gummy(name, flavor, sweetness); // Use Gummy class
+            } else if (type === 'Lollipop') {
+                newCandy = new Lollipop(name, flavor, sweetness); // Use Lollipop class
+            }
+
+            // Add the candy to the candies array
+            candies.push(newCandy);
+
+            // Create a string to display all candies
+            let output = '<h4>Candies:</h4>';
+            candies.forEach((candy, index) => {
+                output += `<p>Candy ${index + 1}: ${candy.name} - ${candy.flavor} flavor with sweetness level of ${candy.sweetness}</p>`;
             });
 
-            // Update the div to show all animals
+            // Update the div to show all candies
             document.getElementById('myDiv01').innerHTML = output;
-        }
-
-        // This part is the original functionality for setting and showing animal details
-        function showExampleAnimal() {
-            let myDog = new myAnimal('Snickers', 5);
-            myDog.myShow();
         }
     </script>
 
 </body>
 </html>
+
+          
