@@ -1,50 +1,64 @@
 <script>
     class myAnimal {
-        constructor(passName, passAge, passType, passColor) {
+        constructor(passName, passAge) {
             this.myName = passName;
             this.myAge = passAge;
-            this.myType = passType;
-            this.myColor = passColor;
         }
-
-        myShow() {
-            // Return a string for displaying the animal's info
-            return `${this.myName} is a ${this.myColor} ${this.myType} and is ${this.myAge} years old.`;
+        
+        myShow() {    
+            document.getElementById('myDiv01').innerHTML = 'Hello ' + this.myName + '<br>';
         }
-    }
+    }  // end class myAnimal
 
     // Array to store multiple animals
     let animals = [];
 
-    // Function to add an animal to the list
+    // Function to create and show animals
     function addAnimal() {
         const name = document.getElementById('animalName').value;
         const age = document.getElementById('animalAge').value;
         const type = document.getElementById('animalType').value;
         const color = document.getElementById('animalColor').value;
 
-        // Check if the input fields are not empty
         if (!name || !age || !color) {
             alert('Please fill in all fields!');
             return;
         }
 
         // Create a new animal object
-        const newAnimal = new myAnimal(name, age, type, color);
-        animals.push(newAnimal); // Add the new animal to the array
+        const newAnimal = new myAnimal(name, age);
+        animals.push(newAnimal);
 
         // Create a string to display all animals
         let output = '<h4>Animals:</h4>';
         animals.forEach((animal, index) => {
-            output += `<p>Animal ${index + 1}: ${animal.myShow()}</p>`;
+            output += `<p>Animal ${index + 1}: ${animal.myName} is a ${color} ${type} and is ${age} years old.</p>`;
         });
 
         // Update the div to show all animals
         document.getElementById('myDiv01').innerHTML = output;
     }
+
+    // This part is the original functionality for setting and showing animal details
+    function showExampleAnimal() {
+        let myDog = new myAnimal('Snickers', 5);
+        myDog.myShow();
+    }
 </script>
 
 <h1 align="center">t2a04-extend-class-by-mehtab</h1>
+
+<h4>Example Class Code:</h4>
+<pre>
+    class myCat extends myAnimal {
+        myShow(){
+            document.getElementById('myDiv01').innerHTML = this.myName + ' is a great cat<br>';
+        }
+    }
+</pre>
+
+<h4>Example working Classes code:</h4>
+<input type="button" value="Set and Show Animal" onClick="showExampleAnimal()">
 
 <h4>Enter Animal Details:</h4>
 Name: <input type="text" id="animalName"><br>
@@ -55,7 +69,7 @@ Type: <select id="animalType">
 </select><br>
 Color: <input type="text" id="animalColor"><br>
 
-<!-- Button to trigger the addAnimal function -->
+<!-- Button to create and show multiple animals -->
 <input type="button" value="Create and Show Animals" onClick="addAnimal()">
 
 <h4>Animal List:</h4>
