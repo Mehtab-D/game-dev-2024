@@ -4,85 +4,53 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Object Data Extractor</title>
-    <style>
-        /* Styling to make the extracted data look clean */
-        #objectData {
-            margin-top: 20px;
-            padding: 10px;
-            border: 1px solid #ccc;
-            background-color: #f9f9f9;
-            width: 80%;
-            height: 200px;
-            overflow: auto;
-            font-family: monospace;
-            white-space: pre-wrap;
-        }
-    </style>
 </head>
 <body>
-<h1 align="center" id="t2a24-hack-browser-mehtab"</h1>
-<h3>Click the Buttons to get the information</h3>
+    <h1 align="center">Object Data Extractor</h1>
+    <h3>Click the buttons to get the information</h3>
 
-<!-- Buttons to trigger the extraction of object data -->
-<input type="button" value="1 window" onclick="myObjectData(window)">
-<input type="button" value="2 document" onclick="myObjectData(document)">
-<input type="button" value="3 document.myForm2" onclick="myObjectData(document.myForm2)">
-<input type="button" value="4 document.myForm2.myTextarea" onclick="myObjectData(document.myForm2.myTextarea)">
-<input type="button" value="5 window.location" onclick="myObjectData(window.location)">
-<input type="button" value="6 window.parent" onclick="myObjectData(window.parent)">
-<input type="button" value="7 window.chrome" onclick="myObjectData(window.chrome)">
-<input type="button" value="8 document.all.move1.style" onclick="myObjectData(document.all.move1.style)">
-<input type="button" value="9 style" onclick="myObjectData(style)">
-<input type="button" value="10 document.all.move1" onclick="myObjectData(document.all.move1)">
-<input type="button" value="11 window.localStorage" onclick="myObjectData(window.localStorage)">
-<input type="button" value="12 document.getElementById('move1').style" onclick="myObjectData(document.getElementById('move1').style)">
-<input type="button" value="13 document.myForm2.myText1" onclick="myObjectData(document.myForm2.myText1)">
-<input type="button" value="14 document.getElementById('myText2')" onclick="myObjectData(document.getElementById('myText2'))">
+    <!-- Buttons and text boxes to explain what each button does -->
+    <label for="button1">Button 1: window</label>
+    <input type="text" id="button1" value="Shows information about the window object" size="50">
+    <input type="button" value="1 window" onclick="myObjectData(window)">
+    
+    <br><br>
 
-<br><br>
+    <label for="button2">Button 2: document</label>
+    <input type="text" id="button2" value="Shows information about the document object" size="50">
+    <input type="button" value="2 document" onclick="myObjectData(document)">
 
-<!-- Display the extracted data here -->
-<h3>Object Information:</h3>
-<pre id="objectData">Click a button above to see the object data.</pre>
+    <br><br>
 
-<!-- Example object on the page -->
-<img id="move1" style="position:absolute;left:600px;top:560px" src="http://www.autos.ca/wp-content/uploads/2013/03/001-ferrari-laferrari.jpg" width="400" height="200">
+    <label for="button3">Button 3: document.myForm2</label>
+    <input type="text" id="button3" value="Shows information about the form (myForm2)" size="50">
+    <input type="button" value="3 document.myForm2" onclick="myObjectData(document.myForm2)">
 
-<form name="myForm2">
-  <textarea name="myTextarea">wow</textarea>
-  <input type="text" name="myText1" id="myText2" size="50" value="">
-</form>
+    <!-- Repeat this for all other buttons -->
 
-<script>
-    // Function to collect the data and display it in the 'objectData' element
-    function myObjectData(myObject) {
-        // Create a variable to store the data about the object
-        let objectData = '';
+    <br><br>
 
-        // Loop through the properties and methods of the object
-        for (var prop in myObject) {
-            try {
-                objectData += prop + ' = ' + myObject[prop] + '\n';
-            } catch (error) {
-                objectData += prop + ' = [Error retrieving property]\n';
+    <!-- Output where the extracted information will be shown -->
+    <h3>Object Information:</h3>
+    <pre id="objectData">Click a button above to see the object data.</pre>
+
+    <script>
+        // Function to collect the data and display it in the 'objectData' element
+        function myObjectData(myObject) {
+            let objectData = '';
+
+            // Loop through the properties and methods of the object
+            for (var prop in myObject) {
+                try {
+                    objectData += prop + ' = ' + myObject[prop] + '\n';
+                } catch (error) {
+                    objectData += prop + ' = [Error retrieving property]\n';
+                }
             }
+
+            // Display the extracted data in the 'objectData' element
+            document.getElementById('objectData').textContent = objectData;
         }
-
-        // Sort the data if you want
-        objectData = sort(objectData);
-
-        // Display the extracted data in the 'objectData' element
-        document.getElementById('objectData').textContent = objectData;
-    }
-
-    // Function to sort the object data alphabetically (if needed)
-    function sort(data) {
-        let lines = data.split('\n');
-        lines.sort();
-        return lines.join('\n');
-    }
-</script>
-
+    </script>
 </body>
 </html>
-
