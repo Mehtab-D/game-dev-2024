@@ -3,13 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Text Box Example</title>
+   
     <style>
         body {
             background-color: #b1d1e0;
             border: 2px dotted #080707;
         }
-        /* Style the input fields */
         .text-box {
             margin: 10px;
             padding: 10px;
@@ -31,15 +30,13 @@
 </head>
 <body>
     <h1 align="center">t2a26-storyboard-mehtab</h1>
-
-    <form action="#">
-        <!-- Single-line text box -->
+    
+    <form id="myForm">
         <label for="name">Enter your name:</label>
         <input type="text" id="name" class="text-box" name="name">
 
         <br><br>
 
-        <!-- Multi-line text box -->
         <label for="story">Write a short story:</label>
         <textarea id="story" class="text-area" name="story"></textarea>
 
@@ -47,7 +44,28 @@
 
         <input type="submit" value="Submit">
     </form>
+
+    <!-- Div to display the submitted text -->
+    <div id="output"></div>
+
+    <script>
+        // Function to handle form submission
+        document.getElementById("myForm").addEventListener("submit", function(event) {
+            event.preventDefault();  // Prevent form submission and page reload
+
+            // Get the input values
+            var name = document.getElementById("name").value;
+            var story = document.getElementById("story").value;
+
+            // Display the values in the output div
+            var outputDiv = document.getElementById("output");
+            outputDiv.innerHTML = "<h2>Your Input:</h2>" +
+                                  "<p><strong>Name:</strong> " + name + "</p>" +
+                                  "<p><strong>Story:</strong> " + story + "</p>";
+        });
+    </script>
 </body>
 </html>
+
 
 
