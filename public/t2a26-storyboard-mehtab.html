@@ -1,8 +1,53 @@
-<h1 align= center> t2a26-storyboard-mehtab</h1>
- <style>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Box Example</title>
+    <style>
         body {
             background-color: #b1d1e0;
-          border: 2px dotted #080707;
+            border: 2px dotted #080707;
+        }
+        /* Style the input fields */
+        .text-box {
+            margin: 10px;
+            padding: 10px;
+            border: 2px solid #333;
+            border-radius: 5px;
+            font-size: 16px;
+            width: 300px;
+        }
+        .text-area {
+            margin: 10px;
+            padding: 10px;
+            border: 2px solid #333;
+            border-radius: 5px;
+            font-size: 16px;
+            width: 300px;
+            height: 100px;
         }
     </style>
+</head>
+<body>
+    <h1 align="center">t2a26-storyboard-mehtab</h1>
+
+    <form action="#">
+        <!-- Single-line text box -->
+        <label for="name">Enter your name:</label>
+        <input type="text" id="name" class="text-box" name="name">
+
+        <br><br>
+
+        <!-- Multi-line text box -->
+        <label for="story">Write a short story:</label>
+        <textarea id="story" class="text-area" name="story"></textarea>
+
+        <br><br>
+
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
+
 
