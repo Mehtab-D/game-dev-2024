@@ -3,69 +3,88 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   
+    <title>Styled Text Boxes</title>
     <style>
         body {
-            background-color: #b1d1e0;
-            border: 2px dotted #080707;
+            background-color: #9ebaad;
+            color: black;
+            font-family: Arial, sans-serif;
         }
+
+        h1, h2 {
+            text-align: center;
+        }
+
+        #text-container {
+            border: 1px dotted black;
+            padding: 10px;
+            display: inline-block;
+            width: 80%;
+            margin: 20px auto;
+        }
+
+        .text-box, .text-area {
+            border: 1px dotted black;
+            padding: 10px;
+            width: 80%;
+            margin: 10px auto;
+            display: block;
+            background-color: #fff;
+        }
+
         .text-box {
-            margin: 10px;
-            padding: 10px;
-            border: 2px solid #333;
-            border-radius: 5px;
-            font-size: 16px;
-            width: 300px;
+            height: 30px;
         }
+
         .text-area {
-            margin: 10px;
-            padding: 10px;
-            border: 2px solid #333;
-            border-radius: 5px;
-            font-size: 16px;
-            width: 300px;
             height: 100px;
         }
+
+        #output {
+            border: 1px solid #ffffff;
+            padding: 10px;
+            margin-top: 10px;
+            background-color: #f0f0f0;
+            width: 80%;
+            margin: 20px auto;
+            display: none;
+        }
+
     </style>
 </head>
 <body>
-    <h1 align="center">t2a26-storyboard-mehtab</h1>
-    
-    <form id="myForm">
-        <label for="name">Enter your name:</label>
-        <input type="text" id="name" class="text-box" name="name">
+    <h1>ta14-objects-and-arrays-mehtab</h1>
 
-        <br><br>
+    <h2>Research About Objects+Arrays</h2>
+    <div id="text-container">
+        In programming, an object is like a container that holds related information and actions. It is like a way to organize data and functions that belong together. For example, a car object might have data like its make, model, and color, and actions like starting the engine.
+        Objects help you manage complex systems by keeping related things together in one place. An array is a way to store multiple values in a single variable. It’s like a list where you can keep items in a specific order. Each item in an array is called an element, and you can access them using their position, called an index. Arrays keep things organized and they make it easy to work with multiple things at once.
+    </div>
 
-        <label for="story">Write a short story:</label>
-        <textarea id="story" class="text-area" name="story"></textarea>
+    <h2>Enter Your Information</h2>
 
-        <br><br>
+    <!-- Text input boxes styled with dotted borders -->
+    <input type="text" id="name" class="text-box" placeholder="Enter your name">
+    <textarea id="story" class="text-area" placeholder="Write a short story"></textarea>
 
-        <input type="submit" value="Submit">
-    </form>
-
-    <!-- Div to display the submitted text -->
+    <!-- Display the entered text immediately as the user types -->
     <div id="output"></div>
 
     <script>
-        // Function to handle form submission
-        document.getElementById("myForm").addEventListener("submit", function(event) {
-            event.preventDefault();  // Prevent form submission and page reload
+        // Function to update the output when user types
+        function updateOutput() {
+            const name = document.getElementById('name').value;
+            const story = document.getElementById('story').value;
 
-            // Get the input values
-            var name = document.getElementById("name").value;
-            var story = document.getElementById("story").value;
+            const outputDiv = document.getElementById('output');
+            outputDiv.style.display = 'block';
+            outputDiv.innerHTML = `<p><strong>Name:</strong> ${name}</p>`;
+            outputDiv.innerHTML += `<p><strong>Story:</strong> ${story}</p>`;
+        }
 
-            // Display the values in the output div
-            var outputDiv = document.getElementById("output");
-            outputDiv.innerHTML = "<h2>Your Input:</h2>" +
-                                  "<p><strong>Name:</strong> " + name + "</p>" +
-                                  "<p><strong>Story:</strong> " + story + "</p>";
-        });
+        // Add event listeners to update the output as user types in the fields
+        document.getElementById('name').addEventListener('input', updateOutput);
+        document.getElementById('story').addEventListener('input', updateOutput);
     </script>
 </body>
 </html>
-
-
-
